@@ -33,4 +33,14 @@
 
 @interface ARAnalytics : NSObject
 
+/// Setup methods for each individual Analytics type
++ (void)setupTestFlightWithTeamToken:(NSString *)token;
+
+/// Submit user events
++ (void)event:(NSString *)event;
++ (void)event:(NSString *)event withProperties:(NSDictionary *)properties;
+
+// Submit errors
++ (void)error:(NSString*)string, ...;
+
 @end

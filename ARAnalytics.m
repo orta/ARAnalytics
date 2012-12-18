@@ -9,6 +9,26 @@
 #import "ARAnalytics.h"
 #import "ARAnalytics+GeneratedHeader.h"
 
-@implementation ARAnalytics
+static ARAnalytics *_sharedAnalytics;
+
+@implementation ARAnalytics {
+  TestFlight *_testflight;
+}
+
++ (void)setup {
+    static dispatch_once_t pred;
+    dispatch_once(&pred, ^{ _sharedAnalytics = [[ARAnalytics alloc] init]; } );
+}
+
++ (void)setupTestFlightWithTeamToken:(NSString *)token {
+  if([Testflight class] != nil){
+    [TestFlight takeOff:token];
+  }
+}
+
++ (void)event:(NSString *)event {}
++ (void)event:(NSString *)event withProperties:(NSDictionary *)properties {}
+
++ (void)error:(NSString*)string, ... {}
 
 @end
