@@ -21,9 +21,14 @@ static ARAnalytics *_sharedAnalytics;
 }
 
 + (void)setupTestFlightWithTeamToken:(NSString *)token {
-    if([TestFlight class] != nil){
-        [TestFlight takeOff:token];
-    }
+    NSAssert([TestFlight class], @"TestFlight is not included");
+    [TestFlight takeOff:token];
+
+}
+
++ (void)setupCrashlyticsWithAPIKey:(NSString *)key {
+    NSAssert([Crashlytics class], @"Crashlytics is not included");
+    [Crashlytics startWithAPIKey:key];
 }
 
 + (void)event:(NSString *)event {}
