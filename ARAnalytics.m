@@ -21,9 +21,9 @@ static ARAnalytics *_sharedAnalytics;
 }
 
 + (void)setupTestFlightWithTeamToken:(NSString *)token {
-  if([Testflight class] != nil){
-    [TestFlight takeOff:token];
-  }
+    if([TestFlight class] != nil){
+        [TestFlight takeOff:token];
+    }
 }
 
 + (void)event:(NSString *)event {}
