@@ -29,21 +29,20 @@
 
 #import <Foundation/Foundation.h>
 
-@class TestFlight, Crashlytics;
-
 @interface ARAnalytics : NSObject
 
 /// Setup methods for each individual Analytics type
 + (void)setupTestFlightWithTeamToken:(NSString *)token;
 + (void)setupCrashlyticsWithAPIKey:(NSString *)key;
++ (void)setupMixpanelWithToken:(NSString *)token;
 
 /// Submit user events
 + (void)event:(NSString *)event;
 + (void)event:(NSString *)event withProperties:(NSDictionary *)properties;
 
++ (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email;
+
 // Submit errors
 + (void)error:(NSString*)string, ...;
-
-
 
 @end

@@ -9,11 +9,15 @@
 #import "ARAnalytics.h"
 #import "ARAnalytics+GeneratedHeader.h"
 
+@class Crashlytics, TestFlight, Mixpanel;
 static ARAnalytics *_sharedAnalytics;
 
-@implementation ARAnalytics {
-  TestFlight *_testflight;
-}
+@interface ARAnalytics ()
+@property (strong) TestFlight *testflight;
+@property (strong) Mixpanel *mixpanel;
+@end
+
+@implementation ARAnalytics
 
 + (void)setup {
     static dispatch_once_t pred;
@@ -22,8 +26,12 @@ static ARAnalytics *_sharedAnalytics;
 
 + (void)setupTestFlightWithTeamToken:(NSString *)token {
     NSAssert([TestFlight class], @"TestFlight is not included");
-    [TestFlight takeOff:token];
 
+    // For non App store builds use a device identifier.
+#ifndef RELEASE
+    [TestFlight setDeviceIdentifier:[self uniqueID]];
+#endif
+    [TestFlight takeOff:token];
 }
 
 + (void)setupCrashlyticsWithAPIKey:(NSString *)key {
@@ -31,9 +39,37 @@ static ARAnalytics *_sharedAnalytics;
     [Crashlytics startWithAPIKey:key];
 }
 
++ (void)setupMixpanelWithToken:(NSString *)token {
+    NSAssert([Mixpanel class], @"Mixpanel is not included");
+    _sharedAnalytics.mixpanel = [Mixpanel sharedInstanceWithToken:token];
+}
+
++ (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {
+#ifdef AR_MIXPANEL_EXISTS
+    [_sharedAnalytics.mixpanel.people identify:id];
+    [_sharedAnalytics.mixpanel.people set:@"$email" to:email];
+#endif
+
+#ifdef AR_TESTFLIGHT_EXISTS
+    [TestFlight addCustomEnvironmentInformation:@"id" forKey:id];
+    [TestFlight addCustomEnvironmentInformation:@"email" forKey:email];
+#endif
+}
+
 + (void)event:(NSString *)event {}
 + (void)event:(NSString *)event withProperties:(NSDictionary *)properties {}
 
 + (void)error:(NSString*)string, ... {}
+
+
+// Util
++ (NSString *)uniqueID {
+    // iOS 6 has a good API for getting a unique ID 
+    if ([UICollectionView class] != nil) {
+        return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    } else {
+        [[UIDevice currentDevice] identifierForVendor];
+    }
+}
 
 @end
