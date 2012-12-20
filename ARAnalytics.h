@@ -29,7 +29,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ARAnalytics : NSObject
+@interface ARAnalytics : NSObject <UINavigationControllerDelegate>
 
 /// Setup methods for each individual Analytics type
 + (void)setupTestFlightWithTeamToken:(NSString *)token;
@@ -38,18 +38,17 @@
 + (void)setupFlurryWithAPIKey:(NSString *)key;
 + (void)setupGoogleAnalyticsWithID:(NSString *)id;
 
-/// Set up your user's identity
-+ (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email;
-
 /// Set a per user property
++ (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email;
 + (void)addUserProperty:(NSString *)property toValue:(NSString *)value;
 
 /// Submit user events
 + (void)event:(NSString *)event;
 + (void)event:(NSString *)event withProperties:(NSDictionary *)properties;
 
++ (void)monitorNavigationViewController:(UINavigationController *)controller;
+
 // Submit errors
 + (void)error:(NSString *)string, ...;
 
 @end
- 

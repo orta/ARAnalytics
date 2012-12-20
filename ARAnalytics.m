@@ -86,6 +86,10 @@ static ARAnalytics *_sharedAnalytics;
 
     // The Google Analytics Terms of Service prohibit sending of any personally identifiable information (PII) to Google Analytics servers. For more information, please consult the Terms of Service.
 #endif
+
+#if AR_CRASHLYTICS_EXISTS
+
+#endif
 }
 
 + (void)event:(NSString *)event {
@@ -137,8 +141,31 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 }
 
+#pragma mark -
+#pragma mark Monitor Navigation Controller
 
-+ (void)error:(NSString*)string, ... {}
++ (void)monitorNavigationViewController:(UINavigationController *)controller {
+    controller.delegate = _sharedAnalytics;
+}
+
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+
+    [ARAnalytics event:@"Screen view" withProperties:@{ @"screen": viewController.title }];
+
+#ifdef AR_LOCALYTICS_EXISTS
+    // This is for enterprise only...
+    [[LocalyticsSession sharedLocalyticsSession] tagScreen:viewController.title];
+#endif
+
+#ifdef AR_GOOGLEANALYTICS_EXISTS
+    [[[GAI sharedInstance] defaultTracker] trackView:viewController.title];
+#endif
+
+}
+
++ (void)error:(NSString *)string, ... {
+    
+}
 
 
 // Util
