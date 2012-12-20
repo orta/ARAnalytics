@@ -52,3 +52,14 @@
 + (void)error:(NSString *)string, ...;
 
 @end
+
+// Whilst we cannot include the Crashlytics library
+// we can stub out the implementation with methods we want
+// so that it will link with the real framework later on ./
+
+@interface Crashlytics : NSObject
++ (Crashlytics *)startWithAPIKey:(NSString *)apiKey;
++ (void)setUserIdentifier:(NSString *)identifier;
++ (void)setUserName:(NSString *)name;
++ (void)setObjectValue:(id)value forKey:(NSString *)key;
+@end
