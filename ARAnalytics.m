@@ -15,7 +15,7 @@ static ARAnalytics *_sharedAnalytics;
 
 @implementation ARAnalytics
 
-+ (void)setup {
++ (void) initialize {
     static dispatch_once_t pred;
     dispatch_once(&pred, ^{ _sharedAnalytics = [[ARAnalytics alloc] init]; } );
 }
@@ -35,6 +35,7 @@ static ARAnalytics *_sharedAnalytics;
 + (void)setupCrashlyticsWithAPIKey:(NSString *)key {
 #ifdef AR_CRASHLYTICS_EXISTS
     NSAssert([Crashlytics class], @"Crashlytics is not included");
+    NSAssert([[Crashlytics class] respondsToSelector:@selector(version)], @"Crashlytics library not installed correctly.");
     [Crashlytics startWithAPIKey:key];
 #endif
 }
@@ -87,8 +88,9 @@ static ARAnalytics *_sharedAnalytics;
     // The Google Analytics Terms of Service prohibit sending of any personally identifiable information (PII) to Google Analytics servers. For more information, please consult the Terms of Service.
 #endif
 
-#if AR_CRASHLYTICS_EXISTS
-
+#ifdef AR_CRASHLYTICS_EXISTS
+    [Crashlytics setUserIdentifier:id];
+    [Crashlytics setUserName:email];
 #endif
 }
 
@@ -116,6 +118,11 @@ static ARAnalytics *_sharedAnalytics;
 #ifdef AR_GOOGLEANALYTICS_EXISTS
     [[[GAI sharedInstance] defaultTracker] send:event params:properties];
 #endif
+
+#ifdef AR_CRASHLYTICS_EXISTS
+    // This concept doesn't exist in Crashlytics
+#endif
+
 }
 
 + (void)addUserProperty:(NSString *)property toValue:(NSString *)value {
@@ -138,6 +145,10 @@ static ARAnalytics *_sharedAnalytics;
 
 #ifdef AR_GOOGLEANALYTICS_EXISTS
     [[[GAI sharedInstance] defaultTracker] set:property value:value];
+#endif
+
+#ifdef AR_CRASHLYTICS_EXISTS
+    [Crashlytics setObjectValue:value forKey:property];
 #endif
 }
 
