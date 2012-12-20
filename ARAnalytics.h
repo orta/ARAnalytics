@@ -35,14 +35,21 @@
 + (void)setupTestFlightWithTeamToken:(NSString *)token;
 + (void)setupCrashlyticsWithAPIKey:(NSString *)key;
 + (void)setupMixpanelWithToken:(NSString *)token;
++ (void)setupFlurryWithAPIKey:(NSString *)key;
++ (void)setupGoogleAnalyticsWithID:(NSString *)id;
+
+/// Set up your user's identity
++ (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email;
+
+/// Set a per user property
++ (void)addUserProperty:(NSString *)property toValue:(NSString *)value;
 
 /// Submit user events
 + (void)event:(NSString *)event;
 + (void)event:(NSString *)event withProperties:(NSDictionary *)properties;
 
-+ (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email;
-
 // Submit errors
-+ (void)error:(NSString*)string, ...;
++ (void)error:(NSString *)string, ...;
 
 @end
+ 
