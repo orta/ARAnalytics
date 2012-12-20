@@ -20,6 +20,11 @@ static ARAnalytics *_sharedAnalytics;
     dispatch_once(&pred, ^{ _sharedAnalytics = [[ARAnalytics alloc] init]; } );
 }
 
+
+#pragma mark -
+#pragma mark Analytics Setup
+
+
 + (void)setupTestFlightWithTeamToken:(NSString *)token {
 #ifdef AR_TESTFLIGHT_EXISTS
     NSAssert([TestFlight class], @"TestFlight is not included");
@@ -61,6 +66,11 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 }
 
+
+#pragma mark -
+#pragma mark User Setup
+
+
 + (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {
 #ifdef AR_MIXPANEL_EXISTS
     [[[Mixpanel sharedInstance] people] identify:id];
@@ -92,36 +102,6 @@ static ARAnalytics *_sharedAnalytics;
     [Crashlytics setUserIdentifier:id];
     [Crashlytics setUserName:email];
 #endif
-}
-
-+ (void)event:(NSString *)event {
-    [self event:event withProperties:nil];
-}
-
-+ (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
-#ifdef AR_MIXPANEL_EXISTS
-    [[Mixpanel sharedInstance] track:event properties:properties];
-#endif
-
-#ifdef AR_TESTFLIGHT_EXISTS
-    [TestFlight passCheckpoint:@"Event"];
-#endif
-
-#ifdef AR_FLURRY_EXISTS
-    [Flurry logEvent:event withParameters:properties];
-#endif
-
-#ifdef AR_LOCALYTICS_EXISTS
-    [[LocalyticsSession sharedLocalyticsSession] tagEvent:event attributes:properties];
-#endif
-
-#ifdef AR_GOOGLEANALYTICS_EXISTS
-    [[[GAI sharedInstance] defaultTracker] send:event params:properties];
-#endif
-
-#ifdef AR_CRASHLYTICS_EXISTS
-    // This concept doesn't exist in Crashlytics
-#endif
 
 }
 
@@ -152,8 +132,45 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 }
 
+
+#pragma mark -
+#pragma mark Events
+
+
++ (void)event:(NSString *)event {
+    [self event:event withProperties:nil];
+}
+
++ (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
+#ifdef AR_MIXPANEL_EXISTS
+    [[Mixpanel sharedInstance] track:event properties:properties];
+#endif
+
+#ifdef AR_TESTFLIGHT_EXISTS
+    [TestFlight passCheckpoint:@"Event"];
+#endif
+
+#ifdef AR_FLURRY_EXISTS
+    [Flurry logEvent:event withParameters:properties];
+#endif
+
+#ifdef AR_LOCALYTICS_EXISTS
+    [[LocalyticsSession sharedLocalyticsSession] tagEvent:event attributes:properties];
+#endif
+
+#ifdef AR_GOOGLEANALYTICS_EXISTS
+    [[[GAI sharedInstance] defaultTracker] send:event params:properties];
+#endif
+
+#ifdef AR_CRASHLYTICS_EXISTS
+    // This concept doesn't exist in Crashlytics
+#endif
+}
+
+
 #pragma mark -
 #pragma mark Monitor Navigation Controller
+
 
 + (void)monitorNavigationViewController:(UINavigationController *)controller {
     controller.delegate = _sharedAnalytics;
@@ -173,11 +190,6 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 
 }
-
-+ (void)error:(NSString *)string, ... {
-    
-}
-
 
 // Util
 + (NSString *)uniqueID {

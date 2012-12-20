@@ -48,9 +48,6 @@
 
 + (void)monitorNavigationViewController:(UINavigationController *)controller;
 
-// Submit errors
-+ (void)error:(NSString *)string, ...;
-
 @end
 
 // Whilst we cannot include the Crashlytics library
