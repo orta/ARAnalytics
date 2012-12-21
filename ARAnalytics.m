@@ -24,6 +24,55 @@ static ARAnalytics *_sharedAnalytics;
 #pragma mark -
 #pragma mark Analytics Setup
 
++ (void)setupWithAnalytics:(NSDictionary *)analyticsDictionary {
+#ifdef AR_TESTFLIGHT_EXISTS
+    if (analyticsDictionary[ARTestFlightkey]) {
+        [self setupTestFlightWithTeamToken:analyticsDictionary[ARTestFlightkey]];
+    }
+#endif
+
+#ifdef AR_CRASHLYTICS_EXISTS
+    if (analyticsDictionary[ARCrashlyticsKey]) {
+        [self setupCrashlyticsWithAPIKey:analyticsDictionary[ARCrashlyticsKey]];
+    }
+#endif
+
+#ifdef AR_CRITTERCISM_EXISTS
+    if (analyticsDictionary[ARCrittercismKey]) {
+       [self setupCrittercismWithAppID:analyticsDictionary[ARCrittercismKey]];
+    }
+#endif
+
+#ifdef AR_FLURRY_EXISTS
+    if (analyticsDictionary[ARFlurryKey]) {
+        [self setupFlurryWithAPIKey:analyticsDictionary[ARFlurryKey]];
+    }
+#endif
+
+#ifdef AR_GOOGLEANALYTICS_EXISTS
+    if (analyticsDictionary[ARGoogleAnalyticsKey]) {
+        [self setupGoogleAnalyticsWithID:analyticsDictionary[ARGoogleAnalyticsKey]];
+    }
+#endif
+
+#ifdef AR_KISSMETRICS_EXISTS
+    if (analyticsDictionary[ARKISSMetricsKey]) {
+        [self setupKissMetricsWithAPIKey:analyticsDictionary[ARKISSMetricsKey]];
+    }
+#endif
+
+#ifdef AR_LOCALYTICS_EXISTS
+    if (analyticsDictionary[ARLocalyticsKey]) {
+        [self setupLocalyticsWithAppKey:analyticsDictionary[ARLocalyticsKey]];
+    }
+#endif
+
+#ifdef AR_MIXPANEL_EXISTS
+    if (analyticsDictionary[ARMixpanelKey]) {
+        [self setupMixpanelWithToken:analyticsDictionary[ARMixpanelKey]];
+    }
+#endif
+}
 
 + (void)setupTestFlightWithTeamToken:(NSString *)token {
 #ifdef AR_TESTFLIGHT_EXISTS
@@ -66,6 +115,27 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 }
 
++ (void)setupLocalyticsWithAppKey:(NSString *)key {
+#ifdef AR_LOCALYTICS_EXISTS
+    NSAssert([LocalyticsSession class], @"Localytics is not included");
+    [[LocalyticsSession sharedLocalyticsSession] startSession:key];
+#endif
+}
+
++ (void)setupKissMetricsWithAPIKey:(NSString *)key {
+#ifdef AR_KISSMETRICS_EXISTS
+    NSAssert([KISSMetricsAPI class], @"KISSMetrics is not included");
+    [KISSMetricsAPI sharedAPIWithKey:key];
+#endif
+}
+
++ (void)setupCrittercismWithAppID:(NSString *)appID {
+#ifdef AR_CRITTERCISM_EXISTS
+    NSAssert([Crittercism class], @"Crittercism is not included");
+    [Crittercism enableWithAppID:appID];
+#endif
+}
+
 
 #pragma mark -
 #pragma mark User Setup
@@ -99,10 +169,19 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 
 #ifdef AR_CRASHLYTICS_EXISTS
-    [Crashlytics setUserIdentifier:id];
-    [Crashlytics setUserName:email];
+    [Crashlytics setUserIdentifier:email];
+    [Crashlytics setUserName:id];
 #endif
 
+#ifdef AR_CRITTERCISM_EXISTS
+    [Crittercism setUsername:id];
+    [Crittercism setEmail:email];
+#endif
+
+#ifdef AR_KISSMETRICS_EXISTS
+    [[KISSMetricsAPI sharedAPI] identify:id];
+    [[KISSMetricsAPI sharedAPI] alias:email withIdentity:id];
+#endif
 }
 
 + (void)addUserProperty:(NSString *)property toValue:(NSString *)value {
@@ -129,6 +208,14 @@ static ARAnalytics *_sharedAnalytics;
 
 #ifdef AR_CRASHLYTICS_EXISTS
     [Crashlytics setObjectValue:value forKey:property];
+#endif
+
+#ifdef AR_KISSMETRICS_EXISTS
+    [[KISSMetricsAPI sharedAPI] setProperties:@{property: value}];
+#endif
+
+#ifdef AR_CRITTERCISM_EXISTS
+    [Crittercism setValue:value forKey:property];
 #endif
 }
 
@@ -164,6 +251,14 @@ static ARAnalytics *_sharedAnalytics;
 
 #ifdef AR_CRASHLYTICS_EXISTS
     // This concept doesn't exist in Crashlytics
+#endif
+
+#ifdef AR_KISSMETRICS_EXISTS
+    [[KISSMetricsAPI sharedAPI] recordEvent:event withProperties:properties];
+#endif
+
+#ifdef AR_CRITTERCISM_EXISTS
+    [Crittercism leaveBreadcrumb:event];
 #endif
 }
 
@@ -202,3 +297,12 @@ static ARAnalytics *_sharedAnalytics;
 }
 
 @end
+
+NSString *const ARTestFlightkey = @"ARTestFlight";
+NSString *const ARCrashlyticsKey = @"ARCrashlytics";
+NSString *const ARMixpanelKey = @"ARMixpanel";
+NSString *const ARFlurryKey = @"ARFlurry";
+NSString *const ARLocalyticsKey = @"ARLocalytics";
+NSString *const ARKISSMetricsKey = @"ARKISSMetrics";
+NSString *const ARCrittercismKey = @"ARCrittercism";
+NSString *const ARGoogleAnalyticsKey = @"ARGoogleAnalytics";
