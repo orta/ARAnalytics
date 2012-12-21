@@ -11,7 +11,9 @@
 
 static ARAnalytics *_sharedAnalytics;
 
-// Things to look at: Timed Events, AB Tests, Setup with dictionary
+@interface ARAnalytics ()
+@property (strong) NSMutableDictionary *eventsDictionary;
+@end
 
 @implementation ARAnalytics
 
@@ -28,18 +30,6 @@ static ARAnalytics *_sharedAnalytics;
 #ifdef AR_TESTFLIGHT_EXISTS
     if (analyticsDictionary[ARTestFlightkey]) {
         [self setupTestFlightWithTeamToken:analyticsDictionary[ARTestFlightkey]];
-    }
-#endif
-
-#ifdef AR_CRASHLYTICS_EXISTS
-    if (analyticsDictionary[ARCrashlyticsKey]) {
-        [self setupCrashlyticsWithAPIKey:analyticsDictionary[ARCrashlyticsKey]];
-    }
-#endif
-
-#ifdef AR_CRITTERCISM_EXISTS
-    if (analyticsDictionary[ARCrittercismKey]) {
-       [self setupCrittercismWithAppID:analyticsDictionary[ARCrittercismKey]];
     }
 #endif
 
@@ -72,6 +62,22 @@ static ARAnalytics *_sharedAnalytics;
         [self setupMixpanelWithToken:analyticsDictionary[ARMixpanelKey]];
     }
 #endif
+
+// Crashlytics / Crittercism should stay at the bottom of this,
+// as they both need to register exceptions, and you'd only use one.
+
+#ifdef AR_CRASHLYTICS_EXISTS
+    if (analyticsDictionary[ARCrashlyticsKey]) {
+        [self setupCrashlyticsWithAPIKey:analyticsDictionary[ARCrashlyticsKey]];
+    }
+#endif
+
+#ifdef AR_CRITTERCISM_EXISTS
+    if (analyticsDictionary[ARCrittercismKey]) {
+        [self setupCrittercismWithAppID:analyticsDictionary[ARCrittercismKey]];
+    }
+#endif
+
 }
 
 + (void)setupTestFlightWithTeamToken:(NSString *)token {
@@ -122,7 +128,7 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 }
 
-+ (void)setupKissMetricsWithAPIKey:(NSString *)key {
++ (void)setupKISSMetricsWithAPIKey:(NSString *)key {
 #ifdef AR_KISSMETRICS_EXISTS
     NSAssert([KISSMetricsAPI class], @"KISSMetrics is not included");
     [KISSMetricsAPI sharedAPIWithKey:key];
@@ -234,7 +240,7 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 
 #ifdef AR_TESTFLIGHT_EXISTS
-    [TestFlight passCheckpoint:@"Event"];
+    [TestFlight passCheckpoint:event];
 #endif
 
 #ifdef AR_FLURRY_EXISTS
@@ -262,10 +268,8 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 }
 
-
 #pragma mark -
 #pragma mark Monitor Navigation Controller
-
 
 + (void)monitorNavigationViewController:(UINavigationController *)controller {
     controller.delegate = _sharedAnalytics;
@@ -286,9 +290,33 @@ static ARAnalytics *_sharedAnalytics;
 
 }
 
-// Util
+#pragma mark -
+#pragma mark Timing Events
+
++ (void)startTimingEvent:(NSString *)event {
+    if (!_sharedAnalytics.eventsDictionary) {
+        _sharedAnalytics.eventsDictionary = [NSMutableDictionary dictionary];
+    }
+    _sharedAnalytics.eventsDictionary[event] = [NSDate date];
+}
+
++ (void)finishTimingEvent:(NSString *)event {
+    NSDate *startDate = _sharedAnalytics.eventsDictionary[event];
+    if (!startDate) {
+        NSLog(@"ARAnalytics: finish timing event called without a corrosponding start timing event");
+        return;
+    }
+
+    NSTimeInterval eventInterval = [[NSDate date] timeIntervalSinceDate:startDate];
+    [self event:event withProperties:@{ @"length": @(eventInterval) }];
+}
+
+
+#pragma mark -
+#pragma mark Util
+
 + (NSString *)uniqueID {
-    // iOS 6 has a good API for getting a unique ID 
+    // iOS 6 has a good API for getting a unique ID
     if ([UICollectionView class] != nil) {
         return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     } else {
