@@ -1,4 +1,4 @@
-![art.sy](https://github.com/orta/ARAnalytics/raw/web/headline.jpg "Art.sy | ARAnalytics")
+![art.sy](https://raw.github.com/orta/ARAnalytics/master/web/headline.jpg "Art.sy | ARAnalytics")
 
 ARAnalytics
 ================
