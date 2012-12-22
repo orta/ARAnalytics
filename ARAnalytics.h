@@ -52,7 +52,7 @@
 + (void)event:(NSString *)event;
 + (void)event:(NSString *)event withProperties:(NSDictionary *)properties;
 
-/// Monitor NAvigation changes as page view
+/// Monitor Navigation changes as page view
 + (void)monitorNavigationViewController:(UINavigationController *)controller;
 
 /// Let ARAnalytics deal with the timing of an event
