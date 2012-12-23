@@ -28,9 +28,9 @@ Once you've `pod installed`'d the libraries you can either use the individual (f
 
 ``` objc
   [ARAnalytics setupWithAnalytics:@{
-      ARCrittercismKey : @"KEY",
-      ARKISSMetricsKey : @"KEY",
-      ARGoogleAnalyticsKey : @"KEY"
+      ARCrittercismAppID : @"KEY",
+      ARKISSMetricsAPIKey : @"KEY",
+      ARGoogleAnalyticsID : @"KEY"
    }];
 ```
 

@@ -31,12 +31,18 @@
 
 @interface ARAnalytics : NSObject <UINavigationControllerDelegate>
 
+// A global analytics API, use the constants at the bottom for keys.
++ (void)setupWithAnalytics:(NSDictionary *)analyticsDictionary;
+
 /// Setup methods for each individual Analytics type
 + (void)setupTestFlightWithTeamToken:(NSString *)token;
 + (void)setupCrashlyticsWithAPIKey:(NSString *)key;
 + (void)setupMixpanelWithToken:(NSString *)token;
 + (void)setupFlurryWithAPIKey:(NSString *)key;
 + (void)setupGoogleAnalyticsWithID:(NSString *)id;
++ (void)setupLocalyticsWithAppKey:(NSString *)key;
++ (void)setupKISSMetricsWithAPIKey:(NSString *)key;
++ (void)setupCrittercismWithAppID:(NSString *)appID;
 
 /// Set a per user property
 + (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email;
@@ -47,9 +53,15 @@
 + (void)event:(NSString *)event;
 + (void)event:(NSString *)event withProperties:(NSDictionary *)properties;
 
+/// Monitor Navigation changes as page view
 + (void)monitorNavigationViewController:(UINavigationController *)controller;
 
+/// Let ARAnalytics deal with the timing of an event
++ (void)startTimingEvent:(NSString *)event;
++ (void)finishTimingEvent:(NSString *)event;
+
 @end
+
 
 // Whilst we cannot include the Crashlytics library
 // we can stub out the implementation with methods we want
@@ -61,3 +73,14 @@
 + (void)setUserName:(NSString *)name;
 + (void)setObjectValue:(id)value forKey:(NSString *)key;
 @end
+
+
+// Provide some keys for the setupWithDictionary
+extern NSString *const ARTestFlightTeamToken;
+extern NSString *const ARCrashlyticsAPIKey;
+extern NSString *const ARMixpanelToken;
+extern NSString *const ARFlurryAPIKey;
+extern NSString *const ARLocalyticsAppKey;
+extern NSString *const ARKISSMetricsAPIKey;
+extern NSString *const ARCrittercismAppID;
+extern NSString *const ARGoogleAnalyticsID;

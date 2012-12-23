@@ -28,38 +28,38 @@ static ARAnalytics *_sharedAnalytics;
 
 + (void)setupWithAnalytics:(NSDictionary *)analyticsDictionary {
 #ifdef AR_TESTFLIGHT_EXISTS
-    if (analyticsDictionary[ARTestFlightkey]) {
-        [self setupTestFlightWithTeamToken:analyticsDictionary[ARTestFlightkey]];
+    if (analyticsDictionary[ARTestFlightTeamToken]) {
+        [self setupTestFlightWithTeamToken:analyticsDictionary[ARTestFlightTeamToken]];
     }
 #endif
 
 #ifdef AR_FLURRY_EXISTS
-    if (analyticsDictionary[ARFlurryKey]) {
-        [self setupFlurryWithAPIKey:analyticsDictionary[ARFlurryKey]];
+    if (analyticsDictionary[ARFlurryAPIKey]) {
+        [self setupFlurryWithAPIKey:analyticsDictionary[ARFlurryAPIKey]];
     }
 #endif
 
 #ifdef AR_GOOGLEANALYTICS_EXISTS
-    if (analyticsDictionary[ARGoogleAnalyticsKey]) {
-        [self setupGoogleAnalyticsWithID:analyticsDictionary[ARGoogleAnalyticsKey]];
+    if (analyticsDictionary[ARGoogleAnalyticsID]) {
+        [self setupGoogleAnalyticsWithID:analyticsDictionary[ARGoogleAnalyticsID]];
     }
 #endif
 
 #ifdef AR_KISSMETRICS_EXISTS
-    if (analyticsDictionary[ARKISSMetricsKey]) {
-        [self setupKissMetricsWithAPIKey:analyticsDictionary[ARKISSMetricsKey]];
+    if (analyticsDictionary[ARKISSMetricsAPIKey]) {
+        [self setupKissMetricsWithAPIKey:analyticsDictionary[ARKISSMetricsAPIKey]];
     }
 #endif
 
 #ifdef AR_LOCALYTICS_EXISTS
-    if (analyticsDictionary[ARLocalyticsKey]) {
-        [self setupLocalyticsWithAppKey:analyticsDictionary[ARLocalyticsKey]];
+    if (analyticsDictionary[ARLocalyticsAppKey]) {
+        [self setupLocalyticsWithAppKey:analyticsDictionary[ARLocalyticsAppKey]];
     }
 #endif
 
 #ifdef AR_MIXPANEL_EXISTS
-    if (analyticsDictionary[ARMixpanelKey]) {
-        [self setupMixpanelWithToken:analyticsDictionary[ARMixpanelKey]];
+    if (analyticsDictionary[ARMixpanelToken]) {
+        [self setupMixpanelWithToken:analyticsDictionary[ARMixpanelToken]];
     }
 #endif
 
@@ -67,17 +67,16 @@ static ARAnalytics *_sharedAnalytics;
 // as they both need to register exceptions, and you'd only use one.
 
 #ifdef AR_CRASHLYTICS_EXISTS
-    if (analyticsDictionary[ARCrashlyticsKey]) {
-        [self setupCrashlyticsWithAPIKey:analyticsDictionary[ARCrashlyticsKey]];
+    if (analyticsDictionary[ARCrashlyticsAPIKey]) {
+        [self setupCrashlyticsWithAPIKey:analyticsDictionary[ARCrashlyticsAPIKey]];
     }
 #endif
 
 #ifdef AR_CRITTERCISM_EXISTS
-    if (analyticsDictionary[ARCrittercismKey]) {
-        [self setupCrittercismWithAppID:analyticsDictionary[ARCrittercismKey]];
+    if (analyticsDictionary[ARCrittercismAppID]) {
+        [self setupCrittercismWithAppID:analyticsDictionary[ARCrittercismAppID]];
     }
 #endif
-
 }
 
 + (void)setupTestFlightWithTeamToken:(NSString *)token {
@@ -190,7 +189,7 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 }
 
-+ (void)addUserProperty:(NSString *)property toValue:(NSString *)value {
++ (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
 #ifdef AR_MIXPANEL_EXISTS
     [[[Mixpanel sharedInstance] people] set:property to:value];
 #endif
@@ -223,13 +222,6 @@ static ARAnalytics *_sharedAnalytics;
 #ifdef AR_CRITTERCISM_EXISTS
     [Crittercism setValue:value forKey:property];
 #endif
-}
-
-+ (void)incrementUserProperty:(NSString*)counterName byInt:(int)amount {
-    //TODO: Reasearch if others support this
-#ifdef AR_MIXPANEL_EXISTS
-    [[Mixpanel sharedInstance] increment:counterName by:@(amount)];
-#endif   
 }
 
 
@@ -280,6 +272,10 @@ static ARAnalytics *_sharedAnalytics;
 
 + (void)monitorNavigationViewController:(UINavigationController *)controller {
     controller.delegate = _sharedAnalytics;
+
+#ifdef AR_FLURRY_EXISTS
+    [Flurry logAllPageViews:controller];
+#endif
 }
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
@@ -333,11 +329,12 @@ static ARAnalytics *_sharedAnalytics;
 
 @end
 
-NSString *const ARTestFlightkey = @"ARTestFlight";
-NSString *const ARCrashlyticsKey = @"ARCrashlytics";
-NSString *const ARMixpanelKey = @"ARMixpanel";
-NSString *const ARFlurryKey = @"ARFlurry";
-NSString *const ARLocalyticsKey = @"ARLocalytics";
-NSString *const ARKISSMetricsKey = @"ARKISSMetrics";
-NSString *const ARCrittercismKey = @"ARCrittercism";
-NSString *const ARGoogleAnalyticsKey = @"ARGoogleAnalytics";
+
+NSString *const ARTestFlightTeamToken = @"ARTestFlight";
+NSString *const ARCrashlyticsAPIKey = @"ARCrashlytics";
+NSString *const ARMixpanelToken = @"ARMixpanel";
+NSString *const ARFlurryAPIKey = @"ARFlurry";
+NSString *const ARLocalyticsAppKey = @"ARLocalytics";
+NSString *const ARKISSMetricsAPIKey = @"ARKISSMetrics";
+NSString *const ARCrittercismAppID = @"ARCrittercism";
+NSString *const ARGoogleAnalyticsID = @"ARGoogleAnalytics";
