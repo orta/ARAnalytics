@@ -47,11 +47,11 @@
 /// Set a per user property
 + (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email;
 + (void)setUserProperty:(NSString *)property toValue:(NSString *)value;
-+ (void)incrementUserProperty:(NSString*)counterName byInt:(int)amount;
 
 /// Submit user events
 + (void)event:(NSString *)event;
 + (void)event:(NSString *)event withProperties:(NSDictionary *)properties;
++ (void)incrementUserProperty:(NSString*)counterName byInt:(int)amount;
 
 /// Monitor Navigation changes as page view
 + (void)monitorNavigationViewController:(UINavigationController *)controller;
@@ -66,13 +66,14 @@
 // Whilst we cannot include the Crashlytics library
 // we can stub out the implementation with methods we want
 // so that it will link with the real framework later on ./
-
+#ifdef AR_CRASHLYTICS_EXISTS
 @interface Crashlytics : NSObject
 + (Crashlytics *)startWithAPIKey:(NSString *)apiKey;
 + (void)setUserIdentifier:(NSString *)identifier;
 + (void)setUserName:(NSString *)name;
 + (void)setObjectValue:(id)value forKey:(NSString *)key;
 @end
+#endif
 
 
 // Provide some keys for the setupWithDictionary
