@@ -149,12 +149,16 @@ static ARAnalytics *_sharedAnalytics;
 + (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {
 #ifdef AR_MIXPANEL_EXISTS
     [[[Mixpanel sharedInstance] people] identify:id];
-    [[[Mixpanel sharedInstance] people] set:@"$email" to:email];
+    if (email) {
+        [[[Mixpanel sharedInstance] people] set:@"$email" to:email];
+    }
 #endif
 
 #ifdef AR_TESTFLIGHT_EXISTS
     [TestFlight addCustomEnvironmentInformation:@"id" forKey:id];
-    [TestFlight addCustomEnvironmentInformation:@"email" forKey:email];
+    if (email) {
+        [TestFlight addCustomEnvironmentInformation:@"email" forKey:email];
+    }
 #endif
 
 #ifdef AR_FLURRY_EXISTS
@@ -162,8 +166,10 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 
 #ifdef AR_LOCALYTICS_EXISTS
-    [[LocalyticsSession sharedLocalyticsSession] setCustomerEmail:email];
     [[LocalyticsSession sharedLocalyticsSession] setCustomerName:id];
+    if (email) {
+        [[LocalyticsSession sharedLocalyticsSession] setCustomerEmail:email];
+    }
 #endif
 
 #ifdef AR_GOOGLEANALYTICS_EXISTS
@@ -174,22 +180,33 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 
 #ifdef AR_CRASHLYTICS_EXISTS
-    [Crashlytics setUserIdentifier:email];
-    [Crashlytics setUserName:id];
+    [Crashlytics setUserIdentifier:id];
+    if (email) {
+        [Crashlytics setUserName:email];
+    }
 #endif
 
 #ifdef AR_CRITTERCISM_EXISTS
     [Crittercism setUsername:id];
-    [Crittercism setEmail:email];
+    if (email) {
+        [Crittercism setEmail:email];
+    }
 #endif
 
 #ifdef AR_KISSMETRICS_EXISTS
     [[KISSMetricsAPI sharedAPI] identify:id];
-    [[KISSMetricsAPI sharedAPI] alias:email withIdentity:id];
+    if (email) {
+        [[KISSMetricsAPI sharedAPI] alias:email withIdentity:id];
+    }
 #endif
 }
 
 + (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
+    if (value == nil) {
+        NSLog(@"ARAnalytics: Value cannot be nil ( %@ ) ", property);
+        return;
+    }
+    
 #ifdef AR_MIXPANEL_EXISTS
     [[[Mixpanel sharedInstance] people] set:property to:value];
 #endif
@@ -227,7 +244,7 @@ static ARAnalytics *_sharedAnalytics;
 + (void)incrementUserProperty:(NSString*)counterName byInt:(int)amount {
     //TODO: Reasearch if others support this
 #ifdef AR_MIXPANEL_EXISTS
-    [[Mixpanel sharedInstance] increment:counterName by:@(amount)];
+    [[[Mixpanel sharedInstance] people] increment:counterName by:@(amount)];
 #endif
 }
 
