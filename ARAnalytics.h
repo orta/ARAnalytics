@@ -28,6 +28,7 @@
 
 
 #import <Foundation/Foundation.h>
+#import "ARAnalytics+GeneratedHeader.h"
 
 @interface ARAnalytics : NSObject <UINavigationControllerDelegate>
 
