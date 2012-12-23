@@ -51,7 +51,8 @@ User Properties
 ``` objc
 /// Set a per user property
 + (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email;
-+ (void)addUserProperty:(NSString *)property toValue:(NSString *)value;
++ (void)setUserProperty:(NSString *)property toValue:(NSString *)value;
++ (void)incrementUserProperty:(NSString*)counterName byInt:(int)amount;
 ```
 
 Navigation Stack Tracking
@@ -61,7 +62,7 @@ Navigation Stack Tracking
 + (void)monitorNavigationViewController:(UINavigationController *)controller;
 ````
 
-Upcoming
+Upcoming / Things people can help with
 =====
 
-I'd like to get in support for [HockeyKit](https://github.com/TheRealKerni/HockeyKit),  [QuincyKiy](https://github.com/TheRealKerni/QuincyKit) and [HockeyApp](http://hockeyapp.net).
+I'd like to get in support for [HockeyKit](https://github.com/TheRealKerni/HockeyKit),  [QuincyKiy](https://github.com/TheRealKerni/QuincyKit) and [HockeyApp](http://hockeyapp.net). Plus any that I've not heard of.

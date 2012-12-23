@@ -31,36 +31,25 @@
 
 @interface ARAnalytics : NSObject <UINavigationControllerDelegate>
 
-// A global analytics API, use the constants at the bottom for keys.
-+ (void)setupWithAnalytics:(NSDictionary *)analyticsDictionary;
-
 /// Setup methods for each individual Analytics type
 + (void)setupTestFlightWithTeamToken:(NSString *)token;
 + (void)setupCrashlyticsWithAPIKey:(NSString *)key;
 + (void)setupMixpanelWithToken:(NSString *)token;
 + (void)setupFlurryWithAPIKey:(NSString *)key;
 + (void)setupGoogleAnalyticsWithID:(NSString *)id;
-+ (void)setupLocalyticsWithAppKey:(NSString *)key;
-+ (void)setupKISSMetricsWithAPIKey:(NSString *)key;
-+ (void)setupCrittercismWithAppID:(NSString *)appID;
 
 /// Set a per user property
 + (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email;
-+ (void)addUserProperty:(NSString *)property toValue:(NSString *)value;
++ (void)setUserProperty:(NSString *)property toValue:(NSString *)value;
++ (void)incrementUserProperty:(NSString*)counterName byInt:(int)amount;
 
 /// Submit user events
 + (void)event:(NSString *)event;
 + (void)event:(NSString *)event withProperties:(NSDictionary *)properties;
 
-/// Monitor Navigation changes as page view
 + (void)monitorNavigationViewController:(UINavigationController *)controller;
 
-/// Let ARAnalytics deal with the timing of an event
-+ (void)startTimingEvent:(NSString *)event;
-+ (void)finishTimingEvent:(NSString *)event;
-
 @end
-
 
 // Whilst we cannot include the Crashlytics library
 // we can stub out the implementation with methods we want
@@ -72,15 +61,3 @@
 + (void)setUserName:(NSString *)name;
 + (void)setObjectValue:(id)value forKey:(NSString *)key;
 @end
-
-
-// Provide some keys for the setupWithDictionary
-extern NSString *const ARTestFlightkey;
-extern NSString *const ARCrashlyticsKey;
-extern NSString *const ARMixpanelKey;
-extern NSString *const ARFlurryKey;
-extern NSString *const ARLocalyticsKey;
-extern NSString *const ARKISSMetricsKey;
-extern NSString *const ARCrittercismKey;
-extern NSString *const ARGoogleAnalyticsKey;
-extern NSString *const ARHockeyKitKey;

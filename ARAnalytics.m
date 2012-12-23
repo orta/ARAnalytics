@@ -225,6 +225,13 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 }
 
++ (void)incrementUserProperty:(NSString*)counterName byInt:(int)amount {
+    //TODO: Reasearch if others support this
+#ifdef AR_MIXPANEL_EXISTS
+    [[Mixpanel sharedInstance] increment:counterName by:@(amount)];
+#endif   
+}
+
 
 #pragma mark -
 #pragma mark Events
