@@ -47,7 +47,7 @@ static ARAnalytics *_sharedAnalytics;
 
 #ifdef AR_KISSMETRICS_EXISTS
     if (analyticsDictionary[ARKISSMetricsAPIKey]) {
-        [self setupKissMetricsWithAPIKey:analyticsDictionary[ARKISSMetricsAPIKey]];
+        [self setupKISSMetricsWithAPIKey:analyticsDictionary[ARKISSMetricsAPIKey]];
     }
 #endif
 
@@ -224,6 +224,12 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 }
 
++ (void)incrementUserProperty:(NSString*)counterName byInt:(int)amount {
+    //TODO: Reasearch if others support this
+#ifdef AR_MIXPANEL_EXISTS
+    [[Mixpanel sharedInstance] increment:counterName by:@(amount)];
+#endif
+}
 
 #pragma mark -
 #pragma mark Events
