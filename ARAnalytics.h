@@ -30,6 +30,8 @@
 #import <Foundation/Foundation.h>
 #import "ARAnalytics+GeneratedHeader.h"
 
+extern void ARLog (NSString *format, ...);
+
 @interface ARAnalytics : NSObject <UINavigationControllerDelegate>
 
 // A global analytics API, use the constants at the bottom for keys.
@@ -74,6 +76,8 @@
 + (void)setUserName:(NSString *)name;
 + (void)setObjectValue:(id)value forKey:(NSString *)key;
 @end
+
+OBJC_EXTERN void CLSLog(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 #endif
 
 

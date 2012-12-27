@@ -346,7 +346,7 @@ static ARAnalytics *_sharedAnalytics;
     if ([UICollectionView class] != nil) {
         return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     } else {
-        [[UIDevice currentDevice] identifierForVendor];
+        [[UIDevice currentDevice] uniqueIdentifier];
     }
 }
 
@@ -361,3 +361,27 @@ NSString *const ARLocalyticsAppKey = @"ARLocalytics";
 NSString *const ARKISSMetricsAPIKey = @"ARKISSMetrics";
 NSString *const ARCrittercismAppID = @"ARCrittercism";
 NSString *const ARGoogleAnalyticsID = @"ARGoogleAnalytics";
+
+void ARLog (NSString *format, ...) {
+    if (format == nil) {
+        printf("nil \n");
+        return;
+    }
+    // Get a reference to the arguments that follow the format parameter
+    va_list argList;
+    va_start(argList, format);
+    // Perform format string argument substitution, reinstate %% escapes, then print
+    NSString *string = [[NSString alloc] initWithFormat:format arguments:argList];
+    string = [string stringByReplacingOccurrencesOfString:@"%%" withString:@"%%%%"];
+    printf("ARLog : %s\n", string.UTF8String);
+
+#ifdef AR_CRASHLYTICS_EXISTS
+    CLSLog(@"%@", string);
+#endif
+
+#ifdef AR_TESTFLIGHT_EXISTS
+    TFLog(@"%@",string);
+#endif
+
+    va_end(argList);
+}
