@@ -5,7 +5,7 @@ ARAnalytics
 
 ARAnalytics is to iOS what [Analytical](https://github.com/jkrall/analytical) is to ruby, or [Analytics.js](http://segmentio.github.com/analytics.js/) is to javascript.
 
-ARAnalytics is a Cocoapods only library, which provides a sane API for tracking events and some simple user data. We currently support: Testflight, Mixpanel, Localytics, Flurry, Google Analytics, KISSMetrics, Crittercism and Crashlytics. It does this by using CocoaPods subspecs to let you define which libraries you'd like to use.
+ARAnalytics is a Cocoapods only library, which provides a sane API for tracking events and some simple user data. We currently support: TestFlight, Mixpanel, Localytics, Flurry, Google Analytics, KISSMetrics, Crittercism and Crashlytics. It does this by using CocoaPods subspecs to let you decide which libraries you'd like to use.
 
 Installation
 =====
@@ -34,6 +34,15 @@ Once you've `pod installed`'d the libraries you can either use the individual (f
    }];
 ```
 
+Logging
+----
+Submit a console log that is stored online, for crash reporting this provides a great way to provide breadcrumbs. `ARLog(@"Looked at Artwork (%@), _artwork.name);"`
+
+``` objc
+extern void ARLog (NSString *format, ...);
+```
+
+
 Event Tracking
 ----
 ``` objc
@@ -60,7 +69,7 @@ Navigation Stack Tracking
 ``` objc
 /// Monitor Navigation changes as page view
 + (void)monitorNavigationViewController:(UINavigationController *)controller;
-````
+```
 
 Upcoming / Things people can help with
 =====
