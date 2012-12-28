@@ -71,7 +71,7 @@ Navigation Stack Tracking
 
 Contributing
 ====
-See [Contributing](CONTRIBUTING.md)
+See [Contributing](https://github.com/orta/ARAnalytics/blob/master/CONTRIBUTING.md)
 
 Upcoming / Things people can help with
 =====
