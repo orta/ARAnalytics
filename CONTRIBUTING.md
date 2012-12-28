@@ -37,7 +37,7 @@ Then you should add the functions which your app supports to functions like `+ (
 When you're working on the Podfile, I used this terminal command to kill all cocoapod caches.
 
 ``` bash
-rm -rf ~/Library/Caches/CocoaPods; rm pods; rm -rf Podfile.lock; pod install --verbose
+rm -rf ~/Library/Caches/CocoaPods; rm -rf pods; rm Podfile.lock; pod install --verbose
 ```
 
 And would refer to a local Podspec in my podfile like this
