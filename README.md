@@ -1,5 +1,3 @@
-![art.sy](https://raw.github.com/orta/ARAnalytics/master/web/headline.jpg "Art.sy | ARAnalytics")
-
 ARAnalytics
 ================
 
@@ -70,6 +68,10 @@ Navigation Stack Tracking
 /// Monitor Navigation changes as page view
 + (void)monitorNavigationViewController:(UINavigationController *)controller;
 ```
+
+Contributing
+====
+See [Contributing](CONTRIBUTING.md)
 
 Upcoming / Things people can help with
 =====
