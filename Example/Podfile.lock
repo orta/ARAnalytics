@@ -1,0 +1,61 @@
+
+PODS:
+- ARAnalytics (0.2):
+  - ARAnalytics/Crashlytics (= 0.2)
+  - ARAnalytics/Crittercism (= 0.2)
+  - ARAnalytics/Flurry (= 0.2)
+  - ARAnalytics/GoogleAnalytics (= 0.2)
+  - ARAnalytics/KISSmetrics (= 0.2)
+  - ARAnalytics/Localytics (= 0.2)
+  - ARAnalytics/Mixpanel (= 0.2)
+  - ARAnalytics/TestFlight (= 0.2)
+- ARAnalytics/Crashlytics (0.2)
+- ARAnalytics/Crittercism (0.2):
+  - CrittercismSDK
+- ARAnalytics/Flurry (0.2):
+  - FlurrySDK
+- ARAnalytics/GoogleAnalytics (0.2):
+  - GoogleAnalytics-iOS-SDK
+- ARAnalytics/KISSmetrics (0.2):
+  - KISSmetrics
+- ARAnalytics/Localytics (0.2):
+  - Localytics
+- ARAnalytics/Mixpanel (0.2):
+  - Mixpanel
+- ARAnalytics/TestFlight (0.2):
+  - TestFlightSDK
+- CrittercismSDK (3.4.8)
+- FlurrySDK (4.1.0)
+- GoogleAnalytics-iOS-SDK (2.0beta3)
+- KISSmetrics (1.0.0)
+- Localytics (0.0.1)
+- Mixpanel (1.0.5)
+- TestFlightSDK (1.2)
+
+DEPENDENCIES:
+- ARAnalytics (from `ARAnalytics_NoFiles.podspec')
+
+EXTERNAL SOURCES:
+  ARAnalytics:
+    :podspec: ARAnalytics_NoFiles.podspec
+    :local: ../
+
+SPEC CHECKSUMS:
+  ARAnalytics: 576f2d5b4cdda88a0cc1b8804b46383364c8d5c0
+  ARAnalytics/Crashlytics: 576f2d5b4cdda88a0cc1b8804b46383364c8d5c0
+  ARAnalytics/Crittercism: 576f2d5b4cdda88a0cc1b8804b46383364c8d5c0
+  ARAnalytics/Flurry: 576f2d5b4cdda88a0cc1b8804b46383364c8d5c0
+  ARAnalytics/GoogleAnalytics: 576f2d5b4cdda88a0cc1b8804b46383364c8d5c0
+  ARAnalytics/KISSmetrics: 576f2d5b4cdda88a0cc1b8804b46383364c8d5c0
+  ARAnalytics/Localytics: 576f2d5b4cdda88a0cc1b8804b46383364c8d5c0
+  ARAnalytics/Mixpanel: 576f2d5b4cdda88a0cc1b8804b46383364c8d5c0
+  ARAnalytics/TestFlight: 576f2d5b4cdda88a0cc1b8804b46383364c8d5c0
+  CrittercismSDK: b1bc7bd00979398e15c7ab5d6291c047aa182035
+  FlurrySDK: 52245ae8c6fa31825dc74a6afb94b861da2435fa
+  GoogleAnalytics-iOS-SDK: dbc85b4df88cd4a7eb7fb774400e865db2fab8bb
+  KISSmetrics: 7b77e7dcc7174913fe555b6b2ff082c27a3e73a5
+  Localytics: c8b251a3d2a27e14bcf093c648809fbe0b1df92c
+  Mixpanel: 5b7c3274ceec4cb6dfdd351e12dacfece8c12919
+  TestFlightSDK: 29e194fb148e4861f92e4c1195b9697e1f3ad19a
+
+COCOAPODS: 0.16.0
