@@ -13,13 +13,17 @@ static ARAnalytics *_sharedAnalytics;
 
 @interface ARAnalytics ()
 @property (strong) NSMutableDictionary *eventsDictionary;
+@property (strong) NSArray *providers;
 @end
 
 @implementation ARAnalytics
 
 + (void) initialize {
     static dispatch_once_t pred;
-    dispatch_once(&pred, ^{ _sharedAnalytics = [[ARAnalytics alloc] init]; } );
+    dispatch_once(&pred, ^{ 
+        _sharedAnalytics = [[ARAnalytics alloc] init];
+        _sharedAnalytics.providers = [NSMutableArray array];
+    });
 }
 
 

@@ -1,4 +1,4 @@
-/*
+/**
 
   I'm an empty file. I'll be replaced by something like this:
   
@@ -8,4 +8,4 @@
   #import "TestFlight.h" 
   #define AR_TESTFLIGHT_EXISTS 1 
   
-*\
+**/

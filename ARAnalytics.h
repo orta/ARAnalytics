@@ -37,7 +37,7 @@ extern void ARLog (NSString *format, ...);
 // A global analytics API, use the constants at the bottom for keys.
 + (void)setupWithAnalytics:(NSDictionary *)analyticsDictionary;
 
-/// Setup methods for each individual Analytics type
+/// Setup methods for each individual analytics type
 + (void)setupTestFlightWithTeamToken:(NSString *)token;
 + (void)setupCrashlyticsWithAPIKey:(NSString *)key;
 + (void)setupMixpanelWithToken:(NSString *)token;
@@ -62,6 +62,11 @@ extern void ARLog (NSString *format, ...);
 /// Let ARAnalytics deal with the timing of an event
 + (void)startTimingEvent:(NSString *)event;
 + (void)finishTimingEvent:(NSString *)event;
+
+// Blacklist developers or testers from your main analytics
++ (void)setupBlacklistAnalyticsProviders:(NSDictionary *)blacklistAnalyticsDictionary;
++ (void)userIDsForBlacklist:(NSArray *)ids;
++ (void)userEmailsForBlacklist:(NSArray *)emails;
 
 @end
 
