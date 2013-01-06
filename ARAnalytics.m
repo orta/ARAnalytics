@@ -8,6 +8,8 @@
 
 #import "ARAnalytics.h"
 #import "ARAnalytics+GeneratedHeader.h"
+#import "ARAnalyticalProvider.h"
+#import "ARAnalyticsProviders.h"
 
 static ARAnalytics *_sharedAnalytics;
 
@@ -22,18 +24,17 @@ static ARAnalytics *_sharedAnalytics;
     static dispatch_once_t pred;
     dispatch_once(&pred, ^{ 
         _sharedAnalytics = [[ARAnalytics alloc] init];
-        _sharedAnalytics.providers = [NSMutableArray array];
+        _sharedAnalytics.providers = [NSArray array];
     });
 }
-
 
 #pragma mark -
 #pragma mark Analytics Setup
 
 + (void)setupWithAnalytics:(NSDictionary *)analyticsDictionary {
 #ifdef AR_TESTFLIGHT_EXISTS
-    if (analyticsDictionary[ARTestFlightTeamToken]) {
-        [self setupTestFlightWithTeamToken:analyticsDictionary[ARTestFlightTeamToken]];
+    if (analyticsDictionary[ARTestFlightAppToken]) {
+        [self setupTestFlightWithTeamToken:analyticsDictionary[ARTestFlightAppToken]];
     }
 #endif
 
@@ -84,65 +85,43 @@ static ARAnalytics *_sharedAnalytics;
 }
 
 + (void)setupTestFlightWithTeamToken:(NSString *)token {
-#ifdef AR_TESTFLIGHT_EXISTS
-    NSAssert([TestFlight class], @"TestFlight is not included");
-
-    // For non App store builds use a device identifier.
-#ifndef RELEASE
-    [TestFlight setDeviceIdentifier:[self uniqueID]];
-#endif
-    [TestFlight takeOff:token];
-#endif
+    TestFlightProvider *provider = [[TestFlightProvider alloc] initWithIdentifier:token];
+    _sharedAnalytics.providers = [_sharedAnalytics.providers arrayByAddingObject:provider];
 }
 
 + (void)setupCrashlyticsWithAPIKey:(NSString *)key {
-#ifdef AR_CRASHLYTICS_EXISTS
-    NSAssert([Crashlytics class], @"Crashlytics is not included");
-    NSAssert([[Crashlytics class] respondsToSelector:@selector(version)], @"Crashlytics library not installed correctly.");
-    [Crashlytics startWithAPIKey:key];
-#endif
+    CrashlyticsProvider *provider = [[CrashlyticsProvider alloc] initWithIdentifier:key];
+    _sharedAnalytics.providers = [_sharedAnalytics.providers arrayByAddingObject:provider];
 }
 
 + (void)setupMixpanelWithToken:(NSString *)token {
-#ifdef AR_MIXPANEL_EXISTS
-    NSAssert([Mixpanel class], @"Mixpanel is not included");
-    [Mixpanel sharedInstanceWithToken:token];
-#endif
+    MixpanelProvider *provider = [[MixpanelProvider alloc] initWithIdentifier:token];
+    _sharedAnalytics.providers = [_sharedAnalytics.providers arrayByAddingObject:provider];
 }
 
 + (void)setupFlurryWithAPIKey:(NSString *)key {
-#ifdef AR_FLURRY_EXISTS
-    NSAssert([Flurry class], @"Flurry is not included");
-    [Flurry startSession:key];
-#endif
+    FlurryProvider *provider = [[FlurryProvider alloc] initWithIdentifier:key];
+    _sharedAnalytics.providers = [_sharedAnalytics.providers arrayByAddingObject:provider];
 }
 
 + (void)setupGoogleAnalyticsWithID:(NSString *)id {
-#ifdef AR_GOOGLEANALYTICS_EXISTS
-    NSAssert([GAI class], @"Google Analytics SDK is not included");
-    [[GAI sharedInstance] trackerWithTrackingId:id];
-#endif
+    GoogleProvider *provider = [[GoogleProvider alloc] initWithIdentifier:id];
+    _sharedAnalytics.providers = [_sharedAnalytics.providers arrayByAddingObject:provider];
 }
 
 + (void)setupLocalyticsWithAppKey:(NSString *)key {
-#ifdef AR_LOCALYTICS_EXISTS
-    NSAssert([LocalyticsSession class], @"Localytics is not included");
-    [[LocalyticsSession sharedLocalyticsSession] startSession:key];
-#endif
+    LocalyticsProvider *provider = [[LocalyticsProvider alloc] initWithIdentifier:key];
+    _sharedAnalytics.providers = [_sharedAnalytics.providers arrayByAddingObject:provider];
 }
 
 + (void)setupKISSMetricsWithAPIKey:(NSString *)key {
-#ifdef AR_KISSMETRICS_EXISTS
-    NSAssert([KISSMetricsAPI class], @"KISSMetrics is not included");
-    [KISSMetricsAPI sharedAPIWithKey:key];
-#endif
+    KISSMetricsProvider *provider = [[KISSMetricsProvider alloc] initWithIdentifier:key];
+    _sharedAnalytics.providers = [_sharedAnalytics.providers arrayByAddingObject:provider];
 }
 
 + (void)setupCrittercismWithAppID:(NSString *)appID {
-#ifdef AR_CRITTERCISM_EXISTS
-    NSAssert([Crittercism class], @"Crittercism is not included");
-    [Crittercism enableWithAppID:appID];
-#endif
+    CrittercismProvider *provider = [[CrittercismProvider alloc] initWithIdentifier:appID];
+    _sharedAnalytics.providers = [_sharedAnalytics.providers arrayByAddingObject:provider];
 }
 
 
@@ -151,58 +130,7 @@ static ARAnalytics *_sharedAnalytics;
 
 
 + (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {
-#ifdef AR_MIXPANEL_EXISTS
-    [[[Mixpanel sharedInstance] people] identify:id];
-    if (email) {
-        [[[Mixpanel sharedInstance] people] set:@"$email" to:email];
-    }
-#endif
-
-#ifdef AR_TESTFLIGHT_EXISTS
-    [TestFlight addCustomEnvironmentInformation:@"id" forKey:id];
-    if (email) {
-        [TestFlight addCustomEnvironmentInformation:@"email" forKey:email];
-    }
-#endif
-
-#ifdef AR_FLURRY_EXISTS
-    [Flurry setUserID:id];
-#endif
-
-#ifdef AR_LOCALYTICS_EXISTS
-    [[LocalyticsSession sharedLocalyticsSession] setCustomerName:id];
-    if (email) {
-        [[LocalyticsSession sharedLocalyticsSession] setCustomerEmail:email];
-    }
-#endif
-
-#ifdef AR_GOOGLEANALYTICS_EXISTS
-    // Not allowed in GA
-    // https://developers.google.com/analytics/devguides/collection/ios/v2/customdimsmets#pii
-
-    // The Google Analytics Terms of Service prohibit sending of any personally identifiable information (PII) to Google Analytics servers. For more information, please consult the Terms of Service.
-#endif
-
-#ifdef AR_CRASHLYTICS_EXISTS
-    [Crashlytics setUserIdentifier:id];
-    if (email) {
-        [Crashlytics setUserName:email];
-    }
-#endif
-
-#ifdef AR_CRITTERCISM_EXISTS
-    [Crittercism setUsername:id];
-    if (email) {
-        [Crittercism setEmail:email];
-    }
-#endif
-
-#ifdef AR_KISSMETRICS_EXISTS
-    [[KISSMetricsAPI sharedAPI] identify:id];
-    if (email) {
-        [[KISSMetricsAPI sharedAPI] alias:email withIdentity:id];
-    }
-#endif
+    [_sharedAnalytics makeProvidorsPerformSelector:@selector(identifyUserwithID:andEmailAddress:) withObject:id and:email];
 }
 
 + (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
@@ -210,46 +138,12 @@ static ARAnalytics *_sharedAnalytics;
         NSLog(@"ARAnalytics: Value cannot be nil ( %@ ) ", property);
         return;
     }
-    
-#ifdef AR_MIXPANEL_EXISTS
-    [[[Mixpanel sharedInstance] people] set:property to:value];
-#endif
 
-#ifdef AR_TESTFLIGHT_EXISTS
-    [TestFlight addCustomEnvironmentInformation:value forKey:property];
-#endif
-
-#ifdef AR_FLURRY_EXISTS
-    // This concept doesn't exist in Flurry
-#endif
-
-#ifdef AR_LOCALYTICS_EXISTS
-    // This is for enterprise only...
-    [[LocalyticsSession sharedLocalyticsSession] setValueForIdentifier:property value:value];
-#endif
-
-#ifdef AR_GOOGLEANALYTICS_EXISTS
-    [[[GAI sharedInstance] defaultTracker] set:property value:value];
-#endif
-
-#ifdef AR_CRASHLYTICS_EXISTS
-    [Crashlytics setObjectValue:value forKey:property];
-#endif
-
-#ifdef AR_KISSMETRICS_EXISTS
-    [[KISSMetricsAPI sharedAPI] setProperties:@{property: value}];
-#endif
-
-#ifdef AR_CRITTERCISM_EXISTS
-    [Crittercism setValue:value forKey:property];
-#endif
+    [_sharedAnalytics makeProvidorsPerformSelector:@selector(setUserProperty:toValue:) withObject:property and:value];
 }
 
-+ (void)incrementUserProperty:(NSString*)counterName byInt:(int)amount {
-    //TODO: Reasearch if others support this
-#ifdef AR_MIXPANEL_EXISTS
-    [[[Mixpanel sharedInstance] people] increment:counterName by:@(amount)];
-#endif
++ (void)incrementUserProperty:(NSString *)counterName byInt:(int)amount {
+    [_sharedAnalytics makeProvidorsPerformSelector:@selector(incrementUserProperty:byInt:) withObject:counterName and:@(amount)];
 }
 
 #pragma mark -
@@ -261,37 +155,7 @@ static ARAnalytics *_sharedAnalytics;
 }
 
 + (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
-#ifdef AR_MIXPANEL_EXISTS
-    [[Mixpanel sharedInstance] track:event properties:properties];
-#endif
-
-#ifdef AR_TESTFLIGHT_EXISTS
-    [TestFlight passCheckpoint:event];
-#endif
-
-#ifdef AR_FLURRY_EXISTS
-    [Flurry logEvent:event withParameters:properties];
-#endif
-
-#ifdef AR_LOCALYTICS_EXISTS
-    [[LocalyticsSession sharedLocalyticsSession] tagEvent:event attributes:properties];
-#endif
-
-#ifdef AR_GOOGLEANALYTICS_EXISTS
-    [[[GAI sharedInstance] defaultTracker] send:event params:properties];
-#endif
-
-#ifdef AR_CRASHLYTICS_EXISTS
-    // This concept doesn't exist in Crashlytics
-#endif
-
-#ifdef AR_KISSMETRICS_EXISTS
-    [[KISSMetricsAPI sharedAPI] recordEvent:event withProperties:properties];
-#endif
-
-#ifdef AR_CRITTERCISM_EXISTS
-    [Crittercism leaveBreadcrumb:event];
-#endif
+    [_sharedAnalytics makeProvidorsPerformSelector:@selector(event:withProperties:) withObject:event and:properties];
 }
 
 #pragma mark -
@@ -299,24 +163,10 @@ static ARAnalytics *_sharedAnalytics;
 
 + (void)monitorNavigationViewController:(UINavigationController *)controller {
     controller.delegate = _sharedAnalytics;
-
-#ifdef AR_FLURRY_EXISTS
-    [Flurry logAllPageViews:controller];
-#endif
 }
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-
-    [ARAnalytics event:@"Screen view" withProperties:@{ @"screen": viewController.title }];
-
-#ifdef AR_LOCALYTICS_EXISTS
-    // This is for enterprise only...
-    [[LocalyticsSession sharedLocalyticsSession] tagScreen:viewController.title];
-#endif
-
-#ifdef AR_GOOGLEANALYTICS_EXISTS
-    [[[GAI sharedInstance] defaultTracker] trackView:viewController.title];
-#endif
+    [_sharedAnalytics makeProvidorsPerformSelector:@selector(didShowNewViewController:) withObject:viewController and:nil];
 
 }
 
@@ -338,26 +188,33 @@ static ARAnalytics *_sharedAnalytics;
     }
 
     NSTimeInterval eventInterval = [[NSDate date] timeIntervalSinceDate:startDate];
-    [self event:event withProperties:@{ @"length": @(eventInterval) }];
+    [_sharedAnalytics.eventsDictionary removeObjectForKey:event];
+    
+    [_sharedAnalytics makeProvidorsPerformSelector:@selector(logTimingEvent:withInterval:) withObject:event and:@(eventInterval)];
 }
 
 
 #pragma mark -
 #pragma mark Util
 
-+ (NSString *)uniqueID {
-    // iOS 6 has a good API for getting a unique ID
-    if ([UICollectionView class] != nil) {
-        return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-    } else {
-        [[UIDevice currentDevice] uniqueIdentifier];
+- (void)makeProvidorsPerformSelector:(SEL)selector withObject:(id)object1 and:(id)object2 {
+    for (ARAnalyticalProvider *provider in _providers) {
+        NSMethodSignature *methodSignature = [provider methodSignatureForSelector:selector];
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
+        invocation.target = provider;
+        invocation.selector = selector;
+        [invocation setArgument:&object1 atIndex:0];
+        if (object2) {
+            [invocation setArgument:&object2 atIndex:1];
+        }
+        [invocation invoke];
     }
 }
 
+
 @end
 
-
-NSString *const ARTestFlightTeamToken = @"ARTestFlight";
+NSString *const ARTestFlightAppToken = @"ARTestFlight";
 NSString *const ARCrashlyticsAPIKey = @"ARCrashlytics";
 NSString *const ARMixpanelToken = @"ARMixpanel";
 NSString *const ARFlurryAPIKey = @"ARFlurry";
@@ -379,13 +236,7 @@ void ARLog (NSString *format, ...) {
     string = [string stringByReplacingOccurrencesOfString:@"%%" withString:@"%%%%"];
     printf("ARLog : %s\n", string.UTF8String);
 
-#ifdef AR_CRASHLYTICS_EXISTS
-    CLSLog(@"%@", string);
-#endif
-
-#ifdef AR_TESTFLIGHT_EXISTS
-    TFLog(@"%@",string);
-#endif
+    [_sharedAnalytics makeProvidorsPerformSelector:@selector(remoteLog:) withObject:string and:nil];
 
     va_end(argList);
 }

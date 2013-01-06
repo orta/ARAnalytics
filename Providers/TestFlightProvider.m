@@ -7,45 +7,59 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TestFlightProvider.h"
 
-#ifdef AR_TESTFLIGHT_EXISTS                
-@implementation ARAnalyticalProvider
+@implementation TestFlightProvider
+#ifdef AR_TESTFLIGHT_EXISTS
 
-/// Set a per user property
+- (id)initWithIdentifier:(NSString *)identifier {
+    NSAssert([TestFlight class], @"TestFlight is not included");
+    // For non App store builds use a device identifier.
+#ifndef RELEASE
+    [TestFlight setDeviceIdentifier:[TestFlightProvider uniqueID]];
+#endif
+    [TestFlight takeOff:identifier];
+
+    self = [super init];
+    return self;
+}
+
++ (NSString *)uniqueID {
+    // iOS 6 has a good API for getting a unique ID
+    if ([UICollectionView class] != nil) {
+        return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    }
+
+    return [[UIDevice currentDevice] uniqueIdentifier];
+}
+
 - (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {
-
+    [TestFlight addCustomEnvironmentInformation:@"id" forKey:id];
+    if (email) {
+        [TestFlight addCustomEnvironmentInformation:@"email" forKey:email];
+    }
 }
 
 - (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
-
-}
-
-/// Submit user events
-- (void)event:(NSString *)event {
-
+    [TestFlight addCustomEnvironmentInformation:value forKey:property];
 }
 
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
-
+    [TestFlight passCheckpoint:event];
 }
 
-- (void)incrementUserProperty:(NSString*)counterName byInt:(int)amount {
-
+- (void)didShowNewViewController:(UIViewController *)controller {
+    [self event:@"Screen view" withProperties:@{ @"screen": controller.title }];
 }
 
-/// Monitor Navigation changes as page view
-- (void)monitorNavigationViewController:(UINavigationController *)controller {
-
+- (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval {
+    [self event:event withProperties:@{ @"length": interval }];
 }
 
-/// Let ARAnalytics deal with the timing of an event
-- (void)startTimingEvent:(NSString *)event {
-
+- (void)remoteLog:(NSString *)parsedString {
+    TFLog(parsedString);
 }
 
-- (void)finishTimingEvent:(NSString *)event {
-
-}
-
-@end
 #endif
+@end
+

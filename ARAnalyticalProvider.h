@@ -32,20 +32,20 @@
 
 @interface ARAnalyticalProvider : NSObject
 
-/// Set a per user property
+- (id)initWithIdentifier:(NSString *)identifier;
+
 - (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email;
+
 - (void)setUserProperty:(NSString *)property toValue:(NSString *)value;
 
-/// Submit user events
-- (void)event:(NSString *)event;
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties;
-- (void)incrementUserProperty:(NSString*)counterName byInt:(int)amount;
 
-/// Monitor Navigation changes as page view
-- (void)monitorNavigationViewController:(UINavigationController *)controller;
+- (void)incrementUserProperty:(NSString *)counterName byInt:(NSNumber *)amount;
 
-/// Let ARAnalytics deal with the timing of an event
-- (void)startTimingEvent:(NSString *)event;
-- (void)finishTimingEvent:(NSString *)event;
+- (void)didShowNewViewController:(UIViewController *)controller;
+
+- (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval;
+
+- (void)remoteLog:(NSString *)parsedString;
 
 @end

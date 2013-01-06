@@ -27,6 +27,7 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 
 
+
 #import <Foundation/Foundation.h>
 #import "ARAnalytics+GeneratedHeader.h"
 
@@ -71,23 +72,8 @@ extern void ARLog (NSString *format, ...);
 @end
 
 
-// Whilst we cannot include the Crashlytics library
-// we can stub out the implementation with methods we want
-// so that it will link with the real framework later on ./
-#ifdef AR_CRASHLYTICS_EXISTS
-@interface Crashlytics : NSObject
-+ (Crashlytics *)startWithAPIKey:(NSString *)apiKey;
-+ (void)setUserIdentifier:(NSString *)identifier;
-+ (void)setUserName:(NSString *)name;
-+ (void)setObjectValue:(id)value forKey:(NSString *)key;
-@end
-
-OBJC_EXTERN void CLSLog(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
-#endif
-
-
 // Provide some keys for the setupWithDictionary
-extern NSString *const ARTestFlightTeamToken;
+extern NSString *const ARTestFlightAppToken;
 extern NSString *const ARCrashlyticsAPIKey;
 extern NSString *const ARMixpanelToken;
 extern NSString *const ARFlurryAPIKey;
