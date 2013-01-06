@@ -22,7 +22,7 @@ static ARAnalytics *_sharedAnalytics;
 
 + (void) initialize {
     static dispatch_once_t pred;
-    dispatch_once(&pred, ^{ 
+    dispatch_once(&pred, ^{
         _sharedAnalytics = [[ARAnalytics alloc] init];
         _sharedAnalytics.providers = [NSSet set];
     });
@@ -74,8 +74,8 @@ static ARAnalytics *_sharedAnalytics;
     }
 #endif
 
-// Crashlytics / Crittercism should stay at the bottom of this,
-// as they both need to register exceptions, and you'd only use one.
+    // Crashlytics / Crittercism should stay at the bottom of this,
+    // as they both need to register exceptions, and you'd only use one.
 
 #ifdef AR_CRASHLYTICS_EXISTS
     if (analyticsDictionary[ARCrashlyticsAPIKey]) {
@@ -97,19 +97,23 @@ static ARAnalytics *_sharedAnalytics;
 
 + (void)setupCrashlyticsWithAPIKey:(NSString *)key {
     CrashlyticsProvider *provider = [[CrashlyticsProvider alloc] initWithIdentifier:key];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];}
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+}
 
 + (void)setupMixpanelWithToken:(NSString *)token {
     MixpanelProvider *provider = [[MixpanelProvider alloc] initWithIdentifier:token];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];}
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+}
 
 + (void)setupFlurryWithAPIKey:(NSString *)key {
     FlurryProvider *provider = [[FlurryProvider alloc] initWithIdentifier:key];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];}
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+}
 
 + (void)setupGoogleAnalyticsWithID:(NSString *)id {
     GoogleProvider *provider = [[GoogleProvider alloc] initWithIdentifier:id];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];}
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+}
 
 + (void)setupLocalyticsWithAppKey:(NSString *)key {
     LocalyticsProvider *provider = [[LocalyticsProvider alloc] initWithIdentifier:key];
@@ -117,22 +121,27 @@ static ARAnalytics *_sharedAnalytics;
 
 + (void)setupKISSMetricsWithAPIKey:(NSString *)key {
     KISSMetricsProvider *provider = [[KISSMetricsProvider alloc] initWithIdentifier:key];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];}
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+}
 
 + (void)setupCrittercismWithAppID:(NSString *)appID {
     CrittercismProvider *provider = [[CrittercismProvider alloc] initWithIdentifier:appID];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];}
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+}
 
 + (void)setupCountlyWithAppKey:(NSString *)key andHost:(NSString *)host {
     CountlyProvider *provider = [[CountlyProvider alloc] initWithAppKey:key andHost:host];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];}
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+}
 
 #pragma mark -
 #pragma mark User Setup
 
 
 + (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {
-    [_sharedAnalytics makeProvidorsPerformSelector:@selector(identifyUserwithID:andEmailAddress:) withObject:id and:email];
+    [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
+        [provider identifyUserwithID:id andEmailAddress:email];
+    }];
 }
 
 + (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
@@ -141,11 +150,15 @@ static ARAnalytics *_sharedAnalytics;
         return;
     }
 
-    [_sharedAnalytics makeProvidorsPerformSelector:@selector(setUserProperty:toValue:) withObject:property and:value];
+    [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
+        [provider setUserProperty:property toValue:value];
+    }];
 }
 
 + (void)incrementUserProperty:(NSString *)counterName byInt:(int)amount {
-    [_sharedAnalytics makeProvidorsPerformSelector:@selector(incrementUserProperty:byInt:) withObject:counterName and:@(amount)];
+    [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
+        [provider incrementUserProperty:counterName byInt:@(amount)];
+    }];
 }
 
 #pragma mark -
@@ -157,7 +170,9 @@ static ARAnalytics *_sharedAnalytics;
 }
 
 + (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
-    [_sharedAnalytics makeProvidorsPerformSelector:@selector(event:withProperties:) withObject:event and:properties];
+    [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
+        [provider event:event withProperties:properties];
+    }];
 }
 
 #pragma mark -
@@ -168,8 +183,9 @@ static ARAnalytics *_sharedAnalytics;
 }
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    [_sharedAnalytics makeProvidorsPerformSelector:@selector(didShowNewViewController:) withObject:viewController and:nil];
-
+    [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
+        [provider didShowNewViewController:viewController];
+    }];
 }
 
 #pragma mark -
@@ -191,25 +207,19 @@ static ARAnalytics *_sharedAnalytics;
 
     NSTimeInterval eventInterval = [[NSDate date] timeIntervalSinceDate:startDate];
     [_sharedAnalytics.eventsDictionary removeObjectForKey:event];
-    
-    [_sharedAnalytics makeProvidorsPerformSelector:@selector(logTimingEvent:withInterval:) withObject:event and:@(eventInterval)];
+
+    [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
+        [provider logTimingEvent:event withInterval:@(eventInterval)];
+    }];
 }
 
 
 #pragma mark -
 #pragma mark Util
 
-- (void)makeProvidorsPerformSelector:(SEL)selector withObject:(id)object1 and:(id)object2 {
+- (void)iterateThroughProviders:(void(^)(ARAnalyticalProvider *provider))providerBlock {
     for (ARAnalyticalProvider *provider in _providers) {
-        NSMethodSignature *methodSignature = [provider methodSignatureForSelector:selector];
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
-        invocation.target = provider;
-        invocation.selector = selector;
-        [invocation setArgument:&object1 atIndex:0];
-        if (object2) {
-            [invocation setArgument:&object2 atIndex:1];
-        }
-        [invocation invoke];
+        providerBlock(provider);
     }
 }
 
@@ -224,11 +234,13 @@ void ARLog (NSString *format, ...) {
     va_list argList;
     va_start(argList, format);
     // Perform format string argument substitution, reinstate %% escapes, then print
-    NSString *string = [[NSString alloc] initWithFormat:format arguments:argList];
-    string = [string stringByReplacingOccurrencesOfString:@"%%" withString:@"%%%%"];
-    printf("ARLog : %s\n", string.UTF8String);
+    NSString *parsedFormatString = [[NSString alloc] initWithFormat:format arguments:argList];
+    parsedFormatString = [parsedFormatString stringByReplacingOccurrencesOfString:@"%%" withString:@"%%%%"];
+    printf("ARLog : %s\n", parsedFormatString.UTF8String);
 
-    [_sharedAnalytics makeProvidorsPerformSelector:@selector(remoteLog:) withObject:string and:nil];
+    [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
+        [provider remoteLog:parsedFormatString];
+    }];
 
     va_end(argList);
 }
