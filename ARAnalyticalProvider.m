@@ -35,7 +35,6 @@
     [self event:@"Screen view" withProperties:@{ @"screen": controller.title }];
 }
 
-- (void)log:(NSString *)parsedString {}
 - (void)remoteLog:(NSString *)parsedString {}
 
 @end
