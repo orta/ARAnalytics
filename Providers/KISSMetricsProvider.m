@@ -34,13 +34,5 @@
     [[KISSMetricsAPI sharedAPI] recordEvent:event withProperties:properties];
 }
 
-- (void)didShowNewViewController:(UIViewController *)controller {
-    [self event:@"Screen view" withProperties:@{ @"screen": controller.title }];
-}
-
-- (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval {
-    [self event:event withProperties:@{ @"length": interval }];
-}
-
 #endif
 @end

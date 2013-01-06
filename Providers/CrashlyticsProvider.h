@@ -27,5 +27,4 @@ OBJC_EXTERN void CLSLog(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 
 
 @interface CrashlyticsProvider : ARAnalyticalProvider
-
 @end

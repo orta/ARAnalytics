@@ -32,3 +32,6 @@
 #define AR_CRITTERCISM_EXISTS 1
 
 #define AR_CRASHLYTICS_EXISTS 1
+
+#import "Countly.h"
+#define AR_COUNTLY_EXISTS 1

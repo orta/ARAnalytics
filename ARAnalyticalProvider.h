@@ -33,19 +33,12 @@
 @interface ARAnalyticalProvider : NSObject
 
 - (id)initWithIdentifier:(NSString *)identifier;
-
 - (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email;
-
 - (void)setUserProperty:(NSString *)property toValue:(NSString *)value;
-
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties;
-
 - (void)incrementUserProperty:(NSString *)counterName byInt:(NSNumber *)amount;
-
 - (void)didShowNewViewController:(UIViewController *)controller;
-
 - (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval;
-
 - (void)remoteLog:(NSString *)parsedString;
 
 @end

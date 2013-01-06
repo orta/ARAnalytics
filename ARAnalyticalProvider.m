@@ -27,10 +27,12 @@
 /// Monitor Navigation changes as page view
 - (void)monitorNavigationViewController:(UINavigationController *)controller {}
 
-- (void)didShowNewViewController:(UIViewController *)controller {}
-
 - (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval {
     [self event:event withProperties:@{ @"length": interval }];
+}
+
+- (void)didShowNewViewController:(UIViewController *)controller {
+    [self event:@"Screen view" withProperties:@{ @"screen": controller.title }];
 }
 
 - (void)log:(NSString *)parsedString {}

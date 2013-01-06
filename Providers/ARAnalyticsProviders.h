@@ -15,3 +15,4 @@
 #import "GoogleProvider.h"
 #import "KISSMetricsProvider.h"
 #import "CrittercismProvider.h"
+#import "CountlyProvider.h"

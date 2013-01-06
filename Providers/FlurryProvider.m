@@ -35,6 +35,5 @@
     [Flurry logPageView];
 }
 
-
 #endif
 @end

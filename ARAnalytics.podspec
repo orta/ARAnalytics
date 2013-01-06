@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         =  'ARAnalytics'
-  s.version      =  '0.1'
+  s.version      =  '1.1'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.summary      =  'Simplify your analytics choices.'
   s.homepage     =  'http://github.com/orta/ARAnalytics'
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.source       =  { :git => 'https://github.com/orta/ARAnalytics.git', :commit => 'HEAD' }
   s.description  =  'Using subspecs you can define your analytics provider with the same API.'
   s.platform     =  :ios
-  s.source_files = '*.{h,m}'
+  s.source_files =  ['*.{h,m}', 'Providers/*.{h,m}']
 
   testflight_sdk = { spec_name: "TestFlight",       dependency: "TestFlightSDK",            import_file: "TestFlight" }
   mixpanel       = { spec_name: "Mixpanel",         dependency: "Mixpanel",                 import_file: "Mixpanel" }
@@ -18,14 +18,13 @@ Pod::Spec.new do |s|
   google         = { spec_name: "GoogleAnalytics",  dependency: "GoogleAnalytics-iOS-SDK",  import_file: "GAI" }
   kissmetrics    = { spec_name: "KISSmetrics",      dependency: "KISSmetrics",              import_file: "KISSMetricsAPI" }
   crittercism    = { spec_name: "Crittercism",      dependency: "CrittercismSDK",           import_file: "Crittercism" }
-
-# I think we want hockeyapp, not hockey kit.
-#  hockey_kit     = { spec_name: "HockeyKit",        dependency: "HockeyKit",                import_file: "BWGlobal" } 
-
+  countly        = { spec_name: "Countly",          dependency: "Countly",                  import_file: "Countly" }
   crashlytics    = { spec_name: "Crashlytics" }
 
+  # I think we want hockeyapp, not hockey kit.
+  #  hockey_kit     = { spec_name: "HockeyKit",        dependency: "HockeyKit",                import_file: "BWGlobal" } 
   
-  $all_analytics =  [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics]
+  $all_analytics =  [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, countly]
   
   # make specs for each analytics
   $all_analytics.each do |analytics_spec|

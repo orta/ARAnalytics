@@ -39,7 +39,7 @@ extern void ARLog (NSString *format, ...);
 + (void)setupWithAnalytics:(NSDictionary *)analyticsDictionary;
 
 /// Setup methods for each individual analytics type
-+ (void)setupTestFlightWithTeamToken:(NSString *)token;
++ (void)setupTestFlightWithAppToken:(NSString *)token;
 + (void)setupCrashlyticsWithAPIKey:(NSString *)key;
 + (void)setupMixpanelWithToken:(NSString *)token;
 + (void)setupFlurryWithAPIKey:(NSString *)key;
@@ -74,11 +74,13 @@ extern void ARLog (NSString *format, ...);
 
 
 // Provide some keys for the setupWithDictionary
-extern NSString *const ARTestFlightAppToken;
-extern NSString *const ARCrashlyticsAPIKey;
-extern NSString *const ARMixpanelToken;
-extern NSString *const ARFlurryAPIKey;
-extern NSString *const ARLocalyticsAppKey;
-extern NSString *const ARKISSMetricsAPIKey;
-extern NSString *const ARCrittercismAppID;
-extern NSString *const ARGoogleAnalyticsID;
+extern const NSString *ARCountlyAppKey;
+extern const NSString *ARCountlyHost;
+extern const NSString *ARTestFlightAppToken;
+extern const NSString *ARCrashlyticsAPIKey;
+extern const NSString *ARMixpanelToken;
+extern const NSString *ARFlurryAPIKey;
+extern const NSString *ARLocalyticsAppKey;
+extern const NSString *ARKISSMetricsAPIKey;
+extern const NSString *ARCrittercismAppID;
+extern const NSString *ARGoogleAnalyticsID;

@@ -1,6 +1,7 @@
 
 PODS:
 - ARAnalytics (0.2):
+  - ARAnalytics/Countly (= 0.2)
   - ARAnalytics/Crashlytics (= 0.2)
   - ARAnalytics/Crittercism (= 0.2)
   - ARAnalytics/Flurry (= 0.2)
@@ -9,6 +10,8 @@ PODS:
   - ARAnalytics/Localytics (= 0.2)
   - ARAnalytics/Mixpanel (= 0.2)
   - ARAnalytics/TestFlight (= 0.2)
+- ARAnalytics/Countly (0.2):
+  - Countly
 - ARAnalytics/Crashlytics (0.2)
 - ARAnalytics/Crittercism (0.2):
   - CrittercismSDK
@@ -24,6 +27,7 @@ PODS:
   - Mixpanel
 - ARAnalytics/TestFlight (0.2):
   - TestFlightSDK
+- Countly (0.0.1)
 - CrittercismSDK (3.4.8)
 - FlurrySDK (4.1.0)
 - GoogleAnalytics-iOS-SDK (2.0beta3)
@@ -33,23 +37,24 @@ PODS:
 - TestFlightSDK (1.2)
 
 DEPENDENCIES:
-- ARAnalytics (from `ARAnalytics_NoFiles.podspec')
+- ARAnalytics (from `../')
 
 EXTERNAL SOURCES:
   ARAnalytics:
-    :podspec: ARAnalytics_NoFiles.podspec
     :local: ../
 
 SPEC CHECKSUMS:
-  ARAnalytics: 576f2d5b4cdda88a0cc1b8804b46383364c8d5c0
-  ARAnalytics/Crashlytics: 576f2d5b4cdda88a0cc1b8804b46383364c8d5c0
-  ARAnalytics/Crittercism: 576f2d5b4cdda88a0cc1b8804b46383364c8d5c0
-  ARAnalytics/Flurry: 576f2d5b4cdda88a0cc1b8804b46383364c8d5c0
-  ARAnalytics/GoogleAnalytics: 576f2d5b4cdda88a0cc1b8804b46383364c8d5c0
-  ARAnalytics/KISSmetrics: 576f2d5b4cdda88a0cc1b8804b46383364c8d5c0
-  ARAnalytics/Localytics: 576f2d5b4cdda88a0cc1b8804b46383364c8d5c0
-  ARAnalytics/Mixpanel: 576f2d5b4cdda88a0cc1b8804b46383364c8d5c0
-  ARAnalytics/TestFlight: 576f2d5b4cdda88a0cc1b8804b46383364c8d5c0
+  ARAnalytics: 8bf821b51c1c9be2b50219dbb70ac93b662fa287
+  ARAnalytics/Countly: 8bf821b51c1c9be2b50219dbb70ac93b662fa287
+  ARAnalytics/Crashlytics: 8bf821b51c1c9be2b50219dbb70ac93b662fa287
+  ARAnalytics/Crittercism: 8bf821b51c1c9be2b50219dbb70ac93b662fa287
+  ARAnalytics/Flurry: 8bf821b51c1c9be2b50219dbb70ac93b662fa287
+  ARAnalytics/GoogleAnalytics: 8bf821b51c1c9be2b50219dbb70ac93b662fa287
+  ARAnalytics/KISSmetrics: 8bf821b51c1c9be2b50219dbb70ac93b662fa287
+  ARAnalytics/Localytics: 8bf821b51c1c9be2b50219dbb70ac93b662fa287
+  ARAnalytics/Mixpanel: 8bf821b51c1c9be2b50219dbb70ac93b662fa287
+  ARAnalytics/TestFlight: 8bf821b51c1c9be2b50219dbb70ac93b662fa287
+  Countly: 27b6a1824d0fa79a2bdbb161b933a6a424055735
   CrittercismSDK: b1bc7bd00979398e15c7ab5d6291c047aa182035
   FlurrySDK: 52245ae8c6fa31825dc74a6afb94b861da2435fa
   GoogleAnalytics-iOS-SDK: dbc85b4df88cd4a7eb7fb774400e865db2fab8bb

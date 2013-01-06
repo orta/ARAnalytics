@@ -30,7 +30,7 @@ You don't need to include a dependancy, but it definitely makes life easier, if 
 
 I have been making all of the setup methods for the analytics choices available through two methods, their own private setup method like `+ (void)setupFlurryWithAPIKey:(NSString *)key` and through the more general `+ (void)setupWithAnalytics:(NSDictionary *)analyticsDictionary` which makes it easy to setup multiple by using a dictionary. There are keys for each choice at the bottom of `ARAnalytics.m` and externs in `ARAnalytics.h` so that people don't have to look up the specific keys for the dictionary.
 
-Then you should add the functions which your app supports to functions like `+ (void)event:(NSString *)event withProperties:(NSDictionary *)properties` and `+ (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email`. It might not support all of the features of ARAnalytics or it might do a lot more than ARAnalytics currently has an API for. In either case the features that you do add need to be wrapped in `#ifdef AR_#{spec_name.upcase}_EXISTS` and `#endif` blocks. This will ensure that people who haven't installed the same libraries as you don't get compiler errors.
+We currently 
 
 ###Testing the library
 
@@ -43,7 +43,7 @@ rm -rf ~/Library/Caches/CocoaPods; rm -rf pods; rm Podfile.lock; pod install --v
 And would refer to a local Podspec in my podfile like this
 
 ``` ruby
-pod 'ARAnalytics/Crashlytics', :podspec => 'vendor/ARAnalytics.podspec'
+pod 'ARAnalytics/Crashlytics', :local => '../ARAnalytics'
 ```
 
 I don't have a test harness for ARAnalytics, this is something I've been looking at lately. I'm still a bit green with respect to iOS testing. For now I've just been hooking it up to my live apps and testing with real data.

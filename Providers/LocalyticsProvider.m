@@ -40,9 +40,5 @@
     [[LocalyticsSession sharedLocalyticsSession] tagScreen:controller.title];
 }
 
-- (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval {
-    [self event:event withProperties:@{ @"length": interval }];
-}
-
 #endif
 @end

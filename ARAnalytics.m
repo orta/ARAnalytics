@@ -15,7 +15,7 @@ static ARAnalytics *_sharedAnalytics;
 
 @interface ARAnalytics ()
 @property (strong) NSMutableDictionary *eventsDictionary;
-@property (strong) NSArray *providers;
+@property (strong) NSSet *providers;
 @end
 
 @implementation ARAnalytics
@@ -24,7 +24,7 @@ static ARAnalytics *_sharedAnalytics;
     static dispatch_once_t pred;
     dispatch_once(&pred, ^{ 
         _sharedAnalytics = [[ARAnalytics alloc] init];
-        _sharedAnalytics.providers = [NSArray array];
+        _sharedAnalytics.providers = [NSSet set];
     });
 }
 
@@ -34,7 +34,7 @@ static ARAnalytics *_sharedAnalytics;
 + (void)setupWithAnalytics:(NSDictionary *)analyticsDictionary {
 #ifdef AR_TESTFLIGHT_EXISTS
     if (analyticsDictionary[ARTestFlightAppToken]) {
-        [self setupTestFlightWithTeamToken:analyticsDictionary[ARTestFlightAppToken]];
+        [self setupTestFlightWithAppToken:analyticsDictionary[ARTestFlightAppToken]];
     }
 #endif
 
@@ -68,6 +68,12 @@ static ARAnalytics *_sharedAnalytics;
     }
 #endif
 
+#ifdef AR_COUNTLY_EXISTS
+    if (analyticsDictionary[ARCountlyAppKey] && analyticsDictionary[ARCountlyHost]) {
+        [self setupCountlyWithAppKey:analyticsDictionary[ARCountlyAppKey] andHost:analyticsDictionary[ARCountlyHost]];
+    }
+#endif
+
 // Crashlytics / Crittercism should stay at the bottom of this,
 // as they both need to register exceptions, and you'd only use one.
 
@@ -84,46 +90,42 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 }
 
-+ (void)setupTestFlightWithTeamToken:(NSString *)token {
++ (void)setupTestFlightWithAppToken:(NSString *)token {
     TestFlightProvider *provider = [[TestFlightProvider alloc] initWithIdentifier:token];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers arrayByAddingObject:provider];
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
 }
 
 + (void)setupCrashlyticsWithAPIKey:(NSString *)key {
     CrashlyticsProvider *provider = [[CrashlyticsProvider alloc] initWithIdentifier:key];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers arrayByAddingObject:provider];
-}
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];}
 
 + (void)setupMixpanelWithToken:(NSString *)token {
     MixpanelProvider *provider = [[MixpanelProvider alloc] initWithIdentifier:token];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers arrayByAddingObject:provider];
-}
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];}
 
 + (void)setupFlurryWithAPIKey:(NSString *)key {
     FlurryProvider *provider = [[FlurryProvider alloc] initWithIdentifier:key];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers arrayByAddingObject:provider];
-}
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];}
 
 + (void)setupGoogleAnalyticsWithID:(NSString *)id {
     GoogleProvider *provider = [[GoogleProvider alloc] initWithIdentifier:id];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers arrayByAddingObject:provider];
-}
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];}
 
 + (void)setupLocalyticsWithAppKey:(NSString *)key {
     LocalyticsProvider *provider = [[LocalyticsProvider alloc] initWithIdentifier:key];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers arrayByAddingObject:provider];
-}
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];}
 
 + (void)setupKISSMetricsWithAPIKey:(NSString *)key {
     KISSMetricsProvider *provider = [[KISSMetricsProvider alloc] initWithIdentifier:key];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers arrayByAddingObject:provider];
-}
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];}
 
 + (void)setupCrittercismWithAppID:(NSString *)appID {
     CrittercismProvider *provider = [[CrittercismProvider alloc] initWithIdentifier:appID];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers arrayByAddingObject:provider];
-}
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];}
 
++ (void)setupCountlyWithAppKey:(NSString *)key andHost:(NSString *)host {
+    CountlyProvider *provider = [[CountlyProvider alloc] initWithAppKey:key andHost:host];
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];}
 
 #pragma mark -
 #pragma mark User Setup
@@ -211,17 +213,7 @@ static ARAnalytics *_sharedAnalytics;
     }
 }
 
-
 @end
-
-NSString *const ARTestFlightAppToken = @"ARTestFlight";
-NSString *const ARCrashlyticsAPIKey = @"ARCrashlytics";
-NSString *const ARMixpanelToken = @"ARMixpanel";
-NSString *const ARFlurryAPIKey = @"ARFlurry";
-NSString *const ARLocalyticsAppKey = @"ARLocalytics";
-NSString *const ARKISSMetricsAPIKey = @"ARKISSMetrics";
-NSString *const ARCrittercismAppID = @"ARCrittercism";
-NSString *const ARGoogleAnalyticsID = @"ARGoogleAnalytics";
 
 void ARLog (NSString *format, ...) {
     if (format == nil) {
@@ -240,3 +232,14 @@ void ARLog (NSString *format, ...) {
 
     va_end(argList);
 }
+
+const NSString *ARCountlyAppKey = @"ARCountlyAppKey";
+const NSString *ARCountlyHost = @"ARCountlyHost";
+const NSString *ARTestFlightAppToken = @"ARTestFlight";
+const NSString *ARCrashlyticsAPIKey = @"ARCrashlytics";
+const NSString *ARMixpanelToken = @"ARMixpanel";
+const NSString *ARFlurryAPIKey = @"ARFlurry";
+const NSString *ARLocalyticsAppKey = @"ARLocalytics";
+const NSString *ARKISSMetricsAPIKey = @"ARKISSMetrics";
+const NSString *ARCrittercismAppID = @"ARCrittercism";
+const NSString *ARGoogleAnalyticsID = @"ARGoogleAnalytics";
