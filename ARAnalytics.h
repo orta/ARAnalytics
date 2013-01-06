@@ -64,10 +64,11 @@ extern void ARLog (NSString *format, ...);
 + (void)startTimingEvent:(NSString *)event;
 + (void)finishTimingEvent:(NSString *)event;
 
+// Upcoming:
 // Blacklist developers or testers from your main analytics
-+ (void)setupBlacklistAnalyticsProviders:(NSDictionary *)blacklistAnalyticsDictionary;
-+ (void)userIDsForBlacklist:(NSArray *)ids;
-+ (void)userEmailsForBlacklist:(NSArray *)emails;
+//+ (void)setupBlacklistAnalyticsProviders:(NSDictionary *)blacklistAnalyticsDictionary;
+//+ (void)userIDsForBlacklist:(NSArray *)ids;
+//+ (void)userEmailsForBlacklist:(NSArray *)emails;
 
 @end
 
