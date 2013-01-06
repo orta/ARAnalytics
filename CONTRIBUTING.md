@@ -9,7 +9,7 @@ My code style is somewhere inbetween Github's and Google's. I prefer my `{`'s on
 
 I take Pull Requests. I'm English, so I'm polite and I'll happily discuss any problems, ideas or features people are interested in. 
 
-##How can I add another Analytics choice?
+##How can I add another Analytics provider?
 
 ###Adding your library to the subspecs
 
@@ -30,7 +30,18 @@ You don't need to include a dependancy, but it definitely makes life easier, if 
 
 I have been making all of the setup methods for the analytics choices available through two methods, their own private setup method like `+ (void)setupFlurryWithAPIKey:(NSString *)key` and through the more general `+ (void)setupWithAnalytics:(NSDictionary *)analyticsDictionary` which makes it easy to setup multiple by using a dictionary. There are keys for each choice at the bottom of `ARAnalytics.m` and externs in `ARAnalytics.h` so that people don't have to look up the specific keys for the dictionary.
 
-We currently 
+Each analytical provider is a subclass of ARAnalyticalProvider, they can optionally respond to different calls from the ARAnalytics shared instance. These methods are below.
+
+```objc
+- (id)initWithIdentifier:(NSString *)identifier;
+- (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email;
+- (void)setUserProperty:(NSString *)property toValue:(NSString *)value;
+- (void)event:(NSString *)event withProperties:(NSDictionary *)properties;
+- (void)incrementUserProperty:(NSString *)counterName byInt:(NSNumber *)amount;
+- (void)didShowNewViewController:(UIViewController *)controller;
+- (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval;
+- (void)remoteLog:(NSString *)parsedString;
+```
 
 ###Testing the library
 
