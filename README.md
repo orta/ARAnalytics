@@ -34,7 +34,7 @@ Once you've `pod installed`'d the libraries you can either use the individual (f
 
 Logging
 ----
-Submit a console log that is stored online, for crash reporting this provides a great way to provide breadcrumbs. `ARLog(@"Looked at Artwork (%@), _artwork.name);"`
+Submit a console log that is stored online, for crash reporting this provides a great way to provide breadcrumbs. `ARLog(@"Looked at Artwork (%@)", _artwork.name);`
 
 ``` objc
 extern void ARLog (NSString *format, ...);
@@ -73,7 +73,8 @@ Contributing
 ====
 See [Contributing](https://github.com/orta/ARAnalytics/blob/master/CONTRIBUTING.md)
 
-Upcoming / Things people can help with
+Upcoming Features / Things people can help with
 =====
 
-I'd like to get in support for [HockeyKit](https://github.com/TheRealKerni/HockeyKit),  [QuincyKiy](https://github.com/TheRealKerni/QuincyKit) and [HockeyApp](http://hockeyapp.net). Plus any that I've not heard of.
+* Support for [HockeyKit](https://github.com/TheRealKerni/HockeyKit),  [QuincyKiy](https://github.com/TheRealKerni/QuincyKit) and [HockeyApp](http://hockeyapp.net). Or any other analytical provider not mentioned.
+* Support for having blacklisted email / id that mean using a different key is used by the app.
