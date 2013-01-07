@@ -47,6 +47,7 @@ extern void ARLog (NSString *format, ...);
 + (void)setupLocalyticsWithAppKey:(NSString *)key;
 + (void)setupKISSMetricsWithAPIKey:(NSString *)key;
 + (void)setupCrittercismWithAppID:(NSString *)appID;
++ (void)setupCountlyWithAppKey:(NSString *)key andHost:(NSString *)host;
 
 /// Set a per user property
 + (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email;
