@@ -9,7 +9,7 @@
 #import "KISSMetricsProvider.h"
 
 @implementation KISSMetricsProvider
-#ifdef AR_GOOGLEANALYTICS_EXISTS
+#ifdef AR_KISSMETRICS_EXISTS
 
 - (id)initWithIdentifier:(NSString *)identifier {
     NSAssert([KISSMetricsAPI class], @"KISSMetrics is not included");
