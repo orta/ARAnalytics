@@ -11,6 +11,10 @@
 @implementation MixpanelProvider
 
 #ifdef AR_MIXPANEL_EXISTS
+- (id)initWithIdentifier:(NSString *)identifier {
+    [self initWithIdentifier:identifier andHost:nil];
+}
+
 - (id)initWithIdentifier:(NSString *)identifier andHost:(NSString *)host {
     NSAssert([Mixpanel class], @"Mixpanel is not included");
     [Mixpanel sharedInstanceWithToken:identifier];
