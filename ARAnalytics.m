@@ -64,7 +64,7 @@ static ARAnalytics *_sharedAnalytics;
 
 #ifdef AR_MIXPANEL_EXISTS
     if (analyticsDictionary[ARMixpanelToken]) {
-        [self setupMixpanelWithToken:analyticsDictionary[ARMixpanelToken]];
+        [self setupMixpanelWithToken:analyticsDictionary[ARMixpanelToken] andHost:analyticsDictionary[ARMixpanelHost]];
     }
 #endif
 
@@ -101,7 +101,11 @@ static ARAnalytics *_sharedAnalytics;
 }
 
 + (void)setupMixpanelWithToken:(NSString *)token {
-    MixpanelProvider *provider = [[MixpanelProvider alloc] initWithIdentifier:token];
+    [self setupMixpanelWithToken:token andHost:nil];
+}
+
++ (void)setupMixpanelWithToken:(NSString *)token andHost:(NSString *)host {
+    MixpanelProvider *provider = [[MixpanelProvider alloc] initWithIdentifier:token andHost:host];
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
 }
 
@@ -250,6 +254,7 @@ const NSString *ARCountlyHost = @"ARCountlyHost";
 const NSString *ARTestFlightAppToken = @"ARTestFlight";
 const NSString *ARCrashlyticsAPIKey = @"ARCrashlytics";
 const NSString *ARMixpanelToken = @"ARMixpanel";
+const NSString *ARMixpanelHost = @"ARMixpanelHost";
 const NSString *ARFlurryAPIKey = @"ARFlurry";
 const NSString *ARLocalyticsAppKey = @"ARLocalytics";
 const NSString *ARKISSMetricsAPIKey = @"ARKISSMetrics";
