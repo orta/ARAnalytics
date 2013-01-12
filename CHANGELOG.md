@@ -5,6 +5,7 @@
 * Support for Countly
 * Rewrite into a more modular codebase
 * Supports more features of Google Analytics 
+* Supports using custom Mixpanel URLS ( thanks gabrielrinaldi )
 
 ## Version 1.0
 
