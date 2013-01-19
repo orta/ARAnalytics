@@ -75,8 +75,8 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 
 #ifdef AR_BUGSNAG_EXISTS
-    if (analyticsDictionary[ARBugsnapAPIKey]) {
-        [self setupBugsnapWithAPIKey:analyticsDictionary[ARBugsnapAPIKey]];
+    if (analyticsDictionary[ARBugsnagAPIKey]) {
+        [self setupBugsnagWithAPIKey:analyticsDictionary[ARBugsnagAPIKey]];
     }
 #endif
 
@@ -144,7 +144,7 @@ static ARAnalytics *_sharedAnalytics;
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
 }
 
-+ (void)setupBugsnapWithAPIKey:(NSString *)key {
++ (void)setupBugsnagWithAPIKey:(NSString *)key {
     BugsnagProvider *provider = [[BugsnagProvider alloc] initWithIdentifier:key];
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
 }
@@ -270,7 +270,7 @@ const NSString *ARCrashlyticsAPIKey = @"ARCrashlytics";
 const NSString *ARMixpanelToken = @"ARMixpanel";
 const NSString *ARMixpanelHost = @"ARMixpanelHost";
 const NSString *ARFlurryAPIKey = @"ARFlurry";
-const NSString *ARBugsnapAPIKey = @"ARBugsnap";
+const NSString *ARBugsnagAPIKey = @"ARBugsnag";
 const NSString *ARLocalyticsAppKey = @"ARLocalytics";
 const NSString *ARKISSMetricsAPIKey = @"ARKISSMetrics";
 const NSString *ARCrittercismAppID = @"ARCrittercism";

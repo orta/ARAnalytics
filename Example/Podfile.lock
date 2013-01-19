@@ -1,34 +1,34 @@
 
 PODS:
-- ARAnalytics (1.1):
-  - ARAnalytics/Bugsnag (= 1.1)
-  - ARAnalytics/Countly (= 1.1)
-  - ARAnalytics/Crashlytics (= 1.1)
-  - ARAnalytics/Crittercism (= 1.1)
-  - ARAnalytics/Flurry (= 1.1)
-  - ARAnalytics/GoogleAnalytics (= 1.1)
-  - ARAnalytics/KISSmetrics (= 1.1)
-  - ARAnalytics/Localytics (= 1.1)
-  - ARAnalytics/Mixpanel (= 1.1)
-  - ARAnalytics/TestFlight (= 1.1)
-- ARAnalytics/Bugsnag (1.1):
+- ARAnalytics (1.3):
+  - ARAnalytics/Bugsnag (= 1.3)
+  - ARAnalytics/Countly (= 1.3)
+  - ARAnalytics/Crashlytics (= 1.3)
+  - ARAnalytics/Crittercism (= 1.3)
+  - ARAnalytics/Flurry (= 1.3)
+  - ARAnalytics/GoogleAnalytics (= 1.3)
+  - ARAnalytics/KISSmetrics (= 1.3)
+  - ARAnalytics/Localytics (= 1.3)
+  - ARAnalytics/Mixpanel (= 1.3)
+  - ARAnalytics/TestFlight (= 1.3)
+- ARAnalytics/Bugsnag (1.3):
   - Bugsnag
-- ARAnalytics/Countly (1.1):
+- ARAnalytics/Countly (1.3):
   - Countly
-- ARAnalytics/Crashlytics (1.1)
-- ARAnalytics/Crittercism (1.1):
+- ARAnalytics/Crashlytics (1.3)
+- ARAnalytics/Crittercism (1.3):
   - CrittercismSDK
-- ARAnalytics/Flurry (1.1):
+- ARAnalytics/Flurry (1.3):
   - FlurrySDK
-- ARAnalytics/GoogleAnalytics (1.1):
+- ARAnalytics/GoogleAnalytics (1.3):
   - GoogleAnalytics-iOS-SDK
-- ARAnalytics/KISSmetrics (1.1):
+- ARAnalytics/KISSmetrics (1.3):
   - KISSmetrics
-- ARAnalytics/Localytics (1.1):
+- ARAnalytics/Localytics (1.3):
   - Localytics
-- ARAnalytics/Mixpanel (1.1):
+- ARAnalytics/Mixpanel (1.3):
   - Mixpanel
-- ARAnalytics/TestFlight (1.1):
+- ARAnalytics/TestFlight (1.3):
   - TestFlightSDK
 - Bugsnag (2.2.0):
   - Reachability (~> 3.1)
@@ -50,17 +50,17 @@ EXTERNAL SOURCES:
     :local: ../
 
 SPEC CHECKSUMS:
-  ARAnalytics: 3255b71461bd73cc006bad8b0e63e92ef8649de2
-  ARAnalytics/Bugsnag: 3255b71461bd73cc006bad8b0e63e92ef8649de2
-  ARAnalytics/Countly: 3255b71461bd73cc006bad8b0e63e92ef8649de2
-  ARAnalytics/Crashlytics: 3255b71461bd73cc006bad8b0e63e92ef8649de2
-  ARAnalytics/Crittercism: 3255b71461bd73cc006bad8b0e63e92ef8649de2
-  ARAnalytics/Flurry: 3255b71461bd73cc006bad8b0e63e92ef8649de2
-  ARAnalytics/GoogleAnalytics: 3255b71461bd73cc006bad8b0e63e92ef8649de2
-  ARAnalytics/KISSmetrics: 3255b71461bd73cc006bad8b0e63e92ef8649de2
-  ARAnalytics/Localytics: 3255b71461bd73cc006bad8b0e63e92ef8649de2
-  ARAnalytics/Mixpanel: 3255b71461bd73cc006bad8b0e63e92ef8649de2
-  ARAnalytics/TestFlight: 3255b71461bd73cc006bad8b0e63e92ef8649de2
+  ARAnalytics: fb6eb8f003e45603349eb9c713801ec651320fb1
+  ARAnalytics/Bugsnag: fb6eb8f003e45603349eb9c713801ec651320fb1
+  ARAnalytics/Countly: fb6eb8f003e45603349eb9c713801ec651320fb1
+  ARAnalytics/Crashlytics: fb6eb8f003e45603349eb9c713801ec651320fb1
+  ARAnalytics/Crittercism: fb6eb8f003e45603349eb9c713801ec651320fb1
+  ARAnalytics/Flurry: fb6eb8f003e45603349eb9c713801ec651320fb1
+  ARAnalytics/GoogleAnalytics: fb6eb8f003e45603349eb9c713801ec651320fb1
+  ARAnalytics/KISSmetrics: fb6eb8f003e45603349eb9c713801ec651320fb1
+  ARAnalytics/Localytics: fb6eb8f003e45603349eb9c713801ec651320fb1
+  ARAnalytics/Mixpanel: fb6eb8f003e45603349eb9c713801ec651320fb1
+  ARAnalytics/TestFlight: fb6eb8f003e45603349eb9c713801ec651320fb1
   Bugsnag: 628f7562cb26365bd2f343ab9a5556d9707554e3
   Countly: 27b6a1824d0fa79a2bdbb161b933a6a424055735
   CrittercismSDK: b1bc7bd00979398e15c7ab5d6291c047aa182035

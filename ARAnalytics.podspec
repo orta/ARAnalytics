@@ -77,6 +77,9 @@ Pod::Spec.new do |s|
       File.open( config.project_pods_root + 'ARAnalytics/ARAnalytics+GeneratedHeader.h', "w+" ) do |file|
         file.puts headers * "\n"
       end
+    else 
+      puts "Replace ARAnalytics+GeneratedHeader.h with this \n"
+      puts headers * "\n"
     end
   end
   

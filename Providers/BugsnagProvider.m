@@ -12,19 +12,19 @@
 #ifdef AR_BUGSNAP_EXISTS
 
 - (id)initWithIdentifier:(NSString *)identifier {
-    NSAssert([Bugsnap class], @"Bugspan is not included");
-    [Bugsnap startBugsnagWithApiKey:identifier];
+    NSAssert([Bugsnag class], @"Bugsnag is not included");
+    [Bugsnag startBugsnagWithApiKey:identifier];
 
     return [super init];
 }
 
 - (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {
-    [Bugsnap instance].userId = id;
-    [Bugsnap setUserAttribute:@"email" withValue:email];
+    [Bugsnag instance].userId = id;
+    [Bugsnag setUserAttribute:@"email" withValue:email];
 }
 
 - (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
-    [Bugsnap setUserAttribute:property withValue:value];
+    [Bugsnag setUserAttribute:property withValue:value];
 }
 
 #endif
