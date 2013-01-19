@@ -15,8 +15,7 @@
     NSAssert([Flurry class], @"Flurry is not included");
     [Flurry startSession:identifier];
 
-    self = [super init];
-    return self;
+    return [super init];
 }
 
 - (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {

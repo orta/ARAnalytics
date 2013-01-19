@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         =  'ARAnalytics'
-  s.version      =  '1.1'
+  s.version      =  '1.3'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.summary      =  'Simplify your analytics choices.'
   s.homepage     =  'http://github.com/orta/ARAnalytics'
@@ -11,20 +11,21 @@ Pod::Spec.new do |s|
   s.platform     =  :ios
   s.source_files =  ['*.{h,m}', 'Providers/*.{h,m}']
 
-  testflight_sdk = { spec_name: "TestFlight",       dependency: "TestFlightSDK",            import_file: "TestFlight" }
-  mixpanel       = { spec_name: "Mixpanel",         dependency: "Mixpanel",                 import_file: "Mixpanel" }
-  localytics     = { spec_name: "Localytics",       dependency: "Localytics",               import_file: "LocalyticsSession" }
-  flurry         = { spec_name: "Flurry",           dependency: "FlurrySDK",                import_file: "Flurry" }
-  google         = { spec_name: "GoogleAnalytics",  dependency: "GoogleAnalytics-iOS-SDK",  import_file: "GAI" }
-  kissmetrics    = { spec_name: "KISSmetrics",      dependency: "KISSmetrics",              import_file: "KISSMetricsAPI" }
-  crittercism    = { spec_name: "Crittercism",      dependency: "CrittercismSDK",           import_file: "Crittercism" }
-  countly        = { spec_name: "Countly",          dependency: "Countly",                  import_file: "Countly" }
-  crashlytics    = { spec_name: "Crashlytics" }
+  testflight_sdk = { :spec_name => "TestFlight",       :dependency => "TestFlightSDK",            :import_file => "TestFlight" }
+  mixpanel       = { :spec_name => "Mixpanel",         :dependency => "Mixpanel",                 :import_file => "Mixpanel" }
+  localytics     = { :spec_name => "Localytics",       :dependency => "Localytics",               :import_file => "LocalyticsSession" }
+  flurry         = { :spec_name => "Flurry",           :dependency => "FlurrySDK",                :import_file => "Flurry" }
+  google         = { :spec_name => "GoogleAnalytics",  :dependency => "GoogleAnalytics-iOS-SDK",  :import_file => "GAI" }
+  kissmetrics    = { :spec_name => "KISSmetrics",      :dependency => "KISSmetrics",              :import_file => "KISSMetricsAPI" }
+  crittercism    = { :spec_name => "Crittercism",      :dependency => "CrittercismSDK",           :import_file => "Crittercism" }
+  countly        = { :spec_name => "Countly",          :dependency => "Countly",                  :import_file => "Countly" }
+  bugsnag        = { :spec_name => "Bugsnag",          :dependency => "Bugsnag",                  :import_file => "Bugsnag" }
+  crashlytics    = { :spec_name => "Crashlytics" }
 
   # I think we want hockeyapp, not hockey kit.
   #  hockey_kit     = { spec_name: "HockeyKit",        dependency: "HockeyKit",                import_file: "BWGlobal" } 
   
-  $all_analytics =  [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, countly]
+  $all_analytics =  [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly]
   
   # make specs for each analytics
   $all_analytics.each do |analytics_spec|
@@ -39,6 +40,7 @@ Pod::Spec.new do |s|
   end
   
   def s.pre_install(pod, target_definition)
+    
     # match subspecs in podfile
     deps = target_definition.dependencies.map(&:name)
     deps = deps.select { |d| d.include? 'ARAnalytics/' } 
@@ -68,11 +70,13 @@ Pod::Spec.new do |s|
           end
         end
       end
-      
+
     end
 
-    File.open( config.project_pods_root + 'ARAnalytics/ARAnalytics+GeneratedHeader.h', "w+" ) do |file|
-      file.puts headers * "\n"
+    if File.exists? config.project_pods_root + 'ARAnalytics'
+      File.open( config.project_pods_root + 'ARAnalytics/ARAnalytics+GeneratedHeader.h', "w+" ) do |file|
+        file.puts headers * "\n"
+      end
     end
   end
   

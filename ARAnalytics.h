@@ -85,5 +85,6 @@ extern const NSString *ARMixpanelHost;
 extern const NSString *ARFlurryAPIKey;
 extern const NSString *ARLocalyticsAppKey;
 extern const NSString *ARKISSMetricsAPIKey;
+extern const NSString *ARBugsnapAPIKey;
 extern const NSString *ARCrittercismAppID;
 extern const NSString *ARGoogleAnalyticsID;

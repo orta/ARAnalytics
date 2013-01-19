@@ -20,8 +20,7 @@
 #endif
     [TestFlight takeOff:identifier];
 
-    self = [super init];
-    return self;
+    return [super init];
 }
 
 + (NSString *)uniqueID {

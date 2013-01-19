@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60238C8F16AB2238002DC7CD /* BugsnagProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 60238C8E16AB2238002DC7CD /* BugsnagProvider.m */; };
 		603E56321698E5F800FDC350 /* CrashlyticsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 603E56311698E5F800FDC350 /* CrashlyticsProvider.m */; };
 		603E56351698E63900FDC350 /* MixpanelProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 603E56341698E63900FDC350 /* MixpanelProvider.m */; };
 		603E56381698E64C00FDC350 /* LocalyticsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 603E56371698E64C00FDC350 /* LocalyticsProvider.m */; };
@@ -35,6 +36,8 @@
 
 /* Begin PBXFileReference section */
 		3BEA9738AF214F97833B1B11 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		60238C8D16AB2238002DC7CD /* BugsnagProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BugsnagProvider.h; sourceTree = "<group>"; };
+		60238C8E16AB2238002DC7CD /* BugsnagProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BugsnagProvider.m; sourceTree = "<group>"; };
 		603E56301698E5F800FDC350 /* CrashlyticsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrashlyticsProvider.h; sourceTree = "<group>"; };
 		603E56311698E5F800FDC350 /* CrashlyticsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrashlyticsProvider.m; sourceTree = "<group>"; };
 		603E56331698E63900FDC350 /* MixpanelProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixpanelProvider.h; sourceTree = "<group>"; };
@@ -128,6 +131,8 @@
 				603E56431698E68400FDC350 /* CrittercismProvider.m */,
 				60FB51DE1699175D00040CC8 /* CountlyProvider.h */,
 				60FB51DF1699175D00040CC8 /* CountlyProvider.m */,
+				60238C8D16AB2238002DC7CD /* BugsnagProvider.h */,
+				60238C8E16AB2238002DC7CD /* BugsnagProvider.m */,
 			);
 			name = Providers;
 			path = ../Providers;
@@ -290,6 +295,7 @@
 				603E56411698E67700FDC350 /* KISSMetricsProvider.m in Sources */,
 				603E56441698E68400FDC350 /* CrittercismProvider.m in Sources */,
 				60FB51E01699175D00040CC8 /* CountlyProvider.m in Sources */,
+				60238C8F16AB2238002DC7CD /* BugsnagProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

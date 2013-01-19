@@ -12,8 +12,7 @@
 @implementation ARAnalyticalProvider
 
 - (id)initWithIdentifier:(NSString *)identifier {
-    self = [super init];
-    return self;
+    return [super init];
 }
 
 /// Set a per user property

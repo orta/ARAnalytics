@@ -15,8 +15,7 @@
     NSAssert([KISSMetricsAPI class], @"KISSMetrics is not included");
     [KISSMetricsAPI sharedAPIWithKey:identifier];
 
-    self = [super init];
-    return self;
+    return [super init];
 }
 
 - (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {

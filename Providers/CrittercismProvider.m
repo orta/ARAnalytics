@@ -15,8 +15,7 @@
     NSAssert([Crittercism class], @"Crittercism is not included");
     [Crittercism enableWithAppID:identifier];
 
-    self = [super init];
-    return self;
+    return [super init];
 }
 
 - (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {

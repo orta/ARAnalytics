@@ -10,23 +10,24 @@
 
 @implementation MixpanelProvider
 
-#ifdef AR_MIXPANEL_EXISTS
 - (id)initWithIdentifier:(NSString *)identifier {
-    [self initWithIdentifier:identifier andHost:nil];
+    return [self initWithIdentifier:identifier andHost:nil];
 }
 
 - (id)initWithIdentifier:(NSString *)identifier andHost:(NSString *)host {
+#ifdef AR_MIXPANEL_EXISTS
+
     NSAssert([Mixpanel class], @"Mixpanel is not included");
     [Mixpanel sharedInstanceWithToken:identifier];
 
     if (host) {
         [[Mixpanel sharedInstance] setServerURL:host];
     }
-
-    self = [super init];
-    return self;
+#endif
+    return [super init];
 }
 
+#ifdef AR_MIXPANEL_EXISTS
 - (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {
     [[[Mixpanel sharedInstance] people] identify:id];
     if (email) {

@@ -74,6 +74,12 @@ static ARAnalytics *_sharedAnalytics;
     }
 #endif
 
+#ifdef AR_BUGSNAG_EXISTS
+    if (analyticsDictionary[ARBugsnapAPIKey]) {
+        [self setupBugsnapWithAPIKey:analyticsDictionary[ARBugsnapAPIKey]];
+    }
+#endif
+
     // Crashlytics / Crittercism should stay at the bottom of this,
     // as they both need to register exceptions, and you'd only use one.
 
@@ -135,6 +141,11 @@ static ARAnalytics *_sharedAnalytics;
 
 + (void)setupCountlyWithAppKey:(NSString *)key andHost:(NSString *)host {
     CountlyProvider *provider = [[CountlyProvider alloc] initWithAppKey:key andHost:host];
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+}
+
++ (void)setupBugsnapWithAPIKey:(NSString *)key {
+    BugsnagProvider *provider = [[BugsnagProvider alloc] initWithIdentifier:key];
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
 }
 
@@ -238,13 +249,16 @@ void ARLog (NSString *format, ...) {
     va_list argList;
     va_start(argList, format);
     // Perform format string argument substitution, reinstate %% escapes, then print
-    NSString *parsedFormatString = [[NSString alloc] initWithFormat:format arguments:argList];
-    parsedFormatString = [parsedFormatString stringByReplacingOccurrencesOfString:@"%%" withString:@"%%%%"];
-    printf("ARLog : %s\n", parsedFormatString.UTF8String);
 
-    [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
-        [provider remoteLog:parsedFormatString];
-    }];
+    @autoreleasepool {
+      NSString *parsedFormatString = [[NSString alloc] initWithFormat:format arguments:argList];
+      parsedFormatString = [parsedFormatString stringByReplacingOccurrencesOfString:@"%%" withString:@"%%%%"];
+      printf("ARLog : %s\n", parsedFormatString.UTF8String);
+
+      [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
+          [provider remoteLog:parsedFormatString];
+      }];
+    }
 
     va_end(argList);
 }
@@ -256,6 +270,7 @@ const NSString *ARCrashlyticsAPIKey = @"ARCrashlytics";
 const NSString *ARMixpanelToken = @"ARMixpanel";
 const NSString *ARMixpanelHost = @"ARMixpanelHost";
 const NSString *ARFlurryAPIKey = @"ARFlurry";
+const NSString *ARBugsnapAPIKey = @"ARBugsnap";
 const NSString *ARLocalyticsAppKey = @"ARLocalytics";
 const NSString *ARKISSMetricsAPIKey = @"ARKISSMetrics";
 const NSString *ARCrittercismAppID = @"ARCrittercism";

@@ -14,11 +14,9 @@
 #ifdef AR_COUNTLY_EXISTS
     NSAssert([Countly class], @"Countly is not included");
     [[Countly sharedInstance] start:appKey withHost:host];
-
-    self = [super init];
-    return self;
-
 #endif
+
+    return [super init];
 }
 
 #ifdef AR_COUNTLY_EXISTS
@@ -28,5 +26,4 @@
 }
 
 #endif
-
 @end

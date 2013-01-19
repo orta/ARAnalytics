@@ -15,8 +15,7 @@
     NSAssert([GAI class], @"Google Analytics SDK is not included");
     [[GAI sharedInstance] trackerWithTrackingId:identifier];
 
-    self = [super init];
-    return self;
+    return [super init];
 }
 
 - (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {

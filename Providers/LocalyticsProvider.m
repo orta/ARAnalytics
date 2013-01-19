@@ -15,8 +15,7 @@
     NSAssert([LocalyticsSession class], @"Localytics is not included");
     [[LocalyticsSession sharedLocalyticsSession] startSession:identifier];
 
-    self = [super init];
-    return self;
+    return [super init];
 }
 
 - (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {

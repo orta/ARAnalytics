@@ -16,3 +16,4 @@
 #import "KISSMetricsProvider.h"
 #import "CrittercismProvider.h"
 #import "CountlyProvider.h"
+#import "BugsnagProvider.h"
