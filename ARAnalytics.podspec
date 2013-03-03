@@ -1,9 +1,8 @@
-
 Pod::Spec.new do |s|
   s.name         =  'ARAnalytics'
-  s.version      =  '1.3'
+  s.version      =  '1.2'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
-  s.summary      =  'Simplify your analytics choices.'
+  s.summary      =  'Use mutliple major analytics platforms with one clean API.'
   s.homepage     =  'http://github.com/orta/ARAnalytics'
   s.author       =  { 'orta' => 'orta.therox@gmail.com' }
   s.source       =  { :git => 'https://github.com/orta/ARAnalytics.git', :commit => 'HEAD' }
@@ -31,7 +30,7 @@ Pod::Spec.new do |s|
       # Each subspec adds a compiler flag saying that the spec was included
       ss.compiler_flags = "#{analytics_spec[:spec_name].upcase}_EXISTS=1"
       
-      # If there's a podspec dependency include that
+      # If there's a podspec dependency include it
       if analytics_spec[:dependency] 
         ss.dependency analytics_spec[:dependency]
       end

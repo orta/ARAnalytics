@@ -1,5 +1,9 @@
 #ARAnalytics
 
+## Version 1.2
+* Support for Bugsnap
+* Support for Cocoapods 0.17
+
 ## Version 1.1
 
 * Support for Countly

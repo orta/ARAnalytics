@@ -78,5 +78,4 @@ See [Contributing](https://github.com/orta/ARAnalytics/blob/master/CONTRIBUTING.
 Upcoming Features / Things people can help with
 =====
 
-* Support for [HockeyKit](https://github.com/TheRealKerni/HockeyKit),  [QuincyKiy](https://github.com/TheRealKerni/QuincyKit) and [HockeyApp](http://hockeyapp.net). Or any other analytical provider not mentioned.
-* Support for having blacklisted email / id that mean using a different key is used by the app.
+* Support for [HockeyKit](https://github.com/TheRealKerni/HockeyKit),  [QuincyKit](https://github.com/TheRealKerni/QuincyKit) and [HockeyApp](http://hockeyapp.net). Or any other analytical provider not mentioned.
