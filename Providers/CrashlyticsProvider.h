@@ -8,7 +8,6 @@
 
 #import "ARAnalyticalProvider.h"
 
-
 // Whilst we cannot include the Crashlytics library
 // we can stub out the implementation with methods we want
 // so that it will link with the real framework later on ./

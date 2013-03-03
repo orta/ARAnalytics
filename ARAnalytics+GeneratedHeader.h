@@ -1,28 +1,31 @@
-#import "TestFlight.h"
-#define AR_TESTFLIGHT_EXISTS 1
+#ifdef AR_MIXPANEL_EXISTS
+    #import "Mixpanel.h"
+#endif
 
-#import "Mixpanel.h"
-#define AR_MIXPANEL_EXISTS 1
+#ifdef AR_LOCALYTICS_EXISTS
+    #import "LocalyticsSession.h"
+#endif
 
-#import "LocalyticsSession.h"
-#define AR_LOCALYTICS_EXISTS 1
+#ifdef AR_FLURRY_EXISTS
+    #import "Flurry.h"
+#endif
 
-#import "Flurry.h"
-#define AR_FLURRY_EXISTS 1
+#ifdef AR_GOOGLEANALYTICS_EXISTS
+    #import "GAI.h"
+#endif
 
-#import "GAI.h"
-#define AR_GOOGLEANALYTICS_EXISTS 1
+#ifdef AR_KISSMETRICS_EXISTS
+    #import "KISSMetricsAPI.h"
+#endif
 
-#import "KISSMetricsAPI.h"
-#define AR_KISSMETRICS_EXISTS 1
+#ifdef AR_CRITTERCISM_EXISTS
+    #import "Crittercism.h"
+#endif
 
-#import "Crittercism.h"
-#define AR_CRITTERCISM_EXISTS 1
+#ifdef AR_BUGSNAG_EXISTS
+    #import "Bugsnag.h"
+#endif
 
-#define AR_CRASHLYTICS_EXISTS 1
-
-#import "Bugsnag.h"
-#define AR_BUGSNAG_EXISTS 1
-
-#import "Countly.h"
-#define AR_COUNTLY_EXISTS 1
+#ifdef AR_COUNTLY_EXISTS
+    #import "Countly.h"
+#endif

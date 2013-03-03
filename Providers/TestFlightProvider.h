@@ -6,7 +6,6 @@
 //  Copyright (c) 2012 Art.sy. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "ARAnalyticalProvider.h"
 
 @interface TestFlightProvider : ARAnalyticalProvider 

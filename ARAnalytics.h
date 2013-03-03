@@ -26,10 +26,34 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 //  OTHER DEALINGS IN THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
 #import "ARAnalytics+GeneratedHeader.h"
 
 extern void ARLog (NSString *format, ...);
+
+/*!
+ @class
+ ARAnalytics Main Class.
+
+ @abstract
+ The primary interface for dealing with in app Analytics.
+
+ @discussion
+ Use the ARAnalytics class to set up your analytics provider and track events.
+
+ <pre>
+
+ [ARAnalytics setupWithAnalytics:@{
+    ARCrittercismAppID : @"KEY",
+    ARKISSMetricsAPIKey : @"KEY",
+    ARGoogleAnalyticsID : @"KEY"
+ }];
+
+ </pre>
+
+ For more advanced usage, please see the <a
+ href="https://github.com/orta/ARAnalytics">ARAnalytics Readme</a>.
+ */
+
 
 @interface ARAnalytics : NSObject <UINavigationControllerDelegate>
 
@@ -64,12 +88,6 @@ extern void ARLog (NSString *format, ...);
 /// Let ARAnalytics deal with the timing of an event
 + (void)startTimingEvent:(NSString *)event;
 + (void)finishTimingEvent:(NSString *)event;
-
-// Upcoming:
-// Blacklist developers or testers from your main analytics
-//+ (void)setupBlacklistAnalyticsProviders:(NSDictionary *)blacklistAnalyticsDictionary;
-//+ (void)userIDsForBlacklist:(NSArray *)ids;
-//+ (void)userEmailsForBlacklist:(NSArray *)emails;
 
 @end
 
