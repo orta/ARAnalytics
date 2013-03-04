@@ -29,7 +29,8 @@ Pod::Spec.new do |s|
   
       # Each subspec adds a compiler flag saying that the spec was included
       ss.compiler_flags = "#{analytics_spec[:spec_name].upcase}_EXISTS=1"
-      
+      ss.source_files = ['*.{h,m}', 'Providers/*.{h,m}']
+
       # If there's a podspec dependency include it
       if analytics_spec[:dependency] 
         ss.dependency analytics_spec[:dependency]
