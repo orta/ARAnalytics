@@ -5,10 +5,9 @@ Pod::Spec.new do |s|
   s.summary      =  'Use mutliple major analytics platforms with one clean API.'
   s.homepage     =  'http://github.com/orta/ARAnalytics'
   s.author       =  { 'orta' => 'orta.therox@gmail.com' }
-  s.source       =  { :git => 'https://github.com/orta/ARAnalytics.git', :commit => 'HEAD' }
+  s.source       =  { :git => 'https://github.com/orta/ARAnalytics.git' }
   s.description  =  'Using subspecs you can define your analytics provider with the same API.'
   s.platform     =  :ios
-  s.source_files =  ['*.{h,m}', 'Providers/*.{h,m}']
 
   testflight_sdk = { :spec_name => "TestFlight",       :dependency => "TestFlightSDK"           }
   mixpanel       = { :spec_name => "Mixpanel",         :dependency => "Mixpanel"                }
@@ -21,15 +20,21 @@ Pod::Spec.new do |s|
   bugsnag        = { :spec_name => "Bugsnag",          :dependency => "Bugsnag"                 }
   crashlytics    = { :spec_name => "Crashlytics" }
 
+  s.subspec "Core" do |ss|
+    ss.source_files =  ['*.{h,m}', 'Providers/*.{h,m}']
+  end
+
   $all_analytics =  [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly]
   
   # make specs for each analytics
   $all_analytics.each do |analytics_spec|
     s.subspec analytics_spec[:spec_name] do |ss|
-  
+      
+      # All subspecs require the core
+      ss.dependency 'ARAnalytics/Core'
+
       # Each subspec adds a compiler flag saying that the spec was included
-      ss.compiler_flags = "#{analytics_spec[:spec_name].upcase}_EXISTS=1"
-      ss.source_files = ['*.{h,m}', 'Providers/*.{h,m}']
+      ss.prefix_header_contents = "#{analytics_spec[:spec_name].upcase}_EXISTS=1"
 
       # If there's a podspec dependency include it
       if analytics_spec[:dependency] 
