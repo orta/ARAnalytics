@@ -9,22 +9,23 @@ Pod::Spec.new do |s|
   s.description  =  'Using subspecs you can define your analytics provider with the same API.'
   s.platform     =  :ios
 
-  testflight_sdk = { :spec_name => "TestFlight",       :dependency => "TestFlightSDK"           }
-  mixpanel       = { :spec_name => "Mixpanel",         :dependency => "Mixpanel"                }
-  localytics     = { :spec_name => "Localytics",       :dependency => "Localytics"              }
-  flurry         = { :spec_name => "Flurry",           :dependency => "FlurrySDK"               }
-  google         = { :spec_name => "GoogleAnalytics",  :dependency => "GoogleAnalytics-iOS-SDK" }
-  kissmetrics    = { :spec_name => "KISSmetrics",      :dependency => "KISSmetrics"             }
-  crittercism    = { :spec_name => "Crittercism",      :dependency => "CrittercismSDK"          }
-  countly        = { :spec_name => "Countly",          :dependency => "Countly"                 }
-  bugsnag        = { :spec_name => "Bugsnag",          :dependency => "Bugsnag"                 }
+  testflight_sdk = { :spec_name => "TestFlight",       :dependency => "TestFlightSDK",            :import_file => "TestFlight" }
+  mixpanel       = { :spec_name => "Mixpanel",         :dependency => "Mixpanel",                 :import_file => "Mixpanel" }
+  localytics     = { :spec_name => "Localytics",       :dependency => "Localytics",               :import_file => "LocalyticsSession" }
+  flurry         = { :spec_name => "Flurry",           :dependency => "FlurrySDK",                :import_file => "Flurry" }
+  google         = { :spec_name => "GoogleAnalytics",  :dependency => "GoogleAnalytics-iOS-SDK",  :import_file => "GAI" }
+  kissmetrics    = { :spec_name => "KISSmetrics",      :dependency => "KISSmetrics",              :import_file => "KISSMetricsAPI" }
+  crittercism    = { :spec_name => "Crittercism",      :dependency => "CrittercismSDK",           :import_file => "Crittercism" }
+  countly        = { :spec_name => "Countly",          :dependency => "Countly",                  :import_file => "Countly" }
+  bugsnag        = { :spec_name => "Bugsnag",          :dependency => "Bugsnag",                  :import_file => "Bugsnag" }
   crashlytics    = { :spec_name => "Crashlytics" }
 
+  $all_analytics =  [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly]
+
+  # bring in all files via the core package
   s.subspec "Core" do |ss|
     ss.source_files =  ['*.{h,m}', 'Providers/*.{h,m}']
   end
-
-  $all_analytics =  [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly]
   
   # make specs for each analytics
   $all_analytics.each do |analytics_spec|
@@ -43,5 +44,4 @@ Pod::Spec.new do |s|
       
     end
   end
-  
 end

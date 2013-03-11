@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Orta Therox. All rights reserved.
 //
 
-
 #import "ARAnalyticalProvider.h"
 
 @interface CountlyProvider : ARAnalyticalProvider

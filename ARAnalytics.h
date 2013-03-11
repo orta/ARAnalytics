@@ -26,11 +26,7 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 //  OTHER DEALINGS IN THE SOFTWARE.
 
-#import "ARAnalytics+GeneratedHeader.h"
-
-extern void ARLog (NSString *format, ...);
-
-/*!
+/**
  @class
  ARAnalytics Main Class.
 
@@ -54,10 +50,9 @@ extern void ARLog (NSString *format, ...);
  href="https://github.com/orta/ARAnalytics">ARAnalytics Readme</a>.
  */
 
-
 @interface ARAnalytics : NSObject <UINavigationControllerDelegate>
 
-// A global analytics API, use the constants at the bottom for keys.
+/// A global setup analytics API, keys are provided at the bottom of the documentation.
 + (void)setupWithAnalytics:(NSDictionary *)analyticsDictionary;
 
 /// Setup methods for each individual analytics type
@@ -77,7 +72,7 @@ extern void ARLog (NSString *format, ...);
 + (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email;
 + (void)setUserProperty:(NSString *)property toValue:(NSString *)value;
 
-/// Submit user events
+/// Submit user events to 
 + (void)event:(NSString *)event;
 + (void)event:(NSString *)event withProperties:(NSDictionary *)properties;
 + (void)incrementUserProperty:(NSString*)counterName byInt:(int)amount;
@@ -91,8 +86,10 @@ extern void ARLog (NSString *format, ...);
 
 @end
 
+/// an NSLog-like command that send to providers
+extern void ARLog (NSString *format, ...);
 
-// Provide some keys for the setupWithDictionary
+/// Provide keys for the setupWithDictionary
 extern const NSString *ARCountlyAppKey;
 extern const NSString *ARCountlyHost;
 extern const NSString *ARTestFlightAppToken;

@@ -7,9 +7,7 @@
 //
 
 #import "ARAnalytics.h"
-#import "ARAnalytics+GeneratedHeader.h"
 #import "ARAnalyticalProvider.h"
-#import "ARAnalyticsProviders.h"
 
 static ARAnalytics *_sharedAnalytics;
 
@@ -32,78 +30,62 @@ static ARAnalytics *_sharedAnalytics;
 #pragma mark Analytics Setup
 
 + (void)setupWithAnalytics:(NSDictionary *)analyticsDictionary {
-#ifdef AR_TESTFLIGHT_EXISTS
     if (analyticsDictionary[ARTestFlightAppToken]) {
         [self setupTestFlightWithAppToken:analyticsDictionary[ARTestFlightAppToken]];
     }
-#endif
 
-#ifdef AR_FLURRY_EXISTS
     if (analyticsDictionary[ARFlurryAPIKey]) {
         [self setupFlurryWithAPIKey:analyticsDictionary[ARFlurryAPIKey]];
     }
-#endif
 
-#ifdef AR_GOOGLEANALYTICS_EXISTS
     if (analyticsDictionary[ARGoogleAnalyticsID]) {
         [self setupGoogleAnalyticsWithID:analyticsDictionary[ARGoogleAnalyticsID]];
     }
-#endif
 
-#ifdef AR_KISSMETRICS_EXISTS
     if (analyticsDictionary[ARKISSMetricsAPIKey]) {
         [self setupKISSMetricsWithAPIKey:analyticsDictionary[ARKISSMetricsAPIKey]];
     }
-#endif
 
-#ifdef AR_LOCALYTICS_EXISTS
     if (analyticsDictionary[ARLocalyticsAppKey]) {
         [self setupLocalyticsWithAppKey:analyticsDictionary[ARLocalyticsAppKey]];
     }
-#endif
 
-#ifdef AR_MIXPANEL_EXISTS
     if (analyticsDictionary[ARMixpanelToken]) {
         [self setupMixpanelWithToken:analyticsDictionary[ARMixpanelToken] andHost:analyticsDictionary[ARMixpanelHost]];
     }
-#endif
 
-#ifdef AR_COUNTLY_EXISTS
     if (analyticsDictionary[ARCountlyAppKey] && analyticsDictionary[ARCountlyHost]) {
         [self setupCountlyWithAppKey:analyticsDictionary[ARCountlyAppKey] andHost:analyticsDictionary[ARCountlyHost]];
     }
-#endif
 
-#ifdef AR_BUGSNAG_EXISTS
     if (analyticsDictionary[ARBugsnagAPIKey]) {
         [self setupBugsnagWithAPIKey:analyticsDictionary[ARBugsnagAPIKey]];
     }
-#endif
 
     // Crashlytics / Crittercism should stay at the bottom of this,
     // as they both need to register exceptions, and you'd only use one.
 
-#ifdef AR_CRASHLYTICS_EXISTS
     if (analyticsDictionary[ARCrashlyticsAPIKey]) {
         [self setupCrashlyticsWithAPIKey:analyticsDictionary[ARCrashlyticsAPIKey]];
     }
-#endif
 
-#ifdef AR_CRITTERCISM_EXISTS
     if (analyticsDictionary[ARCrittercismAppID]) {
         [self setupCrittercismWithAppID:analyticsDictionary[ARCrittercismAppID]];
     }
-#endif
 }
 
 + (void)setupTestFlightWithAppToken:(NSString *)token {
+#ifdef AR_TESTFLIGHT_EXISTS
     TestFlightProvider *provider = [[TestFlightProvider alloc] initWithIdentifier:token];
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+#endif
 }
 
 + (void)setupCrashlyticsWithAPIKey:(NSString *)key {
+#ifdef AR_CRASHLYTICS_EXISTS
     CrashlyticsProvider *provider = [[CrashlyticsProvider alloc] initWithIdentifier:key];
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+#endif
 }
 
 + (void)setupMixpanelWithToken:(NSString *)token {
@@ -111,42 +93,59 @@ static ARAnalytics *_sharedAnalytics;
 }
 
 + (void)setupMixpanelWithToken:(NSString *)token andHost:(NSString *)host {
+#ifdef AR_MIXPANEL_EXISTS
     MixpanelProvider *provider = [[MixpanelProvider alloc] initWithIdentifier:token andHost:host];
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+#endif
 }
 
 + (void)setupFlurryWithAPIKey:(NSString *)key {
+#ifdef AR_FLURRY_EXISTS
     FlurryProvider *provider = [[FlurryProvider alloc] initWithIdentifier:key];
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+#endif
 }
 
 + (void)setupGoogleAnalyticsWithID:(NSString *)id {
+#ifdef AR_GOOGLEANALYTICS_EXISTS
     GoogleProvider *provider = [[GoogleProvider alloc] initWithIdentifier:id];
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+#endif
 }
 
 + (void)setupLocalyticsWithAppKey:(NSString *)key {
+#ifdef AR_LOCALYTICS_EXISTS
     LocalyticsProvider *provider = [[LocalyticsProvider alloc] initWithIdentifier:key];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];}
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+#endif
+}
 
 + (void)setupKISSMetricsWithAPIKey:(NSString *)key {
+#ifdef AR_KISSMETRICS_EXISTS
     KISSMetricsProvider *provider = [[KISSMetricsProvider alloc] initWithIdentifier:key];
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+#endif
 }
 
 + (void)setupCrittercismWithAppID:(NSString *)appID {
+#ifdef AR_CRITTERCISM_EXISTS
     CrittercismProvider *provider = [[CrittercismProvider alloc] initWithIdentifier:appID];
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+#endif
 }
 
 + (void)setupCountlyWithAppKey:(NSString *)key andHost:(NSString *)host {
+#ifdef AR_COUNTLY_EXISTS
     CountlyProvider *provider = [[CountlyProvider alloc] initWithAppKey:key andHost:host];
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+#endif
 }
 
 + (void)setupBugsnagWithAPIKey:(NSString *)key {
+#ifdef AR_BUGSNAG_EXISTS
     BugsnagProvider *provider = [[BugsnagProvider alloc] initWithIdentifier:key];
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+#endif
 }
 
 #pragma mark -

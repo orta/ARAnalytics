@@ -15,15 +15,12 @@
     return [super init];
 }
 
-/// Set a per user property
 - (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {}
 - (void)setUserProperty:(NSString *)property toValue:(NSString *)value {}
 
-/// Submit user events
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties {}
 - (void)incrementUserProperty:(NSString *)counterName byInt:(NSNumber *)amount {}
 
-/// Monitor Navigation changes as page view
 - (void)monitorNavigationViewController:(UINavigationController *)controller {}
 
 - (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval {
