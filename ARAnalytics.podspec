@@ -20,11 +20,11 @@ Pod::Spec.new do |s|
   bugsnag        = { :spec_name => "Bugsnag",          :dependency => "Bugsnag",                  :import_file => "Bugsnag" }
   crashlytics    = { :spec_name => "Crashlytics" }
 
-  $all_analytics =  [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly]
+  $all_analytics = [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly]
 
   # bring in all files via the core package
   s.subspec "Core" do |ss|
-    ss.source_files =  ['*.{h,m}', 'Providers/*.{h,m}']
+    ss.source_files =  ['*.{h,m}', 'Providers/ARAnalyticalProvider.{h,m}']
   end
   
   # make specs for each analytics
@@ -36,6 +36,7 @@ Pod::Spec.new do |s|
 
       # Each subspec adds a compiler flag saying that the spec was included
       ss.prefix_header_contents = "#define AR_#{analytics_spec[:spec_name].upcase}_EXISTS 1"
+      ss.source_files = ['Providers/#{analytics_spec[:spec_name]}Provider.{h,m}']
 
       # If there's a podspec dependency include it
       if analytics_spec[:dependency] 

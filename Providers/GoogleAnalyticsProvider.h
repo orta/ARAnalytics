@@ -8,5 +8,5 @@
 
 #import "ARAnalyticalProvider.h"
 
-@interface GoogleProvider : ARAnalyticalProvider
+@interface GoogleAnalyticsProvider : ARAnalyticalProvider
 @end

@@ -12,7 +12,7 @@
 		603E56351698E63900FDC350 /* MixpanelProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 603E56341698E63900FDC350 /* MixpanelProvider.m */; };
 		603E56381698E64C00FDC350 /* LocalyticsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 603E56371698E64C00FDC350 /* LocalyticsProvider.m */; };
 		603E563B1698E65A00FDC350 /* FlurryProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 603E563A1698E65A00FDC350 /* FlurryProvider.m */; };
-		603E563E1698E66800FDC350 /* GoogleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 603E563D1698E66800FDC350 /* GoogleProvider.m */; };
+		603E563E1698E66800FDC350 /* GoogleAnalyticsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 603E563D1698E66800FDC350 /* GoogleAnalyticsProvider.m */; };
 		603E56411698E67700FDC350 /* KISSMetricsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 603E56401698E67700FDC350 /* KISSMetricsProvider.m */; };
 		603E56441698E68400FDC350 /* CrittercismProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 603E56431698E68400FDC350 /* CrittercismProvider.m */; };
 		604DAAB41698DBDF00FD89BB /* ARAnalyticalProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 604DAAB11698DBDF00FD89BB /* ARAnalyticalProvider.m */; };
@@ -46,8 +46,8 @@
 		603E56371698E64C00FDC350 /* LocalyticsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalyticsProvider.m; sourceTree = "<group>"; };
 		603E56391698E65A00FDC350 /* FlurryProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryProvider.h; sourceTree = "<group>"; };
 		603E563A1698E65A00FDC350 /* FlurryProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryProvider.m; sourceTree = "<group>"; };
-		603E563C1698E66800FDC350 /* GoogleProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleProvider.h; sourceTree = "<group>"; };
-		603E563D1698E66800FDC350 /* GoogleProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleProvider.m; sourceTree = "<group>"; };
+		603E563C1698E66800FDC350 /* GoogleAnalyticsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAnalyticsProvider.h; sourceTree = "<group>"; };
+		603E563D1698E66800FDC350 /* GoogleAnalyticsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAnalyticsProvider.m; sourceTree = "<group>"; };
 		603E563F1698E67700FDC350 /* KISSMetricsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KISSMetricsProvider.h; sourceTree = "<group>"; };
 		603E56401698E67700FDC350 /* KISSMetricsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISSMetricsProvider.m; sourceTree = "<group>"; };
 		603E56421698E68400FDC350 /* CrittercismProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismProvider.h; sourceTree = "<group>"; };
@@ -123,8 +123,8 @@
 				603E56371698E64C00FDC350 /* LocalyticsProvider.m */,
 				603E56391698E65A00FDC350 /* FlurryProvider.h */,
 				603E563A1698E65A00FDC350 /* FlurryProvider.m */,
-				603E563C1698E66800FDC350 /* GoogleProvider.h */,
-				603E563D1698E66800FDC350 /* GoogleProvider.m */,
+				603E563C1698E66800FDC350 /* GoogleAnalyticsProvider.h */,
+				603E563D1698E66800FDC350 /* GoogleAnalyticsProvider.m */,
 				603E563F1698E67700FDC350 /* KISSMetricsProvider.h */,
 				603E56401698E67700FDC350 /* KISSMetricsProvider.m */,
 				603E56421698E68400FDC350 /* CrittercismProvider.h */,
@@ -291,7 +291,7 @@
 				603E56351698E63900FDC350 /* MixpanelProvider.m in Sources */,
 				603E56381698E64C00FDC350 /* LocalyticsProvider.m in Sources */,
 				603E563B1698E65A00FDC350 /* FlurryProvider.m in Sources */,
-				603E563E1698E66800FDC350 /* GoogleProvider.m in Sources */,
+				603E563E1698E66800FDC350 /* GoogleAnalyticsProvider.m in Sources */,
 				603E56411698E67700FDC350 /* KISSMetricsProvider.m in Sources */,
 				603E56441698E68400FDC350 /* CrittercismProvider.m in Sources */,
 				60FB51E01699175D00040CC8 /* CountlyProvider.m in Sources */,

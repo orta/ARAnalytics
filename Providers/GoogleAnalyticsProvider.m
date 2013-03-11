@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Orta Therox. All rights reserved.
 //
 
-#import "GoogleProvider.h"
+#import "GoogleAnalyticsProvider.h"
 
-@implementation GoogleProvider
+@implementation GoogleAnalyticsProvider
 #ifdef AR_GOOGLEANALYTICS_EXISTS
 
 - (id)initWithIdentifier:(NSString *)identifier {

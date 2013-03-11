@@ -108,7 +108,7 @@ static ARAnalytics *_sharedAnalytics;
 
 + (void)setupGoogleAnalyticsWithID:(NSString *)id {
 #ifdef AR_GOOGLEANALYTICS_EXISTS
-    GoogleProvider *provider = [[GoogleProvider alloc] initWithIdentifier:id];
+    GoogleAnalyticsProvider *provider = [[GoogleAnalyticsProvider alloc] initWithIdentifier:id];
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
 #endif
 }
