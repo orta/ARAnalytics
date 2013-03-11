@@ -7,6 +7,7 @@
 //
 
 #import "KISSMetricsProvider.h"
+#import "KISSMetricsAPI.h"
 
 @implementation KISSMetricsProvider
 #ifdef AR_KISSMETRICS_EXISTS

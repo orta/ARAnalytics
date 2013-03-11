@@ -8,6 +8,7 @@
 
 #import "GoogleAnalyticsProvider.h"
 #import "ARAnalyticsProviders.h"
+#import "GAI.h"
 
 @implementation GoogleAnalyticsProvider
 #ifdef AR_GOOGLEANALYTICS_EXISTS

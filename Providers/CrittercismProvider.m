@@ -7,7 +7,7 @@
 //
 
 #import "CrittercismProvider.h"
-#import "ARAnalyticsProviders.h"
+#import "Crittercism.h"
 
 @implementation CrittercismProvider
 #ifdef AR_CRITTERCISM_EXISTS

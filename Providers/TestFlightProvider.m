@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TestFlightProvider.h"
+#import "TestFlight.h"
 
 @implementation TestFlightProvider
 #ifdef AR_TESTFLIGHT_EXISTS

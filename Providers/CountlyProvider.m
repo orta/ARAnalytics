@@ -7,7 +7,7 @@
 //
 
 #import "CountlyProvider.h"
-#import "ARAnalyticsProviders.h"
+#import "Countly.h"
 
 @implementation CountlyProvider
 

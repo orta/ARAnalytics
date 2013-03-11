@@ -7,6 +7,7 @@
 //
 
 #import "LocalyticsProvider.h"
+#import "LocalyticsSession.h"
 
 @implementation LocalyticsProvider
 #ifdef AR_LOCALYTICS_EXISTS

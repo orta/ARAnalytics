@@ -8,6 +8,7 @@
 
 #import "FlurryProvider.h"
 #import "ARAnalyticsProviders.h"
+#import "Flurry.h"
 
 @implementation FlurryProvider
 #ifdef AR_FLURRY_EXISTS

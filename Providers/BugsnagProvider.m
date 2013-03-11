@@ -7,6 +7,7 @@
 //
 
 #import "BugsnagProvider.h"
+#import "Bugsnag.h"
 
 @implementation BugsnagProvider
 #ifdef AR_BUGSNAP_EXISTS
