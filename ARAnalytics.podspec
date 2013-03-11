@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
       ss.dependency 'ARAnalytics/Core'
 
       # Each subspec adds a compiler flag saying that the spec was included
-      ss.prefix_header_contents = "#{analytics_spec[:spec_name].upcase}_EXISTS=1"
+      ss.prefix_header_contents = "#define AR_#{analytics_spec[:spec_name].upcase}_EXISTS 1"
 
       # If there's a podspec dependency include it
       if analytics_spec[:dependency] 
