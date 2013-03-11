@@ -8,6 +8,7 @@
 
 #import "ARAnalytics.h"
 #import "ARAnalyticalProvider.h"
+#import "ARAnalyticsProviders.h"
 
 static ARAnalytics *_sharedAnalytics;
 

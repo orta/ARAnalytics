@@ -7,6 +7,7 @@
 //
 
 #import "MixpanelProvider.h"
+#import "ARAnalyticsProviders.h"
 
 @implementation MixpanelProvider
 

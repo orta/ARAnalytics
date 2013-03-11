@@ -61,7 +61,7 @@ EXTERNAL SOURCES:
     :local: ../
 
 SPEC CHECKSUMS:
-  ARAnalytics: 79f95119271b62fbe43683cbe9868ed882ab0065
+  ARAnalytics: 1c2f0fc60c8010418b210c58c1dc3454f442446d
   Bugsnag: 37bfc2e6c7d1720a5aee367fbc0a657f8c8cc691
   Countly: 99c9734f8add2023ab954143ce8f9be6ff6b2e9e
   CrittercismSDK: eabc672ff1a310f19c4635b65a18e044e635a42a
