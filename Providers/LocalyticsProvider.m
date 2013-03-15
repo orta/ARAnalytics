@@ -35,9 +35,9 @@
     [[LocalyticsSession sharedLocalyticsSession] tagEvent:event attributes:properties];
 }
 
-- (void)didShowNewViewController:(UIViewController *)controller {
+- (void)didShowNewPageView:(NSString *)pageTitle {
     // This is for enterprise only...
-    [[LocalyticsSession sharedLocalyticsSession] tagScreen:controller.title];
+    [[LocalyticsSession sharedLocalyticsSession] tagScreen:pageTitle];
 }
 
 #endif

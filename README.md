@@ -42,7 +42,6 @@ Submit a console log that is stored online, for crash reporting this provides a 
 extern void ARLog (NSString *format, ...);
 ```
 
-
 Event Tracking
 ----
 ``` objc
@@ -64,10 +63,11 @@ User Properties
 + (void)incrementUserProperty:(NSString*)counterName byInt:(int)amount;
 ```
 
-Navigation Stack Tracking
+Page View Tracking
 ----
 ``` objc
 /// Monitor Navigation changes as page view
++ (void)pageView:(NSString *)pageTitle;
 + (void)monitorNavigationViewController:(UINavigationController *)controller;
 ```
 

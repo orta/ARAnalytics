@@ -1,5 +1,8 @@
 #ARAnalytics
 
+### Version 1.2.1
+* Track page views on modals/popovers (thanks @benjaminjackson)
+
 ## Version 1.2
 * Support for Bugsnap
 * Support for Cocoapods 0.17

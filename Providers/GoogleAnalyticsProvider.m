@@ -35,9 +35,9 @@
     [[[GAI sharedInstance] defaultTracker] trackEventWithCategory:nil withAction:event withLabel:nil withValue:nil];
 }
 
-- (void)didShowNewViewController:(UIViewController *)controller {
-    [self event:@"Screen view" withProperties:@{ @"screen": controller.title }];
-    [[[GAI sharedInstance] defaultTracker] trackView:controller.title];
+- (void)didShowNewPageView:(NSString *)pageTitle {
+    [self event:@"Screen view" withProperties:@{ @"screen": pageTitle }];
+    [[[GAI sharedInstance] defaultTracker] trackView:pageTitle];
 }
 
 - (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval {

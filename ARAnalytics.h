@@ -38,7 +38,7 @@
 
  <pre>
 
- [ARAnalytics setupWithAnalytics:@{
+ [ARAnalytics setupWithAnalytics: @{
     ARCrittercismAppID : @"KEY",
     ARKISSMetricsAPIKey : @"KEY",
     ARGoogleAnalyticsID : @"KEY"
@@ -55,7 +55,7 @@
 /// A global setup analytics API, keys are provided at the bottom of the documentation.
 + (void)setupWithAnalytics:(NSDictionary *)analyticsDictionary;
 
-/// Setup methods for each individual analytics type
+/// Setup methods for each individual analytics providers
 + (void)setupTestFlightWithAppToken:(NSString *)token;
 + (void)setupCrashlyticsWithAPIKey:(NSString *)key;
 + (void)setupMixpanelWithToken:(NSString *)token;
@@ -69,15 +69,16 @@
 + (void)setupBugsnagWithAPIKey:(NSString *)key;
 
 /// Set a per user property
-+ (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email;
++ (void)identifyUserwithID:(NSString *)identifier andEmailAddress:(NSString *)email;
 + (void)setUserProperty:(NSString *)property toValue:(NSString *)value;
++ (void)incrementUserProperty:(NSString *)counterName byInt:(int)amount;
 
-/// Submit user events to 
+/// Submit user events to providers
 + (void)event:(NSString *)event;
 + (void)event:(NSString *)event withProperties:(NSDictionary *)properties;
-+ (void)incrementUserProperty:(NSString*)counterName byInt:(int)amount;
 
 /// Monitor Navigation changes as page view
++ (void)pageView:(NSString *)pageTitle;
 + (void)monitorNavigationViewController:(UINavigationController *)controller;
 
 /// Let ARAnalytics deal with the timing of an event

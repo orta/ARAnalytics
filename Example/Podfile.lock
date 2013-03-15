@@ -64,7 +64,7 @@ SPEC CHECKSUMS:
   ARAnalytics: 1c2f0fc60c8010418b210c58c1dc3454f442446d
   Bugsnag: 37bfc2e6c7d1720a5aee367fbc0a657f8c8cc691
   Countly: 99c9734f8add2023ab954143ce8f9be6ff6b2e9e
-  CrittercismSDK: eabc672ff1a310f19c4635b65a18e044e635a42a
+  CrittercismSDK: bf4fcdfe31c6e57e9664cd4a42fa081f26c7ae2c
   FlurrySDK: 52245ae8c6fa31825dc74a6afb94b861da2435fa
   GoogleAnalytics-iOS-SDK: 11332eedcffb0c88b2dd9bff0ac1444e3a85e890
   KISSmetrics: 7b77e7dcc7174913fe555b6b2ff082c27a3e73a5
@@ -73,4 +73,4 @@ SPEC CHECKSUMS:
   Reachability: 1c8584c5f26fa776695efef95caaa50402c94cfb
   TestFlightSDK: aeec97fd81096753d53b942f030a443520a087f4
 
-COCOAPODS: 0.17.0.rc2
+COCOAPODS: 0.17.0.rc3

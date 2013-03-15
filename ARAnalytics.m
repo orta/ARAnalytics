@@ -107,9 +107,9 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 }
 
-+ (void)setupGoogleAnalyticsWithID:(NSString *)id {
++ (void)setupGoogleAnalyticsWithID:(NSString *)identifier {
 #ifdef AR_GOOGLEANALYTICS_EXISTS
-    GoogleAnalyticsProvider *provider = [[GoogleAnalyticsProvider alloc] initWithIdentifier:id];
+    GoogleAnalyticsProvider *provider = [[GoogleAnalyticsProvider alloc] initWithIdentifier:identifier];
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
 #endif
 }
@@ -153,9 +153,9 @@ static ARAnalytics *_sharedAnalytics;
 #pragma mark User Setup
 
 
-+ (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {
++ (void)identifyUserwithID:(NSString *)identifier andEmailAddress:(NSString *)email {
     [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
-        [provider identifyUserwithID:id andEmailAddress:email];
+        [provider identifyUserwithID:identifier andEmailAddress:email];
     }];
 }
 
@@ -193,14 +193,18 @@ static ARAnalytics *_sharedAnalytics;
 #pragma mark -
 #pragma mark Monitor Navigation Controller
 
++ (void)pageView:(NSString *)pageTitle {
+    [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
+        [provider didShowNewPageView:pageTitle];
+    }];
+}
+
 + (void)monitorNavigationViewController:(UINavigationController *)controller {
     controller.delegate = _sharedAnalytics;
 }
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
-        [provider didShowNewViewController:viewController];
-    }];
+    [self.class pageView:viewController.title];
 }
 
 #pragma mark -

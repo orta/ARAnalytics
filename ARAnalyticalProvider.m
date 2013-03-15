@@ -27,8 +27,8 @@
     [self event:event withProperties:@{ @"length": interval }];
 }
 
-- (void)didShowNewViewController:(UIViewController *)controller {
-    [self event:@"Screen view" withProperties:@{ @"screen": controller.title }];
+- (void)didShowNewPageView:(NSString *)pageTitle {
+    [self event:@"Screen view" withProperties:@{ @"screen": pageTitle }];
 }
 
 - (void)remoteLog:(NSString *)parsedString {}

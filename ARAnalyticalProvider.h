@@ -25,8 +25,8 @@
 /// Submit an event with a time interval
 - (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval;
 
-/// Pass a specific event for showing a new view controller
-- (void)didShowNewViewController:(UIViewController *)controller;
+/// Pass a specific event for showing a page
+- (void)didShowNewPageView:(NSString *)pageTitle;
 
 /// Submit a string to the provider's logging system
 - (void)remoteLog:(NSString *)parsedString;

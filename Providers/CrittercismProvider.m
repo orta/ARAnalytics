@@ -34,8 +34,8 @@
     [Crittercism leaveBreadcrumb:event];
 }
 
-- (void)didShowNewViewController:(UIViewController *)controller {
-    NSString *string = [NSString stringWithFormat:@"Opened %@", controller.title];
+- (void)didShowNewPageView:(NSString *)pageTitle {
+    NSString *string = [NSString stringWithFormat:@"Opened %@", pageTitle];
     [Crittercism leaveBreadcrumb: string];
 }
 
