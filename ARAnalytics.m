@@ -30,6 +30,8 @@ static ARAnalytics *_sharedAnalytics;
 #pragma mark -
 #pragma mark Analytics Setup
 
+// By using the constants at the bottom you can 
+
 + (void)setupWithAnalytics:(NSDictionary *)analyticsDictionary {
     if (analyticsDictionary[ARTestFlightAppToken]) {
         [self setupTestFlightWithAppToken:analyticsDictionary[ARTestFlightAppToken]];
@@ -52,6 +54,8 @@ static ARAnalytics *_sharedAnalytics;
     }
 
     if (analyticsDictionary[ARMixpanelToken]) {
+        // ARMixpanelHost is nil if you want the default provider. So we can make
+        // the presumption of it here.
         [self setupMixpanelWithToken:analyticsDictionary[ARMixpanelToken] andHost:analyticsDictionary[ARMixpanelHost]];
     }
 
@@ -194,6 +198,8 @@ static ARAnalytics *_sharedAnalytics;
 #pragma mark Monitor Navigation Controller
 
 + (void)pageView:(NSString *)pageTitle {
+    if (!pageTitle) return;
+    
     [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
         [provider didShowNewPageView:pageTitle];
     }];

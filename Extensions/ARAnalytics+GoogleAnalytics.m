@@ -20,7 +20,7 @@
 }
 
 + (void)sendUncaughtExceptionsToGoogleAnalytics {
-    [GAI sharedInstance].sendUncaughtExceptions = YES;
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
 }
 
 @end

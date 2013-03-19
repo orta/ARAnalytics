@@ -43,7 +43,7 @@
 - (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval {
     [self event:event withProperties:@{ @"length": interval }];
 
-    [[[GAI sharedInstance] defaultTracker] trackTimingWithCategory:nil withValue:interval.doubleValue withName:event withLabel:nil];
+    [[[GAI sharedInstance] defaultTracker] sendTimingWithCategory:nil withValue:interval.doubleValue withName:event withLabel:nil];
 }
 
 #endif

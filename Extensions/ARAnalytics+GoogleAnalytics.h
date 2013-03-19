@@ -16,7 +16,6 @@
 /// Send social events
 + (void)socialEvent:(NSString *)event onNetwork:(NSString *)network withAddress:(NSString *)address;
 
-
 /// It says what it does on the tin
 + (void)sendUncaughtExceptionsToGoogleAnalytics;
 
