@@ -3,7 +3,7 @@ ARAnalytics v1.2
 
 ARAnalytics is to iOS what [Analytical](https://github.com/jkrall/analytical) is to ruby, or [Analytics.js](http://segmentio.github.com/analytics.js/) is to javascript.
 
-ARAnalytics is a Cocoapods only library, which provides a sane API for tracking events and some simple user data. We currently support: TestFlight, Mixpanel, Localytics, Flurry, Google Analytics, KISSMetrics, Countly, Crittercism, Bugsnag and Crashlytics. It does this by using CocoaPods subspecs to let you decide which libraries you'd like to use.
+ARAnalytics is a Cocoapods only library, which provides a sane API for tracking events and some simple user data. We currently support: TestFlight, Mixpanel, Localytics, Flurry, Google Analytics, KISSMetrics, Countly, Crittercism, Bugsnag and Crashlytics. It does this by using CocoaPods 0.17's subspecs to let you decide which libraries you'd like to use. As this is currenty a pre-release version, you may have to do `gem install cocoapods --pre`.
 
 [Changelog](https://github.com/orta/ARAnalytics/blob/master/CHANGELOG.md)
 
