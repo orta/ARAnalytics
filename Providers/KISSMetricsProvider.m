@@ -19,10 +19,10 @@
     return [super init];
 }
 
-- (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {
-    [[KISSMetricsAPI sharedAPI] identify:id];
-    if (email) {
-        [[KISSMetricsAPI sharedAPI] alias:email withIdentity:id];
+- (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
+    if (email && userID) {
+    	[[KISSMetricsAPI sharedAPI] identify:userID];
+        [[KISSMetricsAPI sharedAPI] alias:email withIdentity:userID];
     }
 }
 

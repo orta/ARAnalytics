@@ -12,7 +12,7 @@
 - (id)initWithIdentifier:(NSString *)identifier;
 
 /// Set a per user property
-- (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email;
+- (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email;
 - (void)setUserProperty:(NSString *)property toValue:(NSString *)value;
 
 /// Submit user events

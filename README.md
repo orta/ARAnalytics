@@ -58,7 +58,7 @@ User Properties
 ----
 ``` objc
 /// Set a per user property
-+ (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email;
++ (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email;
 + (void)setUserProperty:(NSString *)property toValue:(NSString *)value;
 + (void)incrementUserProperty:(NSString*)counterName byInt:(int)amount;
 ```

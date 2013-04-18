@@ -33,8 +33,11 @@
     return [[UIDevice currentDevice] uniqueIdentifier];
 }
 
-- (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {
-    [TestFlight addCustomEnvironmentInformation:@"id" forKey:id];
+- (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
+    if (userID) {
+        [TestFlight addCustomEnvironmentInformation:@"id" forKey:userID];
+    }
+    
     if (email) {
         [TestFlight addCustomEnvironmentInformation:@"email" forKey:email];
     }

@@ -15,7 +15,7 @@
     return [super init];
 }
 
-- (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {}
+- (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {}
 - (void)setUserProperty:(NSString *)property toValue:(NSString *)value {}
 
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties {}

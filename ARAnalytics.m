@@ -157,9 +157,9 @@ static ARAnalytics *_sharedAnalytics;
 #pragma mark User Setup
 
 
-+ (void)identifyUserwithID:(NSString *)identifier andEmailAddress:(NSString *)email {
++ (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
     [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
-        [provider identifyUserwithID:identifier andEmailAddress:email];
+        [provider identifyUserWithID:userID andEmailAddress:email];
     }];
 }
 

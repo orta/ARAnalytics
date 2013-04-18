@@ -20,7 +20,7 @@
     return [super init];
 }
 
-- (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {
+- (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
     // Not allowed in GA
     // https://developers.google.com/analytics/devguides/collection/ios/v2/customdimsmets#pii
 
