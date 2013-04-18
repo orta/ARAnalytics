@@ -19,8 +19,11 @@
     return [super init];
 }
 
-- (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {
-    [Crashlytics setUserIdentifier:id];
+- (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
+    if (userID) {
+        [Crashlytics setUserIdentifier:userID];
+    }
+
     if (email) {
         [Crashlytics setUserName:email];
     }

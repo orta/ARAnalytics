@@ -30,8 +30,11 @@
 }
 
 #ifdef AR_MIXPANEL_EXISTS
-- (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {
-    [[[Mixpanel sharedInstance] people] identify:id];
+- (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
+    if (userID) {
+        [[[Mixpanel sharedInstance] people] identify:userID];
+    }
+
     if (email) {
         [[[Mixpanel sharedInstance] people] set:@"$email" to:email];
     }

@@ -19,8 +19,11 @@
     return [super init];
 }
 
-- (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {
-    [[LocalyticsSession sharedLocalyticsSession] setCustomerName:id];
+- (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
+    if (userID) {
+        [[LocalyticsSession sharedLocalyticsSession] setCustomerName:userID];
+    }
+    
     if (email) {
         [[LocalyticsSession sharedLocalyticsSession] setCustomerEmail:email];
     }

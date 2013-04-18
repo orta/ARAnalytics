@@ -19,9 +19,14 @@
     return [super init];
 }
 
-- (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {
-    [Bugsnag instance].userId = id;
-    [Bugsnag setUserAttribute:@"email" withValue:email];
+- (void)identifyUserwithID:(NSString *)userID andEmailAddress:(NSString *)email {
+	if (userID) {
+        [Bugsnag instance].userId = userID;
+    }
+
+    if (email) {
+    	[Bugsnag setUserAttribute:@"email" withValue:email];
+    }
 }
 
 - (void)setUserProperty:(NSString *)property toValue:(NSString *)value {

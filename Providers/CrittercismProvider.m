@@ -19,8 +19,11 @@
     return [super init];
 }
 
-- (void)identifyUserwithID:(NSString *)id andEmailAddress:(NSString *)email {
-    [Crittercism setUsername:id];
+- (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
+    if (userID) {
+        [Crittercism setUsername:userID];
+    }
+
     if (email) {
         [Crittercism setEmail:email];
     }
