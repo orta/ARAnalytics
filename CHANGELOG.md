@@ -1,5 +1,9 @@
 #ARAnalytics
 
+## Version 1.3
+* API Break for setting user details: `identifyUserwithID` -> `identifyUserWithID`
+* Helpshift support ( thanks @MigrantP )
+
 ### Version 1.2.1
 * Track page views on modals/popovers (thanks @benjaminjackson)
 
