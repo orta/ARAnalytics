@@ -67,6 +67,7 @@
 + (void)setupCrittercismWithAppID:(NSString *)appID;
 + (void)setupCountlyWithAppKey:(NSString *)key andHost:(NSString *)host;
 + (void)setupBugsnagWithAPIKey:(NSString *)key;
++ (void)setupHelpshiftWithAppID:(NSString *)appID domainName:(NSString *)domainName apiKey:(NSString *)apiKey;
 
 /// Set a per user property
 + (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email;
@@ -103,3 +104,6 @@ extern const NSString *ARKISSMetricsAPIKey;
 extern const NSString *ARBugsnagAPIKey;
 extern const NSString *ARCrittercismAppID;
 extern const NSString *ARGoogleAnalyticsID;
+extern const NSString *ARHelpshiftAppID;
+extern const NSString *ARHelpshiftDomainName;
+extern const NSString *ARHelpshiftAPIKey;
