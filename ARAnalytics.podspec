@@ -19,8 +19,9 @@ Pod::Spec.new do |s|
   countly        = { :spec_name => "Countly",          :dependency => "Countly",                  :import_file => "Countly",            :has_extension => false  }
   bugsnag        = { :spec_name => "Bugsnag",          :dependency => "Bugsnag",                  :import_file => "Bugsnag",            :has_extension => false  }
   crashlytics    = { :spec_name => "Crashlytics" }
+  helpshift      = { :spec_name => "Helpshift",        :dependency => "Helpshift",                :import_file => "Helpshift",          :has_extension => false  }
 
-  $all_analytics = [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly]
+  $all_analytics = [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly, helpshift]
 
   # bring in all files via the core package
   s.subspec "Core" do |ss|

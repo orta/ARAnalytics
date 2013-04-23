@@ -46,3 +46,7 @@
 #ifdef AR_COUNTLY_EXISTS
 #import "CountlyProvider.h"
 #endif
+
+#ifdef AR_HELPSHIFT_EXISTS
+#import "HelpshiftProvider.h"
+#endif

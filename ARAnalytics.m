@@ -66,6 +66,10 @@ static ARAnalytics *_sharedAnalytics;
     if (analyticsDictionary[ARBugsnagAPIKey]) {
         [self setupBugsnagWithAPIKey:analyticsDictionary[ARBugsnagAPIKey]];
     }
+    
+    if (analyticsDictionary[ARHelpshiftAppID] && analyticsDictionary[ARHelpshiftDomainName] && analyticsDictionary[ARHelpshiftAPIKey]) {
+        [self setupHelpshiftWithAppID:analyticsDictionary[ARHelpshiftAppID] domainName:analyticsDictionary[ARHelpshiftDomainName] apiKey:analyticsDictionary[ARHelpshiftAPIKey]];
+    }
 
     // Crashlytics / Crittercism should stay at the bottom of this,
     // as they both need to register exceptions, and you'd only use one.
@@ -150,6 +154,13 @@ static ARAnalytics *_sharedAnalytics;
 #ifdef AR_BUGSNAG_EXISTS
     BugsnagProvider *provider = [[BugsnagProvider alloc] initWithIdentifier:key];
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+#endif
+}
+
++ (void)setupHelpshiftWithAppID:(NSString *)appID domainName:(NSString *)domainName apiKey:(NSString *)apiKey {
+#ifdef AR_HELPSHIFT_EXISTS
+    HelpshiftProvider *provider = [[HelpshiftProvider alloc] initWithAppID:appID domainName:domainName apiKey:apiKey];
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];    
 #endif
 }
 
@@ -285,3 +296,6 @@ const NSString *ARLocalyticsAppKey = @"ARLocalytics";
 const NSString *ARKISSMetricsAPIKey = @"ARKISSMetrics";
 const NSString *ARCrittercismAppID = @"ARCrittercism";
 const NSString *ARGoogleAnalyticsID = @"ARGoogleAnalytics";
+const NSString *ARHelpshiftAppID = @"ARHelpshiftAppID";
+const NSString *ARHelpshiftDomainName = @"ARHelpshiftDomainName";
+const NSString *ARHelpshiftAPIKey = @"ARHelpshiftAPIKey";
