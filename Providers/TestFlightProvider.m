@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TestFlightProvider.h"
 #import "TestFlight.h"
+#import "BPXLUUIDHandler.h"
 
 @implementation TestFlightProvider
 #ifdef AR_TESTFLIGHT_EXISTS
@@ -30,7 +31,7 @@
         return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     }
 
-    return [[UIDevice currentDevice] uniqueIdentifier];
+    return [BPXLUUIDHandler UUID];
 }
 
 - (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {

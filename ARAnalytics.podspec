@@ -9,7 +9,8 @@ Pod::Spec.new do |s|
   s.description  =  'Using subspecs you can define your analytics provider with the same API.'
   s.platform     =  :ios
 
-  testflight_sdk = { :spec_name => "TestFlight",       :dependency => "TestFlightSDK",            :import_file => "TestFlight",         :has_extension => false  }
+  testflight_dependencies = ["TestFlightSDK", "BPXLUUIDHandler"]
+  testflight_sdk = { :spec_name => "TestFlight",       :dependency => testflight_dependencies,    :import_file => "TestFlight",         :has_extension => false  }
   mixpanel       = { :spec_name => "Mixpanel",         :dependency => "Mixpanel",                 :import_file => "Mixpanel",           :has_extension => false  }
   localytics     = { :spec_name => "Localytics",       :dependency => "Localytics",               :import_file => "LocalyticsSession",  :has_extension => false  }
   flurry         = { :spec_name => "Flurry",           :dependency => "FlurrySDK",                :import_file => "Flurry",             :has_extension => false  }
@@ -18,7 +19,7 @@ Pod::Spec.new do |s|
   crittercism    = { :spec_name => "Crittercism",      :dependency => "CrittercismSDK",           :import_file => "Crittercism",        :has_extension => false  }
   countly        = { :spec_name => "Countly",          :dependency => "Countly",                  :import_file => "Countly",            :has_extension => false  }
   bugsnag        = { :spec_name => "Bugsnag",          :dependency => "Bugsnag",                  :import_file => "Bugsnag",            :has_extension => false  }
-  crashlytics    = { :spec_name => "Crashlytics" }
+  crashlytics    = { :spec_name => "Crashlytics" }                                                
   helpshift      = { :spec_name => "Helpshift",        :dependency => "Helpshift",                :import_file => "Helpshift",          :has_extension => false  }
 
   $all_analytics = [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly, helpshift]
@@ -47,8 +48,15 @@ Pod::Spec.new do |s|
       ss.source_files = sources
 
       # If there's a podspec dependency include it
-      if analytics_spec[:dependency] 
-        ss.dependency analytics_spec[:dependency]
+      if analytics_spec[:dependency]
+        if analytics_spec[:dependency].is_a? Array
+          analytics_spec[:dependency].each do |dep|
+            ss.dependency dep
+          end
+
+        else
+          ss.dependency analytics_spec[:dependency]
+        end
       end
       
     end

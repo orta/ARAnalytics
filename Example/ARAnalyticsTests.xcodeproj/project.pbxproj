@@ -7,17 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		60238C8F16AB2238002DC7CD /* BugsnagProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 60238C8E16AB2238002DC7CD /* BugsnagProvider.m */; };
-		603E56321698E5F800FDC350 /* CrashlyticsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 603E56311698E5F800FDC350 /* CrashlyticsProvider.m */; };
-		603E56351698E63900FDC350 /* MixpanelProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 603E56341698E63900FDC350 /* MixpanelProvider.m */; };
-		603E56381698E64C00FDC350 /* LocalyticsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 603E56371698E64C00FDC350 /* LocalyticsProvider.m */; };
-		603E563B1698E65A00FDC350 /* FlurryProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 603E563A1698E65A00FDC350 /* FlurryProvider.m */; };
-		603E563E1698E66800FDC350 /* GoogleAnalyticsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 603E563D1698E66800FDC350 /* GoogleAnalyticsProvider.m */; };
-		603E56411698E67700FDC350 /* KISSMetricsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 603E56401698E67700FDC350 /* KISSMetricsProvider.m */; };
-		603E56441698E68400FDC350 /* CrittercismProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 603E56431698E68400FDC350 /* CrittercismProvider.m */; };
-		604DAAB41698DBDF00FD89BB /* ARAnalyticalProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 604DAAB11698DBDF00FD89BB /* ARAnalyticalProvider.m */; };
-		604DAAB51698DBDF00FD89BB /* ARAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 604DAAB31698DBDF00FD89BB /* ARAnalytics.m */; };
-		604DAAB91698DBF200FD89BB /* TestFlightProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 604DAAB81698DBF200FD89BB /* TestFlightProvider.m */; };
 		60A5E6111698DB4400686918 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A5E6101698DB4400686918 /* UIKit.framework */; };
 		60A5E6131698DB4400686918 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A5E6121698DB4400686918 /* Foundation.framework */; };
 		60A5E6151698DB4400686918 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A5E6141698DB4400686918 /* CoreGraphics.framework */; };
@@ -29,36 +18,12 @@
 		60A5E6271698DB4400686918 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60A5E6261698DB4400686918 /* Default-568h@2x.png */; };
 		60A5E62A1698DB4400686918 /* ORViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60A5E6291698DB4400686918 /* ORViewController.m */; };
 		60A5E62D1698DB4400686918 /* ORViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60A5E62B1698DB4400686918 /* ORViewController.xib */; };
-		60B5FEC316F4966B00FE9D1A /* ARAnalytics+GoogleAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 60B5FEC216F4966B00FE9D1A /* ARAnalytics+GoogleAnalytics.m */; };
 		60FB51DD1699032C00040CC8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60FB51DC1699032C00040CC8 /* Crashlytics.framework */; };
-		60FB51E01699175D00040CC8 /* CountlyProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 60FB51DF1699175D00040CC8 /* CountlyProvider.m */; };
 		DFFCF8961C764452B2961923 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B5DDBD004C4BBD8C1C404F /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3BEA9738AF214F97833B1B11 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-		60238C8D16AB2238002DC7CD /* BugsnagProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BugsnagProvider.h; sourceTree = "<group>"; };
-		60238C8E16AB2238002DC7CD /* BugsnagProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BugsnagProvider.m; sourceTree = "<group>"; };
-		603E56301698E5F800FDC350 /* CrashlyticsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrashlyticsProvider.h; sourceTree = "<group>"; };
-		603E56311698E5F800FDC350 /* CrashlyticsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrashlyticsProvider.m; sourceTree = "<group>"; };
-		603E56331698E63900FDC350 /* MixpanelProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixpanelProvider.h; sourceTree = "<group>"; };
-		603E56341698E63900FDC350 /* MixpanelProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixpanelProvider.m; sourceTree = "<group>"; };
-		603E56361698E64C00FDC350 /* LocalyticsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalyticsProvider.h; sourceTree = "<group>"; };
-		603E56371698E64C00FDC350 /* LocalyticsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalyticsProvider.m; sourceTree = "<group>"; };
-		603E56391698E65A00FDC350 /* FlurryProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryProvider.h; sourceTree = "<group>"; };
-		603E563A1698E65A00FDC350 /* FlurryProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryProvider.m; sourceTree = "<group>"; };
-		603E563C1698E66800FDC350 /* GoogleAnalyticsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAnalyticsProvider.h; sourceTree = "<group>"; };
-		603E563D1698E66800FDC350 /* GoogleAnalyticsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAnalyticsProvider.m; sourceTree = "<group>"; };
-		603E563F1698E67700FDC350 /* KISSMetricsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KISSMetricsProvider.h; sourceTree = "<group>"; };
-		603E56401698E67700FDC350 /* KISSMetricsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KISSMetricsProvider.m; sourceTree = "<group>"; };
-		603E56421698E68400FDC350 /* CrittercismProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismProvider.h; sourceTree = "<group>"; };
-		603E56431698E68400FDC350 /* CrittercismProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrittercismProvider.m; sourceTree = "<group>"; };
-		604DAAB01698DBDF00FD89BB /* ARAnalyticalProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARAnalyticalProvider.h; path = ../ARAnalyticalProvider.h; sourceTree = "<group>"; };
-		604DAAB11698DBDF00FD89BB /* ARAnalyticalProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARAnalyticalProvider.m; path = ../ARAnalyticalProvider.m; sourceTree = "<group>"; };
-		604DAAB21698DBDF00FD89BB /* ARAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARAnalytics.h; path = ../ARAnalytics.h; sourceTree = "<group>"; };
-		604DAAB31698DBDF00FD89BB /* ARAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARAnalytics.m; path = ../ARAnalytics.m; sourceTree = "<group>"; };
-		604DAAB71698DBF200FD89BB /* TestFlightProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestFlightProvider.h; path = ../Providers/TestFlightProvider.h; sourceTree = "<group>"; };
-		604DAAB81698DBF200FD89BB /* TestFlightProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestFlightProvider.m; path = ../Providers/TestFlightProvider.m; sourceTree = "<group>"; };
 		60A5E60D1698DB4400686918 /* ARAnalyticsTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARAnalyticsTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60A5E6101698DB4400686918 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		60A5E6121698DB4400686918 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -75,12 +40,7 @@
 		60A5E6281698DB4400686918 /* ORViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ORViewController.h; sourceTree = "<group>"; };
 		60A5E6291698DB4400686918 /* ORViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ORViewController.m; sourceTree = "<group>"; };
 		60A5E62C1698DB4400686918 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ORViewController.xib; sourceTree = "<group>"; };
-		60B5FEC116F4966B00FE9D1A /* ARAnalytics+GoogleAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARAnalytics+GoogleAnalytics.h"; sourceTree = "<group>"; };
-		60B5FEC216F4966B00FE9D1A /* ARAnalytics+GoogleAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ARAnalytics+GoogleAnalytics.m"; sourceTree = "<group>"; };
-		60FB51DB1698F13B00040CC8 /* ARAnalyticsProviders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARAnalyticsProviders.h; sourceTree = "<group>"; };
 		60FB51DC1699032C00040CC8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		60FB51DE1699175D00040CC8 /* CountlyProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountlyProvider.h; sourceTree = "<group>"; };
-		60FB51DF1699175D00040CC8 /* CountlyProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountlyProvider.m; sourceTree = "<group>"; };
 		B7B5DDBD004C4BBD8C1C404F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -103,43 +63,8 @@
 		604DAAAF1698DBCB00FD89BB /* ARAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				60B5FEC016F4962D00FE9D1A /* ARAnalytics Extensions */,
-				604DAAB61698DBE300FD89BB /* Providers */,
-				604DAAB01698DBDF00FD89BB /* ARAnalyticalProvider.h */,
-				604DAAB11698DBDF00FD89BB /* ARAnalyticalProvider.m */,
-				604DAAB21698DBDF00FD89BB /* ARAnalytics.h */,
-				604DAAB31698DBDF00FD89BB /* ARAnalytics.m */,
 			);
 			name = ARAnalytics;
-			sourceTree = "<group>";
-		};
-		604DAAB61698DBE300FD89BB /* Providers */ = {
-			isa = PBXGroup;
-			children = (
-				60FB51DB1698F13B00040CC8 /* ARAnalyticsProviders.h */,
-				604DAAB71698DBF200FD89BB /* TestFlightProvider.h */,
-				604DAAB81698DBF200FD89BB /* TestFlightProvider.m */,
-				603E56301698E5F800FDC350 /* CrashlyticsProvider.h */,
-				603E56311698E5F800FDC350 /* CrashlyticsProvider.m */,
-				603E56331698E63900FDC350 /* MixpanelProvider.h */,
-				603E56341698E63900FDC350 /* MixpanelProvider.m */,
-				603E56361698E64C00FDC350 /* LocalyticsProvider.h */,
-				603E56371698E64C00FDC350 /* LocalyticsProvider.m */,
-				603E56391698E65A00FDC350 /* FlurryProvider.h */,
-				603E563A1698E65A00FDC350 /* FlurryProvider.m */,
-				603E563C1698E66800FDC350 /* GoogleAnalyticsProvider.h */,
-				603E563D1698E66800FDC350 /* GoogleAnalyticsProvider.m */,
-				603E563F1698E67700FDC350 /* KISSMetricsProvider.h */,
-				603E56401698E67700FDC350 /* KISSMetricsProvider.m */,
-				603E56421698E68400FDC350 /* CrittercismProvider.h */,
-				603E56431698E68400FDC350 /* CrittercismProvider.m */,
-				60FB51DE1699175D00040CC8 /* CountlyProvider.h */,
-				60FB51DF1699175D00040CC8 /* CountlyProvider.m */,
-				60238C8D16AB2238002DC7CD /* BugsnagProvider.h */,
-				60238C8E16AB2238002DC7CD /* BugsnagProvider.m */,
-			);
-			name = Providers;
-			path = ../Providers;
 			sourceTree = "<group>";
 		};
 		60A5E6041698DB4400686918 = {
@@ -198,16 +123,6 @@
 				60A5E6261698DB4400686918 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		60B5FEC016F4962D00FE9D1A /* ARAnalytics Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				60B5FEC116F4966B00FE9D1A /* ARAnalytics+GoogleAnalytics.h */,
-				60B5FEC216F4966B00FE9D1A /* ARAnalytics+GoogleAnalytics.m */,
-			);
-			name = "ARAnalytics Extensions";
-			path = ../Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,19 +213,6 @@
 				60A5E61D1698DB4400686918 /* main.m in Sources */,
 				60A5E6211698DB4400686918 /* ORAppDelegate.m in Sources */,
 				60A5E62A1698DB4400686918 /* ORViewController.m in Sources */,
-				604DAAB41698DBDF00FD89BB /* ARAnalyticalProvider.m in Sources */,
-				604DAAB51698DBDF00FD89BB /* ARAnalytics.m in Sources */,
-				604DAAB91698DBF200FD89BB /* TestFlightProvider.m in Sources */,
-				603E56321698E5F800FDC350 /* CrashlyticsProvider.m in Sources */,
-				603E56351698E63900FDC350 /* MixpanelProvider.m in Sources */,
-				603E56381698E64C00FDC350 /* LocalyticsProvider.m in Sources */,
-				603E563B1698E65A00FDC350 /* FlurryProvider.m in Sources */,
-				603E563E1698E66800FDC350 /* GoogleAnalyticsProvider.m in Sources */,
-				603E56411698E67700FDC350 /* KISSMetricsProvider.m in Sources */,
-				603E56441698E68400FDC350 /* CrittercismProvider.m in Sources */,
-				60FB51E01699175D00040CC8 /* CountlyProvider.m in Sources */,
-				60238C8F16AB2238002DC7CD /* BugsnagProvider.m in Sources */,
-				60B5FEC316F4966B00FE9D1A /* ARAnalytics+GoogleAnalytics.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +240,7 @@
 /* Begin XCBuildConfiguration section */
 		60A5E62E1698DB4400686918 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3BEA9738AF214F97833B1B11 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
