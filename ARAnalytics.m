@@ -167,6 +167,11 @@ static ARAnalytics *_sharedAnalytics;
 #pragma mark -
 #pragma mark User Setup
 
+// deprecated;
++ (void)identifyUserwithID:(NSString *)userID andEmailAddress:(NSString *)email {
+    [self identifyUserWithID:userID andEmailAddress:email];
+}
+
 
 + (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
     [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {

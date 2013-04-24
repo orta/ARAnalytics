@@ -1,8 +1,9 @@
 #ARAnalytics
 
 ## Version 1.3
-* API Break for setting user details: `identifyUserwithID` -> `identifyUserWithID`
+* Deprecated typo'd method for setting user details: `identifyUserwithID` -> `identifyUserWithID` - Thanks @ursachec
 * Helpshift support ( thanks @MigrantP )
+* Remove reference to UUID by moving to Black Pixels UUID ( thanks again @MigrantP )
 
 ### Version 1.2.1
 * Track page views on modals/popovers (thanks @benjaminjackson)

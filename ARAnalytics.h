@@ -70,7 +70,9 @@
 + (void)setupHelpshiftWithAppID:(NSString *)appID domainName:(NSString *)domainName apiKey:(NSString *)apiKey;
 
 /// Set a per user property
++ (void)identifyUserwithID:(NSString *)userID andEmailAddress:(NSString *)email __attribute__((deprecated));
 + (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email;
+
 + (void)setUserProperty:(NSString *)property toValue:(NSString *)value;
 + (void)incrementUserProperty:(NSString *)counterName byInt:(int)amount;
 
