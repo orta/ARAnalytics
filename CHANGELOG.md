@@ -1,5 +1,8 @@
 #ARAnalytics
 
+## Version 1.3.1
+* Support the new Mixpanel 2.0 API
+
 ## Version 1.3
 * Deprecated typo'd method for setting user details: `identifyUserwithID` -> `identifyUserWithID` - Thanks @ursachec
 * Helpshift support ( thanks @MigrantP )
