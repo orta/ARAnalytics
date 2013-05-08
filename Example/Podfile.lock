@@ -1,5 +1,5 @@
 PODS:
-  - ARAnalytics (1.2.1):
+  - ARAnalytics (1.3):
     - ARAnalytics/Bugsnag
     - ARAnalytics/Core
     - ARAnalytics/Countly
@@ -12,37 +12,37 @@ PODS:
     - ARAnalytics/Localytics
     - ARAnalytics/Mixpanel
     - ARAnalytics/TestFlight
-  - ARAnalytics/Bugsnag (1.2.1):
+  - ARAnalytics/Bugsnag (1.3):
     - ARAnalytics/Core
     - Bugsnag
-  - ARAnalytics/Core (1.2.1)
-  - ARAnalytics/Countly (1.2.1):
+  - ARAnalytics/Core (1.3)
+  - ARAnalytics/Countly (1.3):
     - ARAnalytics/Core
     - Countly
-  - ARAnalytics/Crashlytics (1.2.1):
+  - ARAnalytics/Crashlytics (1.3):
     - ARAnalytics/Core
-  - ARAnalytics/Crittercism (1.2.1):
+  - ARAnalytics/Crittercism (1.3):
     - ARAnalytics/Core
     - CrittercismSDK
-  - ARAnalytics/Flurry (1.2.1):
+  - ARAnalytics/Flurry (1.3):
     - ARAnalytics/Core
     - FlurrySDK
-  - ARAnalytics/GoogleAnalytics (1.2.1):
+  - ARAnalytics/GoogleAnalytics (1.3):
     - ARAnalytics/Core
     - GoogleAnalytics-iOS-SDK
-  - ARAnalytics/Helpshift (1.2.1):
+  - ARAnalytics/Helpshift (1.3):
     - ARAnalytics/Core
     - Helpshift
-  - ARAnalytics/KISSmetrics (1.2.1):
+  - ARAnalytics/KISSmetrics (1.3):
     - ARAnalytics/Core
     - KISSmetrics
-  - ARAnalytics/Localytics (1.2.1):
+  - ARAnalytics/Localytics (1.3):
     - ARAnalytics/Core
     - Localytics
-  - ARAnalytics/Mixpanel (1.2.1):
+  - ARAnalytics/Mixpanel (1.3):
     - ARAnalytics/Core
     - Mixpanel
-  - ARAnalytics/TestFlight (1.2.1):
+  - ARAnalytics/TestFlight (1.3):
     - ARAnalytics/Core
     - BPXLUUIDHandler
     - TestFlightSDK
@@ -51,14 +51,14 @@ PODS:
     - Reachability (~> 3.1)
   - Countly (1.0.0)
   - CrittercismSDK (3.5.1)
-  - FlurrySDK (4.1.0)
+  - FlurrySDK (4.2.1)
   - GoogleAnalytics-iOS-SDK (2.0beta4)
-  - Helpshift (2.0.0)
+  - Helpshift (2.3.0)
   - KISSmetrics (1.0.0)
   - Localytics (0.0.1)
-  - Mixpanel (1.1.1)
+  - Mixpanel (2.0.0)
   - Reachability (3.1.0)
-  - TestFlightSDK (1.3.0.beta2)
+  - TestFlightSDK (1.3.0.beta4)
 
 DEPENDENCIES:
   - ARAnalytics (from `../`)
@@ -68,18 +68,18 @@ EXTERNAL SOURCES:
     :local: ../
 
 SPEC CHECKSUMS:
-  ARAnalytics: 170668c605b0d8caa884208e8a618935d1b4ead5
+  ARAnalytics: 455c6e25838ba62517896034559f9fc653d0899a
   BPXLUUIDHandler: 227f5e8f11ed1bc443f73b43fedf1bf24b47be8d
   Bugsnag: 91acf0c2f0f5c0a7b729869385597a29488d27ee
   Countly: 99c9734f8add2023ab954143ce8f9be6ff6b2e9e
   CrittercismSDK: 1cd30b0bb1448494da29539a1cf490475288d1d1
-  FlurrySDK: 52245ae8c6fa31825dc74a6afb94b861da2435fa
+  FlurrySDK: ed65c2389c6028244cb0e57f31fe370cc1b17f22
   GoogleAnalytics-iOS-SDK: ae8e58e771b6dec84c0047154cc0e550a15e6f54
-  Helpshift: 0606c4ebe8945bd34756714c58078aab4708f84e
+  Helpshift: 5b1e2111bfda11fd301dcca58d495447a2aac6c7
   KISSmetrics: 7b77e7dcc7174913fe555b6b2ff082c27a3e73a5
   Localytics: 28e0d464dc098bbe41916010d26077275a104046
-  Mixpanel: 388e78ffe1c4878b65a86127b5dab70be36479ad
+  Mixpanel: cb3487c7268801d71d4210e828b7797bff2911ca
   Reachability: ba94ecd4eaa037be3d0588b38956672588530c5b
-  TestFlightSDK: 185b9bfd710bfb85ce5f57bcb89651330081090f
+  TestFlightSDK: 868307d9f94d3e978df579d15cc0a978ffe09958
 
-COCOAPODS: 0.17.1
+COCOAPODS: 0.19.1

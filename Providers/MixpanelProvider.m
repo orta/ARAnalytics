@@ -32,7 +32,7 @@
 #ifdef AR_MIXPANEL_EXISTS
 - (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
     if (userID) {
-        [[[Mixpanel sharedInstance] people] identify:userID];
+        [[Mixpanel sharedInstance] identify:userID];
     }
 
     if (email) {

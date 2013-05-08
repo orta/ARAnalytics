@@ -53,7 +53,7 @@
 }
 
 - (void)remoteLog:(NSString *)parsedString {
-    TFLog(parsedString);
+    TFLog(@"%@", parsedString);
 }
 
 #endif
