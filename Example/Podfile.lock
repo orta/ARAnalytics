@@ -1,5 +1,5 @@
 PODS:
-  - ARAnalytics (1.3):
+  - ARAnalytics (1.3.1):
     - ARAnalytics/Bugsnag
     - ARAnalytics/Core
     - ARAnalytics/Countly
@@ -12,37 +12,37 @@ PODS:
     - ARAnalytics/Localytics
     - ARAnalytics/Mixpanel
     - ARAnalytics/TestFlight
-  - ARAnalytics/Bugsnag (1.3):
+  - ARAnalytics/Bugsnag (1.3.1):
     - ARAnalytics/Core
     - Bugsnag
-  - ARAnalytics/Core (1.3)
-  - ARAnalytics/Countly (1.3):
+  - ARAnalytics/Core (1.3.1)
+  - ARAnalytics/Countly (1.3.1):
     - ARAnalytics/Core
     - Countly
-  - ARAnalytics/Crashlytics (1.3):
+  - ARAnalytics/Crashlytics (1.3.1):
     - ARAnalytics/Core
-  - ARAnalytics/Crittercism (1.3):
+  - ARAnalytics/Crittercism (1.3.1):
     - ARAnalytics/Core
     - CrittercismSDK
-  - ARAnalytics/Flurry (1.3):
+  - ARAnalytics/Flurry (1.3.1):
     - ARAnalytics/Core
     - FlurrySDK
-  - ARAnalytics/GoogleAnalytics (1.3):
+  - ARAnalytics/GoogleAnalytics (1.3.1):
     - ARAnalytics/Core
     - GoogleAnalytics-iOS-SDK
-  - ARAnalytics/Helpshift (1.3):
+  - ARAnalytics/Helpshift (1.3.1):
     - ARAnalytics/Core
     - Helpshift
-  - ARAnalytics/KISSmetrics (1.3):
+  - ARAnalytics/KISSmetrics (1.3.1):
     - ARAnalytics/Core
     - KISSmetrics
-  - ARAnalytics/Localytics (1.3):
+  - ARAnalytics/Localytics (1.3.1):
     - ARAnalytics/Core
     - Localytics
-  - ARAnalytics/Mixpanel (1.3):
+  - ARAnalytics/Mixpanel (1.3.1):
     - ARAnalytics/Core
     - Mixpanel
-  - ARAnalytics/TestFlight (1.3):
+  - ARAnalytics/TestFlight (1.3.1):
     - ARAnalytics/Core
     - BPXLUUIDHandler
     - TestFlightSDK
@@ -65,10 +65,10 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   ARAnalytics:
-    :local: ../
+    :path: ../
 
 SPEC CHECKSUMS:
-  ARAnalytics: 455c6e25838ba62517896034559f9fc653d0899a
+  ARAnalytics: 07b2f11d766b4e68576db8ea8e04ae0cb88c6cb0
   BPXLUUIDHandler: 227f5e8f11ed1bc443f73b43fedf1bf24b47be8d
   Bugsnag: 91acf0c2f0f5c0a7b729869385597a29488d27ee
   Countly: 99c9734f8add2023ab954143ce8f9be6ff6b2e9e
@@ -78,7 +78,7 @@ SPEC CHECKSUMS:
   Helpshift: 5b1e2111bfda11fd301dcca58d495447a2aac6c7
   KISSmetrics: 7b77e7dcc7174913fe555b6b2ff082c27a3e73a5
   Localytics: 28e0d464dc098bbe41916010d26077275a104046
-  Mixpanel: cb3487c7268801d71d4210e828b7797bff2911ca
+  Mixpanel: d456c27f7520e22784a15d0bcd9d5c287080b0cd
   Reachability: ba94ecd4eaa037be3d0588b38956672588530c5b
   TestFlightSDK: 868307d9f94d3e978df579d15cc0a978ffe09958
 

@@ -1,3 +1,10 @@
 platform :ios, '6.0'
 
-pod 'ARAnalytics', :path => "../"
+target :ARAnalyticsBootstrapMac do
+  pod 'ARAnalytics/KISSmetricsMac', :path => "../"
+end
+
+target :ARAnalyticsBootstrapiOS do
+  pod 'ARAnalytics/KISSmetrics', :path => "../"
+end
+
