@@ -1,0 +1,28 @@
+PODS:
+  - ARAnalytics/Core (2.0)
+  - ARAnalytics/KISSmetricsMac (2.0):
+    - ARAnalytics/Core
+    - KISSmetrics
+  - ARAnalytics/TestFlight (2.0):
+    - ARAnalytics/Core
+    - BPXLUUIDHandler
+    - TestFlightSDK
+  - BPXLUUIDHandler (0.0.1)
+  - KISSmetrics (1.0.0)
+  - TestFlightSDK (1.3.0.beta4)
+
+DEPENDENCIES:
+  - ARAnalytics/KISSmetricsMac (from `../`)
+  - ARAnalytics/TestFlight (from `../`)
+
+EXTERNAL SOURCES:
+  ARAnalytics:
+    :path: ../
+
+SPEC CHECKSUMS:
+  ARAnalytics: 57b30987f713440ee123ea3d5acecf49c3a51be3
+  BPXLUUIDHandler: 367dfb3ecaca9889790d7d3ca23778263a2a1146
+  KISSmetrics: d94abaa0e4fc09205cc5022669bb83d90d6c1b89
+  TestFlightSDK: ffa1edbf4c21560e90055ac9e9e04e76282f329a
+
+COCOAPODS: 0.19.1

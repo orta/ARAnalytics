@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ARAnalyticalProvider.h"
-                
+
 @implementation ARAnalyticalProvider
 
 - (id)initWithIdentifier:(NSString *)identifier {

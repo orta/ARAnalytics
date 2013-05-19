@@ -222,11 +222,15 @@ static ARAnalytics *_sharedAnalytics;
 }
 
 + (void)monitorNavigationViewController:(UINavigationController *)controller {
+#if TARGET_OS_IPHONE
     controller.delegate = _sharedAnalytics;
+#endif
 }
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+#if TARGET_OS_IPHONE
     [self.class pageView:viewController.title];
+#endif
 }
 
 #pragma mark -

@@ -50,6 +50,16 @@
  href="https://github.com/orta/ARAnalytics">ARAnalytics Readme</a>.
  */
 
+// For OS X support we need to mock up UIVIewController/UINavigationViewController
+
+#if !TARGET_OS_IPHONE
+@interface UIViewController : NSObject @end
+@implementation UIViewController @end
+@interface UINavigationController : NSObject @end
+@implementation UINavigationController @end
+@protocol UINavigationControllerDelegate <NSObject> @end
+#endif
+
 @interface ARAnalytics : NSObject <UINavigationControllerDelegate>
 
 /// A global setup analytics API, keys are provided at the bottom of the documentation.
@@ -82,7 +92,9 @@
 
 /// Monitor Navigation changes as page view
 + (void)pageView:(NSString *)pageTitle;
+#if TARGET_OS_IPHONE
 + (void)monitorNavigationViewController:(UINavigationController *)controller;
+#endif
 
 /// Let ARAnalytics deal with the timing of an event
 + (void)startTimingEvent:(NSString *)event;

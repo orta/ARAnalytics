@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Art.sy. All rights reserved.
 //
 
+@class UINavigationController, UIViewController;
 @interface ARAnalyticalProvider : NSObject
 
 /// Init
