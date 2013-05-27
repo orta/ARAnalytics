@@ -1,5 +1,8 @@
 #ARAnalytics
 
+## Version 1.5
+* Mac support for KISSmetrics, Countly and Mixpanel.
+
 ## Version 1.3.1
 * Support the new Mixpanel 2.0 API
 

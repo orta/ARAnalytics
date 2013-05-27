@@ -54,9 +54,7 @@
 
 #if !TARGET_OS_IPHONE
 @interface UIViewController : NSObject @end
-@implementation UIViewController @end
 @interface UINavigationController : NSObject @end
-@implementation UINavigationController @end
 @protocol UINavigationControllerDelegate <NSObject> @end
 #endif
 

@@ -17,6 +17,11 @@ static ARAnalytics *_sharedAnalytics;
 @property (strong) NSSet *providers;
 @end
 
+#if !TARGET_OS_IPHONE
+@implementation UIViewController @end
+@implementation UINavigationController @end
+#endif
+
 @implementation ARAnalytics
 
 + (void) initialize {
