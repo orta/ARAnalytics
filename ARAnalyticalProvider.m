@@ -23,14 +23,10 @@
 
 - (void)error:(NSError *)error withMessage:(NSString *)message {
 	NSAssert(error, @"NSError instance has to be supplied");
-	if (message == nil) {
-		if(error.localizedFailureReason)
-		{
-			message = error.localizedFailureReason;
-		} else {
-			message = @"Error";
-		}
+	if(!message){
+	   message = (error.localizedFailureReason) ? error.localizedFailureReason : @"Error";
 	}
+	
 	NSString *empty = @"(empty)";
 	[self event:message withProperties:@{
 		@"failureReason" : (error.localizedFailureReason) ? error.localizedFailureReason : empty,
