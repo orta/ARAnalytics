@@ -21,16 +21,13 @@
 - (void)incrementUserProperty:(NSString *)counterName byInt:(NSNumber *)amount;
 
 /// Submit errors
-+ (void)error:(NSError *)error withMessage:(NSString *)message;
+- (void)error:(NSError *)error withMessage:(NSString *)message;
 
 /// Monitor Navigation changes as page view
 - (void)monitorNavigationViewController:(UINavigationController *)controller;
 
 /// Submit an event with a time interval
 - (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval;
-
-/// Log error
-- (void)logError:(NSError **)error;
 
 /// Pass a specific event for showing a page
 - (void)didShowNewPageView:(NSString *)pageTitle;
