@@ -20,6 +20,9 @@
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties;
 - (void)incrementUserProperty:(NSString *)counterName byInt:(NSNumber *)amount;
 
+/// Submit errors
+- (void)error:(NSError *)error withMessage:(NSString *)message;
+
 /// Monitor Navigation changes as page view
 - (void)monitorNavigationViewController:(UINavigationController *)controller;
 

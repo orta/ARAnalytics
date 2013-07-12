@@ -88,6 +88,10 @@
 + (void)event:(NSString *)event;
 + (void)event:(NSString *)event withProperties:(NSDictionary *)properties;
 
+/// Submit errors to providers
++ (void)error:(NSError *)error;
++ (void)error:(NSError *)error withMessage:(NSString *)message;
+
 /// Monitor Navigation changes as page view
 + (void)pageView:(NSString *)pageTitle;
 #if TARGET_OS_IPHONE
