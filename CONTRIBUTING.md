@@ -38,6 +38,7 @@ Each analytical provider is a subclass of ARAnalyticalProvider, they can optiona
 - (void)setUserProperty:(NSString *)property toValue:(NSString *)value;
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties;
 - (void)incrementUserProperty:(NSString *)counterName byInt:(NSNumber *)amount;
+- (void)error:(NSError *)error withMessage:(NSString *)message;
 - (void)didShowNewViewController:(UIViewController *)controller;
 - (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval;
 - (void)remoteLog:(NSString *)parsedString;
