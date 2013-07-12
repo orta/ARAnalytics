@@ -1,5 +1,8 @@
 #ARAnalytics
 
+## Version 1.5.1
+* Support for sending NSErrors ( thanks @jk )
+
 ## Version 1.5
 * Mac support for KISSmetrics, Countly and Mixpanel.
 
