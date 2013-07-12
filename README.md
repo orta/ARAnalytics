@@ -55,6 +55,14 @@ Event Tracking
 + (void)finishTimingEvent:(NSString *)event;
 ```
 
+Error Tracking
+----
+``` objc
+/// Submit errors to providers
++ (void)error:(NSError *)error;
++ (void)error:(NSError *)error withMessage:(NSString *)message;
+```
+
 User Properties
 ----
 ``` objc
