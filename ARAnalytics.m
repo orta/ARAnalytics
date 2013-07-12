@@ -216,6 +216,19 @@ static ARAnalytics *_sharedAnalytics;
 }
 
 #pragma mark -
+#pragma mark Errors
+
++ (void)error:(NSError *)error {
+	[self error:error withMessage:nil];
+}
+
++ (void)error:(NSError *)error withMessage:(NSString *)message {
+	[_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
+		[provider error:error withMessage:message];
+	}];
+}
+
+#pragma mark -
 #pragma mark Monitor Navigation Controller
 
 + (void)pageView:(NSString *)pageTitle {

@@ -34,6 +34,12 @@
     [Flurry logEvent:event withParameters:properties];
 }
 
+- (void)error:(NSError *)error withMessage:(NSString *)message {
+	NSAssert(error, @"NSError instance has to be supplied");
+	
+	[Flurry logError:error.localizedFailureReason message:message error:error];
+}
+
 - (void)didShowNewPageView:(NSString *)pageTitle {
     [self event:@"Screen view" withProperties:@{ @"screen": pageTitle }];
     [Flurry logPageView];
