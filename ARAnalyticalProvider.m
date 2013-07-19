@@ -32,7 +32,7 @@
 		@"failureReason" : (error.localizedFailureReason) ? error.localizedFailureReason : empty,
 		@"description" : (error.localizedDescription) ? error.localizedDescription : empty,
 		@"recoverySuggestion" : (error.localizedRecoverySuggestion) ? error.localizedRecoverySuggestion : empty,
-		@"recoveryOptions" : ([error.localizedRecoveryOptions isKindOf:NSArray.class]) ? [error.localizedRecoveryOptions componentsJoinedByString:@", "] : empty
+		@"recoveryOptions" : ([error.localizedRecoveryOptions isKindOfClass:NSArray.class]) ? [error.localizedRecoveryOptions componentsJoinedByString:@", "] : empty
 	}];
 }
 
