@@ -1,6 +1,7 @@
 #crashlytics
 "Crashlytics.h"
 
+#XCode stuff
 build/*
 *.pbxuser
 !default.pbxuser
@@ -22,9 +23,4 @@ profile
 #pod stuff
 Podfile.lock
 Bootstrap/Pods/*
-
-#Jenkins
-jenkinsStuff/build/*
-test-reports/*
-jenkinsStuff/test-reports/*
 
