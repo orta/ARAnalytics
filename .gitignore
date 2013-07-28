@@ -21,7 +21,7 @@ profile
 
 #pod stuff
 Podfile.lock
-Pods/*
+Bootstrap/Pods/*
 
 #Jenkins
 jenkinsStuff/build/*
