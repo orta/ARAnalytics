@@ -20,12 +20,14 @@ Pod::Spec.new do |s|
   bugsnag        = { :spec_name => "Bugsnag",          :dependency => "Bugsnag",                  :import_file => "Bugsnag" }
   helpshift      = { :spec_name => "Helpshift",        :dependency => "Helpshift",                :import_file => "Helpshift" }
   crashlytics    = { :spec_name => "Crashlytics" }
+  tapstream      = { :spec_name => "Tapstream",        :dependency => "Tapstream" }
+
   
   kissmetrics_mac = { :spec_name => "KISSmetricsOSX",  :dependency => "KISSmetrics",            :import_file => "KISSMetricsAPI", :osx => true,  :provider => "KISSmetrics" }
   countly_mac     = { :spec_name => "CountlyOSX",      :dependency => "Countly",                :import_file => "Countly" ,       :osx => true,  :provider => "Countly" }
   mixpanel_mac    = { :spec_name => "MixpanelOSX",     :dependency => "Mixpanel-OSX-Community", :import_file => "Mixpanel",       :osx => true,  :provider => "Mixpanel"}
   
-  $all_analytics = [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly, helpshift, kissmetrics_mac, countly_mac, mixpanel_mac]
+  $all_analytics = [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly, helpshift, kissmetrics_mac, countly_mac, mixpanel_mac, tapstream]
 
   # To make the pod spec API cleaner, I've changed the subspecs to be "iOS/KISSmetrics"
   s.subspec "Core" do |ss|
