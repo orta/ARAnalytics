@@ -9,21 +9,21 @@ Pod::Spec.new do |s|
   s.description  =  'Using subspecs you can define your analytics provider with the same API on iOS and OS X.'
 
   testflight_dependencies = ["TestFlightSDK", "BPXLUUIDHandler"]
-  testflight_sdk = { :spec_name => "TestFlight",       :dependency => testflight_dependencies,    :import_file => "TestFlight" }
-  mixpanel       = { :spec_name => "Mixpanel",         :dependency => "Mixpanel",                 :import_file => "Mixpanel" }
-  localytics     = { :spec_name => "Localytics",       :dependency => "Localytics",               :import_file => "LocalyticsSession" }
-  flurry         = { :spec_name => "Flurry",           :dependency => "FlurrySDK",                :import_file => "Flurry" }
-  google         = { :spec_name => "GoogleAnalytics",  :dependency => "GoogleAnalytics-iOS-SDK",  :import_file => "GAI", :has_extension => true }
-  kissmetrics    = { :spec_name => "KISSmetrics",      :dependency => "KISSmetrics",              :import_file => "KISSMetricsAPI" }
-  crittercism    = { :spec_name => "Crittercism",      :dependency => "CrittercismSDK",           :import_file => "Crittercism" }
-  countly        = { :spec_name => "Countly",          :dependency => "Countly",                  :import_file => "Countly" }
-  bugsnag        = { :spec_name => "Bugsnag",          :dependency => "Bugsnag",                  :import_file => "Bugsnag" }
-  helpshift      = { :spec_name => "Helpshift",        :dependency => "Helpshift",                :import_file => "Helpshift" }
+  testflight_sdk = { :spec_name => "TestFlight",       :dependency => testflight_dependencies,    }
+  mixpanel       = { :spec_name => "Mixpanel",         :dependency => "Mixpanel",                 }
+  localytics     = { :spec_name => "Localytics",       :dependency => "Localytics",               }
+  flurry         = { :spec_name => "Flurry",           :dependency => "FlurrySDK",                }
+  google         = { :spec_name => "GoogleAnalytics",  :dependency => "GoogleAnalytics-iOS-SDK", :has_extension => true }
+  kissmetrics    = { :spec_name => "KISSmetrics",      :dependency => "KISSmetrics",              }
+  crittercism    = { :spec_name => "Crittercism",      :dependency => "CrittercismSDK",           }
+  countly        = { :spec_name => "Countly",          :dependency => "Countly",                  }
+  bugsnag        = { :spec_name => "Bugsnag",          :dependency => "Bugsnag",                  }
+  helpshift      = { :spec_name => "Helpshift",        :dependency => "Helpshift",                }
   crashlytics    = { :spec_name => "Crashlytics" }
   
-  kissmetrics_mac = { :spec_name => "KISSmetricsOSX",  :dependency => "KISSmetrics",            :import_file => "KISSMetricsAPI", :osx => true,  :provider => "KISSmetrics" }
-  countly_mac     = { :spec_name => "CountlyOSX",      :dependency => "Countly",                :import_file => "Countly" ,       :osx => true,  :provider => "Countly" }
-  mixpanel_mac    = { :spec_name => "MixpanelOSX",     :dependency => "Mixpanel-OSX-Community", :import_file => "Mixpanel",       :osx => true,  :provider => "Mixpanel"}
+  kissmetrics_mac = { :spec_name => "KISSmetricsOSX",  :dependency => "KISSmetrics",            :osx => true,  :provider => "KISSmetrics" }
+  countly_mac     = { :spec_name => "CountlyOSX",      :dependency => "Countly",                :osx => true,  :provider => "Countly" }
+  mixpanel_mac    = { :spec_name => "MixpanelOSX",     :dependency => "Mixpanel-OSX-Community", :osx => true,  :provider => "Mixpanel"}
   
   $all_analytics = [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly, helpshift, kissmetrics_mac, countly_mac, mixpanel_mac]
 

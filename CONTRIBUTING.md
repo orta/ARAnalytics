@@ -16,9 +16,9 @@ I take Pull Requests. I'm English, so I'm polite and I'll happily discuss any pr
 When you call `pod "ARAnalytics/TestFlight"` you're only specifically asking for a pod subspec in the [ARAnalytics podspec](https://github.com/orta/ARAnalytics/blob/master/ARAnalytics.podspec). In the Spec you can see the ruby hashes for each of the current analytical engines `ARAnalytics` supports. Adding a new one involves creating a new reference in the spec.
 
 ``` ruby
-  testflight_sdk = { spec_name: "TestFlight",       dependency: "TestFlightSDK",            import_file: "TestFlight" }
-  mixpanel       = { spec_name: "Mixpanel",         dependency: "Mixpanel",                 import_file: "Mixpanel" }
-  localytics     = { spec_name: "Localytics",       dependency: "Localytics",               import_file: "LocalyticsSession" }
+  testflight_sdk = { spec_name: "TestFlight",       dependency: "TestFlightSDK" }
+  mixpanel       = { spec_name: "Mixpanel",         dependency: "Mixpanel" }
+  localytics     = { spec_name: "Localytics",       dependency: "Localytics" }
 ```
 
 And then adding that to the array of specs below. This will add `#define AR_#{spec_name.upcase}_EXISTS 1` to the `ARAnalytics+GeneratedHeader.h` as well as a `#import "#{import_file}"` to the file. The dependency is the Cocoapods pod that it corresponds to.
@@ -34,6 +34,7 @@ Each analytical provider is a subclass of ARAnalyticalProvider, they can optiona
 
 ```objc
 - (id)initWithIdentifier:(NSString *)identifier;
+
 - (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email;
 - (void)setUserProperty:(NSString *)property toValue:(NSString *)value;
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties;
@@ -43,6 +44,8 @@ Each analytical provider is a subclass of ARAnalyticalProvider, they can optiona
 - (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval;
 - (void)remoteLog:(NSString *)parsedString;
 ```
+
+As providers have different APIs its the job of the provider subclass to try and map the ARAnalytics API to the provider's API. Some APIs require some trickery, others are more obvious and some are forbidden. It'd be up to you as an API provider subclass-er to figure it out. You can always create a partial pull request for discussion.
 
 ###Testing the library
 
