@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         =  'ARAnalytics'
-  s.version      =  '1.5'
+  s.version      =  '1.6'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.summary      =  'Use multiple major analytics platforms with one clean API.'
   s.homepage     =  'http://github.com/orta/ARAnalytics'
@@ -20,12 +20,14 @@ Pod::Spec.new do |s|
   bugsnag        = { :spec_name => "Bugsnag",          :dependency => "Bugsnag",                  }
   helpshift      = { :spec_name => "Helpshift",        :dependency => "Helpshift",                }
   crashlytics    = { :spec_name => "Crashlytics" }
+  tapstream      = { :spec_name => "Tapstream",        :dependency => "Tapstream" }
+
   
   kissmetrics_mac = { :spec_name => "KISSmetricsOSX",  :dependency => "KISSmetrics",            :osx => true,  :provider => "KISSmetrics" }
   countly_mac     = { :spec_name => "CountlyOSX",      :dependency => "Countly",                :osx => true,  :provider => "Countly" }
   mixpanel_mac    = { :spec_name => "MixpanelOSX",     :dependency => "Mixpanel-OSX-Community", :osx => true,  :provider => "Mixpanel"}
   
-  $all_analytics = [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly, helpshift, kissmetrics_mac, countly_mac, mixpanel_mac]
+  $all_analytics = [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly, helpshift, kissmetrics_mac, countly_mac, mixpanel_mac, tapstream]
 
   # To make the pod spec API cleaner, I've changed the subspecs to be "iOS/KISSmetrics"
   s.subspec "Core" do |ss|

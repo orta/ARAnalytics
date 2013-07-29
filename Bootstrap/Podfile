@@ -20,5 +20,6 @@ target :ARAnalyticsBootstrapiOS do
   pod "ARAnalytics/Bugsnag"         
   pod "ARAnalytics/Helpshift"       
   pod "ARAnalytics/Crashlytics"
+  pod "ARAnalytics/Tapstream", :path => "../"
 end
 

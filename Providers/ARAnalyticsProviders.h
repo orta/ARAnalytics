@@ -50,3 +50,7 @@
 #ifdef AR_HELPSHIFT_EXISTS
 #import "HelpshiftProvider.h"
 #endif
+
+#ifdef AR_TAPSTREAM_EXISTS
+#import "TapstreamProvider.h"
+#endif

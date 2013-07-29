@@ -75,6 +75,10 @@ static ARAnalytics *_sharedAnalytics;
     if (analyticsDictionary[ARHelpshiftAppID] && analyticsDictionary[ARHelpshiftDomainName] && analyticsDictionary[ARHelpshiftAPIKey]) {
         [self setupHelpshiftWithAppID:analyticsDictionary[ARHelpshiftAppID] domainName:analyticsDictionary[ARHelpshiftDomainName] apiKey:analyticsDictionary[ARHelpshiftAPIKey]];
     }
+    
+    if (analyticsDictionary[ARTapstreamAccountName] && analyticsDictionary[ARTapstreamDeveloperSecret]) {
+        [self setupTapstreamWithAccountName:analyticsDictionary[ARTapstreamAccountName] developerSecret:analyticsDictionary[ARTapstreamDeveloperSecret] config:analyticsDictionary[ARTapstreamConfig]];
+    }
 
     // Crashlytics / Crittercism should stay at the bottom of this,
     // as they both need to register exceptions, and you'd only use one.
@@ -166,6 +170,20 @@ static ARAnalytics *_sharedAnalytics;
 #ifdef AR_HELPSHIFT_EXISTS
     HelpshiftProvider *provider = [[HelpshiftProvider alloc] initWithAppID:appID domainName:domainName apiKey:apiKey];
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];    
+#endif
+}
+
++ (void)setupTapstreamWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret {
+#ifdef AR_TAPSTREAM_EXISTS
+    TapstreamProvider *provider = [[TapstreamProvider alloc] initWithAccountName:accountName developerSecret:developerSecret];
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+#endif
+}
+
++ (void)setupTapstreamWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret config:(TSConfig *)config {
+#ifdef AR_TAPSTREAM_EXISTS
+    TapstreamProvider *provider = [[TapstreamProvider alloc] initWithAccountName:accountName developerSecret:developerSecret config:config];
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
 #endif
 }
 
@@ -326,3 +344,6 @@ const NSString *ARGoogleAnalyticsID = @"ARGoogleAnalytics";
 const NSString *ARHelpshiftAppID = @"ARHelpshiftAppID";
 const NSString *ARHelpshiftDomainName = @"ARHelpshiftDomainName";
 const NSString *ARHelpshiftAPIKey = @"ARHelpshiftAPIKey";
+const NSString *ARTapstreamAccountName = @"ARTapstreamAccountName";
+const NSString *ARTapstreamDeveloperSecret = @"ARTapstreamDeveloperSecret";
+const NSString *ARTapstreamConfig = @"ARTapstreamConfig";

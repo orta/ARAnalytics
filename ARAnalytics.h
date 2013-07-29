@@ -58,6 +58,8 @@
 @protocol UINavigationControllerDelegate <NSObject> @end
 #endif
 
+@class TSConfig;
+
 @interface ARAnalytics : NSObject <UINavigationControllerDelegate>
 
 /// A global setup analytics API, keys are provided at the bottom of the documentation.
@@ -76,6 +78,8 @@
 + (void)setupCountlyWithAppKey:(NSString *)key andHost:(NSString *)host;
 + (void)setupBugsnagWithAPIKey:(NSString *)key;
 + (void)setupHelpshiftWithAppID:(NSString *)appID domainName:(NSString *)domainName apiKey:(NSString *)apiKey;
++ (void)setupTapstreamWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret;
++ (void)setupTapstreamWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret config:(TSConfig *)config;
 
 /// Set a per user property
 + (void)identifyUserwithID:(NSString *)userID andEmailAddress:(NSString *)email __attribute__((deprecated));
@@ -123,3 +127,7 @@ extern const NSString *ARGoogleAnalyticsID;
 extern const NSString *ARHelpshiftAppID;
 extern const NSString *ARHelpshiftDomainName;
 extern const NSString *ARHelpshiftAPIKey;
+extern const NSString *ARTapstreamAccountName;
+extern const NSString *ARTapstreamDeveloperSecret;
+extern const NSString *ARTapstreamConfig;
+
