@@ -11,7 +11,11 @@
 
 @implementation TapstreamProvider
 
--(id)initWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret config:(TSConfig *)config{
+- (id)initWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret {
+    [self initWithAccountName:accountName developerSecret:developerSecret config:nil];
+}
+
+- (id)initWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret config:(TSConfig *)config {
     NSAssert([TSTapstream class], @"Tapstream is not included");
     if (!config) {
         config = [TSConfig configWithDefaults];
@@ -22,7 +26,7 @@
 }
 
 
--(void)event:(NSString *)event withProperties:(NSDictionary *)properties{
+- (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
     
     TSTapstream *tracker = [TSTapstream instance];
     

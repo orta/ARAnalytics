@@ -173,6 +173,13 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 }
 
++ (void)setupTapstreamWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret {
+#ifdef AR_TAPSTREAM_EXISTS
+    TapstreamProvider *provider = [[TapstreamProvider alloc] initWithAccountName:accountName developerSecret:developerSecret];
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+#endif
+}
+
 + (void)setupTapstreamWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret config:(TSConfig *)config {
 #ifdef AR_TAPSTREAM_EXISTS
     TapstreamProvider *provider = [[TapstreamProvider alloc] initWithAccountName:accountName developerSecret:developerSecret config:config];

@@ -78,6 +78,7 @@
 + (void)setupCountlyWithAppKey:(NSString *)key andHost:(NSString *)host;
 + (void)setupBugsnagWithAPIKey:(NSString *)key;
 + (void)setupHelpshiftWithAppID:(NSString *)appID domainName:(NSString *)domainName apiKey:(NSString *)apiKey;
++ (void)setupTapstreamWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret;
 + (void)setupTapstreamWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret config:(TSConfig *)config;
 
 /// Set a per user property
