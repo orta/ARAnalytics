@@ -7,8 +7,8 @@ Pod::Spec.new do |s|
   s.authors      =  { 'orta' => 'orta.therox@gmail.com' }
   s.source       =  { :git => 'https://github.com/orta/ARAnalytics.git', :tag => s.version.to_s }
 
-  s.description  =  'Using subspecs you can define your analytics provider with the same API on iOS and OS X.'
-  s.summary      =  "ARAnalytics is a Cocoapods only library, which provides a sane API for tracking events and some simple user data. It currently supports for iOS: TestFlight, Mixpanel, Localytics, Flurry, Google Analytics, KISSMetrics, Tapstream, Countly, Crittercism, Bugsnag, Helpshift and Crashlytics. And for OS X: KISSmetrics, Countly and Mixpanel. It does this by using subspecs from CocoaPods 0.17+ to let you decide which libraries you'd like to use."
+  s.summary      =  'Using subspecs you can define your analytics provider with the same API on iOS and OS X.'
+  s.description  =  "ARAnalytics is a Cocoapods only library, which provides a sane API for tracking events and some simple user data. It currently supports for iOS: TestFlight, Mixpanel, Localytics, Flurry, Google Analytics, KISSMetrics, Tapstream, Countly, Crittercism, Bugsnag, Helpshift and Crashlytics. And for OS X: KISSmetrics, Countly and Mixpanel. It does this by using subspecs from CocoaPods 0.17+ to let you decide which libraries you'd like to use."
 
   testflight_sdk = { :spec_name => "TestFlight",       :dependency => ["TestFlightSDK", "BPXLUUIDHandler"] }
   mixpanel       = { :spec_name => "Mixpanel",         :dependency => "Mixpanel" }
@@ -24,10 +24,10 @@ Pod::Spec.new do |s|
   crashlytics    = { :spec_name => "Crashlytics" }
   
   kissmetrics_mac = { :spec_name => "KISSmetricsOSX",  :dependency => "KISSmetrics",            :osx => true,  :provider => "KISSmetrics" }
-  countly_mac     = { :spec_name => "CountlyOSX",      :dependency => "Countly",                :osx => true,  :provider => "Countly" }
+#  countly_mac     = { :spec_name => "CountlyOSX",      :dependency => "Countly",                :osx => true,  :provider => "Countly" }
   mixpanel_mac    = { :spec_name => "MixpanelOSX",     :dependency => "Mixpanel-OSX-Community", :osx => true,  :provider => "Mixpanel"}
   
-  $all_analytics = [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly, helpshift, kissmetrics_mac, countly_mac, mixpanel_mac, tapstream]
+  $all_analytics = [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly, helpshift, kissmetrics_mac, mixpanel_mac, tapstream]
 
   # To make the pod spec API cleaner, I've changed the subspecs to be "iOS/KISSmetrics"
 
@@ -60,10 +60,13 @@ Pod::Spec.new do |s|
       if analytics_spec[:osx]
         ss.osx.source_files = sources
         ss.dependency 'ARAnalytics/CoreMac'
+        ss.platforms = [:osx]
         
       else   
         ss.ios.source_files = sources
         ss.dependency 'ARAnalytics/CoreIOS'
+        ss.platforms = [:ios]
+        
       end
 
       # If there's a podspec dependency include it
