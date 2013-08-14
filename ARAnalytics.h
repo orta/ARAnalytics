@@ -80,6 +80,7 @@
 + (void)setupHelpshiftWithAppID:(NSString *)appID domainName:(NSString *)domainName apiKey:(NSString *)apiKey;
 + (void)setupTapstreamWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret;
 + (void)setupTapstreamWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret config:(TSConfig *)config;
++ (void)setupNewRelicWithAppToken:(NSString *)token;
 
 /// Set a per user property
 + (void)identifyUserwithID:(NSString *)userID andEmailAddress:(NSString *)email __attribute__((deprecated));
@@ -130,4 +131,5 @@ extern const NSString *ARHelpshiftAPIKey;
 extern const NSString *ARTapstreamAccountName;
 extern const NSString *ARTapstreamDeveloperSecret;
 extern const NSString *ARTapstreamConfig;
+extern const NSString *ARNewRelicAppToken;
 
