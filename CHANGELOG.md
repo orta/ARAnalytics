@@ -1,5 +1,8 @@
 #ARAnalytics
 
+## Version 1.7
+* Support for NewRelic ( thanks @Daniel1of1 )
+
 ## Version 1.6
 * Support for Tapstream ( thanks @Daniel1of1 )
 
