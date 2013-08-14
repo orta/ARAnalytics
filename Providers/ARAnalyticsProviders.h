@@ -54,3 +54,7 @@
 #ifdef AR_TAPSTREAM_EXISTS
 #import "TapstreamProvider.h"
 #endif
+
+#ifdef AR_NEWRELIC_EXISTS
+#import "NewRelicProvider.h"
+#endif
