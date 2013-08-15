@@ -81,6 +81,7 @@
 + (void)setupTapstreamWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret;
 + (void)setupTapstreamWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret config:(TSConfig *)config;
 + (void)setupNewRelicWithAppToken:(NSString *)token;
++ (void)setupAmplitudeWithAPIKey:(NSString *)key;
 
 /// Set a per user property
 + (void)identifyUserwithID:(NSString *)userID andEmailAddress:(NSString *)email __attribute__((deprecated));
@@ -132,4 +133,5 @@ extern const NSString *ARTapstreamAccountName;
 extern const NSString *ARTapstreamDeveloperSecret;
 extern const NSString *ARTapstreamConfig;
 extern const NSString *ARNewRelicAppToken;
+extern const NSString *ARAmplitudeAPIKey;
 

@@ -58,3 +58,7 @@
 #ifdef AR_NEWRELIC_EXISTS
 #import "NewRelicProvider.h"
 #endif
+
+#ifdef AR_AMPLITUDE_EXISTS
+#import "AmplitudeProvider.h"
+#endif
