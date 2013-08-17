@@ -1,5 +1,9 @@
 #ARAnalytics
 
+
+## Version 1.8
+* Support for Amplitude ( thanks @Daniel1of1 )
+
 ## Version 1.7
 * Support for NewRelic ( thanks @Daniel1of1 )
 

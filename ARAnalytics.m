@@ -83,6 +83,11 @@ static ARAnalytics *_sharedAnalytics;
     if (analyticsDictionary[ARNewRelicAppToken]) {
         [self setupNewRelicWithAppToken:analyticsDictionary[ARNewRelicAppToken]];
     }
+    
+    if (analyticsDictionary[ARAmplitudeAPIKey]) {
+        [self setupNewRelicWithAppToken:analyticsDictionary[ARNewRelicAppToken]];
+    }
+
 
     // Crashlytics / Crittercism should stay at the bottom of this,
     // as they both need to register exceptions, and you'd only use one.
@@ -197,6 +202,14 @@ static ARAnalytics *_sharedAnalytics;
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
 #endif
 }
+
++ (void)setupAmplitudeWithAPIKey:(NSString *)key {
+#ifdef AR_AMPLITUDE_EXISTS
+     AmplitudeProvider *provider = [[AmplitudeProvider alloc] initWithIdentifier:key];
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+#endif
+}
+
 
 #pragma mark -
 #pragma mark User Setup
@@ -359,3 +372,4 @@ const NSString *ARTapstreamAccountName = @"ARTapstreamAccountName";
 const NSString *ARTapstreamDeveloperSecret = @"ARTapstreamDeveloperSecret";
 const NSString *ARTapstreamConfig = @"ARTapstreamConfig";
 const NSString *ARNewRelicAppToken = @"ARNewRelicAppToken";
+const NSString *ARAmplitudeAPIKey = @"ARAmplitudeAPIKey";
