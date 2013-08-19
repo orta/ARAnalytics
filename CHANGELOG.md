@@ -1,5 +1,8 @@
 #ARAnalytics
 
+## Version 1.9
+* Support for HockeyApp ( thanks @Daniel1of1 )
+* Workaround for subspecs that create build confilicts ( thanks @Daniel1of1 )
 
 ## Version 1.8
 * Support for Amplitude ( thanks @Daniel1of1 )
