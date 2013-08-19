@@ -88,6 +88,11 @@ static ARAnalytics *_sharedAnalytics;
         [self setupNewRelicWithAppToken:analyticsDictionary[ARNewRelicAppToken]];
     }
 
+    if (analyticsDictionary[ARHockeyAppBetaID]) {
+        [self setupHockeyAppWithBetaID:analyticsDictionary[ARHockeyAppBetaID] liveID:analyticsDictionary[ARHockeyAppLiveID]];
+    }
+
+
 
     // Crashlytics / Crittercism should stay at the bottom of this,
     // as they both need to register exceptions, and you'd only use one.
@@ -206,6 +211,19 @@ static ARAnalytics *_sharedAnalytics;
 + (void)setupAmplitudeWithAPIKey:(NSString *)key {
 #ifdef AR_AMPLITUDE_EXISTS
      AmplitudeProvider *provider = [[AmplitudeProvider alloc] initWithIdentifier:key];
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+#endif
+}
+
++ (void)setupHockeyAppWithBetaID:(NSString *)betaID {
+#ifdef AR_HOCKEYAPP_EXISTS
+    [self setupHockeyAppWithBetaID:betaID liveID:nil];
+#endif
+}
+
++ (void)setupHockeyAppWithBetaID:(NSString *)betaID liveID:(NSString *)liveID {
+#ifdef AR_HOCKEYAPP_EXISTS
+    HockeyAppProvider *provider = [[HockeyAppProvider alloc] initWithBetaIdentifier:betaID liveIdentifier:liveID];
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
 #endif
 }
@@ -373,3 +391,5 @@ const NSString *ARTapstreamDeveloperSecret = @"ARTapstreamDeveloperSecret";
 const NSString *ARTapstreamConfig = @"ARTapstreamConfig";
 const NSString *ARNewRelicAppToken = @"ARNewRelicAppToken";
 const NSString *ARAmplitudeAPIKey = @"ARAmplitudeAPIKey";
+const NSString *ARHockeyAppLiveID = @"ARHockeyAppLiveID";
+const NSString *ARHockeyAppBetaID = @"ARHockeyAppBetaID";
