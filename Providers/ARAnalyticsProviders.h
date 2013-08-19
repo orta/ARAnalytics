@@ -62,3 +62,7 @@
 #ifdef AR_AMPLITUDE_EXISTS
 #import "AmplitudeProvider.h"
 #endif
+
+#ifdef AR_HOCKEYAPP_EXISTS
+#import "HockeyAppProvider.h"
+#endif
