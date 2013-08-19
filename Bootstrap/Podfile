@@ -9,19 +9,6 @@ end
 
 target :ARAnalyticsBootstrapiOS do
   platform :ios, '6.0'
-  pod 'ARAnalytics/TestFlight', :path => "../"     
-  pod "ARAnalytics/Mixpanel"        
-  pod "ARAnalytics/Localytics"      
-  pod "ARAnalytics/Flurry"          
-  pod "ARAnalytics/GoogleAnalytics" 
-  pod "ARAnalytics/KISSmetrics"     
-  pod "ARAnalytics/Crittercism"     
-  pod "ARAnalytics/Countly"         
-  pod "ARAnalytics/Bugsnag"         
-  pod "ARAnalytics/Helpshift"       
-  pod "ARAnalytics/Crashlytics"
-  pod "ARAnalytics/Tapstream"
-  pod 'ARAnalytics/NewRelic', :path => "../"
-  pod 'ARAnalytics/Amplitude', :path => "../"
+  pod 'ARAnalytics', :path => "../"
 end
 
