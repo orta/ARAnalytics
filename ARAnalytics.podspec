@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         =  'ARAnalytics'
-  s.version      =  '1.8'
+  s.version      =  '1.9'
   s.license      =  {:type => 'MIT', :file => 'LICENSE' }
   s.summary      =  'Use multiple major analytics platforms with one clean API.'
   s.homepage     =  'http://github.com/orta/ARAnalytics'
@@ -120,5 +120,5 @@ Pod::Spec.new do |s|
   # set default subspec no_clash_NAME where NAME is the subspec we want to use. 
   #This will give us all possible subspecs that do not clash with NAME.
   s.default_subspec = 'no_clash_HockeyApp'
-  
+
 end
