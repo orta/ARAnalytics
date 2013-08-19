@@ -87,4 +87,38 @@ Pod::Spec.new do |s|
       
     end
   end
+
+
+  # If both HockeyApp and Crittercism are included there will be a build failure as they both import the same library (PLCrashReporter).
+  # We create two subspecs which contain all the subspecs possible, including HockeyApp or Crittercism in each.
+  # Setting one of these as default_subspec allows us to install all libraries possible (if no subspecs are defined) without causing a build failure.
+  # User can finetune by specifying subspecs if they wish to include any subset of analytics as normal.
+
+  #create an array of clashing subspecs.
+  clashing_subspecs=[hockeyApp, crittercism]
+  
+  #cycle through clashing subspecs, removing all but the the one we want to form non_clashing array 
+  clashing_subspecs.each do |keep_subspec|
+    non_clash=$all_analytics
+    clashing_subspecs.each do |clashing|
+      if clashing!=keep_subspec then non_clash.delete(clashing)
+      end
+    end
+
+    #now for each group of non_clashing subspecs, create a subspec which has these as dependancies.
+    s.subspec "no_clash_#{keep_subspec[:spec_name]}" do |ss|
+      non_clash.each do |analytics_spec|
+        if analytics_spec[:osx]
+          ss.osx.dependency "ARAnalytics/#{analytics_spec[:spec_name]}"
+        else
+          ss.ios.dependency "ARAnalytics/#{analytics_spec[:spec_name]}"        
+        end
+      end
+    end
+  end
+
+  # set default subspec no_clash_NAME where NAME is the subspec we want to use. 
+  #This will give us all possible subspecs that do not clash with NAME.
+  s.default_subspec = 'no_clash_HockeyApp'
+  
 end
