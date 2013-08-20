@@ -1,5 +1,8 @@
 #ARAnalytics
 
+## Version 2.0
+* Support for Google Ananlytics v3 ( thanks @dlackty )
+
 ## Version 1.9
 * Support for HockeyApp ( thanks @Daniel1of1 )
 * Workaround for subspecs that create build confilicts ( thanks @Daniel1of1 )

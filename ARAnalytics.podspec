@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         =  'ARAnalytics'
-  s.version      =  '1.9'
+  s.version      =  '2.0'
   s.license      =  {:type => 'MIT', :file => 'LICENSE' }
   s.summary      =  'Use multiple major analytics platforms with one clean API.'
   s.homepage     =  'http://github.com/orta/ARAnalytics'
@@ -94,18 +94,17 @@ Pod::Spec.new do |s|
   # Setting one of these as default_subspec allows us to install all libraries possible (if no subspecs are defined) without causing a build failure.
   # User can finetune by specifying subspecs if they wish to include any subset of analytics as normal.
 
-  #create an array of clashing subspecs.
-  clashing_subspecs=[hockeyApp, crittercism]
+  # create an array of clashing subspecs.
+  clashing_subspecs = [hockeyApp, crittercism]
   
-  #cycle through clashing subspecs, removing all but the the one we want to form non_clashing array 
+  # cycle through clashing subspecs, removing all but the the one we want to form non_clashing array 
   clashing_subspecs.each do |keep_subspec|
-    non_clash=$all_analytics
+    non_clash = $all_analytics
     clashing_subspecs.each do |clashing|
-      if clashing!=keep_subspec then non_clash.delete(clashing)
-      end
+      if clashing != keep_subspec then non_clash.delete(clashing) end
     end
 
-    #now for each group of non_clashing subspecs, create a subspec which has these as dependancies.
+    # now for each group of non_clashing subspecs, create a subspec which has these as dependancies.
     s.subspec "no_clash_#{keep_subspec[:spec_name]}" do |ss|
       non_clash.each do |analytics_spec|
         if analytics_spec[:osx]
@@ -118,7 +117,7 @@ Pod::Spec.new do |s|
   end
 
   # set default subspec no_clash_NAME where NAME is the subspec we want to use. 
-  #This will give us all possible subspecs that do not clash with NAME.
+  # This will give us all possible subspecs that do not clash with NAME.
   s.default_subspec = 'no_clash_HockeyApp'
 
 end
