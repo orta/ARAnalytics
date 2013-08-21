@@ -1,4 +1,4 @@
-ARAnalytics v1.6
+ARAnalytics v2.0
 ================
 
 ARAnalytics is to iOS what [Analytical](https://github.com/jkrall/analytical) is to ruby, or [Analytics.js](http://segmentio.github.com/analytics.js/) is to javascript.
