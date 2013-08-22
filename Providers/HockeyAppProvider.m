@@ -26,6 +26,9 @@
     else {
         [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:betaIdentifier delegate:self];
     }
+    
+    [[BITHockeyManager sharedHockeyManager] startManager];
+    
     return [super init];
 }
 
