@@ -9,7 +9,10 @@
 #import "HockeyAppProvider.h"
 #import <HockeySDK/HockeySDK.h>
 
-@interface HockeyAppProvider () <BITHockeyManagerDelegate, BITUpdateManagerDelegate, BITCrashManagerDelegate>
+@interface HockeyAppProvider () <BITHockeyManagerDelegate, BITUpdateManagerDelegate, BITCrashManagerDelegate> {
+    NSString *_username;
+    NSString *_userEmail;
+}
 
 @end
 
@@ -32,6 +35,12 @@
     return [super init];
 }
 
+
+- (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
+    _username = userID;
+    _userEmail = email;
+}
+
 #pragma mark - BITUpdateManagerDelegate
 - (NSString *)customDeviceIdentifierForUpdateManager:(BITUpdateManager *)updateManager {
 #ifdef DEBUG
@@ -39,6 +48,15 @@
         return [[UIDevice currentDevice] performSelector:@selector(uniqueIdentifier)];
 #endif
     return nil;
+}
+
+#pragma mark - BITHockeyManagerDelegate
+- (NSString *)userNameForHockeyManager:(BITHockeyManager *)hockeyManager componentManager:(BITHockeyBaseManager *)componentManager {
+    return _username;
+}
+
+-(NSString *)userEmailForHockeyManager:(BITHockeyManager *)hockeyManager componentManager:(BITHockeyBaseManager *)componentManager {
+    return _userEmail;
 }
 
 @end
