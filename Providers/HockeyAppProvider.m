@@ -12,6 +12,8 @@
 @interface HockeyAppProvider () <BITHockeyManagerDelegate, BITUpdateManagerDelegate, BITCrashManagerDelegate> {
     NSString *_username;
     NSString *_userEmail;
+    NSString *_betaIdentifier;
+    NSString *_liveIdentifier;
 }
 
 @end
@@ -23,18 +25,24 @@
 }
 
 -(id)initWithBetaIdentifier:(NSString *)betaIdentifier liveIdentifier:(NSString *)liveIdentfier {
-    if (liveIdentfier) {
-        [[BITHockeyManager sharedHockeyManager] configureWithBetaIdentifier:betaIdentifier liveIdentifier:liveIdentfier delegate:self];
-    }
-    else {
-        [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:betaIdentifier delegate:self];
-    }
+    _betaIdentifier = betaIdentifier;
+    _liveIdentifier = liveIdentfier;
     
-    [[BITHockeyManager sharedHockeyManager] startManager];
+    [self performSelector:@selector(startManager) withObject:nil afterDelay:0.5];
     
     return [super init];
 }
 
+-(void)startManager {
+    if (_liveIdentifier) {
+        [[BITHockeyManager sharedHockeyManager] configureWithBetaIdentifier:_betaIdentifier liveIdentifier:_liveIdentifier delegate:self];
+    }
+    else {
+        [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:_betaIdentifier delegate:self];
+    }
+    
+    [[BITHockeyManager sharedHockeyManager] startManager];
+}
 
 - (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
     _username = userID;
