@@ -9,7 +9,12 @@
 #import "HockeyAppProvider.h"
 #import <HockeySDK/HockeySDK.h>
 
-@interface HockeyAppProvider () <BITHockeyManagerDelegate, BITUpdateManagerDelegate, BITCrashManagerDelegate>
+@interface HockeyAppProvider () <BITHockeyManagerDelegate, BITUpdateManagerDelegate, BITCrashManagerDelegate> {
+    NSString *_username;
+    NSString *_userEmail;
+    NSString *_betaIdentifier;
+    NSString *_liveIdentifier;
+}
 
 @end
 
@@ -20,16 +25,28 @@
 }
 
 -(id)initWithBetaIdentifier:(NSString *)betaIdentifier liveIdentifier:(NSString *)liveIdentfier {
-    if (liveIdentfier) {
-        [[BITHockeyManager sharedHockeyManager] configureWithBetaIdentifier:betaIdentifier liveIdentifier:liveIdentfier delegate:self];
+    _betaIdentifier = betaIdentifier;
+    _liveIdentifier = liveIdentfier;
+    
+    [self performSelector:@selector(startManager) withObject:nil afterDelay:0.5];
+    
+    return [super init];
+}
+
+-(void)startManager {
+    if (_liveIdentifier) {
+        [[BITHockeyManager sharedHockeyManager] configureWithBetaIdentifier:_betaIdentifier liveIdentifier:_liveIdentifier delegate:self];
     }
     else {
-        [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:betaIdentifier delegate:self];
+        [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:_betaIdentifier delegate:self];
     }
     
     [[BITHockeyManager sharedHockeyManager] startManager];
-    
-    return [super init];
+}
+
+- (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
+    _username = userID;
+    _userEmail = email;
 }
 
 #pragma mark - BITUpdateManagerDelegate
@@ -39,6 +56,15 @@
         return [[UIDevice currentDevice] performSelector:@selector(uniqueIdentifier)];
 #endif
     return nil;
+}
+
+#pragma mark - BITHockeyManagerDelegate
+- (NSString *)userNameForHockeyManager:(BITHockeyManager *)hockeyManager componentManager:(BITHockeyBaseManager *)componentManager {
+    return _username;
+}
+
+-(NSString *)userEmailForHockeyManager:(BITHockeyManager *)hockeyManager componentManager:(BITHockeyBaseManager *)componentManager {
+    return _userEmail;
 }
 
 @end
