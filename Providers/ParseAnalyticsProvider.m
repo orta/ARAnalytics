@@ -20,4 +20,13 @@
     return [super init];
 }
 
+-(void)event:(NSString *)event withProperties:(NSDictionary *)properties {
+    if (properties) {
+        [PFAnalytics trackEvent:event dimensions:properties];
+    }
+    else {
+        [PFAnalytics trackEvent:event];
+    }
+}
+
 @end
