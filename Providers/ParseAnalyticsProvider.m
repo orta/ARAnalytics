@@ -17,6 +17,14 @@
     [Parse setApplicationId:appID
                   clientKey:clientKey];
     
+    //Parse Docs reccomend calling trackAppOpenedWithLaunchOptions: on PFAnalytics in UIApplicationDelegate didFinishLaunchingWithOptions - the notification we subscribe to below is called once this returns
+    
+    //https://parse.com/docs/ios_guide#analytics/iOS
+    
+    //https://developer.apple.com/library/ios/documentation/uikit/reference/UIApplicationDelegate_Protocol/Reference/Reference.html#jumpTo_9
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidFinishLaunching:) name:UIApplicationDidFinishLaunchingNotification object:nil];
+    
     return [super init];
 }
 
@@ -27,6 +35,10 @@
     else {
         [PFAnalytics trackEvent:event];
     }
+}
+
+-(void)applicationDidFinishLaunching:(NSNotification *)notification {
+    [PFAnalytics trackAppOpenedWithLaunchOptions:notification.userInfo];
 }
 
 @end
