@@ -1,5 +1,8 @@
 #ARAnalytics
 
+## Version 2.2.0
+* Support for Parse Analytics ( thanks @Daniel1of1 )
+
 ## Version 2.1.1
 * ARC! ( thanks @jhersh)
 * Improved Hockey & Tapstream support ( thanks @Daniel1of1 )
