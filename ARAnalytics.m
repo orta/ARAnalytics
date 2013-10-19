@@ -228,7 +228,7 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 }
 
-+(void)setupParseAnalyticsWithApplicationId:(NSString *)appID clientKey:(NSString *)clientKey {
++(void)setupParseAnalyticsWithApplicationID:(NSString *)appID clientKey:(NSString *)clientKey {
 #ifdef AR_PARSEANALYTICS_EXISTS
     ParseAnalyticsProvider *provider = [[ParseAnalyticsProvider alloc] initWithApplicationID:appID clientKey:clientKey];
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];

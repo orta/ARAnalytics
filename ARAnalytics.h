@@ -84,7 +84,7 @@
 + (void)setupAmplitudeWithAPIKey:(NSString *)key;
 + (void)setupHockeyAppWithBetaID:(NSString *)betaID;
 + (void)setupHockeyAppWithBetaID:(NSString *)beta liveID:(NSString *)liveID;
-+ (void)setupParseAnalyticsWithApplicationId:(NSString *)appID clientKey:(NSString *)clientKey;
++ (void)setupParseAnalyticsWithApplicationID:(NSString *)appID clientKey:(NSString *)clientKey;
 
 /// Set a per user property
 + (void)identifyUserwithID:(NSString *)userID andEmailAddress:(NSString *)email __attribute__((deprecated));
