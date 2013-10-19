@@ -30,7 +30,17 @@
 
 -(void)event:(NSString *)event withProperties:(NSDictionary *)properties {
     if (properties) {
-        [PFAnalytics trackEvent:event dimensions:properties];
+        //values must be strings
+        //https://parse.com/docs/ios/api/Classes/PFAnalytics.html#//api/name/trackEvent:dimensions:
+        //quick and dirty hack to ensure this
+        
+        NSMutableDictionary *dimensions = [NSMutableDictionary new];
+        [properties enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            dimensions[key]=((NSObject *)obj).description;
+        }];
+        
+        [PFAnalytics trackEvent:event dimensions:dimensions];
+        
     }
     else {
         [PFAnalytics trackEvent:event];
