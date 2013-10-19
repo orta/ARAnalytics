@@ -228,6 +228,13 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 }
 
++(void)setupParseAnalyticsWithApplicationId:(NSString *)appID clientKey:(NSString *)clientKey {
+#ifdef AR_PARSE_EXISTS
+    ParseAnalyticsProvider *provider = [[ParseAnalyticsProvider alloc] initWithApplicationID:appID clientKey:clientKey];
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+#endif
+}
+
 
 #pragma mark -
 #pragma mark User Setup
@@ -393,3 +400,6 @@ const NSString *ARNewRelicAppToken = @"ARNewRelicAppToken";
 const NSString *ARAmplitudeAPIKey = @"ARAmplitudeAPIKey";
 const NSString *ARHockeyAppLiveID = @"ARHockeyAppLiveID";
 const NSString *ARHockeyAppBetaID = @"ARHockeyAppBetaID";
+const NSString *ARParseApplicationID = @"ARParseApplicationID";
+const NSString *ARParseClientKey = @"ARParseClientKey";
+

@@ -84,6 +84,7 @@
 + (void)setupAmplitudeWithAPIKey:(NSString *)key;
 + (void)setupHockeyAppWithBetaID:(NSString *)betaID;
 + (void)setupHockeyAppWithBetaID:(NSString *)beta liveID:(NSString *)liveID;
++ (void)setupParseAnalyticsWithApplicationId:(NSString *)appID clientKey:(NSString *)clientKey;
 
 /// Set a per user property
 + (void)identifyUserwithID:(NSString *)userID andEmailAddress:(NSString *)email __attribute__((deprecated));
@@ -138,4 +139,6 @@ extern const NSString *ARNewRelicAppToken;
 extern const NSString *ARAmplitudeAPIKey;
 extern const NSString *ARHockeyAppBetaID;
 extern const NSString *ARHockeyAppLiveID;
+extern const NSString *ARParseApplicationID;
+extern const NSString *ARParseClientKey;
 
