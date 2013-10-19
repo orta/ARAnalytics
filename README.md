@@ -1,4 +1,4 @@
-ARAnalytics v2.0
+ARAnalytics v2.1.1
 ================
 
 ARAnalytics is to iOS what [Analytical](https://github.com/jkrall/analytical) is to ruby, or [Analytics.js](http://segmentio.github.com/analytics.js/) is to javascript.
@@ -87,4 +87,4 @@ See [Contributing](https://github.com/orta/ARAnalytics/blob/master/CONTRIBUTING.
 Upcoming Features / Things people can help with
 =====
 
-* Support for [HockeyKit](https://github.com/TheRealKerni/HockeyKit),  [QuincyKit](https://github.com/TheRealKerni/QuincyKit) and [HockeyApp](http://hockeyapp.net). Or any other analytical provider not mentioned.
+* Support for  [QuincyKit](https://github.com/TheRealKerni/QuincyKit) or any other analytical provider not mentioned.
