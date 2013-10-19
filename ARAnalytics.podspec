@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
   s.name         =  'ARAnalytics'
-  s.version      =  '2.0.1'
+  s.version      =  '2.1.1'
   s.license      =  {:type => 'MIT', :file => 'LICENSE' }
   s.summary      =  'Use multiple major analytics platforms with one clean API.'
   s.homepage     =  'http://github.com/orta/ARAnalytics'
   s.authors      =  { 'orta' => 'orta.therox@gmail.com' }
   s.source       =  { :git => 'https://github.com/orta/ARAnalytics.git', :tag => s.version.to_s }
-  
   s.ios.deployment_target = "5.0"
+  s.requires_arc =  true
   s.summary      =  'Using subspecs you can define your analytics provider with the same API on iOS and OS X.'
   s.description  =  "ARAnalytics is a Cocoapods only library, which provides a sane API for tracking events and some simple user data. It currently supports for iOS: TestFlight, Mixpanel, Localytics, Flurry, Google Analytics, KISSMetrics, Tapstream, Countly, Crittercism, Bugsnag, Helpshift and Crashlytics. And for OS X: KISSmetrics, Countly and Mixpanel. It does this by using subspecs from CocoaPods 0.17+ to let you decide which libraries you'd like to use."
 

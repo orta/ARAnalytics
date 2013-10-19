@@ -12,7 +12,7 @@
 @implementation TapstreamProvider
 
 - (id)initWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret {
-    [self initWithAccountName:accountName developerSecret:developerSecret config:nil];
+    return [self initWithAccountName:accountName developerSecret:developerSecret config:nil];
 }
 
 - (id)initWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret config:(TSConfig *)config {
