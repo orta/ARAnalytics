@@ -10,4 +10,8 @@
 
 @implementation ParseAnalyticsProvider
 
+-(id)initWithApplicationID:(id)appID clientKey:(id)clientKey {
+    
+}
+
 @end
