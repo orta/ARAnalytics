@@ -17,7 +17,7 @@
     [Parse setApplicationId:appID
                   clientKey:clientKey];
     
-    //Parse Docs reccomend calling trackAppOpenedWithLaunchOptions: on PFAnalytics in UIApplicationDelegate didFinishLaunchingWithOptions - the notification we subscribe to below is called once this returns
+    //Parse Docs reccomend calling trackAppOpenedWithLaunchOptions: on PFAnalytics in UIApplicationDelegate applicationDidFinishLaunchingWithOptions - the notification we subscribe to below is called once this returns
     
     //https://parse.com/docs/ios_guide#analytics/iOS
     
@@ -38,6 +38,7 @@
 }
 
 -(void)applicationDidFinishLaunching:(NSNotification *)notification {
+    //also in the apple developer docs link - the options passed into applicationDidFinishLaunchingWithOptions: are the sent in the userInfo object of the notification.
     [PFAnalytics trackAppOpenedWithLaunchOptions:notification.userInfo];
 }
 
