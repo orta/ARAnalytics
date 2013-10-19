@@ -41,4 +41,8 @@
     [PFAnalytics trackAppOpenedWithLaunchOptions:notification.userInfo];
 }
 
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidFinishLaunchingNotification object:nil];
+}
+
 @end
