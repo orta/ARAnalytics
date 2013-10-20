@@ -406,4 +406,4 @@ const NSString *ARHockeyAppLiveID = @"ARHockeyAppLiveID";
 const NSString *ARHockeyAppBetaID = @"ARHockeyAppBetaID";
 const NSString *ARParseApplicationID = @"ARParseApplicationID";
 const NSString *ARParseClientKey = @"ARParseClientKey";
-
+const NSString *ARHeapAppID = @"ARHeapAppID";

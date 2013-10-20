@@ -141,4 +141,5 @@ extern const NSString *ARHockeyAppBetaID;
 extern const NSString *ARHockeyAppLiveID;
 extern const NSString *ARParseApplicationID;
 extern const NSString *ARParseClientKey;
+extern const NSString *ARHeapAppID;
 
