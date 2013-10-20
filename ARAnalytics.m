@@ -239,6 +239,13 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 }
 
++ (void)setupHeapAnalyticsWithApplicationID:(NSString *)appID {
+#ifdef AR_HEAPANALYTICS_EXISTS
+    HeapAnalyticsProvider *provider = [[HeapAnalyticsProvider alloc] initWithIdentifier:appID];
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+#endif
+}
+
 
 #pragma mark -
 #pragma mark User Setup

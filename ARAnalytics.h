@@ -85,6 +85,7 @@
 + (void)setupHockeyAppWithBetaID:(NSString *)betaID;
 + (void)setupHockeyAppWithBetaID:(NSString *)beta liveID:(NSString *)liveID;
 + (void)setupParseAnalyticsWithApplicationID:(NSString *)appID clientKey:(NSString *)clientKey;
++ (void)setupHeapAnalyticsWithApplicationID:(NSString *)appID;
 
 /// Set a per user property
 + (void)identifyUserwithID:(NSString *)userID andEmailAddress:(NSString *)email __attribute__((deprecated));
