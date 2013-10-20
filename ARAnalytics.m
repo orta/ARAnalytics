@@ -91,6 +91,10 @@ static ARAnalytics *_sharedAnalytics;
     if (analyticsDictionary[ARHockeyAppBetaID]) {
         [self setupHockeyAppWithBetaID:analyticsDictionary[ARHockeyAppBetaID] liveID:analyticsDictionary[ARHockeyAppLiveID]];
     }
+    
+    if (analyticsDictionary[ARParseApplicationID] && analyticsDictionary[ARParseClientKey]) {
+        [self setupParseAnalyticsWithApplicationID:analyticsDictionary[ARParseApplicationID] clientKey:analyticsDictionary[ARParseClientKey]];
+    }
 
 
 
