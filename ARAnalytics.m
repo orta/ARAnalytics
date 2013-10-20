@@ -96,6 +96,9 @@ static ARAnalytics *_sharedAnalytics;
         [self setupParseAnalyticsWithApplicationID:analyticsDictionary[ARParseApplicationID] clientKey:analyticsDictionary[ARParseClientKey]];
     }
 
+    if (analyticsDictionary[ARHeapAppID]) {
+        [self setupHeapAnalyticsWithApplicationID:analyticsDictionary[ARHeapAppID]];
+    }
 
 
     // Crashlytics / Crittercism should stay at the bottom of this,
