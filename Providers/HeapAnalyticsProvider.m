@@ -7,7 +7,19 @@
 //
 
 #import "HeapAnalyticsProvider.h"
+#import "Heap.h"
 
 @implementation HeapAnalyticsProvider
 
+#ifdef AR_HEAPANALYTICS_EXISTS
+-(id)initWithIdentifier:(id)identifier {
+    NSAssert([Heap class], @"Heap is not included");
+    [[Heap sharedInstance] setAppId:identifier];
+    
+    return [super init];
+}
+
+
+
+#endif
 @end
