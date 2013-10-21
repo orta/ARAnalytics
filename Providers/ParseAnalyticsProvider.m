@@ -36,7 +36,7 @@
         
         NSMutableDictionary *dimensions = [NSMutableDictionary new];
         [properties enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            dimensions[key]=((NSObject *)obj).description;
+            dimensions[key]=[obj description];
         }];
         
         [PFAnalytics trackEvent:event dimensions:dimensions];
