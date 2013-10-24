@@ -91,6 +91,10 @@ static ARAnalytics *_sharedAnalytics;
     if (analyticsDictionary[ARHockeyAppBetaID]) {
         [self setupHockeyAppWithBetaID:analyticsDictionary[ARHockeyAppBetaID] liveID:analyticsDictionary[ARHockeyAppLiveID]];
     }
+    
+    if (analyticsDictionary[ARParseApplicationID] && analyticsDictionary[ARParseClientKey]) {
+        [self setupParseAnalyticsWithApplicationID:analyticsDictionary[ARParseApplicationID] clientKey:analyticsDictionary[ARParseClientKey]];
+    }
 
 
 
@@ -224,6 +228,13 @@ static ARAnalytics *_sharedAnalytics;
 + (void)setupHockeyAppWithBetaID:(NSString *)betaID liveID:(NSString *)liveID {
 #ifdef AR_HOCKEYAPP_EXISTS
     HockeyAppProvider *provider = [[HockeyAppProvider alloc] initWithBetaIdentifier:betaID liveIdentifier:liveID];
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+#endif
+}
+
++(void)setupParseAnalyticsWithApplicationID:(NSString *)appID clientKey:(NSString *)clientKey {
+#ifdef AR_PARSEANALYTICS_EXISTS
+    ParseAnalyticsProvider *provider = [[ParseAnalyticsProvider alloc] initWithApplicationID:appID clientKey:clientKey];
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
 #endif
 }
@@ -393,3 +404,6 @@ const NSString *ARNewRelicAppToken = @"ARNewRelicAppToken";
 const NSString *ARAmplitudeAPIKey = @"ARAmplitudeAPIKey";
 const NSString *ARHockeyAppLiveID = @"ARHockeyAppLiveID";
 const NSString *ARHockeyAppBetaID = @"ARHockeyAppBetaID";
+const NSString *ARParseApplicationID = @"ARParseApplicationID";
+const NSString *ARParseClientKey = @"ARParseClientKey";
+
