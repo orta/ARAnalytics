@@ -25,7 +25,7 @@
     }
 
     if (email) {
-        [Crittercism setEmail:email];
+        [self setUserProperty:@"email" toValue:email];
     }
 }
 
