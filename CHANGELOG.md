@@ -1,5 +1,8 @@
 #ARAnalytics
 
+## Version 2.3
+* Support for Heap Ananlytics ( thanks @daniel1of1 )
+
 ## Version 2.2.0
 * Support for Parse Analytics ( thanks @Daniel1of1 )
 

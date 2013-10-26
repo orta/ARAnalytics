@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         =  'ARAnalytics'
-  s.version      =  '2.2.1'
+  s.version      =  '2.3.0'
   s.license      =  {:type => 'MIT', :file => 'LICENSE' }
   s.summary      =  'Use multiple major analytics platforms with one clean API.'
   s.homepage     =  'http://github.com/orta/ARAnalytics'
@@ -26,6 +26,7 @@ Pod::Spec.new do |s|
   amplitude      = { :spec_name => "Amplitude",        :dependency => "Amplitude-iOS" }
   hockeyApp      = { :spec_name => "HockeyApp",        :dependency => "HockeySDK" }
   parseAnalytics = { :spec_name => "ParseAnalytics",   :dependency => "Parse-iOS-SDK" }
+  heap           = { :spec_name => "HeapAnalytics",    :dependency => "HeapAnalytics" }
 
   crashlytics    = { :spec_name => "Crashlytics" }
   
@@ -33,7 +34,7 @@ Pod::Spec.new do |s|
 #  countly_mac     = { :spec_name => "CountlyOSX",      :dependency => "Countly",                :osx => true,  :provider => "Countly" }
   mixpanel_mac    = { :spec_name => "MixpanelOSX",     :dependency => "Mixpanel-OSX-Community", :osx => true,  :provider => "Mixpanel"}
   
-  $all_analytics = [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly, helpshift,kissmetrics_mac, mixpanel_mac, tapstream, newRelic, amplitude, hockeyApp, parseAnalytics]
+  $all_analytics = [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly, helpshift,kissmetrics_mac, mixpanel_mac, tapstream, newRelic, amplitude, hockeyApp, parseAnalytics, heap]
 
   # To make the pod spec API cleaner, I've changed the subspecs to be "iOS/KISSmetrics"
 
