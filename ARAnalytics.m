@@ -85,7 +85,7 @@ static ARAnalytics *_sharedAnalytics;
     }
     
     if (analyticsDictionary[ARAmplitudeAPIKey]) {
-        [self setupNewRelicWithAppToken:analyticsDictionary[ARNewRelicAppToken]];
+        [self setupAmplitudeWithAPIKey:analyticsDictionary[ARAmplitudeAPIKey]];
     }
 
     if (analyticsDictionary[ARHockeyAppBetaID]) {
