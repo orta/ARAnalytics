@@ -1,5 +1,8 @@
 #ARAnalytics
 
+## Version 2.3.1
+* Fix for Amplitude Amplitude ( thanks @hungtruong )
+
 ## Version 2.3
 * Support for Heap Ananlytics ( thanks @daniel1of1 )
 * Fixes for Crittercism SDK ( thanks @kreeger )
