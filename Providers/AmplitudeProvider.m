@@ -21,11 +21,11 @@
 
 -(void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
     if (userID) {
-        [Amplitude setUserId:@"userId"];
+        [Amplitude setUserId:userID];
     }
     
     if (email) {
-        [Amplitude setGlobalUserProperties:@{@"email": email}];
+        [Amplitude setUserId:email];
     }
 }
 
