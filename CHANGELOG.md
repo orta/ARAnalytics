@@ -1,7 +1,12 @@
 #ARAnalytics
 
+## Version 2.3.1
+* Fix for Amplitude Amplitude ( thanks @hungtruong )
+
 ## Version 2.3
 * Support for Heap Ananlytics ( thanks @daniel1of1 )
+* Fixes for Crittercism SDK ( thanks @kreeger )
+* Improved Localytics' sending of events ( thanks @jhersh )
 
 ## Version 2.2.0
 * Support for Parse Analytics ( thanks @Daniel1of1 )
