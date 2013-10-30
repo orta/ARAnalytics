@@ -1,10 +1,9 @@
-ARAnalytics v2.1.1
+ARAnalytics v2.3.2
 ================
 
 ARAnalytics is to iOS what [Analytical](https://github.com/jkrall/analytical) is to ruby, or [Analytics.js](http://segmentio.github.com/analytics.js/) is to javascript.
 
-ARAnalytics is a CocoaPods only library, which provides a sane API for tracking events and some simple user data. It currently supports for iOS: TestFlight, Mixpanel, Localytics, Flurry, Google Analytics v3, KISSMetrics, Tapstream, Countly, Crittercism, Bugsnag, Helpshift and Crashlytics. And for OS X: KISSmetrics, Countly and Mixpanel. It does this by using subspecs from CocoaPods 0.17+ to let you decide which libraries you'd like to use.
-
+ARAnalytics is a CocoaPods only library, which provides a sane API for tracking events and some simple user data. It currently supports for iOS: TestFlight, Mixpanel, Localytics, Flurry, Google Analytics v3, KISSMetrics, Tapstream, Countly, Crittercism, Bugsnag, Helpshift, Amplitude and Crashlytics. And for OS X: KISSmetrics, Countly and Mixpanel. It does this by using subspecs from CocoaPods which let you choose which libraries you use.
 
 [Changelog](https://github.com/orta/ARAnalytics/blob/master/CHANGELOG.md)  
 
@@ -80,11 +79,8 @@ Page View Tracking
 + (void)monitorNavigationViewController:(UINavigationController *)controller;
 ```
 
+On top of this you obviously get access to use the original SDK too as in order to provide a common API it is slightly the lowest common denominator
+
 Contributing
 ====
 See [Contributing](https://github.com/orta/ARAnalytics/blob/master/CONTRIBUTING.md)
-
-Upcoming Features / Things people can help with
-=====
-
-* Support for  [QuincyKit](https://github.com/TheRealKerni/QuincyKit) or any other analytical provider not mentioned.

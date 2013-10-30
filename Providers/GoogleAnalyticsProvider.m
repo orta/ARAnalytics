@@ -31,6 +31,8 @@
     // https://developers.google.com/analytics/devguides/collection/ios/v3/customdimsmets#pii
 
     // The Google Analytics Terms of Service prohibit sending of any personally identifiable information (PII) to Google Analytics servers. For more information, please consult the Terms of Service.
+  
+    // Ideally we would put an assert here but if you have multiple providers that wouldn't make sense.
 }
 
 - (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
