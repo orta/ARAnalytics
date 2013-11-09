@@ -13,7 +13,11 @@
 #import "GAIDictionaryBuilder.h"
 
 @interface GoogleAnalyticsProvider ()
-@property (nonatomic, strong) id<GAITracker> tracker;
+
+@property (nonatomic, strong) id <GAITracker> tracker;
+
+- (void) dispatchGA;
+
 @end
 
 @implementation GoogleAnalyticsProvider
@@ -21,9 +25,25 @@
 
 - (id)initWithIdentifier:(NSString *)identifier {
     NSAssert([GAI class], @"Google Analytics SDK is not included");
-    self.tracker = [[GAI sharedInstance] trackerWithTrackingId:identifier];
 
-    return [super init];
+    if ((self = [super init])) {
+        self.tracker = [[GAI sharedInstance] trackerWithTrackingId:identifier];
+
+        for( NSString *inactiveEvent in @[ UIApplicationWillResignActiveNotification,
+                                           UIApplicationWillTerminateNotification,
+                                           UIApplicationDidEnterBackgroundNotification ]) {
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(dispatchGA)
+                                                         name:inactiveEvent
+                                                       object:nil];
+        }
+    }
+
+    return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
@@ -31,7 +51,7 @@
     // https://developers.google.com/analytics/devguides/collection/ios/v3/customdimsmets#pii
 
     // The Google Analytics Terms of Service prohibit sending of any personally identifiable information (PII) to Google Analytics servers. For more information, please consult the Terms of Service.
-  
+
     // Ideally we would put an assert here but if you have multiple providers that wouldn't make sense.
 }
 
@@ -60,6 +80,12 @@
                                                                               name:event
                                                                              label:nil];
     [self.tracker send:[builder build]];
+}
+
+#pragma mark - Dispatch
+
+- (void)dispatchGA {
+    [[GAI sharedInstance] dispatch];
 }
 
 #endif
