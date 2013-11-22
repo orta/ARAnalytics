@@ -60,7 +60,7 @@
 }
 
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
-    GAIDictionaryBuilder *builder = [GAIDictionaryBuilder createEventWithCategory:nil
+    GAIDictionaryBuilder *builder = [GAIDictionaryBuilder createEventWithCategory:@"default"
                                                                            action:event
                                                                             label:nil
                                                                             value:nil];
@@ -75,7 +75,7 @@
 
 - (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval {
     [self event:event withProperties:@{ @"length": interval }];
-    GAIDictionaryBuilder *builder = [GAIDictionaryBuilder createTimingWithCategory:nil
+    GAIDictionaryBuilder *builder = [GAIDictionaryBuilder createTimingWithCategory:@"default"
                                                                           interval:interval
                                                                               name:event
                                                                              label:nil];
