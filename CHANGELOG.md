@@ -1,5 +1,8 @@
 #ARAnalytics
 
+## Version 2.3.2
+* Fix for Google Analytics default category (@hungtruong)
+
 ## Version 2.3.1
 * Fix for Amplitude Amplitude ( thanks @hungtruong )
 
