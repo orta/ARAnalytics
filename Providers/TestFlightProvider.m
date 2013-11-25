@@ -49,7 +49,14 @@
 }
 
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
-    NSString *checkpoint = [NSString stringWithFormat:@"%@ %@", event, properties];
+    NSString *checkpoint;
+    
+    if (properties) {
+        checkpoint = [NSString stringWithFormat:@"%@%@", event, properties];
+    } else {
+        checkpoint = event;
+    }
+    
     [TestFlight passCheckpoint:checkpoint];
 }
 
