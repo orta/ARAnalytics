@@ -1,5 +1,8 @@
 #ARAnalytics
 
+## Version 2.3.3
+* Send properties to TestFlight events (@enriquez)
+
 ## Version 2.3.2
 * Fix for Google Analytics default category (@hungtruong)
 
