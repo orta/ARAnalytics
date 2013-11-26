@@ -34,7 +34,14 @@
 }
 
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
-    CLSLog(@"%@", event);
+    NSString *log;
+    if (properties) {
+        log = [NSString stringWithFormat:@"%@%@", event, properties];
+    } else {
+        log = event;
+    }
+    
+    CLSLog(@"%@", log);
 }
 
 - (void)remoteLog:(NSString *)parsedString {
