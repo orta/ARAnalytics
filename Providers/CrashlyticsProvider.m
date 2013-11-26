@@ -25,7 +25,7 @@
     }
 
     if (email) {
-        [Crashlytics setUserName:email];
+        [Crashlytics setUserEmail:email];
     }
 }
 
