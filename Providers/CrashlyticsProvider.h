@@ -17,6 +17,7 @@
 + (Crashlytics *)startWithAPIKey:(NSString *)apiKey;
 + (void)setUserIdentifier:(NSString *)identifier;
 + (void)setUserName:(NSString *)name;
++ (void)setUserEmail:(NSString *)email;
 + (void)setObjectValue:(id)value forKey:(NSString *)key;
 @end
 
