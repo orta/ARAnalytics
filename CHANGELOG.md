@@ -1,5 +1,8 @@
 #ARAnalytics
 
+## Version 2.3.4
+* Support for Google Analytics' specific event properties when broadcasting to all analytics providers (@yoiang)
+
 ## Version 2.3.3
 * Send properties to TestFlight events (@enriquez)
 
