@@ -13,6 +13,11 @@
 /// Use the full Google Analytics syntax for an event
 + (void)event:(NSString *)event withCategory:(NSString *)category withLabel:(NSString *)label withValue:(NSNumber *)value;
 
+/// Build a generic properties dictionary that uses the Google Analytics syntax
++ (NSDictionary *)dictionaryWithCategory:(NSString *)category;
++ (NSDictionary *)dictionaryWithCategory:(NSString *)category withLabel:(NSString *)label;
++ (NSDictionary *)dictionaryWithCategory:(NSString *)category withLabel:(NSString *)label withValue:(NSNumber *)value;
+
 /// Send social events
 + (void)socialEvent:(NSString *)event onNetwork:(NSString *)network withAddress:(NSString *)address;
 
