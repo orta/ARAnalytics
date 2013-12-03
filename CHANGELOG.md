@@ -1,6 +1,16 @@
 #ARAnalytics
 
+## Version 2.3.4
+* Support for Google Analytics' specific event properties when broadcasting to all analytics providers (@yoiang)
+
+## Version 2.3.3
+* Send properties to TestFlight events (@enriquez)
+
 ## Version 2.3.2
+* Fix for Google Analytics default category (@hungtruong)
+
+## Version 2.3.1
+>>>>>>> 348c506e29c29d1783352a3edcce7067084bcc10
 * Fix for Amplitude Amplitude ( thanks @hungtruong )
 
 ## Version 2.3

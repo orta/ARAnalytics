@@ -11,6 +11,7 @@
 #import "GAI.h"
 #import "GAIFields.h"
 #import "GAIDictionaryBuilder.h"
+#import "NSDictionary+GoogleAnalytics.h"
 
 @interface GoogleAnalyticsProvider ()
 
@@ -60,10 +61,14 @@
 }
 
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
-    GAIDictionaryBuilder *builder = [GAIDictionaryBuilder createEventWithCategory:nil
+    NSString *category = properties.category;
+    if (!category) {
+        category = @"default"; // category is a required value
+    }
+    GAIDictionaryBuilder *builder = [GAIDictionaryBuilder createEventWithCategory:category
                                                                            action:event
-                                                                            label:nil
-                                                                            value:nil];
+                                                                            label:properties.label
+                                                                            value:properties.value];
     [self.tracker send:[builder build]];
 }
 
@@ -75,7 +80,7 @@
 
 - (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval {
     [self event:event withProperties:@{ @"length": interval }];
-    GAIDictionaryBuilder *builder = [GAIDictionaryBuilder createTimingWithCategory:nil
+    GAIDictionaryBuilder *builder = [GAIDictionaryBuilder createTimingWithCategory:@"default"
                                                                           interval:interval
                                                                               name:event
                                                                              label:nil];
