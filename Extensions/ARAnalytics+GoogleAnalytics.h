@@ -19,4 +19,7 @@
 /// It says what it does on the tin
 + (void)sendUncaughtExceptionsToGoogleAnalytics;
 
+/// Enable output of debugging logs
++ (void)enableGoogleAnalyticsDebuggingLogs:(BOOL)enabled;
+
 @end

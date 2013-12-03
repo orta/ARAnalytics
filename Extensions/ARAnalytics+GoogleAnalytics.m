@@ -31,4 +31,16 @@
     [GAI sharedInstance].trackUncaughtExceptions = YES;
 }
 
++ (void)enableGoogleAnalyticsDebuggingLogs:(BOOL)enabled {
+    GAILogLevel logLevel;
+    if (enabled)
+    {
+        logLevel = kGAILogLevelVerbose;
+    } else
+    {
+        logLevel = kGAILogLevelWarning; // Google Analytics' default log level
+    }
+    [ [GAI sharedInstance].logger setLogLevel:logLevel];
+}
+
 @end
