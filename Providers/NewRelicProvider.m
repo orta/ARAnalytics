@@ -7,7 +7,7 @@
 //
 
 #import "NewRelicProvider.h"
-#import <NewRelicAgent/NewRelicAgent.h>
+#import <NewRelicAgent/NewRelic.h>
 
 @implementation NewRelicProvider
 
