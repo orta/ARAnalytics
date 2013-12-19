@@ -1,5 +1,8 @@
 #ARAnalytics
 
+## Version 2.3.5
+* Support for Chartbeat (@segiddins)
+
 ## Version 2.3.4
 * Support for Google Analytics' specific event properties when broadcasting to all analytics providers (@yoiang)
 

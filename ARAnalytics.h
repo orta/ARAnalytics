@@ -86,6 +86,7 @@
 + (void)setupHockeyAppWithBetaID:(NSString *)beta liveID:(NSString *)liveID;
 + (void)setupParseAnalyticsWithApplicationID:(NSString *)appID clientKey:(NSString *)clientKey;
 + (void)setupHeapAnalyticsWithApplicationID:(NSString *)appID;
++ (void)setupChartbeatWithApplicationID:(NSString *)appID;
 
 /// Set a per user property
 + (void)identifyUserwithID:(NSString *)userID andEmailAddress:(NSString *)email __attribute__((deprecated));
@@ -143,5 +144,4 @@ extern const NSString *ARHockeyAppLiveID;
 extern const NSString *ARParseApplicationID;
 extern const NSString *ARParseClientKey;
 extern const NSString *ARHeapAppID;
-
-
+extern const NSString *ARChartbeatID;
