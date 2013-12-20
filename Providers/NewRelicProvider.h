@@ -7,7 +7,6 @@
 //
 
 #import "ARAnalyticalProvider.h"
-#import <NewRelicAgent/NewRelicAgent.h>
 
 @interface NewRelicProvider : ARAnalyticalProvider
 
