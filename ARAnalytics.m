@@ -99,7 +99,10 @@ static ARAnalytics *_sharedAnalytics;
     if (analyticsDictionary[ARHeapAppID]) {
         [self setupHeapAnalyticsWithApplicationID:analyticsDictionary[ARHeapAppID]];
     }
-
+    
+    if (analyticsDictionary[ARChartbeatID]) {
+        [self setupChartbeatWithApplicationID:analyticsDictionary[ARChartbeatID]];
+    }
 
     // Crashlytics / Crittercism should stay at the bottom of this,
     // as they both need to register exceptions, and you'd only use one.
@@ -246,6 +249,13 @@ static ARAnalytics *_sharedAnalytics;
 + (void)setupHeapAnalyticsWithApplicationID:(NSString *)appID {
 #ifdef AR_HEAPANALYTICS_EXISTS
     HeapAnalyticsProvider *provider = [[HeapAnalyticsProvider alloc] initWithIdentifier:appID];
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+#endif
+}
+
++ (void)setupChartbeatWithApplicationID:(NSString *)appID {
+#ifdef AR_CHARTBEAT_EXISTS
+    ChartbeatProvider *provider = [[ChartbeatProvider alloc] initWithIdentifier:appID];
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
 #endif
 }
@@ -419,3 +429,4 @@ const NSString *ARHockeyAppBetaID = @"ARHockeyAppBetaID";
 const NSString *ARParseApplicationID = @"ARParseApplicationID";
 const NSString *ARParseClientKey = @"ARParseClientKey";
 const NSString *ARHeapAppID = @"ARHeapAppID";
+const NSString *ARChartbeatID = @"ARChartbeatID";

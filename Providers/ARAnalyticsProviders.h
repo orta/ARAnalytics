@@ -74,3 +74,7 @@
 #ifdef AR_HEAPANALYTICS_EXISTS
 #import "HeapAnalyticsProvider.h"
 #endif
+
+#ifdef AR_CHARTBEAT_EXISTS
+#import "ChartbeatProvider.h"
+#endif
