@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         =  'ARAnalytics'
-  s.version      =  '2.3.4'
+  s.version      =  '2.4'
   s.license      =  {:type => 'MIT', :file => 'LICENSE' }
   s.summary      =  'Use multiple major analytics platforms with one clean API.'
   s.homepage     =  'http://github.com/orta/ARAnalytics'
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "6.0"
   s.requires_arc =  true
   s.summary      =  'Using subspecs you can define your analytics provider with the same API on iOS and OS X.'
-  s.description  =  "ARAnalytics is a Cocoapods only library, which provides a sane API for tracking events and some simple user data. It currently supports for iOS: TestFlight, Mixpanel, Localytics, Flurry, Google Analytics, KISSMetrics, Tapstream, Countly, Crittercism, Bugsnag, Helpshift, Heap and Crashlytics. And for OS X: KISSmetrics, Countly and Mixpanel. It does this by using subspecs from CocoaPods 0.17+ to let you decide which libraries you'd like to use."
+  s.description  =  "ARAnalytics is a Cocoapods only library, which provides a sane API for tracking events and some simple user data. It currently supports for iOS: TestFlight, Mixpanel, Localytics, Flurry, Google Analytics, KISSMetrics, Tapstream, Countly, Crittercism, Bugsnag, Helpshift, Chartbeat, Heap and Crashlytics. And for OS X: KISSmetrics, Countly and Mixpanel. It does this by using subspecs from CocoaPods 0.17+ to let you decide which libraries you'd like to use."
 
   testflight_sdk = { :spec_name => "TestFlight",       :dependency => ["TestFlightSDK", "BPXLUUIDHandler"] }
   mixpanel       = { :spec_name => "Mixpanel",         :dependency => "Mixpanel" }
@@ -27,35 +27,36 @@ Pod::Spec.new do |s|
   hockeyApp      = { :spec_name => "HockeyApp",        :dependency => "HockeySDK" }
   parseAnalytics = { :spec_name => "ParseAnalytics",   :dependency => "Parse-iOS-SDK" }
   heap           = { :spec_name => "HeapAnalytics",    :dependency => "HeapAnalytics" }
+  chartbeat      = { :spec_name => "Chartbeat",        :dependency => "Chartbeat", :has_extension => true }
 
   crashlytics    = { :spec_name => "Crashlytics" }
-  
+
   kissmetrics_mac = { :spec_name => "KISSmetricsOSX",  :dependency => "KISSmetrics",            :osx => true,  :provider => "KISSmetrics" }
 #  countly_mac     = { :spec_name => "CountlyOSX",      :dependency => "Countly",                :osx => true,  :provider => "Countly" }
   mixpanel_mac    = { :spec_name => "MixpanelOSX",     :dependency => "Mixpanel-OSX-Community", :osx => true,  :provider => "Mixpanel"}
-  
-  $all_analytics = [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly, helpshift,kissmetrics_mac, mixpanel_mac, tapstream, newRelic, amplitude, hockeyApp, parseAnalytics, heap]
+
+  $all_analytics = [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly, helpshift,kissmetrics_mac, mixpanel_mac, tapstream, newRelic, amplitude, hockeyApp, parseAnalytics, heap, chartbeat]
 
   # To make the pod spec API cleaner, I've changed the subspecs to be "iOS/KISSmetrics"
 
   s.subspec "CoreMac" do |ss|
     ss.source_files =  ['*.{h,m}', 'Providers/ARAnalyticalProvider.{h,m}', 'Providers/ARAnalyticsProviders.h']
     ss.platforms = [:osx]
-  end  
-  
+  end
+
   s.subspec "CoreIOS" do |ss|
     ss.source_files =  ['*.{h,m}', 'Providers/ARAnalyticalProvider.{h,m}', 'Providers/ARAnalyticsProviders.h']
     ss.platforms = [:ios]
   end
-  
+
   # make specs for each analytics
   $all_analytics.each do |analytics_spec|
     s.subspec analytics_spec[:spec_name] do |ss|
-          
+
       providername = analytics_spec[:provider]? analytics_spec[:provider] : analytics_spec[:spec_name]
 
       # Each subspec adds a compiler flag saying that the spec was included
-      ss.prefix_header_contents = "#define AR_#{providername.upcase}_EXISTS 1"      
+      ss.prefix_header_contents = "#define AR_#{providername.upcase}_EXISTS 1"
       sources = ["Providers/#{providername}Provider.{h,m}"]
 
       # It there's a category adding extra class methods to ARAnalytics
@@ -68,12 +69,12 @@ Pod::Spec.new do |s|
         ss.osx.source_files = sources
         ss.dependency 'ARAnalytics/CoreMac'
         ss.platforms = [:osx]
-        
-      else   
+
+      else
         ss.ios.source_files = sources
         ss.dependency 'ARAnalytics/CoreIOS'
         ss.platforms = [:ios]
-        
+
       end
 
       # If there's a podspec dependency include it
@@ -87,7 +88,7 @@ Pod::Spec.new do |s|
           ss.dependency analytics_spec[:dependency]
         end
       end
-      
+
     end
   end
 
@@ -99,8 +100,8 @@ Pod::Spec.new do |s|
 
   # create an array of clashing subspecs.
   clashing_subspecs = [hockeyApp, crittercism]
-  
-  # cycle through clashing subspecs, removing all but the the one we want to form non_clashing array 
+
+  # cycle through clashing subspecs, removing all but the the one we want to form non_clashing array
   clashing_subspecs.each do |keep_subspec|
     non_clash = $all_analytics
     clashing_subspecs.each do |clashing|
@@ -113,14 +114,13 @@ Pod::Spec.new do |s|
         if analytics_spec[:osx]
           ss.osx.dependency "ARAnalytics/#{analytics_spec[:spec_name]}"
         else
-          ss.ios.dependency "ARAnalytics/#{analytics_spec[:spec_name]}"        
+          ss.ios.dependency "ARAnalytics/#{analytics_spec[:spec_name]}"
         end
       end
     end
   end
 
-  # set default subspec no_clash_NAME where NAME is the subspec we want to use. 
+  # set default subspec no_clash_NAME where NAME is the subspec we want to use.
   # This will give us all possible subspecs that do not clash with NAME.
   s.default_subspec = 'no_clash_HockeyApp'
-
 end
