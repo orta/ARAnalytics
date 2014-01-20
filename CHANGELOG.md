@@ -1,5 +1,9 @@
 #ARAnalytics
 
+## Version 2.4.1
+* Switched pod for Heap analytics (thanks matinm)
+  - https://github.com/CocoaPods/Specs/pull/6914
+
 ## Version 2.4
 * Support for Chartbeat (thanks @segiddins)
 
