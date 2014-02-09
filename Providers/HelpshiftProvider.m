@@ -14,9 +14,9 @@
 
 - (id)initWithAppID:(NSString *)appID domainName:(NSString *)domainName apiKey:(NSString *)apiKey {
     NSAssert([Helpshift class], @"Helpshift is not included");
-
-    [Helpshift installForAppID:appID domainName:domainName apiKey:apiKey];
-
+    
+    [Helpshift installForApiKey:apiKey domainName:domainName appID:appID withOptions:nil];
+    
     return [super init];
 }
 
@@ -26,10 +26,9 @@
     }
     
     if (email) {
-        [Helpshift setUseremail:email];
+        [Helpshift setName:nil andEmail:email];
     }
 }
-
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
     [Helpshift leaveBreadCrumb:event];
 }
