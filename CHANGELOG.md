@@ -1,5 +1,10 @@
 #ARAnalytics
 
+## Version 2.4.2
+* Fixes to Heapshift's API (thanks MigrantP)
+  - https://github.com/orta/ARAnalytics/pull/56
+
+
 ## Version 2.4.1
 * Switched pod for Heap analytics (thanks matinm)
   - https://github.com/CocoaPods/Specs/pull/6914
