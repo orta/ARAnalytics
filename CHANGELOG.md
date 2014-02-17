@@ -1,5 +1,9 @@
 #ARAnalytics
 
+##2.4.3
+
+* fix for Testflight 2.2.3 (thanks @KrauseFx)
+
 ## Version 2.4
 * Support for Chartbeat (thanks @segiddins)
 
