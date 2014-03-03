@@ -16,10 +16,7 @@
 
 - (id)initWithIdentifier:(NSString *)identifier {
     NSAssert([TestFlight class], @"TestFlight is not included");
-    // For non App store builds use a device identifier.
-#ifndef RELEASE
-    [TestFlight setDeviceIdentifier:[TestFlightProvider uniqueID]];
-#endif
+    
     [TestFlight takeOff:identifier];
 
     return [super init];
