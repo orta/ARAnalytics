@@ -8,11 +8,9 @@
 * Fixes to Heapshift's API (thanks MigrantP)
   - https://github.com/orta/ARAnalytics/pull/56
 
-
 ## Version 2.4.1
 * Switched pod for Heap analytics (thanks matinm)
   - https://github.com/CocoaPods/Specs/pull/6914
-
 
 ## Version 2.4
 * Support for Chartbeat (thanks @segiddins)
@@ -27,7 +25,6 @@
 * Fix for Google Analytics default category (thanks @hungtruong)
 
 ## Version 2.3.1
->>>>>>> 348c506e29c29d1783352a3edcce7067084bcc10
 * Fix for Amplitude Amplitude ( thanks @hungtruong )
 
 ## Version 2.3
