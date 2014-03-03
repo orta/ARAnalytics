@@ -118,6 +118,9 @@
 /// an NSLog-like command that send to providers
 extern void ARLog (NSString *format, ...);
 
+/// A try-catch for nil protection wrapped event
+extern void ARAnalyticsEvent (NSString *event, NSDictionary *properties);
+
 /// Provide keys for the setupWithDictionary
 extern const NSString *ARCountlyAppKey;
 extern const NSString *ARCountlyHost;

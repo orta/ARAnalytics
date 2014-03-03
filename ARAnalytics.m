@@ -404,6 +404,16 @@ void ARLog (NSString *format, ...) {
     va_end(argList);
 }
 
+void ARAnalyticsEvent (NSString *event, NSDictionary *properties) {
+  @try {
+    [ARAnalytics event:event withProperties:properties]
+  }
+
+  @catch (NSException *exception) {
+    NSLog(@"ARAnalytics: Exception raised when handling event %@ - %@ - %@", event, exception.name, exception.reason);
+  }
+}
+
 const NSString *ARCountlyAppKey = @"ARCountlyAppKey";
 const NSString *ARCountlyHost = @"ARCountlyHost";
 const NSString *ARTestFlightAppToken = @"ARTestFlight";
