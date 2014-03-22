@@ -40,13 +40,13 @@ Pod::Spec.new do |s|
   # To make the pod spec API cleaner, I've changed the subspecs to be "iOS/KISSmetrics"
 
   s.subspec "CoreMac" do |ss|
-    ss.source_files =  ['*.{h,m}', 'Providers/ARAnalyticalProvider.{h,m}', 'Providers/ARAnalyticsProviders.h']
+    ss.source_files = ['*.{h,m}', 'Providers/ARAnalyticalProvider.{h,m}', 'Providers/ARAnalyticsProviders.h']
     ss.platforms = [:osx]
   end
 
   s.subspec "CoreIOS" do |ss|
-    ss.source_files =  ['*.{h,m}', 'Providers/ARAnalyticalProvider.{h,m}', 'Providers/ARAnalyticsProviders.h']
-    ss.private_header_files =   'ARNavigationControllerDelegateProxy.h'
+    ss.source_files = ['*.{h,m}', 'Providers/ARAnalyticalProvider.{h,m}', 'Providers/ARAnalyticsProviders.h']
+    ss.private_header_files = 'ARNavigationControllerDelegateProxy.h'
     ss.platforms = [:ios]
   end
 

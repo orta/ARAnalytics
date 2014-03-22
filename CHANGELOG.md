@@ -1,5 +1,11 @@
 #ARAnalytics
 
+## Upcoming version 2.5.0
+
+* Support for proxying navigations delegate methods (thanks @rhodgins)
+  - https://github.com/orta/ARAnalytics/pull/62
+* Podspec fix for Localytics-iOS-Client (thanks @amleszk)
+
 ## Version 2.4.3
 
 * fix for Testflight 2.2.3 (thanks @KrauseFx)

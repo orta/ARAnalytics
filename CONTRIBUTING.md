@@ -2,6 +2,7 @@
 ## Team members
 
 Orta Therox - [@orta](http://twitter.com/orta)
+Daniel Haight - [@daniel1of1](http://twitter.com/daniel1of1)
 
 ## Help Out
 
