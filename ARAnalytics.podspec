@@ -46,6 +46,7 @@ Pod::Spec.new do |s|
 
   s.subspec "CoreIOS" do |ss|
     ss.source_files =  ['*.{h,m}', 'Providers/ARAnalyticalProvider.{h,m}', 'Providers/ARAnalyticsProviders.h']
+    ss.private_header_files =   'ARNavigationControllerDelegateProxy.h'
     ss.platforms = [:ios]
   end
 
