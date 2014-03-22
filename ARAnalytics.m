@@ -406,7 +406,7 @@ void ARLog (NSString *format, ...) {
 
 void ARAnalyticsEvent (NSString *event, NSDictionary *properties) {
   @try {
-    [ARAnalytics event:event withProperties:properties]
+    [ARAnalytics event:event withProperties:properties];
   }
 
   @catch (NSException *exception) {
