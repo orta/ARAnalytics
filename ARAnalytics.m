@@ -17,6 +17,16 @@ static ARAnalytics *_sharedAnalytics;
 @property (strong) NSSet *providers;
 @end
 
+#if TARGET_OS_IPHONE
+#import "ARNavigationControllerDelegateProxy.h"
+@interface ARAnalytics ()
+{
+    ARNavigationControllerDelegateProxy *_proxyDelegate;
+}
+@property (strong, readonly) ARNavigationControllerDelegateProxy *proxyDelegate;
+@end
+#endif
+
 #if !TARGET_OS_IPHONE
 @implementation UIViewController @end
 @implementation UINavigationController @end
@@ -334,7 +344,10 @@ static ARAnalytics *_sharedAnalytics;
 
 + (void)monitorNavigationViewController:(UINavigationController *)controller {
 #if TARGET_OS_IPHONE
-    controller.delegate = _sharedAnalytics;
+    // Set a new original delegate on the proxy
+    _sharedAnalytics.proxyDelegate.originalDelegate = controller.delegate;
+    // Then set the new controllers delegate as the proxy
+    controller.delegate = _sharedAnalytics.proxyDelegate;
 #endif
 }
 
@@ -343,6 +356,17 @@ static ARAnalytics *_sharedAnalytics;
     [self.class pageView:viewController.title];
 #endif
 }
+
+#if TARGET_OS_IPHONE
+/// Lazily loaded
+- (ARNavigationControllerDelegateProxy *)proxyDelegate
+{
+    if (!_proxyDelegate) {
+        _proxyDelegate = [[ARNavigationControllerDelegateProxy alloc] initWithAnalyticsDelegate:self];
+    }
+    return _proxyDelegate;
+}
+#endif
 
 #pragma mark -
 #pragma mark Timing Events
