@@ -30,11 +30,11 @@
 }
 
 -(void)event:(NSString *)event withProperties:(NSDictionary *)properties {
-    [Amplitude logEvent:event withCustomProperties:properties];
+    [Amplitude logEvent:event withEventProperties:properties];
 }
 
 -(void)setUserProperty:(NSString *)property toValue:(NSString *)value {
-    [Amplitude setGlobalUserProperties:@{property: value}];
+    [Amplitude setUserProperties:@{property: value}];
 }
 
 #endif
