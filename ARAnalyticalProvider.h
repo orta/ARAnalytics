@@ -29,6 +29,10 @@
 /// Submit an event with a time interval
 - (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval;
 
+/// Submit an event with a time interval and extra properties
+/// @warning the properites must not contain the key string `length`.
+- (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval properties:(NSDictionary *)properties;
+
 /// Pass a specific event for showing a page
 - (void)didShowNewPageView:(NSString *)pageTitle;
 

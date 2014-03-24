@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "ARAnalyticalProvider.h"
 
+static NSString *const ARTimingEventLengthKey = @"length";
+
 @implementation ARAnalyticalProvider
 
 - (id)initWithIdentifier:(NSString *)identifier {
@@ -39,7 +41,21 @@
 - (void)monitorNavigationViewController:(UINavigationController *)controller {}
 
 - (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval {
-    [self event:event withProperties:@{ @"length": interval }];
+    [self logTimingEvent:event withInterval:interval properties:nil];
+}
+
+- (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval properties:(NSDictionary *)properties {
+    
+    if (properties[ARTimingEventLengthKey]) {
+        NSString *warning = [NSString stringWithFormat:@"Properties for timing event '%@' contains a key that clashes with the key used for reporting the length: %@", event, ARTimingEventLengthKey];
+        NSLog(@"%@", warning);
+        NSAssert(properties[ARTimingEventLengthKey], @"%@", warning);
+    }
+    
+    NSMutableDictionary *mutableProperties = [NSMutableDictionary dictionaryWithDictionary:properties];
+    mutableProperties[ARTimingEventLengthKey] = interval;
+    
+    [self event:event withProperties:mutableProperties];
 }
 
 - (void)didShowNewPageView:(NSString *)pageTitle {

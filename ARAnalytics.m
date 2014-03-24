@@ -379,6 +379,11 @@ static ARAnalytics *_sharedAnalytics;
 }
 
 + (void)finishTimingEvent:(NSString *)event {
+    [self finishTimingEvent:event withProperties:nil];
+}
+
++(void)finishTimingEvent:(NSString *)event withProperties:(NSDictionary *)properties {
+
     NSDate *startDate = _sharedAnalytics.eventsDictionary[event];
     if (!startDate) {
         NSLog(@"ARAnalytics: finish timing event called without a corrosponding start timing event");
@@ -389,7 +394,7 @@ static ARAnalytics *_sharedAnalytics;
     [_sharedAnalytics.eventsDictionary removeObjectForKey:event];
 
     [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
-        [provider logTimingEvent:event withInterval:@(eventInterval)];
+        [provider logTimingEvent:event withInterval:@(eventInterval) properties:properties];
     }];
 }
 
