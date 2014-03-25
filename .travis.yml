@@ -2,6 +2,9 @@ language: objective-c
 before_script:
   - export LANG=en_US.UTF-8
   - gem i cocoapods --no-ri --no-rdoc
+  - brew update
+  - brew uninstall xctool
+  - brew install xctool
   - cd Bootstrap; pod install ; cd ..
 xcode_workspace: Bootstrap/ARAnalyticsTests.xcworkspace
 xcode_scheme: ARAnalyticsBootstrapiOS
