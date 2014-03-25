@@ -59,6 +59,7 @@
 #endif
 
 @class TSConfig;
+@class ARAnalyticalProvider;
 
 @interface ARAnalytics : NSObject <UINavigationControllerDelegate>
 
@@ -87,6 +88,9 @@
 + (void)setupParseAnalyticsWithApplicationID:(NSString *)appID clientKey:(NSString *)clientKey;
 + (void)setupHeapAnalyticsWithApplicationID:(NSString *)appID;
 + (void)setupChartbeatWithApplicationID:(NSString *)appID;
+
+/// Add a provider manually
++ (void)setupProvider:(ARAnalyticalProvider*)provider;
 
 /// Set a per user property
 + (void)identifyUserwithID:(NSString *)userID andEmailAddress:(NSString *)email __attribute__((deprecated));
