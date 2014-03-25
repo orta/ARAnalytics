@@ -1,7 +1,7 @@
 language: objective-c
 before_script:
   - export LANG=en_US.UTF-8
-  - cd Demo ; pod install ; cd ..
+  - cd Bootstrap ; pod install ; cd ..
 xcode_workspace: Bootstrap/ARAnalyticsTests.xcworkspace
 xcode_scheme: ARAnalyticsBootstrapiOS
 xcode_sdk: iphonesimulator
