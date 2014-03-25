@@ -7,8 +7,9 @@
 * Podspec fix for Localytics-iOS-Client (thanks @amleszk)
 * Added a setupProvider function so people can use private API providers ( thanks @suiying )
 * Added a removeProvider function.
-* Deprecated 
-* Added tests & travis support
+* Deprecated monitorNavigationViewController for having a typo
+* Added tests
+* Added travis support
 
 ## Version 2.4.3
 
