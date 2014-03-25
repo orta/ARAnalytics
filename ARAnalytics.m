@@ -126,17 +126,21 @@ static ARAnalytics *_sharedAnalytics;
     }
 }
 
++ (void)setupProvider:(ARAnalyticalProvider*)provider {
+    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+}
+
 + (void)setupTestFlightWithAppToken:(NSString *)token {
 #ifdef AR_TESTFLIGHT_EXISTS
     TestFlightProvider *provider = [[TestFlightProvider alloc] initWithIdentifier:token];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+    [self setupProvider:provider];
 #endif
 }
 
 + (void)setupCrashlyticsWithAPIKey:(NSString *)key {
 #ifdef AR_CRASHLYTICS_EXISTS
     CrashlyticsProvider *provider = [[CrashlyticsProvider alloc] initWithIdentifier:key];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+    [self setupProvider:provider];
 #endif
 }
 
@@ -147,91 +151,91 @@ static ARAnalytics *_sharedAnalytics;
 + (void)setupMixpanelWithToken:(NSString *)token andHost:(NSString *)host {
 #ifdef AR_MIXPANEL_EXISTS
     MixpanelProvider *provider = [[MixpanelProvider alloc] initWithIdentifier:token andHost:host];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+    [self setupProvider:provider];
 #endif
 }
 
 + (void)setupFlurryWithAPIKey:(NSString *)key {
 #ifdef AR_FLURRY_EXISTS
     FlurryProvider *provider = [[FlurryProvider alloc] initWithIdentifier:key];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+    [self setupProvider:provider];
 #endif
 }
 
 + (void)setupGoogleAnalyticsWithID:(NSString *)identifier {
 #ifdef AR_GOOGLEANALYTICS_EXISTS
     GoogleAnalyticsProvider *provider = [[GoogleAnalyticsProvider alloc] initWithIdentifier:identifier];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+    [self setupProvider:provider];
 #endif
 }
 
 + (void)setupLocalyticsWithAppKey:(NSString *)key {
 #ifdef AR_LOCALYTICS_EXISTS
     LocalyticsProvider *provider = [[LocalyticsProvider alloc] initWithIdentifier:key];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+    [self setupProvider:provider];
 #endif
 }
 
 + (void)setupKISSMetricsWithAPIKey:(NSString *)key {
 #ifdef AR_KISSMETRICS_EXISTS
     KISSMetricsProvider *provider = [[KISSMetricsProvider alloc] initWithIdentifier:key];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+    [self setupProvider:provider];
 #endif
 }
 
 + (void)setupCrittercismWithAppID:(NSString *)appID {
 #ifdef AR_CRITTERCISM_EXISTS
     CrittercismProvider *provider = [[CrittercismProvider alloc] initWithIdentifier:appID];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+    [self setupProvider:provider];
 #endif
 }
 
 + (void)setupCountlyWithAppKey:(NSString *)key andHost:(NSString *)host {
 #ifdef AR_COUNTLY_EXISTS
     CountlyProvider *provider = [[CountlyProvider alloc] initWithAppKey:key andHost:host];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+    [self setupProvider:provider];
 #endif
 }
 
 + (void)setupBugsnagWithAPIKey:(NSString *)key {
 #ifdef AR_BUGSNAG_EXISTS
     BugsnagProvider *provider = [[BugsnagProvider alloc] initWithIdentifier:key];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+    [self setupProvider:provider];
 #endif
 }
 
 + (void)setupHelpshiftWithAppID:(NSString *)appID domainName:(NSString *)domainName apiKey:(NSString *)apiKey {
 #ifdef AR_HELPSHIFT_EXISTS
     HelpshiftProvider *provider = [[HelpshiftProvider alloc] initWithAppID:appID domainName:domainName apiKey:apiKey];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];    
+    [self setupProvider:provider];
 #endif
 }
 
 + (void)setupTapstreamWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret {
 #ifdef AR_TAPSTREAM_EXISTS
     TapstreamProvider *provider = [[TapstreamProvider alloc] initWithAccountName:accountName developerSecret:developerSecret];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+    [self setupProvider:provider];
 #endif
 }
 
 + (void)setupTapstreamWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret config:(TSConfig *)config {
 #ifdef AR_TAPSTREAM_EXISTS
     TapstreamProvider *provider = [[TapstreamProvider alloc] initWithAccountName:accountName developerSecret:developerSecret config:config];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+    [self setupProvider:provider];
 #endif
 }
 
 + (void)setupNewRelicWithAppToken:(NSString *)token {
 #ifdef AR_NEWRELIC_EXISTS
     NewRelicProvider *provider = [[NewRelicProvider alloc] initWithIdentifier:token];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+    [self setupProvider:provider];
 #endif
 }
 
 + (void)setupAmplitudeWithAPIKey:(NSString *)key {
 #ifdef AR_AMPLITUDE_EXISTS
      AmplitudeProvider *provider = [[AmplitudeProvider alloc] initWithIdentifier:key];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+    [self setupProvider:provider];
 #endif
 }
 
@@ -244,29 +248,28 @@ static ARAnalytics *_sharedAnalytics;
 + (void)setupHockeyAppWithBetaID:(NSString *)betaID liveID:(NSString *)liveID {
 #ifdef AR_HOCKEYAPP_EXISTS
     HockeyAppProvider *provider = [[HockeyAppProvider alloc] initWithBetaIdentifier:betaID liveIdentifier:liveID];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+    [self setupProvider:provider];
 #endif
 }
 
 +(void)setupParseAnalyticsWithApplicationID:(NSString *)appID clientKey:(NSString *)clientKey {
 #ifdef AR_PARSEANALYTICS_EXISTS
     ParseAnalyticsProvider *provider = [[ParseAnalyticsProvider alloc] initWithApplicationID:appID clientKey:clientKey];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
-
+    [self setupProvider:provider];
 #endif
 }
 
 + (void)setupHeapAnalyticsWithApplicationID:(NSString *)appID {
 #ifdef AR_HEAPANALYTICS_EXISTS
     HeapAnalyticsProvider *provider = [[HeapAnalyticsProvider alloc] initWithIdentifier:appID];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+    [self setupProvider:provider];
 #endif
 }
 
 + (void)setupChartbeatWithApplicationID:(NSString *)appID {
 #ifdef AR_CHARTBEAT_EXISTS
     ChartbeatProvider *provider = [[ChartbeatProvider alloc] initWithIdentifier:appID];
-    _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
+    [self setupProvider:provider];
 #endif
 }
 
