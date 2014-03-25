@@ -9,7 +9,7 @@
 * Added a removeProvider function.
 * Deprecated monitorNavigationViewController for having a typo
 * Added tests
-* Added travis support
+* Added travis support - (thanks @dlackty)
 
 ## Version 2.4.3
 
