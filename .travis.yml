@@ -1,10 +1,7 @@
 language: objective-c
-before_install:
-- gem i cocoapods --no-ri --no-rdoc
-- cd Bootstrap
-
-script:
-- xctool -workspace ARAnalyticsTests.xcworkspace -scheme $SCHEME -sdk $SDK build test
-
-env:
- - SCHEME=ARAnalyticsBootstrapiOS SDK=iphonesimulator
+before_script:
+  - export LANG=en_US.UTF-8
+  - cd Demo ; pod install ; cd ..
+xcode_workspace: Bootstrap/ARAnalyticsTests.xcworkspace
+xcode_scheme: ARAnalyticsBootstrapiOS
+xcode_sdk: iphonesimulator
