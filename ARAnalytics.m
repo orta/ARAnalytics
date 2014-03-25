@@ -130,6 +130,17 @@ static ARAnalytics *_sharedAnalytics;
     _sharedAnalytics.providers = [_sharedAnalytics.providers setByAddingObject:provider];
 }
 
++ (void)removeProvider:(ARAnalyticalProvider *)provider {
+    NSMutableSet *mutableSet = [NSMutableSet setWithSet:_sharedAnalytics.providers];
+    [mutableSet removeObject:provider];
+    _sharedAnalytics.providers = mutableSet.copy;
+}
+
++ (NSSet *)currentProviders
+{
+    return _sharedAnalytics.providers;
+}
+
 + (void)setupTestFlightWithAppToken:(NSString *)token {
 #ifdef AR_TESTFLIGHT_EXISTS
     TestFlightProvider *provider = [[TestFlightProvider alloc] initWithIdentifier:token];
@@ -278,7 +289,7 @@ static ARAnalytics *_sharedAnalytics;
 #pragma mark -
 #pragma mark User Setup
 
-// deprecated;
+// deprecated; use the one without the typo
 + (void)identifyUserwithID:(NSString *)userID andEmailAddress:(NSString *)email {
     [self identifyUserWithID:userID andEmailAddress:email];
 }
@@ -301,7 +312,7 @@ static ARAnalytics *_sharedAnalytics;
     }];
 }
 
-+ (void)incrementUserProperty:(NSString *)counterName byInt:(int)amount {
++ (void)incrementUserProperty:(NSString *)counterName byInt:(NSInteger)amount {
     [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
         [provider incrementUserProperty:counterName byInt:@(amount)];
     }];
@@ -346,6 +357,11 @@ static ARAnalytics *_sharedAnalytics;
 }
 
 + (void)monitorNavigationViewController:(UINavigationController *)controller {
+    [self monitorNavigationController:controller];
+}
+
++ (void)monitorNavigationController:(UINavigationController *)controller {
+
 #if TARGET_OS_IPHONE
     // Set a new original delegate on the proxy
     _sharedAnalytics.proxyDelegate.originalDelegate = controller.delegate;

@@ -1,1489 +1,859 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>07CB854EAA93403EB45192CE</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
-</string>
-		</dict>
-		<key>3BEA9738AF214F97833B1B11</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Pods.xcconfig</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>4CA562281B834E738D18B40A</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods-ARAnalyticsBootstrapiOS.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>604DAAAF1698DBCB00FD89BB</key>
-		<dict>
-			<key>children</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>ARAnalytics</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60A5E6041698DB4400686918</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>60FF268C17498318005F8435</string>
-				<string>604DAAAF1698DBCB00FD89BB</string>
-				<string>60A5E6161698DB4400686918</string>
-				<string>60FF26771749771E005F8435</string>
-				<string>60A5E60F1698DB4400686918</string>
-				<string>60A5E60E1698DB4400686918</string>
-				<string>3BEA9738AF214F97833B1B11</string>
-				<string>EB0B9A3AEE8F4C46BCD55B4D</string>
-				<string>E861E9D6090641B887FE64AC</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60A5E6051698DB4400686918</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>CLASSPREFIX</key>
-				<string>OR</string>
-				<key>LastUpgradeCheck</key>
-				<string>0460</string>
-				<key>ORGANIZATIONNAME</key>
-				<string>Orta Therox</string>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>60A5E6081698DB4400686918</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-			</array>
-			<key>mainGroup</key>
-			<string>60A5E6041698DB4400686918</string>
-			<key>productRefGroup</key>
-			<string>60A5E60E1698DB4400686918</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectReferences</key>
-			<array/>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>60A5E60C1698DB4400686918</string>
-				<string>60FF266F1749771E005F8435</string>
-			</array>
-		</dict>
-		<key>60A5E6081698DB4400686918</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>60A5E62E1698DB4400686918</string>
-				<string>60A5E62F1698DB4400686918</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>60A5E6091698DB4400686918</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>60A5E61D1698DB4400686918</string>
-				<string>60A5E6211698DB4400686918</string>
-				<string>60A5E62A1698DB4400686918</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>60A5E60A1698DB4400686918</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>60FF268D17498318005F8435</string>
-				<string>60A5E6111698DB4400686918</string>
-				<string>60A5E6131698DB4400686918</string>
-				<string>60A5E6151698DB4400686918</string>
-				<string>60FB51DD1699032C00040CC8</string>
-				<string>A2750F25723A4344992E231B</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>60A5E60B1698DB4400686918</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>60A5E61B1698DB4400686918</string>
-				<string>60A5E6231698DB4400686918</string>
-				<string>60A5E6251698DB4400686918</string>
-				<string>60A5E6271698DB4400686918</string>
-				<string>60A5E62D1698DB4400686918</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>60A5E60C1698DB4400686918</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>60A5E6301698DB4400686918</string>
-			<key>buildPhases</key>
-			<array>
-				<string>07CB854EAA93403EB45192CE</string>
-				<string>60A5E6091698DB4400686918</string>
-				<string>60A5E60A1698DB4400686918</string>
-				<string>60A5E60B1698DB4400686918</string>
-				<string>B1A4DB6A8957418F8287D04E</string>
-				<string>B4FD8B0A43374393B7308167</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>ARAnalyticsBootstrapiOS</string>
-			<key>productName</key>
-			<string>ARAnalyticsTests</string>
-			<key>productReference</key>
-			<string>60A5E60D1698DB4400686918</string>
-			<key>productType</key>
-			<string>com.apple.product-type.application</string>
-		</dict>
-		<key>60A5E60D1698DB4400686918</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.application</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>ARAnalyticsBootstrapiOS.app</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>60A5E60E1698DB4400686918</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>60A5E60D1698DB4400686918</string>
-				<string>60FF26701749771E005F8435</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60A5E60F1698DB4400686918</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>60A5E6101698DB4400686918</string>
-				<string>60A5E6121698DB4400686918</string>
-				<string>60A5E6141698DB4400686918</string>
-				<string>B7B5DDBD004C4BBD8C1C404F</string>
-				<string>60FF26711749771E005F8435</string>
-				<string>60FF26731749771E005F8435</string>
-				<string>DBFC8EEA18444170B5070ED6</string>
-				<string>4CA562281B834E738D18B40A</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60A5E6101698DB4400686918</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>UIKit.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/UIKit.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>60A5E6111698DB4400686918</key>
-		<dict>
-			<key>fileRef</key>
-			<string>60A5E6101698DB4400686918</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>60A5E6121698DB4400686918</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Foundation.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/Foundation.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>60A5E6131698DB4400686918</key>
-		<dict>
-			<key>fileRef</key>
-			<string>60A5E6121698DB4400686918</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>60A5E6141698DB4400686918</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>CoreGraphics.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/CoreGraphics.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>60A5E6151698DB4400686918</key>
-		<dict>
-			<key>fileRef</key>
-			<string>60A5E6141698DB4400686918</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>60A5E6161698DB4400686918</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>60FB51DC1699032C00040CC8</string>
-				<string>60A5E61F1698DB4400686918</string>
-				<string>60A5E6201698DB4400686918</string>
-				<string>60A5E6281698DB4400686918</string>
-				<string>60A5E6291698DB4400686918</string>
-				<string>60A5E62B1698DB4400686918</string>
-				<string>60A5E6171698DB4400686918</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>ARAnalyticsTestsiOS</string>
-			<key>path</key>
-			<string>ARAnalyticsTests</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60A5E6171698DB4400686918</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>60A5E6181698DB4400686918</string>
-				<string>60A5E6191698DB4400686918</string>
-				<string>60A5E61C1698DB4400686918</string>
-				<string>60A5E61E1698DB4400686918</string>
-				<string>60A5E6221698DB4400686918</string>
-				<string>60A5E6241698DB4400686918</string>
-				<string>60A5E6261698DB4400686918</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60A5E6181698DB4400686918</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>ARAnalyticsTests-Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60A5E6191698DB4400686918</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>60A5E61A1698DB4400686918</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60A5E61A1698DB4400686918</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.strings</string>
-			<key>name</key>
-			<string>en</string>
-			<key>path</key>
-			<string>en.lproj/InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60A5E61B1698DB4400686918</key>
-		<dict>
-			<key>fileRef</key>
-			<string>60A5E6191698DB4400686918</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>60A5E61C1698DB4400686918</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>main.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60A5E61D1698DB4400686918</key>
-		<dict>
-			<key>fileRef</key>
-			<string>60A5E61C1698DB4400686918</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>60A5E61E1698DB4400686918</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>ARAnalyticsTests-Prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60A5E61F1698DB4400686918</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>ORAppDelegate.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60A5E6201698DB4400686918</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>ORAppDelegate.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60A5E6211698DB4400686918</key>
-		<dict>
-			<key>fileRef</key>
-			<string>60A5E6201698DB4400686918</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>60A5E6221698DB4400686918</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>image.png</string>
-			<key>path</key>
-			<string>Default.png</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60A5E6231698DB4400686918</key>
-		<dict>
-			<key>fileRef</key>
-			<string>60A5E6221698DB4400686918</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>60A5E6241698DB4400686918</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>image.png</string>
-			<key>path</key>
-			<string>Default@2x.png</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60A5E6251698DB4400686918</key>
-		<dict>
-			<key>fileRef</key>
-			<string>60A5E6241698DB4400686918</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>60A5E6261698DB4400686918</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>image.png</string>
-			<key>path</key>
-			<string>Default-568h@2x.png</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60A5E6271698DB4400686918</key>
-		<dict>
-			<key>fileRef</key>
-			<string>60A5E6261698DB4400686918</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>60A5E6281698DB4400686918</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>ORViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60A5E6291698DB4400686918</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>ORViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60A5E62A1698DB4400686918</key>
-		<dict>
-			<key>fileRef</key>
-			<string>60A5E6291698DB4400686918</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>60A5E62B1698DB4400686918</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>60A5E62C1698DB4400686918</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>ORViewController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60A5E62C1698DB4400686918</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>name</key>
-			<string>en</string>
-			<key>path</key>
-			<string>en.lproj/ORViewController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60A5E62D1698DB4400686918</key>
-		<dict>
-			<key>fileRef</key>
-			<string>60A5E62B1698DB4400686918</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>60A5E62E1698DB4400686918</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>3BEA9738AF214F97833B1B11</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>6.1</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>YES</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>60A5E62F1698DB4400686918</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>6.1</string>
-				<key>OTHER_CFLAGS</key>
-				<string>-DNS_BLOCK_ASSERTIONS=1</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>60A5E6301698DB4400686918</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>60A5E6311698DB4400686918</string>
-				<string>60A5E6321698DB4400686918</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>60A5E6311698DB4400686918</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>E861E9D6090641B887FE64AC</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>"$(SRCROOT)/ARAnalyticsTests"</string>
-				</array>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>ARAnalyticsTests/ARAnalyticsTests-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>ARAnalyticsTests/ARAnalyticsTests-Info.plist</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>app</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>60A5E6321698DB4400686918</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>E861E9D6090641B887FE64AC</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>"$(SRCROOT)/ARAnalyticsTests"</string>
-				</array>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>ARAnalyticsTests/ARAnalyticsTests-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>ARAnalyticsTests/ARAnalyticsTests-Info.plist</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>app</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>60FB51DC1699032C00040CC8</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>path</key>
-			<string>Crashlytics.framework</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60FB51DD1699032C00040CC8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>60FB51DC1699032C00040CC8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>60FF266C1749771E005F8435</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>60FF267E1749771E005F8435</string>
-				<string>60FF26851749771E005F8435</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>60FF266D1749771E005F8435</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>60FF26721749771E005F8435</string>
-				<string>9AE647F2B27E4DB6B4966BA9</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>60FF266E1749771E005F8435</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>60FF267C1749771E005F8435</string>
-				<string>60FF26821749771E005F8435</string>
-				<string>60FF26881749771F005F8435</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>60FF266F1749771E005F8435</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>60FF26891749771F005F8435</string>
-			<key>buildPhases</key>
-			<array>
-				<string>CD4DA4CB539A4943A7792E8D</string>
-				<string>60FF266C1749771E005F8435</string>
-				<string>60FF266D1749771E005F8435</string>
-				<string>60FF266E1749771E005F8435</string>
-				<string>E4F935CFB69346AFA2E005E4</string>
-				<string>7199A20B1EDB404891D9BAF7</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>ARAnalyticsBootstrapMac</string>
-			<key>productName</key>
-			<string>ARAnalyticsBootstrapMac</string>
-			<key>productReference</key>
-			<string>60FF26701749771E005F8435</string>
-			<key>productType</key>
-			<string>com.apple.product-type.application</string>
-		</dict>
-		<key>60FF26701749771E005F8435</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.application</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>ARAnalyticsBootstrapMac.app</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>60FF26711749771E005F8435</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Cocoa.framework</string>
-			<key>path</key>
-			<string>Library/Frameworks/Cocoa.framework</string>
-			<key>sourceTree</key>
-			<string>DEVELOPER_DIR</string>
-		</dict>
-		<key>60FF26721749771E005F8435</key>
-		<dict>
-			<key>fileRef</key>
-			<string>60FF26711749771E005F8435</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>60FF26731749771E005F8435</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>60FF26741749771E005F8435</string>
-				<string>60FF26751749771E005F8435</string>
-				<string>60FF26761749771E005F8435</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Other Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60FF26741749771E005F8435</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>AppKit.framework</string>
-			<key>path</key>
-			<string>Library/Frameworks/AppKit.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>60FF26751749771E005F8435</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>CoreData.framework</string>
-			<key>path</key>
-			<string>Library/Frameworks/CoreData.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>60FF26761749771E005F8435</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Foundation.framework</string>
-			<key>path</key>
-			<string>Library/Frameworks/Foundation.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>60FF26771749771E005F8435</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>60FF26831749771E005F8435</string>
-				<string>60FF26841749771E005F8435</string>
-				<string>60FF26861749771F005F8435</string>
-				<string>60FF26781749771E005F8435</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>ARAnalyticsBootstrapMac</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60FF26781749771E005F8435</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>60FF26791749771E005F8435</string>
-				<string>60FF267A1749771E005F8435</string>
-				<string>60FF267D1749771E005F8435</string>
-				<string>60FF267F1749771E005F8435</string>
-				<string>60FF26801749771E005F8435</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60FF26791749771E005F8435</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>ARAnalyticsBootstrapMac-Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60FF267A1749771E005F8435</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>60FF267B1749771E005F8435</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60FF267B1749771E005F8435</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.strings</string>
-			<key>name</key>
-			<string>en</string>
-			<key>path</key>
-			<string>en.lproj/InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60FF267C1749771E005F8435</key>
-		<dict>
-			<key>fileRef</key>
-			<string>60FF267A1749771E005F8435</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>60FF267D1749771E005F8435</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>main.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60FF267E1749771E005F8435</key>
-		<dict>
-			<key>fileRef</key>
-			<string>60FF267D1749771E005F8435</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>60FF267F1749771E005F8435</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>ARAnalyticsBootstrapMac-Prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60FF26801749771E005F8435</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>60FF26811749771E005F8435</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>Credits.rtf</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60FF26811749771E005F8435</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.rtf</string>
-			<key>name</key>
-			<string>en</string>
-			<key>path</key>
-			<string>en.lproj/Credits.rtf</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60FF26821749771E005F8435</key>
-		<dict>
-			<key>fileRef</key>
-			<string>60FF26801749771E005F8435</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>60FF26831749771E005F8435</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>ORAppDelegate.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60FF26841749771E005F8435</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>ORAppDelegate.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60FF26851749771E005F8435</key>
-		<dict>
-			<key>fileRef</key>
-			<string>60FF26841749771E005F8435</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>60FF26861749771F005F8435</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>60FF26871749771F005F8435</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>MainMenu.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60FF26871749771F005F8435</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>name</key>
-			<string>en</string>
-			<key>path</key>
-			<string>en.lproj/MainMenu.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>60FF26881749771F005F8435</key>
-		<dict>
-			<key>fileRef</key>
-			<string>60FF26861749771F005F8435</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>60FF26891749771F005F8435</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>60FF268A1749771F005F8435</string>
-				<string>60FF268B1749771F005F8435</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>60FF268A1749771F005F8435</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>EB0B9A3AEE8F4C46BCD55B4D</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ARCHS</key>
-				<string>$(ARCHS_STANDARD_64_BIT)</string>
-				<key>COMBINE_HIDPI_IMAGES</key>
-				<string>YES</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks"</string>
-				</array>
-				<key>GCC_ENABLE_OBJC_EXCEPTIONS</key>
-				<string>YES</string>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>ARAnalyticsBootstrapMac/ARAnalyticsBootstrapMac-Prefix.pch</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>INFOPLIST_FILE</key>
-				<string>ARAnalyticsBootstrapMac/ARAnalyticsBootstrapMac-Info.plist</string>
-				<key>MACOSX_DEPLOYMENT_TARGET</key>
-				<string>10.8</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SDKROOT</key>
-				<string>macosx</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>app</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>60FF268B1749771F005F8435</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>EB0B9A3AEE8F4C46BCD55B4D</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ARCHS</key>
-				<string>$(ARCHS_STANDARD_64_BIT)</string>
-				<key>COMBINE_HIDPI_IMAGES</key>
-				<string>YES</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf-with-dsym</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks"</string>
-				</array>
-				<key>GCC_ENABLE_OBJC_EXCEPTIONS</key>
-				<string>YES</string>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>ARAnalyticsBootstrapMac/ARAnalyticsBootstrapMac-Prefix.pch</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>INFOPLIST_FILE</key>
-				<string>ARAnalyticsBootstrapMac/ARAnalyticsBootstrapMac-Info.plist</string>
-				<key>MACOSX_DEPLOYMENT_TARGET</key>
-				<string>10.8</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SDKROOT</key>
-				<string>macosx</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>app</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>60FF268C17498318005F8435</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Security.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/Security.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>60FF268D17498318005F8435</key>
-		<dict>
-			<key>fileRef</key>
-			<string>60FF268C17498318005F8435</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>7199A20B1EDB404891D9BAF7</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Upload Bugsnag dSYM</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/usr/bin/ruby</string>
-			<key>shellScript</key>
-			<string>
-if ENV["DEBUG_INFORMATION_FORMAT"] != "dwarf-with-dsym" or ENV["PLATFORM_NAME"] == "iphonesimulator"
-  exit
-end
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
 
-fork do
-  Process.setsid
-  STDIN.reopen("/dev/null")
-  STDOUT.reopen("/dev/null", "a")
-  STDERR.reopen("/dev/null", "a")
+/* Begin PBXBuildFile section */
+		603AE9F318E1AE49004AEBF8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 603AE9F218E1AE49004AEBF8 /* XCTest.framework */; };
+		603AE9F418E1AE49004AEBF8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A5E6121698DB4400686918 /* Foundation.framework */; };
+		603AE9F518E1AE49004AEBF8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A5E6101698DB4400686918 /* UIKit.framework */; };
+		603AE9FB18E1AE49004AEBF8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 603AE9F918E1AE49004AEBF8 /* InfoPlist.strings */; };
+		603AE9FD18E1AE49004AEBF8 /* ARAnalyticsiOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 603AE9FC18E1AE49004AEBF8 /* ARAnalyticsiOSTests.m */; };
+		603AEA0618E1AF6D004AEBF8 /* ORStubbedProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 603AEA0518E1AF6D004AEBF8 /* ORStubbedProvider.m */; };
+		60A5E6111698DB4400686918 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A5E6101698DB4400686918 /* UIKit.framework */; };
+		60A5E6131698DB4400686918 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A5E6121698DB4400686918 /* Foundation.framework */; };
+		60A5E6151698DB4400686918 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A5E6141698DB4400686918 /* CoreGraphics.framework */; };
+		60A5E61B1698DB4400686918 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 60A5E6191698DB4400686918 /* InfoPlist.strings */; };
+		60A5E61D1698DB4400686918 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 60A5E61C1698DB4400686918 /* main.m */; };
+		60A5E6211698DB4400686918 /* ORAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 60A5E6201698DB4400686918 /* ORAppDelegate.m */; };
+		60A5E6231698DB4400686918 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 60A5E6221698DB4400686918 /* Default.png */; };
+		60A5E6251698DB4400686918 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60A5E6241698DB4400686918 /* Default@2x.png */; };
+		60A5E6271698DB4400686918 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60A5E6261698DB4400686918 /* Default-568h@2x.png */; };
+		60A5E62A1698DB4400686918 /* ORViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60A5E6291698DB4400686918 /* ORViewController.m */; };
+		60A5E62D1698DB4400686918 /* ORViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60A5E62B1698DB4400686918 /* ORViewController.xib */; };
+		60FB51DD1699032C00040CC8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60FB51DC1699032C00040CC8 /* Crashlytics.framework */; };
+		60FF267C1749771E005F8435 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 60FF267A1749771E005F8435 /* InfoPlist.strings */; };
+		60FF267E1749771E005F8435 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 60FF267D1749771E005F8435 /* main.m */; };
+		60FF26821749771E005F8435 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 60FF26801749771E005F8435 /* Credits.rtf */; };
+		60FF26851749771E005F8435 /* ORAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 60FF26841749771E005F8435 /* ORAppDelegate.m */; };
+		60FF26881749771F005F8435 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60FF26861749771F005F8435 /* MainMenu.xib */; };
+		60FF268D17498318005F8435 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60FF268C17498318005F8435 /* Security.framework */; };
+		9AE647F2B27E4DB6B4966BA9 /* libPods-ARAnalyticsBootstrapMac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFC8EEA18444170B5070ED6 /* libPods-ARAnalyticsBootstrapMac.a */; };
+		9C45E7644D654CB2A4940A18 /* libPods-ARAnalyticsiOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 098BAA2082A04DABA4E2599A /* libPods-ARAnalyticsiOSTests.a */; };
+		A2750F25723A4344992E231B /* libPods-ARAnalyticsBootstrapiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA562281B834E738D18B40A /* libPods-ARAnalyticsBootstrapiOS.a */; };
+/* End PBXBuildFile section */
 
-  require 'shellwords'
+/* Begin PBXContainerItemProxy section */
+		603AE9FF18E1AE49004AEBF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 60A5E6051698DB4400686918 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60A5E60C1698DB4400686918;
+			remoteInfo = ARAnalyticsBootstrapiOS;
+		};
+/* End PBXContainerItemProxy section */
 
-  Dir["#{ENV["DWARF_DSYM_FOLDER_PATH"]}/#{ENV["DWARF_DSYM_FILE_NAME"]}/Contents/Resources/DWARF/*"].each do |dsym|
-    system("curl -F dsym=@#{Shellwords.escape(dsym)} -F projectRoot=#{Shellwords.escape(ENV["PROJECT_DIR"])} https://upload.bugsnag.com/")
-  end
-end
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>9AE647F2B27E4DB6B4966BA9</key>
-		<dict>
-			<key>fileRef</key>
-			<string>DBFC8EEA18444170B5070ED6</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A2750F25723A4344992E231B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>4CA562281B834E738D18B40A</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B1A4DB6A8957418F8287D04E</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Pods-ARAnalyticsBootstrapiOS-resources.sh"
-</string>
-		</dict>
-		<key>B4FD8B0A43374393B7308167</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Upload Bugsnag dSYM</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/usr/bin/ruby</string>
-			<key>shellScript</key>
-			<string>
-if ENV["DEBUG_INFORMATION_FORMAT"] != "dwarf-with-dsym" or ENV["PLATFORM_NAME"] == "iphonesimulator"
-  exit
-end
+/* Begin PBXFileReference section */
+		079BB5D924064A80955EFB54 /* Pods-ARAnalyticsiOSTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARAnalyticsiOSTests.xcconfig"; path = "Pods/Pods-ARAnalyticsiOSTests.xcconfig"; sourceTree = "<group>"; };
+		098BAA2082A04DABA4E2599A /* libPods-ARAnalyticsiOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ARAnalyticsiOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CA562281B834E738D18B40A /* libPods-ARAnalyticsBootstrapiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ARAnalyticsBootstrapiOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		603AE9F118E1AE49004AEBF8 /* ARAnalyticsiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARAnalyticsiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		603AE9F218E1AE49004AEBF8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		603AE9F818E1AE49004AEBF8 /* ARAnalyticsiOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ARAnalyticsiOSTests-Info.plist"; sourceTree = "<group>"; };
+		603AE9FA18E1AE49004AEBF8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		603AE9FC18E1AE49004AEBF8 /* ARAnalyticsiOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARAnalyticsiOSTests.m; sourceTree = "<group>"; };
+		603AE9FE18E1AE49004AEBF8 /* ARAnalyticsiOSTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ARAnalyticsiOSTests-Prefix.pch"; sourceTree = "<group>"; };
+		603AEA0418E1AF6D004AEBF8 /* ORStubbedProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORStubbedProvider.h; sourceTree = "<group>"; };
+		603AEA0518E1AF6D004AEBF8 /* ORStubbedProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORStubbedProvider.m; sourceTree = "<group>"; };
+		603AEA0718E1B5C2004AEBF8 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
+		603AEA0818E1B631004AEBF8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		60A5E60D1698DB4400686918 /* ARAnalyticsBootstrapiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARAnalyticsBootstrapiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		60A5E6101698DB4400686918 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		60A5E6121698DB4400686918 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		60A5E6141698DB4400686918 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		60A5E6181698DB4400686918 /* ARAnalyticsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ARAnalyticsTests-Info.plist"; sourceTree = "<group>"; };
+		60A5E61A1698DB4400686918 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		60A5E61C1698DB4400686918 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		60A5E61E1698DB4400686918 /* ARAnalyticsTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ARAnalyticsTests-Prefix.pch"; sourceTree = "<group>"; };
+		60A5E61F1698DB4400686918 /* ORAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ORAppDelegate.h; sourceTree = "<group>"; };
+		60A5E6201698DB4400686918 /* ORAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ORAppDelegate.m; sourceTree = "<group>"; };
+		60A5E6221698DB4400686918 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		60A5E6241698DB4400686918 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		60A5E6261698DB4400686918 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		60A5E6281698DB4400686918 /* ORViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ORViewController.h; sourceTree = "<group>"; };
+		60A5E6291698DB4400686918 /* ORViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ORViewController.m; sourceTree = "<group>"; };
+		60A5E62C1698DB4400686918 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ORViewController.xib; sourceTree = "<group>"; };
+		60FB51DC1699032C00040CC8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		60FF26701749771E005F8435 /* ARAnalyticsBootstrapMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARAnalyticsBootstrapMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		60FF26741749771E005F8435 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		60FF26751749771E005F8435 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		60FF26761749771E005F8435 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		60FF26791749771E005F8435 /* ARAnalyticsBootstrapMac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ARAnalyticsBootstrapMac-Info.plist"; sourceTree = "<group>"; };
+		60FF267B1749771E005F8435 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		60FF267D1749771E005F8435 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		60FF267F1749771E005F8435 /* ARAnalyticsBootstrapMac-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ARAnalyticsBootstrapMac-Prefix.pch"; sourceTree = "<group>"; };
+		60FF26811749771E005F8435 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		60FF26831749771E005F8435 /* ORAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ORAppDelegate.h; sourceTree = "<group>"; };
+		60FF26841749771E005F8435 /* ORAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ORAppDelegate.m; sourceTree = "<group>"; };
+		60FF26871749771F005F8435 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		60FF268C17498318005F8435 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		DBFC8EEA18444170B5070ED6 /* libPods-ARAnalyticsBootstrapMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ARAnalyticsBootstrapMac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E861E9D6090641B887FE64AC /* Pods-ARAnalyticsBootstrapiOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARAnalyticsBootstrapiOS.xcconfig"; path = "Pods/Pods-ARAnalyticsBootstrapiOS.xcconfig"; sourceTree = SOURCE_ROOT; };
+		EB0B9A3AEE8F4C46BCD55B4D /* Pods-ARAnalyticsBootstrapMac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARAnalyticsBootstrapMac.xcconfig"; path = "Pods/Pods-ARAnalyticsBootstrapMac.xcconfig"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
 
-fork do
-  Process.setsid
-  STDIN.reopen("/dev/null")
-  STDOUT.reopen("/dev/null", "a")
-  STDERR.reopen("/dev/null", "a")
+/* Begin PBXFrameworksBuildPhase section */
+		603AE9EE18E1AE49004AEBF8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				603AE9F318E1AE49004AEBF8 /* XCTest.framework in Frameworks */,
+				603AE9F518E1AE49004AEBF8 /* UIKit.framework in Frameworks */,
+				603AE9F418E1AE49004AEBF8 /* Foundation.framework in Frameworks */,
+				9C45E7644D654CB2A4940A18 /* libPods-ARAnalyticsiOSTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60A5E60A1698DB4400686918 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60FF268D17498318005F8435 /* Security.framework in Frameworks */,
+				60A5E6111698DB4400686918 /* UIKit.framework in Frameworks */,
+				60A5E6131698DB4400686918 /* Foundation.framework in Frameworks */,
+				60A5E6151698DB4400686918 /* CoreGraphics.framework in Frameworks */,
+				60FB51DD1699032C00040CC8 /* Crashlytics.framework in Frameworks */,
+				A2750F25723A4344992E231B /* libPods-ARAnalyticsBootstrapiOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60FF266D1749771E005F8435 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AE647F2B27E4DB6B4966BA9 /* libPods-ARAnalyticsBootstrapMac.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
-  require 'shellwords'
+/* Begin PBXGroup section */
+		603AE9F618E1AE49004AEBF8 /* ARAnalyticsiOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				603AE9FC18E1AE49004AEBF8 /* ARAnalyticsiOSTests.m */,
+				603AE9F718E1AE49004AEBF8 /* Supporting Files */,
+				603AEA0418E1AF6D004AEBF8 /* ORStubbedProvider.h */,
+				603AEA0518E1AF6D004AEBF8 /* ORStubbedProvider.m */,
+			);
+			path = ARAnalyticsiOSTests;
+			sourceTree = "<group>";
+		};
+		603AE9F718E1AE49004AEBF8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				603AE9F818E1AE49004AEBF8 /* ARAnalyticsiOSTests-Info.plist */,
+				603AE9F918E1AE49004AEBF8 /* InfoPlist.strings */,
+				603AE9FE18E1AE49004AEBF8 /* ARAnalyticsiOSTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		604DAAAF1698DBCB00FD89BB /* ARAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				60FF26771749771E005F8435 /* ARAnalyticsBootstrapMac */,
+				60A5E6161698DB4400686918 /* ARAnalyticsTestsiOS */,
+				60A5E60F1698DB4400686918 /* Frameworks */,
+				60A5E60E1698DB4400686918 /* Products */,
+			);
+			name = ARAnalytics;
+			sourceTree = "<group>";
+		};
+		60A5E6041698DB4400686918 = {
+			isa = PBXGroup;
+			children = (
+				603AEA0818E1B631004AEBF8 /* README.md */,
+				603AEA0718E1B5C2004AEBF8 /* CHANGELOG.md */,
+				604DAAAF1698DBCB00FD89BB /* ARAnalytics */,
+				603AE9F618E1AE49004AEBF8 /* ARAnalyticsiOSTests */,
+				EB0B9A3AEE8F4C46BCD55B4D /* Pods-ARAnalyticsBootstrapMac.xcconfig */,
+				E861E9D6090641B887FE64AC /* Pods-ARAnalyticsBootstrapiOS.xcconfig */,
+				079BB5D924064A80955EFB54 /* Pods-ARAnalyticsiOSTests.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		60A5E60E1698DB4400686918 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				60A5E60D1698DB4400686918 /* ARAnalyticsBootstrapiOS.app */,
+				60FF26701749771E005F8435 /* ARAnalyticsBootstrapMac.app */,
+				603AE9F118E1AE49004AEBF8 /* ARAnalyticsiOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		60A5E60F1698DB4400686918 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				60FF268C17498318005F8435 /* Security.framework */,
+				60A5E6101698DB4400686918 /* UIKit.framework */,
+				60A5E6121698DB4400686918 /* Foundation.framework */,
+				60A5E6141698DB4400686918 /* CoreGraphics.framework */,
+				603AE9F218E1AE49004AEBF8 /* XCTest.framework */,
+				60FF26731749771E005F8435 /* Other Frameworks */,
+				DBFC8EEA18444170B5070ED6 /* libPods-ARAnalyticsBootstrapMac.a */,
+				4CA562281B834E738D18B40A /* libPods-ARAnalyticsBootstrapiOS.a */,
+				098BAA2082A04DABA4E2599A /* libPods-ARAnalyticsiOSTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		60A5E6161698DB4400686918 /* ARAnalyticsTestsiOS */ = {
+			isa = PBXGroup;
+			children = (
+				60FB51DC1699032C00040CC8 /* Crashlytics.framework */,
+				60A5E61F1698DB4400686918 /* ORAppDelegate.h */,
+				60A5E6201698DB4400686918 /* ORAppDelegate.m */,
+				60A5E6281698DB4400686918 /* ORViewController.h */,
+				60A5E6291698DB4400686918 /* ORViewController.m */,
+				60A5E62B1698DB4400686918 /* ORViewController.xib */,
+				60A5E6171698DB4400686918 /* Supporting Files */,
+			);
+			name = ARAnalyticsTestsiOS;
+			path = ARAnalyticsTests;
+			sourceTree = "<group>";
+		};
+		60A5E6171698DB4400686918 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				60A5E6181698DB4400686918 /* ARAnalyticsTests-Info.plist */,
+				60A5E6191698DB4400686918 /* InfoPlist.strings */,
+				60A5E61C1698DB4400686918 /* main.m */,
+				60A5E61E1698DB4400686918 /* ARAnalyticsTests-Prefix.pch */,
+				60A5E6221698DB4400686918 /* Default.png */,
+				60A5E6241698DB4400686918 /* Default@2x.png */,
+				60A5E6261698DB4400686918 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		60FF26731749771E005F8435 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				60FF26741749771E005F8435 /* AppKit.framework */,
+				60FF26751749771E005F8435 /* CoreData.framework */,
+				60FF26761749771E005F8435 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		60FF26771749771E005F8435 /* ARAnalyticsBootstrapMac */ = {
+			isa = PBXGroup;
+			children = (
+				60FF26831749771E005F8435 /* ORAppDelegate.h */,
+				60FF26841749771E005F8435 /* ORAppDelegate.m */,
+				60FF26861749771F005F8435 /* MainMenu.xib */,
+				60FF26781749771E005F8435 /* Supporting Files */,
+			);
+			path = ARAnalyticsBootstrapMac;
+			sourceTree = "<group>";
+		};
+		60FF26781749771E005F8435 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				60FF26791749771E005F8435 /* ARAnalyticsBootstrapMac-Info.plist */,
+				60FF267A1749771E005F8435 /* InfoPlist.strings */,
+				60FF267D1749771E005F8435 /* main.m */,
+				60FF267F1749771E005F8435 /* ARAnalyticsBootstrapMac-Prefix.pch */,
+				60FF26801749771E005F8435 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
 
-  Dir["#{ENV["DWARF_DSYM_FOLDER_PATH"]}/#{ENV["DWARF_DSYM_FILE_NAME"]}/Contents/Resources/DWARF/*"].each do |dsym|
-    system("curl -F dsym=@#{Shellwords.escape(dsym)} -F projectRoot=#{Shellwords.escape(ENV["PROJECT_DIR"])} https://upload.bugsnag.com/")
-  end
-end
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>B7B5DDBD004C4BBD8C1C404F</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>CD4DA4CB539A4943A7792E8D</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
-</string>
-		</dict>
-		<key>DBFC8EEA18444170B5070ED6</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods-ARAnalyticsBootstrapMac.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>E4F935CFB69346AFA2E005E4</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Pods-ARAnalyticsBootstrapMac-resources.sh"
-</string>
-		</dict>
-		<key>E861E9D6090641B887FE64AC</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods-ARAnalyticsBootstrapiOS.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Pods-ARAnalyticsBootstrapiOS.xcconfig</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>EB0B9A3AEE8F4C46BCD55B4D</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods-ARAnalyticsBootstrapMac.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Pods-ARAnalyticsBootstrapMac.xcconfig</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>60A5E6051698DB4400686918</string>
-</dict>
-</plist>
+/* Begin PBXNativeTarget section */
+		603AE9F018E1AE49004AEBF8 /* ARAnalyticsiOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 603AEA0118E1AE49004AEBF8 /* Build configuration list for PBXNativeTarget "ARAnalyticsiOSTests" */;
+			buildPhases = (
+				4CB1B204D91C48519EEF2887 /* Check Pods Manifest.lock */,
+				603AE9ED18E1AE49004AEBF8 /* Sources */,
+				603AE9EE18E1AE49004AEBF8 /* Frameworks */,
+				603AE9EF18E1AE49004AEBF8 /* Resources */,
+				E4BEF1165C524989BBDA92C0 /* Copy Pods Resources */,
+				A8FD6CFF3374464C9B2524FB /* Upload Bugsnag dSYM */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				603AEA0018E1AE49004AEBF8 /* PBXTargetDependency */,
+			);
+			name = ARAnalyticsiOSTests;
+			productName = ARAnalyticsiOSTests;
+			productReference = 603AE9F118E1AE49004AEBF8 /* ARAnalyticsiOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		60A5E60C1698DB4400686918 /* ARAnalyticsBootstrapiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60A5E6301698DB4400686918 /* Build configuration list for PBXNativeTarget "ARAnalyticsBootstrapiOS" */;
+			buildPhases = (
+				07CB854EAA93403EB45192CE /* Check Pods Manifest.lock */,
+				60A5E6091698DB4400686918 /* Sources */,
+				60A5E60A1698DB4400686918 /* Frameworks */,
+				60A5E60B1698DB4400686918 /* Resources */,
+				B1A4DB6A8957418F8287D04E /* Copy Pods Resources */,
+				B4FD8B0A43374393B7308167 /* Upload Bugsnag dSYM */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ARAnalyticsBootstrapiOS;
+			productName = ARAnalyticsTests;
+			productReference = 60A5E60D1698DB4400686918 /* ARAnalyticsBootstrapiOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		60FF266F1749771E005F8435 /* ARAnalyticsBootstrapMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60FF26891749771F005F8435 /* Build configuration list for PBXNativeTarget "ARAnalyticsBootstrapMac" */;
+			buildPhases = (
+				CD4DA4CB539A4943A7792E8D /* Check Pods Manifest.lock */,
+				60FF266C1749771E005F8435 /* Sources */,
+				60FF266D1749771E005F8435 /* Frameworks */,
+				60FF266E1749771E005F8435 /* Resources */,
+				E4F935CFB69346AFA2E005E4 /* Copy Pods Resources */,
+				7199A20B1EDB404891D9BAF7 /* Upload Bugsnag dSYM */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ARAnalyticsBootstrapMac;
+			productName = ARAnalyticsBootstrapMac;
+			productReference = 60FF26701749771E005F8435 /* ARAnalyticsBootstrapMac.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		60A5E6051698DB4400686918 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = OR;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Orta Therox";
+				TargetAttributes = {
+					603AE9F018E1AE49004AEBF8 = {
+						TestTargetID = 60A5E60C1698DB4400686918;
+					};
+				};
+			};
+			buildConfigurationList = 60A5E6081698DB4400686918 /* Build configuration list for PBXProject "ARAnalyticsTests" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 60A5E6041698DB4400686918;
+			productRefGroup = 60A5E60E1698DB4400686918 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				60A5E60C1698DB4400686918 /* ARAnalyticsBootstrapiOS */,
+				60FF266F1749771E005F8435 /* ARAnalyticsBootstrapMac */,
+				603AE9F018E1AE49004AEBF8 /* ARAnalyticsiOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		603AE9EF18E1AE49004AEBF8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				603AE9FB18E1AE49004AEBF8 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60A5E60B1698DB4400686918 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60A5E61B1698DB4400686918 /* InfoPlist.strings in Resources */,
+				60A5E6231698DB4400686918 /* Default.png in Resources */,
+				60A5E6251698DB4400686918 /* Default@2x.png in Resources */,
+				60A5E6271698DB4400686918 /* Default-568h@2x.png in Resources */,
+				60A5E62D1698DB4400686918 /* ORViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60FF266E1749771E005F8435 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60FF267C1749771E005F8435 /* InfoPlist.strings in Resources */,
+				60FF26821749771E005F8435 /* Credits.rtf in Resources */,
+				60FF26881749771F005F8435 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		07CB854EAA93403EB45192CE /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+		4CB1B204D91C48519EEF2887 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7199A20B1EDB404891D9BAF7 /* Upload Bugsnag dSYM */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Upload Bugsnag dSYM";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /usr/bin/ruby;
+			shellScript = "\nif ENV[\"DEBUG_INFORMATION_FORMAT\"] != \"dwarf-with-dsym\" or ENV[\"PLATFORM_NAME\"] == \"iphonesimulator\"\n  exit\nend\n\nfork do\n  Process.setsid\n  STDIN.reopen(\"/dev/null\")\n  STDOUT.reopen(\"/dev/null\", \"a\")\n  STDERR.reopen(\"/dev/null\", \"a\")\n\n  require 'shellwords'\n\n  Dir[\"#{ENV[\"DWARF_DSYM_FOLDER_PATH\"]}/#{ENV[\"DWARF_DSYM_FILE_NAME\"]}/Contents/Resources/DWARF/*\"].each do |dsym|\n    system(\"curl -F dsym=@#{Shellwords.escape(dsym)} -F projectRoot=#{Shellwords.escape(ENV[\"PROJECT_DIR\"])} https://upload.bugsnag.com/\")\n  end\nend\n";
+			showEnvVarsInLog = 0;
+		};
+		A8FD6CFF3374464C9B2524FB /* Upload Bugsnag dSYM */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Upload Bugsnag dSYM";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /usr/bin/ruby;
+			shellScript = "\nif ENV[\"DEBUG_INFORMATION_FORMAT\"] != \"dwarf-with-dsym\" or ENV[\"PLATFORM_NAME\"] == \"iphonesimulator\"\n  exit\nend\n\nfork do\n  Process.setsid\n  STDIN.reopen(\"/dev/null\")\n  STDOUT.reopen(\"/dev/null\", \"a\")\n  STDERR.reopen(\"/dev/null\", \"a\")\n\n  require 'shellwords'\n\n  Dir[\"#{ENV[\"DWARF_DSYM_FOLDER_PATH\"]}/#{ENV[\"DWARF_DSYM_FILE_NAME\"]}/Contents/Resources/DWARF/*\"].each do |dsym|\n    system(\"curl -F dsym=@#{Shellwords.escape(dsym)} -F projectRoot=#{Shellwords.escape(ENV[\"PROJECT_DIR\"])} https://upload.bugsnag.com/\")\n  end\nend\n";
+			showEnvVarsInLog = 0;
+		};
+		B1A4DB6A8957418F8287D04E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-ARAnalyticsBootstrapiOS-resources.sh\"\n";
+		};
+		B4FD8B0A43374393B7308167 /* Upload Bugsnag dSYM */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Upload Bugsnag dSYM";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /usr/bin/ruby;
+			shellScript = "\nif ENV[\"DEBUG_INFORMATION_FORMAT\"] != \"dwarf-with-dsym\" or ENV[\"PLATFORM_NAME\"] == \"iphonesimulator\"\n  exit\nend\n\nfork do\n  Process.setsid\n  STDIN.reopen(\"/dev/null\")\n  STDOUT.reopen(\"/dev/null\", \"a\")\n  STDERR.reopen(\"/dev/null\", \"a\")\n\n  require 'shellwords'\n\n  Dir[\"#{ENV[\"DWARF_DSYM_FOLDER_PATH\"]}/#{ENV[\"DWARF_DSYM_FILE_NAME\"]}/Contents/Resources/DWARF/*\"].each do |dsym|\n    system(\"curl -F dsym=@#{Shellwords.escape(dsym)} -F projectRoot=#{Shellwords.escape(ENV[\"PROJECT_DIR\"])} https://upload.bugsnag.com/\")\n  end\nend\n";
+			showEnvVarsInLog = 0;
+		};
+		CD4DA4CB539A4943A7792E8D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+		E4BEF1165C524989BBDA92C0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-ARAnalyticsiOSTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4F935CFB69346AFA2E005E4 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-ARAnalyticsBootstrapMac-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		603AE9ED18E1AE49004AEBF8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				603AE9FD18E1AE49004AEBF8 /* ARAnalyticsiOSTests.m in Sources */,
+				603AEA0618E1AF6D004AEBF8 /* ORStubbedProvider.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60A5E6091698DB4400686918 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60A5E61D1698DB4400686918 /* main.m in Sources */,
+				60A5E6211698DB4400686918 /* ORAppDelegate.m in Sources */,
+				60A5E62A1698DB4400686918 /* ORViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60FF266C1749771E005F8435 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60FF267E1749771E005F8435 /* main.m in Sources */,
+				60FF26851749771E005F8435 /* ORAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		603AEA0018E1AE49004AEBF8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60A5E60C1698DB4400686918 /* ARAnalyticsBootstrapiOS */;
+			targetProxy = 603AE9FF18E1AE49004AEBF8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		603AE9F918E1AE49004AEBF8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				603AE9FA18E1AE49004AEBF8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		60A5E6191698DB4400686918 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				60A5E61A1698DB4400686918 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		60A5E62B1698DB4400686918 /* ORViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				60A5E62C1698DB4400686918 /* en */,
+			);
+			name = ORViewController.xib;
+			sourceTree = "<group>";
+		};
+		60FF267A1749771E005F8435 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				60FF267B1749771E005F8435 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		60FF26801749771E005F8435 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				60FF26811749771E005F8435 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		60FF26861749771F005F8435 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				60FF26871749771F005F8435 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		603AEA0218E1AE49004AEBF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 079BB5D924064A80955EFB54 /* Pods-ARAnalyticsiOSTests.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ARAnalyticsBootstrapiOS.app/ARAnalyticsBootstrapiOS";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ARAnalyticsiOSTests/ARAnalyticsiOSTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "ARAnalyticsiOSTests/ARAnalyticsiOSTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		603AEA0318E1AE49004AEBF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 079BB5D924064A80955EFB54 /* Pods-ARAnalyticsiOSTests.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ARAnalyticsBootstrapiOS.app/ARAnalyticsBootstrapiOS";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ARAnalyticsiOSTests/ARAnalyticsiOSTests-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "ARAnalyticsiOSTests/ARAnalyticsiOSTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		60A5E62E1698DB4400686918 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		60A5E62F1698DB4400686918 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		60A5E6311698DB4400686918 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E861E9D6090641B887FE64AC /* Pods-ARAnalyticsBootstrapiOS.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ARAnalyticsTests\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ARAnalyticsTests/ARAnalyticsTests-Prefix.pch";
+				INFOPLIST_FILE = "ARAnalyticsTests/ARAnalyticsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		60A5E6321698DB4400686918 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E861E9D6090641B887FE64AC /* Pods-ARAnalyticsBootstrapiOS.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ARAnalyticsTests\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ARAnalyticsTests/ARAnalyticsTests-Prefix.pch";
+				INFOPLIST_FILE = "ARAnalyticsTests/ARAnalyticsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		60FF268A1749771F005F8435 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB0B9A3AEE8F4C46BCD55B4D /* Pods-ARAnalyticsBootstrapMac.xcconfig */;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ARAnalyticsBootstrapMac/ARAnalyticsBootstrapMac-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "ARAnalyticsBootstrapMac/ARAnalyticsBootstrapMac-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		60FF268B1749771F005F8435 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB0B9A3AEE8F4C46BCD55B4D /* Pods-ARAnalyticsBootstrapMac.xcconfig */;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ARAnalyticsBootstrapMac/ARAnalyticsBootstrapMac-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "ARAnalyticsBootstrapMac/ARAnalyticsBootstrapMac-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		603AEA0118E1AE49004AEBF8 /* Build configuration list for PBXNativeTarget "ARAnalyticsiOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				603AEA0218E1AE49004AEBF8 /* Debug */,
+				603AEA0318E1AE49004AEBF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60A5E6081698DB4400686918 /* Build configuration list for PBXProject "ARAnalyticsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60A5E62E1698DB4400686918 /* Debug */,
+				60A5E62F1698DB4400686918 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60A5E6301698DB4400686918 /* Build configuration list for PBXNativeTarget "ARAnalyticsBootstrapiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60A5E6311698DB4400686918 /* Debug */,
+				60A5E6321698DB4400686918 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60FF26891749771F005F8435 /* Build configuration list for PBXNativeTarget "ARAnalyticsBootstrapMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60FF268A1749771F005F8435 /* Debug */,
+				60FF268B1749771F005F8435 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 60A5E6051698DB4400686918 /* Project object */;
+}

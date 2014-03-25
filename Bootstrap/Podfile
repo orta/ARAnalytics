@@ -12,3 +12,7 @@ target :ARAnalyticsBootstrapiOS do
   pod 'ARAnalytics', :path => "../"
 end
 
+target "ARAnalyticsiOSTests" do
+  pod 'Specta', '~> 0.2'
+  pod 'Expecta', '~> 0.2'
+end

@@ -5,6 +5,10 @@
 * Support for proxying navigations delegate methods (thanks @rhodgins)
   - https://github.com/orta/ARAnalytics/pull/62
 * Podspec fix for Localytics-iOS-Client (thanks @amleszk)
+* Added a setupProvider function so people can use private API providers ( thanks @suiying )
+* Added a removeProvider function.
+* Deprecated 
+* Added tests & travis support
 
 ## Version 2.4.3
 

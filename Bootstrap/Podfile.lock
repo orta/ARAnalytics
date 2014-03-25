@@ -80,6 +80,7 @@ PODS:
   - Bugsnag (3.1.1)
   - Chartbeat (0.0.1)
   - Countly (2.0.0)
+  - Expecta (0.3.0)
   - Facebook-iOS-SDK (3.13.0)
   - FlurrySDK (4.3.2):
     - FlurrySDK/FlurrySDK
@@ -95,13 +96,16 @@ PODS:
   - NewRelicAgent (3.256)
   - Parse-iOS-SDK (1.2.18):
     - Facebook-iOS-SDK (~> 3.7)
+  - Specta (0.2.1)
   - Tapstream (2.6)
   - TestFlightSDK (3.0.0)
 
 DEPENDENCIES:
   - ARAnalytics (from `../`)
   - ARAnalytics/KISSmetricsOSX (from `../`)
+  - Expecta (~> 0.2)
   - Mixpanel-OSX-Community (from `https://github.com/orta/mixpanel-osx-unofficial`)
+  - Specta (~> 0.2)
 
 EXTERNAL SOURCES:
   ARAnalytics:
@@ -116,6 +120,7 @@ SPEC CHECKSUMS:
   Bugsnag: 877ad8c9d632397b0685994c93a3e8e76bedc482
   Chartbeat: f761731e00b10d05b337163d72a10d257d9ad217
   Countly: 8f3b7882e842d89b6f22a8b9519a939a0ec97712
+  Expecta: 322f1dc42610106a5ba9871b4924cf1635d80833
   Facebook-iOS-SDK: 5788541337dc88265bc940cb5ffb05915f9b64e3
   FlurrySDK: 0ba42379fd272d69246ae06386a2c5688516ffd8
   GoogleAnalytics-iOS-SDK: 7b0e55cfe5e70d60478a7b105f15ac71e8bc373e
@@ -128,6 +133,7 @@ SPEC CHECKSUMS:
   Mixpanel-OSX-Community: b829ac6c8ea601849a2ce74a478b046ee661d3f1
   NewRelicAgent: 14ab6b0fd2af34eca7668449b83bf2ae872ec533
   Parse-iOS-SDK: 48bfd538a107b6e1f29eebe59fa80c0f0b844dd1
+  Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
   Tapstream: 00dd14461e648b5cfc682c79be5be085cf18631b
   TestFlightSDK: 71e3e78d3a46144dbad975a4bf80a14dae6a818a
 
