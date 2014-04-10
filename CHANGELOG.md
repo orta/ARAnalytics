@@ -1,6 +1,6 @@
 #ARAnalytics
 
-## Upcoming version 2.5.0
+## Version 2.5.0
 
 * Support for proxying navigations delegate methods (thanks @rhodgins)
   - https://github.com/orta/ARAnalytics/pull/62
@@ -9,6 +9,7 @@
 * Added a removeProvider function.
 * Deprecated monitorNavigationViewController for having a typo
 * Added tests
+* Updated HockeySDK to default to showing updates for everyone on betas
 * Added travis support - (thanks @dlackty)
 
 ## Version 2.4.3
