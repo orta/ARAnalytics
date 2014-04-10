@@ -25,12 +25,15 @@
 }
 
 -(id)initWithBetaIdentifier:(NSString *)betaIdentifier liveIdentifier:(NSString *)liveIdentfier {
+    self = [super init];
+    if (!self) return nil;
+    
     _betaIdentifier = betaIdentifier;
     _liveIdentifier = liveIdentfier;
     
     [self performSelector:@selector(startManager) withObject:nil afterDelay:0.5];
     
-    return [super init];
+    return self;
 }
 
 -(void)startManager {
@@ -42,6 +45,7 @@
     }
     
     [[BITHockeyManager sharedHockeyManager] startManager];
+    [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
 }
 
 - (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
