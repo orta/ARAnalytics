@@ -12,7 +12,7 @@
 NSString * const ARAnalyticsTrackedEvents = @"trackedEvents";
 NSString * const ARAnalyticsTrackedScreens = @"trackedScreens";
 
-NSString * const ARAnalyticsTrackedClass = @"class";
+NSString * const ARAnalyticsTrackedClassName = @"class";
 NSString * const ARAnalyticsTrackedLabel = @"label";
 NSString * const ARAnalyticsTriggeringSelector = @"selector";
 
@@ -72,6 +72,7 @@ Class extractClassFromDictionary (NSDictionary *dictionary) {
                                 RSSWArguments(va_list list),
                                 RSSWReplacement(
             {
+                //TODO: Parameters
                 [self event:label withProperties:nil];
                 
                 // Calling original implementation.
