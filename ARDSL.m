@@ -8,6 +8,7 @@
 
 #import "ARDSL.h"
 #import <RSSwizzle/RSSwizzle.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 NSString * const ARAnalyticsTrackedEvents = @"trackedEvents";
 NSString * const ARAnalyticsTrackedScreens = @"trackedScreens";
@@ -43,17 +44,13 @@ Class extractClassFromDictionary (NSDictionary *dictionary) {
         
         NSString *label = configurationDictionary[ARAnalyticsTrackedLabel];
         
-        RSSwizzleInstanceMethod(klass,
-                                selector,
-                                RSSWReturnType(void),
-                                RSSWArguments(va_list list),
-                                RSSWReplacement(
-        {
-            [self pageView:label];
-            
-            // Calling original implementation.
-            RSSWCallOriginal(list);
-        }), RSSwizzleModeAlways, NULL);
+        RSSwizzleClassMethod(klass, @selector(alloc), RSSWReturnType(id), void, RSSWReplacement({
+            id instance = RSSWCallOriginal();
+            [[instance rac_signalForSelector:selector] subscribeNext:^(id _) {
+                [ARAnalytics pageView:label];
+            }];
+            return instance;
+        }));
     }];
     
     NSArray *trackedEvents = configurationDictionary[ARAnalyticsTrackedEvents];
@@ -66,18 +63,14 @@ Class extractClassFromDictionary (NSDictionary *dictionary) {
         
         NSString *label = configurationDictionary[ARAnalyticsTrackedLabel];
         
-        RSSwizzleInstanceMethod(klass,
-                                selector,
-                                RSSWReturnType(void),
-                                RSSWArguments(va_list list),
-                                RSSWReplacement(
-            {
-                //TODO: Parameters
-                [self event:label withProperties:nil];
-                
-                // Calling original implementation.
-                RSSWCallOriginal(list);
-            }), RSSwizzleModeAlways, NULL);
+        RSSwizzleClassMethod(klass, @selector(alloc), RSSWReturnType(id), void, RSSWReplacement({
+            id instance = RSSWCallOriginal();
+            [[instance rac_signalForSelector:selector] subscribeNext:^(id _) {
+                //TODO: properties
+                [ARAnalytics event:label withProperties:nil];
+            }];
+            return instance;
+        }));
     }];
 }
 
