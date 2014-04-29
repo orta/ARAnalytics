@@ -14,6 +14,7 @@ NSString * const ARAnalyticsTrackedScreens = @"trackedScreens";
 
 NSString * const ARAnalyticsTrackedClass = @"class";
 NSString * const ARAnalyticsTrackedLabel = @"label";
+NSString * const ARAnalyticsTriggeringSelector = @"selector";
 
 @implementation ARAnalytics (DSL)
 
@@ -24,17 +25,25 @@ NSString * const ARAnalyticsTrackedLabel = @"label";
     [trackedScreens enumerateObjectsUsingBlock:^(id object, NSUInteger idx, BOOL *stop) {
         NSString *className = object[ARAnalyticsTrackedClassName];
         Class klass = NSClassFromString(className);
+        NSAssert(klass != Nil, @"Class cannot be nil.");
+        
+        SEL selector;
+        NSString *selectorName = object[ARAnalyticsTriggeringSelector];
+        if (selectorName) {
+            selector = NSSelectorFromString(selectorName);
+            NSAssert(selector != NULL, @"Custom selector lookup failed. ");
+        } else {
+            selector = @selector(viewDidAppear:);
+        }
         
         NSString *label = configurationDictionary[ARAnalyticsTrackedLabel];
         
         RSSwizzleInstanceMethod(klass,
-                                @selector(viewDidLoad:),
+                                selector,
                                 RSSWReturnType(void),
                                 RSSWArguments(BOOL animated),
                                 RSSWReplacement(
         {
-            // The following code will be used as the new implementation.
-            
             [self pageView:label];
             
             // Calling original implementation.

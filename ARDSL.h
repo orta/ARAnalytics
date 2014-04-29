@@ -13,6 +13,7 @@ extern NSString * const ARAnalyticsTrackedScreens;
 
 extern NSString * const ARAnalyticsTrackedClassName;
 extern NSString * const ARAnalyticsTrackedLabel;
+extern NSString * const ARAnalyticsTriggeringSelector;
 
 @interface ARAnalytics (DSL)
 
