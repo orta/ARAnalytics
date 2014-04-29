@@ -46,14 +46,14 @@ Class extractClassFromDictionary (NSDictionary *dictionary) {
         RSSwizzleInstanceMethod(klass,
                                 selector,
                                 RSSWReturnType(void),
-                                RSSWArguments(BOOL animated),
+                                RSSWArguments(va_list list),
                                 RSSWReplacement(
         {
             [self pageView:label];
             
             // Calling original implementation.
-            RSSWCallOriginal(animated);
-        }), 0, NULL);
+            RSSWCallOriginal(list);
+        }), RSSwizzleModeAlways, NULL);
     }];
     
     NSArray *trackedEvents = configurationDictionary[ARAnalyticsTrackedEvents];
@@ -77,7 +77,7 @@ Class extractClassFromDictionary (NSDictionary *dictionary) {
                 
                 // Calling original implementation.
                 RSSWCallOriginal(list);
-            }), 0, NULL);
+            }), RSSwizzleModeAlways, NULL);
     }];
 }
 
