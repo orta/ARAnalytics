@@ -16,6 +16,13 @@ NSString * const ARAnalyticsTrackedClass = @"class";
 NSString * const ARAnalyticsTrackedLabel = @"label";
 NSString * const ARAnalyticsTriggeringSelector = @"selector";
 
+Class extractClassFromDictionary (NSDictionary *dictionary) {
+    NSString *className = dictionary[ARAnalyticsTrackedClassName];
+    Class klass = NSClassFromString(className);
+    NSCAssert(klass != Nil, @"Class cannot be nil.");
+    return klass;
+}
+
 @implementation ARAnalytics (DSL)
 
 + (void)setupWithAnalytics:(NSDictionary *)analyticsDictionary configuration:(NSDictionary *)configurationDictionary {
@@ -23,9 +30,7 @@ NSString * const ARAnalyticsTriggeringSelector = @"selector";
     
     NSArray *trackedScreens = configurationDictionary[ARAnalyticsTrackedScreens];
     [trackedScreens enumerateObjectsUsingBlock:^(id object, NSUInteger idx, BOOL *stop) {
-        NSString *className = object[ARAnalyticsTrackedClassName];
-        Class klass = NSClassFromString(className);
-        NSAssert(klass != Nil, @"Class cannot be nil.");
+        Class klass = extractClassFromDictionary(object);
         
         SEL selector;
         NSString *selectorName = object[ARAnalyticsTriggeringSelector];
@@ -49,6 +54,19 @@ NSString * const ARAnalyticsTriggeringSelector = @"selector";
             // Calling original implementation.
             RSSWCallOriginal(animated);
         }), 0, NULL);
+    }];
+    
+    NSArray *trackedEvents = configurationDictionary[ARAnalyticsTrackedEvents];
+    [trackedEvents enumerateObjectsUsingBlock:^(id object, NSUInteger idx, BOOL *stop) {
+        Class klass = extractClassFromDictionary(object);
+        
+        NSString *selectorName = object[ARAnalyticsTriggeringSelector];
+        SEL selector = NSSelectorFromString(selectorName);
+        NSAssert(selector != NULL, @"Event selector lookup failed. ");
+        
+        NSString *label = configurationDictionary[ARAnalyticsTrackedLabel];
+        
+        //TODO: Somehow swizzle the selector with a new one. 
     }];
 }
 
