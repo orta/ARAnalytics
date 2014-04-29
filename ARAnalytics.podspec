@@ -52,9 +52,10 @@ Pod::Spec.new do |s|
     ss.platforms = [:ios]
   end
 
-  s.subspec "DSL" do |ss|
+  s.subspec "DSL" do |ss| 
     ss.source_files = ['ARDSL.{h,m}']
     ss.dependency 'RSSwizzle', '0.1.0'
+    ss.dependency 'ReactiveCocoa', '2.3'
     ss.platforms = [:ios, :osx]
   end
 
