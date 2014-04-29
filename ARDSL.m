@@ -66,7 +66,17 @@ Class extractClassFromDictionary (NSDictionary *dictionary) {
         
         NSString *label = configurationDictionary[ARAnalyticsTrackedLabel];
         
-        //TODO: Somehow swizzle the selector with a new one. 
+        RSSwizzleInstanceMethod(klass,
+                                selector,
+                                RSSWReturnType(void),
+                                RSSWArguments(va_list list),
+                                RSSWReplacement(
+            {
+                [self event:label withProperties:nil];
+                
+                // Calling original implementation.
+                RSSWCallOriginal(list);
+            }), 0, NULL);
     }];
 }
 
