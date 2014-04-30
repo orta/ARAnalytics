@@ -8,7 +8,6 @@
 
 #import <ARAnalytics/ARAnalytics.h>
 
-// Top-level keys
 extern NSString * const ARAnalyticsTrackedEvents;
 extern NSString * const ARAnalyticsTrackedScreens;
 
