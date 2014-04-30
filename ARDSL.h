@@ -7,6 +7,7 @@
 //
 
 #import <ARAnalytics/ARAnalytics.h>
+#import <ReactiveCocoa/RACTuple.h>
 
 extern NSString * const ARAnalyticsTrackedEvents;
 extern NSString * const ARAnalyticsTrackedScreens;
@@ -19,8 +20,8 @@ extern NSString * const ARAnalyticsSelectorName;
 extern NSString * const ARAnalyticsEventProperties;
 extern NSString * const ARAnalyticsShouldFire;
 
-typedef NSDictionary*(^ARAnalyticsEventPropertiesBlock)(id instance);
-typedef BOOL(^ARAnalyticsEventShouldFireBlock)(id instance);
+typedef NSDictionary*(^ARAnalyticsEventPropertiesBlock)(id instance, RACTuple *context);
+typedef BOOL(^ARAnalyticsEventShouldFireBlock)(id instance, RACTuple *context);
 
 @interface ARAnalytics (DSL)
 

@@ -27,12 +27,12 @@ Class extractClassFromDictionary (NSDictionary *dictionary) {
     return klass;
 }
 
-BOOL shouldFireForInstance (NSDictionary *dictionary, id instance) {
+BOOL shouldFireForInstance (NSDictionary *dictionary, id instance, RACTuple *context) {
     ARAnalyticsEventShouldFireBlock shouldFireBlock = dictionary[ARAnalyticsShouldFire];
     
     BOOL shouldFire;
     if (shouldFireBlock) {
-        shouldFire = shouldFireBlock(instance);
+        shouldFire = shouldFireBlock(instance, context);
     } else {
         shouldFire = YES;
     }
@@ -74,10 +74,10 @@ BOOL shouldFireForInstance (NSDictionary *dictionary, id instance) {
         RSSwizzleClassMethod(klass, @selector(alloc), RSSWReturnType(id), void, RSSWReplacement({
             id instance = RSSWCallOriginal();
             __weak __typeof(instance) weakInstance = instance;
-            [[instance rac_signalForSelector:selector] subscribeNext:^(id _) {
+            [[instance rac_signalForSelector:selector] subscribeNext:^(RACTuple *parameters) {
                 id instance = weakInstance;
                 
-                BOOL shouldFire = shouldFireForInstance(configurationDictionary, instance);
+                BOOL shouldFire = shouldFireForInstance(configurationDictionary, instance, parameters);
                 
                 if (shouldFire) {
                     NSString *pageName;
@@ -108,16 +108,16 @@ BOOL shouldFireForInstance (NSDictionary *dictionary, id instance) {
         RSSwizzleClassMethod(klass, @selector(alloc), RSSWReturnType(id), void, RSSWReplacement({
             id instance = RSSWCallOriginal();
             __weak __typeof(instance) weakInstance = instance;
-            [[instance rac_signalForSelector:selector] subscribeNext:^(id _) {
+            [[instance rac_signalForSelector:selector] subscribeNext:^(RACTuple *parameters) {
                 id instance = weakInstance;
                 
-                BOOL shouldFire = shouldFireForInstance(configurationDictionary, instance);
+                BOOL shouldFire = shouldFireForInstance(configurationDictionary, instance, parameters);
                 
                 if (shouldFire) {
                     NSDictionary *properties;
                     ARAnalyticsEventPropertiesBlock propertiesBlock = configurationDictionary[ARAnalyticsEventProperties];
                     if (propertiesBlock) {
-                        properties = propertiesBlock(instance);
+                        properties = propertiesBlock(instance, parameters);
                     }
                     
                     [ARAnalytics event:event withProperties:properties];
