@@ -327,6 +327,7 @@ static ARAnalytics *_sharedAnalytics;
 }
 
 + (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
+    NSLog(@"EVENT: %@", event);
     [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
         [provider event:event withProperties:properties];
     }];

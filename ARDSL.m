@@ -46,7 +46,6 @@ static BOOL ar_shouldFireForInstance (NSDictionary *dictionary, id instance, RAC
         
         NSArray *analyticsDetails = object[ARAnalyticsDetails];
         
-        
         RSSwizzleClassMethod(klass, @selector(alloc), RSSWReturnType(id), void, RSSWReplacement({
             id instance = RSSWCallOriginal();
             __weak __typeof(instance) weakInstance = instance;
@@ -69,15 +68,15 @@ static BOOL ar_shouldFireForInstance (NSDictionary *dictionary, id instance, RAC
                 }
                 
                 // Try to grab the page name from the dictionary.
-                NSString *dictionaryPageName = configurationDictionary[ARAnalyticsPageName];
+                NSString *dictionaryPageName = object[ARAnalyticsPageName];
                 
                 // If there wasn't one, then try to invoke keypath.
-                NSString *pageNameKeypath = configurationDictionary[ARAnalyticsPageNameKeyPath];
+                NSString *pageNameKeypath = object[ARAnalyticsPageNameKeyPath];
                 
                 [[instance rac_signalForSelector:selector] subscribeNext:^(RACTuple *parameters) {
                     id instance = weakInstance;
                     
-                    BOOL shouldFire = ar_shouldFireForInstance(configurationDictionary, instance, parameters);
+                    BOOL shouldFire = ar_shouldFireForInstance(object, instance, parameters);
                     
                     if (shouldFire) {
                         NSString *pageName;
@@ -107,21 +106,24 @@ static BOOL ar_shouldFireForInstance (NSDictionary *dictionary, id instance, RAC
             id instance = RSSWCallOriginal();
             __weak __typeof(instance) weakInstance = instance;
             
+            
             [analyticsDetails enumerateObjectsUsingBlock:^(id object, NSUInteger idx, BOOL *stop) {
                 NSString *selectorName = object[ARAnalyticsSelectorName];
                 SEL selector = NSSelectorFromString(selectorName);
                 NSAssert(selector != NULL, @"Event selector lookup failed. ");
                 
-                NSString *event = configurationDictionary[ARAnalyticsEventName];
+                NSString *event = object[ARAnalyticsEventName];
+                
+                NSLog(@"THINGY:%@, %@, %@", NSStringFromClass(klass), NSStringFromSelector(selector), event);
                 
                 [[instance rac_signalForSelector:selector] subscribeNext:^(RACTuple *parameters) {
                     id instance = weakInstance;
                     
-                    BOOL shouldFire = ar_shouldFireForInstance(configurationDictionary, instance, parameters);
+                    BOOL shouldFire = ar_shouldFireForInstance(object, instance, parameters);
                     
                     if (shouldFire) {
                         NSDictionary *properties;
-                        ARAnalyticsEventPropertiesBlock propertiesBlock = configurationDictionary[ARAnalyticsEventProperties];
+                        ARAnalyticsEventPropertiesBlock propertiesBlock = object[ARAnalyticsEventProperties];
                         if (propertiesBlock) {
                             properties = propertiesBlock(instance, parameters);
                         }
