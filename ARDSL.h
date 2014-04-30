@@ -15,7 +15,7 @@ extern NSString * const ARAnalyticsClass;
 extern NSString * const ARAnalyticsPageName;
 extern NSString * const ARAnalyticsPageNameKeyPath;
 extern NSString * const ARAnalyticsEventName;
-extern NSString * const ARAnalyticsSelectorName; // Note: selector must return void
+extern NSString * const ARAnalyticsSelectorName;
 extern NSString * const ARAnalyticsEventProperties;
 extern NSString * const ARAnalyticsShouldFire;
 
