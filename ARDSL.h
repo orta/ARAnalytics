@@ -13,6 +13,7 @@ extern NSString * const ARAnalyticsTrackedEvents;
 extern NSString * const ARAnalyticsTrackedScreens;
 
 extern NSString * const ARAnalyticsClass;
+extern NSString * const ARAnalyticsDetails;
 extern NSString * const ARAnalyticsPageName;
 extern NSString * const ARAnalyticsPageNameKeyPath;
 extern NSString * const ARAnalyticsEventName;
