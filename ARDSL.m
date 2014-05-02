@@ -114,8 +114,6 @@ static BOOL ar_shouldFireForInstance (NSDictionary *dictionary, id instance, RAC
                 
                 NSString *event = object[ARAnalyticsEventName];
                 
-                NSLog(@"THINGY:%@, %@, %@", NSStringFromClass(klass), NSStringFromSelector(selector), event);
-                
                 [[instance rac_signalForSelector:selector] subscribeNext:^(RACTuple *parameters) {
                     id instance = weakInstance;
                     

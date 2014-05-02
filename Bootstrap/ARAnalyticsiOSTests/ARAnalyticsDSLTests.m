@@ -11,4 +11,6 @@
 
 SpecBegin(ARAnalyticsDSLTests)
 
+pending(@")
+
 SpecEnd
