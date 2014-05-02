@@ -10,6 +10,7 @@ end
 target :ARAnalyticsBootstrapiOS do
   platform :ios, '6.0'
   pod 'ARAnalytics', :path => "../"
+  pod 'ARAnalytics/DSL', :path => "../"
 end
 
 target "ARAnalyticsiOSTests" do

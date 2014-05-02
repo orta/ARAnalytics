@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E0E7BCF1913D57400DA982C /* ARAnalyticsDSLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E7BCE1913D57400DA982C /* ARAnalyticsDSLTests.m */; };
 		603AE9F318E1AE49004AEBF8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 603AE9F218E1AE49004AEBF8 /* XCTest.framework */; };
 		603AE9F418E1AE49004AEBF8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A5E6121698DB4400686918 /* Foundation.framework */; };
 		603AE9F518E1AE49004AEBF8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A5E6101698DB4400686918 /* UIKit.framework */; };
@@ -50,6 +51,7 @@
 		079BB5D924064A80955EFB54 /* Pods-ARAnalyticsiOSTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARAnalyticsiOSTests.xcconfig"; path = "Pods/Pods-ARAnalyticsiOSTests.xcconfig"; sourceTree = "<group>"; };
 		098BAA2082A04DABA4E2599A /* libPods-ARAnalyticsiOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ARAnalyticsiOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA562281B834E738D18B40A /* libPods-ARAnalyticsBootstrapiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ARAnalyticsBootstrapiOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E0E7BCE1913D57400DA982C /* ARAnalyticsDSLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARAnalyticsDSLTests.m; sourceTree = "<group>"; };
 		603AE9F118E1AE49004AEBF8 /* ARAnalyticsiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARAnalyticsiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		603AE9F218E1AE49004AEBF8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		603AE9F818E1AE49004AEBF8 /* ARAnalyticsiOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ARAnalyticsiOSTests-Info.plist"; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				603AE9FC18E1AE49004AEBF8 /* ARAnalyticsiOSTests.m */,
+				5E0E7BCE1913D57400DA982C /* ARAnalyticsDSLTests.m */,
 				603AE9F718E1AE49004AEBF8 /* Supporting Files */,
 				603AEA0418E1AF6D004AEBF8 /* ORStubbedProvider.h */,
 				603AEA0518E1AF6D004AEBF8 /* ORStubbedProvider.m */,
@@ -534,6 +537,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E0E7BCF1913D57400DA982C /* ARAnalyticsDSLTests.m in Sources */,
 				603AE9FD18E1AE49004AEBF8 /* ARAnalyticsiOSTests.m in Sources */,
 				603AEA0618E1AF6D004AEBF8 /* ORStubbedProvider.m in Sources */,
 			);
