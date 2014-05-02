@@ -9,6 +9,6 @@
 #import <ARAnalytics/ARAnalytics.h>
 #import <ARAnalytics/ARDSL.h>
 
-SpecBegin(ARAnalyticsTests)
+SpecBegin(ARAnalyticsDSLTests)
 
 SpecEnd
