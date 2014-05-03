@@ -1,5 +1,10 @@
 #ARAnalytics
 
+## Version 2.5.1
+
+* New DSL for analytics
+* Updated Head support (thanks @confidenceJuice)
+
 ## Version 2.5.0
 
 * Support for proxying navigations delegate methods (thanks @rhodgins)

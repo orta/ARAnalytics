@@ -24,7 +24,7 @@ Usage
 Setup
 ----
 
-Once you've `pod installed`'d the libraries you can either use the individual (for example) `[ARAnalytics setupTestFlightWithTeamToken:@"TOKEN"]` methods to start up each indiviual analytics platform or use the generic setupWithAnalytics with our constants.
+Once you've `pod installed`'d the libraries you can either use the individual (for example) `[ARAnalytics setupTestFlightWithTeamToken:@"TOKEN"]` methods to start up each individual analytics platform or use the generic setupWithAnalytics with our constants.
 
 ``` objc
   [ARAnalytics setupWithAnalytics:@{
@@ -80,6 +80,71 @@ Page View Tracking
 ```
 
 On top of this you obviously get access to use the original SDK too as in order to provide a common API it is slightly the lowest common denominator.
+
+DSL
+----
+There is also a DSL-like setup constructor in the `ARAnalytics/DSL` subspec that lets you do all of your analytics setup at once. Example usage:
+
+``` objc
+[ARAnalytics setupWithAnalytics:
+ @{
+   /* keys */
+   } configuration:
+ @{
+   ARAnalyticsTrackedScreens:
+       @[
+           @{
+                ARAnalyticsClass: UIViewController.class,
+                ARAnalyticsDetails: @[
+                    @{
+                        ARAnalyticsPageNameKeyPath: @"title",
+										}
+                ]
+            },
+           ],
+   ARAnalyticsTrackedEvents:
+       @[
+           @{
+                ARAnalyticsClass: MyViewController.class,
+                ARAnalyticsDetails: @[
+                    @{
+                        ARAnalyticsEventName: @"button pressed",
+                        ARAnalyticsSelectorName: NSStringFromSelector(@selector(buttonPressed:)),
+										}
+                ]
+            },
+    ...
+```
+
+The above configuration specifies that the "button pressed" event be sent whenever the selector `buttonPressed:` is invoked on *any* instance of `MyViewController`. Additionally, every view controller will send a page view with its title as the page name whenever `viewDidAppear:` is called. There are also advanced uses using blocks in the DSL to selectively disable certain events, or to provide event property dictionaries. 
+
+``` objc
+[ARAnalytics setupWithAnalytics:
+ @{
+   /* keys */
+   } configuration:
+ @{
+   ARAnalyticsTrackedEvents:
+       @[
+           @{
+                ARAnalyticsClass: MyViewController.class,
+                ARAnalyticsDetails: @[
+                    @{
+                        ARAnalyticsEventName: @"button pressed",
+                        ARAnalyticsSelectorName: NSStringFromSelector(@selector(buttonPressed:)),
+										},
+                    ARAnalyticsShouldFire: ^BOOL(MyViewController *controller, RACTuple *parameters) {
+                        return /* some condition */;
+                    },
+                    ARAnalyticsEventProperties: ^NSDictionary*(MyViewController *controller, RACTuple * parameters) {
+                        return @{
+                                    /* Custom properties */
+                                };
+                    }
+                ]
+            },
+    ...
+```
 
 Contributing
 ====
