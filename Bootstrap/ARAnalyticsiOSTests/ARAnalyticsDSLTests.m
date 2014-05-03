@@ -11,6 +11,17 @@
 
 SpecBegin(ARAnalyticsDSLTests)
 
-pending(@")
+pending(@"calls super");
+
+describe(@"tracked screens", ^{
+    pending(@"throws on invalid selector");
+    pending(@"throws on unknown class not specifying a selector");
+    pending(@"effects a tracking page view");
+});
+
+describe(@"tracked events", ^{
+    pending(@"throws on unspecified selector");
+    pending(@"effects a tracking page view");
+});
 
 SpecEnd
