@@ -2,8 +2,8 @@
 
 ## Version 2.5.1
 
-* New DSL for analytics
-* Updated Head support (thanks @confidenceJuice)
+* New DSL for analytics (thanks @AshFurrow)
+* Updated Heap support (thanks @confidenceJuice)
 
 ## Version 2.5.0
 
