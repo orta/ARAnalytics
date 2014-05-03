@@ -15,7 +15,7 @@
 
 -(id)initWithIdentifier:(id)identifier {
     NSAssert([Heap class], @"Heap is not included");
-    [[Heap sharedInstance] setAppId:identifier];
+    [Heap setAppId:identifier];
     
     return [super init];
 }
@@ -26,7 +26,7 @@
       @"handle" : userID
     };
     
-    [[Heap sharedInstance] identify:userDict];
+    [Heap identify:userDict];
 }
 
 - (void)setUserProperty:(NSString *)property toValue:(NSString *)value{
@@ -34,7 +34,7 @@
       property : value
     };
     
-    [[Heap sharedInstance] identify:userDict];
+    [Heap identify:userDict];
 }
 
 -(void)event:(id)event withProperties:(id)properties {
@@ -49,7 +49,7 @@
         }];
     }
     
-    [[Heap sharedInstance] track:event withProperties:props];
+    [Heap track:event withProperties:props];
 }
 
 #endif

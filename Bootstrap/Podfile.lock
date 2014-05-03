@@ -89,7 +89,7 @@ PODS:
     - FlurrySDK/FlurrySDK
   - FlurrySDK/FlurrySDK (4.4.0)
   - GoogleAnalytics-iOS-SDK (3.0.6)
-  - Heap (0.12.1)
+  - Heap (1.0.0)
   - Helpshift (4.4.0)
   - HockeySDK (3.5.5)
   - KISSmetrics (1.2.0)
@@ -137,7 +137,7 @@ SPEC CHECKSUMS:
   Facebook-iOS-SDK: 47ae9e54684c84f93d75d4e6ab47cd031abdf406
   FlurrySDK: 2cd8f2ce2383ca152c5d96fa34cb9ef29706feda
   GoogleAnalytics-iOS-SDK: 16dfcc0c4491148bf372edc85a8470cc405ffb72
-  Heap: a059c57e751dc9619cb31eea1e159a140a711e6e
+  Heap: f8d287afe98b6c2bffefff24d543bea92da733ba
   Helpshift: 0c4c39b232e968acd732224d3d938af11db00f33
   HockeySDK: 350ef1cf18d2fc9a13801ad077c307cece8c6c64
   KISSmetrics: 25336738c9203dc5f7ce5d9aa9b88ed22e544ca0
