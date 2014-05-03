@@ -97,6 +97,7 @@ PODS:
   - Mixpanel (2.3.5)
   - Mixpanel-OSX-Community (2.0.0)
   - NewRelicAgent (3.289)
+  - OCMock (2.2.4)
   - Parse-iOS-SDK (1.2.19):
     - Facebook-iOS-SDK (~> 3.7)
   - ReactiveCocoa (2.3):
@@ -116,6 +117,7 @@ DEPENDENCIES:
   - ARAnalytics/KISSmetricsOSX (from `../`)
   - Expecta (~> 0.2)
   - Mixpanel-OSX-Community (from `https://github.com/orta/mixpanel-osx-unofficial`)
+  - OCMock (= 2.2.4)
   - Specta (~> 0.2)
 
 EXTERNAL SOURCES:
@@ -143,6 +145,7 @@ SPEC CHECKSUMS:
   Mixpanel: 79ff289920b67399475b93057ac11e48637585d7
   Mixpanel-OSX-Community: b829ac6c8ea601849a2ce74a478b046ee661d3f1
   NewRelicAgent: c851e3d60e2450c6c3052cf5ae96d5651e930bda
+  OCMock: 5008fae4b4789b8fc3e48cd7660f2eb5ef8ce89e
   Parse-iOS-SDK: 48e366fb9a8956c4e50d93cfd16243176938fae1
   ReactiveCocoa: 1f6265f9d521923d3efcc37b00722cefc16df269
   RSSwizzle: 41c280b15547f7c94f1273111fe4ce29d5d14e3a

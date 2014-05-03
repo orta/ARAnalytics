@@ -16,4 +16,5 @@ end
 target "ARAnalyticsiOSTests" do
   pod 'Specta', '~> 0.2'
   pod 'Expecta', '~> 0.2'
+  pod 'OCMock', '2.2.4'
 end

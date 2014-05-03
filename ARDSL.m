@@ -55,7 +55,6 @@ static BOOL ar_shouldFireForInstance (NSDictionary *dictionary, id instance, RAC
                 NSString *selectorName = object[ARAnalyticsSelectorName];
                 if (selectorName) {
                     selector = NSSelectorFromString(selectorName);
-                    NSAssert(selector != NULL, @"Custom selector lookup failed. ");
                 } else {
 #if TARGET_OS_IPHONE
                     selector = @selector(viewDidAppear:);
