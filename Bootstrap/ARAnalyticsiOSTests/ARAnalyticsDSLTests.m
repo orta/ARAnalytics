@@ -43,7 +43,6 @@ it(@"calls super", ^{
     [ARAnalytics setupWithAnalytics:dictionary configuration:nil];
     
     [classMock verify];
-    
     [classMock stopMocking];
 });
 
