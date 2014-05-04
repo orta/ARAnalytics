@@ -1,56 +1,56 @@
 PODS:
   - Amplitude-iOS (2.0.0)
-  - ARAnalytics (2.5.0):
+  - ARAnalytics (2.6.0):
     - ARAnalytics/no_clash_HockeyApp
-  - ARAnalytics/Amplitude (2.5.0):
+  - ARAnalytics/Amplitude (2.6.0):
     - Amplitude-iOS
     - ARAnalytics/CoreIOS
-  - ARAnalytics/Bugsnag (2.5.0):
+  - ARAnalytics/Bugsnag (2.6.0):
     - ARAnalytics/CoreIOS
     - Bugsnag
-  - ARAnalytics/Chartbeat (2.5.0):
+  - ARAnalytics/Chartbeat (2.6.0):
     - ARAnalytics/CoreIOS
     - Chartbeat
-  - ARAnalytics/CoreIOS (2.5.0)
-  - ARAnalytics/CoreMac (2.5.0)
-  - ARAnalytics/Countly (2.5.0):
+  - ARAnalytics/CoreIOS (2.6.0)
+  - ARAnalytics/CoreMac (2.6.0)
+  - ARAnalytics/Countly (2.6.0):
     - ARAnalytics/CoreIOS
     - Countly
-  - ARAnalytics/Crashlytics (2.5.0):
+  - ARAnalytics/Crashlytics (2.6.0):
     - ARAnalytics/CoreIOS
-  - ARAnalytics/DSL (2.5.0):
+  - ARAnalytics/DSL (2.6.0):
     - Aspects (~> 1.0)
-  - ARAnalytics/Flurry (2.5.0):
+  - ARAnalytics/Flurry (2.6.0):
     - ARAnalytics/CoreIOS
     - FlurrySDK
-  - ARAnalytics/GoogleAnalytics (2.5.0):
+  - ARAnalytics/GoogleAnalytics (2.6.0):
     - ARAnalytics/CoreIOS
     - GoogleAnalytics-iOS-SDK
-  - ARAnalytics/HeapAnalytics (2.5.0):
+  - ARAnalytics/HeapAnalytics (2.6.0):
     - ARAnalytics/CoreIOS
     - Heap
-  - ARAnalytics/Helpshift (2.5.0):
+  - ARAnalytics/Helpshift (2.6.0):
     - ARAnalytics/CoreIOS
     - Helpshift
-  - ARAnalytics/HockeyApp (2.5.0):
+  - ARAnalytics/HockeyApp (2.6.0):
     - ARAnalytics/CoreIOS
     - HockeySDK
-  - ARAnalytics/KISSmetrics (2.5.0):
+  - ARAnalytics/KISSmetrics (2.6.0):
     - ARAnalytics/CoreIOS
     - KISSmetrics
-  - ARAnalytics/KISSmetricsOSX (2.5.0):
+  - ARAnalytics/KISSmetricsOSX (2.6.0):
     - ARAnalytics/CoreMac
     - KISSmetrics
-  - ARAnalytics/Localytics (2.5.0):
+  - ARAnalytics/Localytics (2.6.0):
     - ARAnalytics/CoreIOS
     - Localytics-iOS-Client
-  - ARAnalytics/Mixpanel (2.5.0):
+  - ARAnalytics/Mixpanel (2.6.0):
     - ARAnalytics/CoreIOS
     - Mixpanel
-  - ARAnalytics/NewRelic (2.5.0):
+  - ARAnalytics/NewRelic (2.6.0):
     - ARAnalytics/CoreIOS
     - NewRelicAgent
-  - ARAnalytics/no_clash_HockeyApp (2.5.0):
+  - ARAnalytics/no_clash_HockeyApp (2.6.0):
     - ARAnalytics/Amplitude
     - ARAnalytics/Bugsnag
     - ARAnalytics/Chartbeat
@@ -68,13 +68,13 @@ PODS:
     - ARAnalytics/ParseAnalytics
     - ARAnalytics/Tapstream
     - ARAnalytics/TestFlight
-  - ARAnalytics/ParseAnalytics (2.5.0):
+  - ARAnalytics/ParseAnalytics (2.6.0):
     - ARAnalytics/CoreIOS
     - Parse-iOS-SDK
-  - ARAnalytics/Tapstream (2.5.0):
+  - ARAnalytics/Tapstream (2.6.0):
     - ARAnalytics/CoreIOS
     - Tapstream
-  - ARAnalytics/TestFlight (2.5.0):
+  - ARAnalytics/TestFlight (2.6.0):
     - ARAnalytics/CoreIOS
     - BPXLUUIDHandler
     - TestFlightSDK
@@ -123,7 +123,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Amplitude-iOS: 88d27d819a5ad9aa7bdbd700b03b1db8ff5e1fd8
-  ARAnalytics: 2102333f65382fb3b8c5a2bebf807824e6104848
+  ARAnalytics: 5527671a2fe9a8504597dd181e3e37a57a9d4d41
   Aspects: ba2cfb2e25e9430ef0aa6da55d117df93345115a
   Bolts: dc620a31cf67c29bce3e3d14a07a12e797a1a154
   BPXLUUIDHandler: 6101cdb6862f18146983881c75dc0b9a0012f2ff
