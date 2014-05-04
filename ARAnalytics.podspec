@@ -1,15 +1,15 @@
 Pod::Spec.new do |s|
   s.name         =  'ARAnalytics'
-  s.version      =  '2.5.0'
+  s.version      =  '2.6.0'
   s.license      =  {:type => 'MIT', :file => 'LICENSE' }
   s.summary      =  'Use multiple major analytics platforms with one clean API.'
   s.homepage     =  'https://github.com/orta/ARAnalytics'
-  s.authors      =  { 'orta' => 'orta.therox@gmail.com' }
+  s.authors      =  { 'orta' => 'orta.therox@gmail.com', 'Daniel Haight' => "confidence.designed@gmail.com" }
   s.source       =  { :git => 'https://github.com/orta/ARAnalytics.git', :tag => s.version.to_s }
   s.ios.deployment_target = "6.0"
   s.requires_arc =  true
   s.summary      =  'Using subspecs you can define your analytics provider with the same API on iOS and OS X.'
-  s.description  =  "ARAnalytics is a Cocoapods only library, which provides a sane API for tracking events and some simple user data. It currently supports for iOS: TestFlight, Mixpanel, Localytics, Flurry, Google Analytics, KISSMetrics, Tapstream, Countly, Crittercism, Bugsnag, Helpshift, Chartbeat, Heap and Crashlytics. And for OS X: KISSmetrics, Countly and Mixpanel. It does this by using subspecs from CocoaPods 0.17+ to let you decide which libraries you'd like to use."
+  # s.description is at the bottom as it is partially generated.
 
   testflight_sdk = { :spec_name => "TestFlight",       :dependency => ["TestFlightSDK", "BPXLUUIDHandler"] }
   mixpanel       = { :spec_name => "Mixpanel",         :dependency => "Mixpanel" }
@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
 
   $all_analytics = [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly, helpshift,kissmetrics_mac, mixpanel_mac, tapstream, newRelic, amplitude, hockeyApp, parseAnalytics, heap, chartbeat]
 
-  # To make the pod spec API cleaner, I've changed the subspecs to be "iOS/KISSmetrics"
+  # To make the pod spec API cleaner, subspecs are "iOS/KISSmetrics"
 
   s.subspec "CoreMac" do |ss|
     ss.source_files = ['*.{h,m}', 'Providers/ARAnalyticalProvider.{h,m}', 'Providers/ARAnalyticsProviders.h']
@@ -57,6 +57,10 @@ Pod::Spec.new do |s|
     ss.dependency 'Aspects', '~> 1.0'
     ss.platforms = [:ios, :osx]
   end
+
+  # for the description
+  $all_ios_names = []
+  $all_osx_names = []
 
   # make specs for each analytics
   $all_analytics.each do |analytics_spec|
@@ -78,12 +82,13 @@ Pod::Spec.new do |s|
         ss.osx.source_files = sources
         ss.dependency 'ARAnalytics/CoreMac'
         ss.platforms = [:osx]
-
+        $all_osx_names << providername
+        
       else
         ss.ios.source_files = sources
         ss.dependency 'ARAnalytics/CoreIOS'
         ss.platforms = [:ios]
-
+        $all_ios_names << providername
       end
 
       # If there's a podspec dependency include it
@@ -132,4 +137,11 @@ Pod::Spec.new do |s|
   # set default subspec no_clash_NAME where NAME is the subspec we want to use.
   # This will give us all possible subspecs that do not clash with NAME.
   s.default_subspec = 'no_clash_HockeyApp'
+  
+  # I always forget to keep the description up to date as provider support is added and removed, thus automation.
+  
+  ios_spec_names = $all_ios_names[0...-1].join(", ") + " and " + $all_ios_names[-1]
+  osx_spec_names = $all_osx_names[0...-1].join(", ") + " and " + $all_osx_names[-1]
+  s.description  =  "ARAnalytics is a analytics abstraction library offering a sane API for tracking events and user data. It currently supports on iOS: #{ ios_spec_names }. And for OS X: #{ osx_spec_names }. It does this by using CocoaPods subspecs to let you decide which libraries you'd like to use. You are free to also use the official API for any provider too. Also, comes with an amazing DSL to clear up your methods."
+  
 end
