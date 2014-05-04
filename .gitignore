@@ -16,6 +16,7 @@ build/*
 xcuserdata
 profile
 *.moved-aside
+.idea
 
 #OS X stuff
 .DS_Store
@@ -23,4 +24,3 @@ profile
 #pod stuff
 Podfile.lock
 Bootstrap/Pods/*
-

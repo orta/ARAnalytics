@@ -5,7 +5,7 @@ ARAnalytics is to iOS what [Analytical](https://github.com/jkrall/analytical) is
 
 ARAnalytics is a CocoaPods only library, which provides a sane API for tracking events and some simple user data. It currently supports for iOS: TestFlight, Mixpanel, Localytics, Flurry, Google Analytics v3, KISSMetrics, Tapstream, Countly, Crittercism, Bugsnag, Helpshift, Chartbeat, and Crashlytics. And for OS X: KISSmetrics, Countly and Mixpanel. It does this by using subspecs from CocoaPods 0.17+ to let you decide which libraries you'd like to use.
 
-[Changelog](https://github.com/orta/ARAnalytics/blob/master/CHANGELOG.md)  
+[Changelog](https://github.com/orta/ARAnalytics/blob/master/CHANGELOG.md)
 
 Installation
 =====
@@ -98,7 +98,7 @@ There is also a DSL-like setup constructor in the `ARAnalytics/DSL` subspec that
                 ARAnalyticsDetails: @[
                     @{
                         ARAnalyticsPageNameKeyPath: @"title",
-										}
+					}
                 ]
             },
            ],
@@ -116,7 +116,7 @@ There is also a DSL-like setup constructor in the `ARAnalytics/DSL` subspec that
     ...
 ```
 
-The above configuration specifies that the "button pressed" event be sent whenever the selector `buttonPressed:` is invoked on *any* instance of `MyViewController`. Additionally, every view controller will send a page view with its title as the page name whenever `viewDidAppear:` is called. There are also advanced uses using blocks in the DSL to selectively disable certain events, or to provide event property dictionaries. 
+The above configuration specifies that the "button pressed" event be sent whenever the selector `buttonPressed:` is invoked on *any* instance of `MyViewController`. Additionally, every view controller will send a page view with its title as the page name whenever `viewDidAppear:` is called. There are also advanced uses using blocks in the DSL to selectively disable certain events, or to provide event property dictionaries.
 
 ``` objc
 [ARAnalytics setupWithAnalytics:

@@ -19,8 +19,7 @@ PODS:
   - ARAnalytics/Crashlytics (2.5.0):
     - ARAnalytics/CoreIOS
   - ARAnalytics/DSL (2.5.0):
-    - ReactiveCocoa (= 2.3)
-    - RSSwizzle (= 0.1.0)
+    - Aspects (~> 1.0)
   - ARAnalytics/Flurry (2.5.0):
     - ARAnalytics/CoreIOS
     - FlurrySDK
@@ -79,12 +78,15 @@ PODS:
     - ARAnalytics/CoreIOS
     - BPXLUUIDHandler
     - TestFlightSDK
+  - Aspects (1.0.1)
+  - Bolts (1.1.0)
   - BPXLUUIDHandler (0.0.1)
   - Bugsnag (3.1.2)
   - Chartbeat (0.0.1)
   - Countly (2.0.0)
   - Expecta (0.3.0)
-  - Facebook-iOS-SDK (3.13.1)
+  - Facebook-iOS-SDK (3.14.0):
+    - Bolts
   - FlurrySDK (4.4.0):
     - FlurrySDK/FlurrySDK
   - FlurrySDK/FlurrySDK (4.4.0)
@@ -100,13 +102,6 @@ PODS:
   - OCMock (2.2.4)
   - Parse-iOS-SDK (1.2.19):
     - Facebook-iOS-SDK (~> 3.7)
-  - ReactiveCocoa (2.3):
-    - ReactiveCocoa/Core
-    - ReactiveCocoa/no-arc
-  - ReactiveCocoa/Core (2.3):
-    - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.3)
-  - RSSwizzle (0.1.0)
   - Specta (0.2.1)
   - Tapstream (2.7)
   - TestFlightSDK (3.0.0)
@@ -128,13 +123,15 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Amplitude-iOS: 88d27d819a5ad9aa7bdbd700b03b1db8ff5e1fd8
-  ARAnalytics: 253314fadb80fe085bc781ddce91f3bbdfedcb04
+  ARAnalytics: 2102333f65382fb3b8c5a2bebf807824e6104848
+  Aspects: ba2cfb2e25e9430ef0aa6da55d117df93345115a
+  Bolts: dc620a31cf67c29bce3e3d14a07a12e797a1a154
   BPXLUUIDHandler: 6101cdb6862f18146983881c75dc0b9a0012f2ff
   Bugsnag: 165e71d6169549a7ea51c76691318a06bfd59c76
   Chartbeat: e2dd858448f5bc0310ea5632ec1da40e98ee47f8
   Countly: 8f3b7882e842d89b6f22a8b9519a939a0ec97712
   Expecta: 322f1dc42610106a5ba9871b4924cf1635d80833
-  Facebook-iOS-SDK: 47ae9e54684c84f93d75d4e6ab47cd031abdf406
+  Facebook-iOS-SDK: 63e19ff8d275d63b765819f492a4e71e445f9822
   FlurrySDK: 2cd8f2ce2383ca152c5d96fa34cb9ef29706feda
   GoogleAnalytics-iOS-SDK: 16dfcc0c4491148bf372edc85a8470cc405ffb72
   Heap: f8d287afe98b6c2bffefff24d543bea92da733ba
@@ -147,8 +144,6 @@ SPEC CHECKSUMS:
   NewRelicAgent: c851e3d60e2450c6c3052cf5ae96d5651e930bda
   OCMock: 5008fae4b4789b8fc3e48cd7660f2eb5ef8ce89e
   Parse-iOS-SDK: 48e366fb9a8956c4e50d93cfd16243176938fae1
-  ReactiveCocoa: 1f6265f9d521923d3efcc37b00722cefc16df269
-  RSSwizzle: 41c280b15547f7c94f1273111fe4ce29d5d14e3a
   Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
   Tapstream: 0353dd88680c53361605886fd8f327c57980b937
   TestFlightSDK: fe0567a897456b6f65b180541892ef0154986e01

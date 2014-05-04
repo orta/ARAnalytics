@@ -7,13 +7,13 @@
 //
 
 #import "NewRelicProvider.h"
-#import <NewRelicAgent/NewRelic.h>
+//#import <NewRelicAgent/NewRelic.h>
 
 @implementation NewRelicProvider
 
 - (id)initWithIdentifier:(NSString *)identifier {
-    NSAssert([NewRelicAgent class], @"NewRelic is not included");
-    [NewRelicAgent startWithApplicationToken:identifier];
+//    NSAssert([NewRelicAgent class], @"NewRelic is not included");
+//    [NewRelicAgent startWithApplicationToken:identifier];
     return [super init];
 }
 
