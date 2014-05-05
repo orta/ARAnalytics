@@ -7,6 +7,7 @@
 //
 
 #import "ARDSL.h"
+#import <Aspects/Aspects.h>
 
 NSString * const ARAnalyticsTrackedEvents = @"trackedEvents";
 NSString * const ARAnalyticsTrackedScreens = @"trackedScreens";
@@ -57,10 +58,11 @@ static BOOL ar_shouldFireForInstance (NSDictionary *dictionary, id instance, NSA
     NSArray *analyticsDetails = eventDictionary[ARAnalyticsDetails];
 
     [analyticsDetails enumerateObjectsUsingBlock:^(NSDictionary *detailsDictionary, NSUInteger idx, BOOL *stop) {
+        NSError *error = nil;
         SEL selector = [self selectorForEventAnalyticsDetails:detailsDictionary];
         NSString *event = detailsDictionary[ARAnalyticsEventName];
 
-        id aspectRef = [klass aspect_hookSelector:selector atPosition:AspectPositionAfter withBlock:^(id instance, NSArray *arguments) {
+        id aspectRef = [klass aspect_hookSelector:selector atPosition:AspectPositionAfter withBlock:^(__unsafe_unretained id instance, NSArray *arguments) {
 
             BOOL shouldFire = ar_shouldFireForInstance(detailsDictionary, instance, arguments);
 
@@ -73,7 +75,14 @@ static BOOL ar_shouldFireForInstance (NSDictionary *dictionary, id instance, NSA
 
                 [ARAnalytics event:event withProperties:properties];
             }
-        }];
+        } error:&error];
+
+        if (error) {
+            NSLog(@"ARAnalytics DSL: Error setting up hook for %@ on %@ -  %@", klass, NSStringFromSelector(selector), error.localizedDescription);
+
+        } else {
+            [self storeAspectRef:aspectRef forClass:klass andSelector:selector];
+        }
 
         [self storeAspectRef:aspectRef forClass:klass andSelector:selector];
     }];
@@ -86,6 +95,7 @@ static BOOL ar_shouldFireForInstance (NSDictionary *dictionary, id instance, NSA
     NSArray *analyticsDetails = screenDictionary[ARAnalyticsDetails];
 
     [analyticsDetails enumerateObjectsUsingBlock:^(id analyticsDictionary, NSUInteger idx, BOOL *stop) {
+        NSError *error = nil;
         SEL selector = [self selectorForScreenAnalyticsDetails:analyticsDictionary class:klass];
 
         // Try to grab the page name from the dictionary.
@@ -94,7 +104,7 @@ static BOOL ar_shouldFireForInstance (NSDictionary *dictionary, id instance, NSA
         // If there wasn't one, then try to invoke keypath.
         NSString *pageNameKeypath = analyticsDictionary[ARAnalyticsPageNameKeyPath];
 
-       id aspectRef = [klass aspect_hookSelector:selector atPosition:AspectPositionAfter withBlock:^(id instance, NSArray *arguments) {
+       id aspectRef = [klass aspect_hookSelector:selector atPosition:AspectPositionAfter withBlock:^(__unsafe_unretained id instance, NSArray *arguments) {
 
             BOOL shouldFire = ar_shouldFireForInstance(analyticsDictionary, instance, arguments);
 
@@ -109,9 +119,14 @@ static BOOL ar_shouldFireForInstance (NSDictionary *dictionary, id instance, NSA
 
                 [ARAnalytics pageView:pageName];
             }
-        }];
+        } error:&error];
 
-        [self storeAspectRef:aspectRef forClass:klass andSelector:selector];
+        if (error) {
+            NSLog(@"ARAnalytics DSL: Error setting up hook for %@ on %@ -  %@", klass, NSStringFromSelector(selector), error.localizedDescription);
+
+        } else {
+            [self storeAspectRef:aspectRef forClass:klass andSelector:selector];
+        }
     }];
 }
 
@@ -165,9 +180,9 @@ NSString *ARKeyForClassAndSelector(Class klass, SEL selector) {
     Class klass = analyticsDictionary[ARAnalyticsClass];
 
     NSString *key = ARKeyForClassAndSelector(klass, selector);
-    id aspectRef = ARAnalyticsHooksStore[key];
+    id <Aspect> aspectRef = ARAnalyticsHooksStore[key];
 
-    return [klass aspect_remove:aspectRef];
+    return [aspectRef remove];
 }
 
 + (BOOL)removeScreenMonitoringAnalyticsHooks:(NSDictionary *)screenDictionary
@@ -176,20 +191,17 @@ NSString *ARKeyForClassAndSelector(Class klass, SEL selector) {
     SEL selector = [self selectorForScreenAnalyticsDetails:screenDictionary[ARAnalyticsDetails] class:klass];
 
     NSString *key = ARKeyForClassAndSelector(klass, selector);
-    id aspectRef = ARAnalyticsHooksStore[key];
+    id <Aspect> aspectRef = ARAnalyticsHooksStore[key];
 
-    return [klass aspect_remove:aspectRef];
+    return [aspectRef remove];
 }
 
 + (BOOL)removeAllAnalyticsHooks
 {
     __block BOOL success = YES;
-    [ARAnalyticsHooksStore enumerateKeysAndObjectsUsingBlock:^(NSString *key, id aspectRef, BOOL *stop) {
+    [ARAnalyticsHooksStore enumerateKeysAndObjectsUsingBlock:^(NSString *key, id <Aspect> aspectRef, BOOL *stop) {
 
-        NSString *classString = [[key componentsSeparatedByString:@"-"] firstObject];
-        Class klass = NSClassFromString(classString);
-
-        if ([klass aspect_remove:aspectRef] == NO){
+        if ([aspectRef remove] == NO){
             success = NO;
         }
     }];

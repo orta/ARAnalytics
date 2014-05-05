@@ -7,7 +7,6 @@
 //
 
 #import <ARAnalytics/ARAnalytics.h>
-#import <Aspects/NSObject+Aspects.h>
 
 extern NSString * const ARAnalyticsTrackedEvents;
 extern NSString * const ARAnalyticsTrackedScreens;
