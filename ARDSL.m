@@ -62,7 +62,7 @@ static BOOL ar_shouldFireForInstance (NSDictionary *dictionary, id instance, NSA
         SEL selector = [self selectorForEventAnalyticsDetails:detailsDictionary];
         NSString *event = detailsDictionary[ARAnalyticsEventName];
 
-        id aspectRef = [klass aspect_hookSelector:selector atPosition:AspectPositionAfter withBlock:^(__unsafe_unretained id instance, NSArray *arguments) {
+        id aspectRef = [klass aspect_hookSelector:selector withOptions:AspectPositionAfter usingBlock:^(__unsafe_unretained id instance, NSArray *arguments) {
 
             BOOL shouldFire = ar_shouldFireForInstance(detailsDictionary, instance, arguments);
 
@@ -104,7 +104,7 @@ static BOOL ar_shouldFireForInstance (NSDictionary *dictionary, id instance, NSA
         // If there wasn't one, then try to invoke keypath.
         NSString *pageNameKeypath = analyticsDictionary[ARAnalyticsPageNameKeyPath];
 
-       id aspectRef = [klass aspect_hookSelector:selector atPosition:AspectPositionAfter withBlock:^(__unsafe_unretained id instance, NSArray *arguments) {
+       id aspectRef = [klass aspect_hookSelector:selector withOptions:AspectPositionAfter usingBlock:^(__unsafe_unretained id instance, NSArray *arguments) {
 
             BOOL shouldFire = ar_shouldFireForInstance(analyticsDictionary, instance, arguments);
 

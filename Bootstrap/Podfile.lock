@@ -19,7 +19,7 @@ PODS:
   - ARAnalytics/Crashlytics (2.6.0):
     - ARAnalytics/CoreIOS
   - ARAnalytics/DSL (2.6.0):
-    - Aspects (~> 1.0)
+    - Aspects (~> 1.3)
   - ARAnalytics/Flurry (2.6.0):
     - ARAnalytics/CoreIOS
     - FlurrySDK
@@ -78,7 +78,7 @@ PODS:
     - ARAnalytics/CoreIOS
     - BPXLUUIDHandler
     - TestFlightSDK
-  - Aspects (1.2.0)
+  - Aspects (1.3.0)
   - Bolts (1.1.0)
   - BPXLUUIDHandler (0.0.1)
   - Bugsnag (3.1.2)
@@ -123,8 +123,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Amplitude-iOS: 88d27d819a5ad9aa7bdbd700b03b1db8ff5e1fd8
-  ARAnalytics: 5527671a2fe9a8504597dd181e3e37a57a9d4d41
-  Aspects: 07f12841e23ef3ee6a158cf5f127efdf36dad9e7
+  ARAnalytics: 8ff979967815b86df78df19245b3e5b4631456e1
+  Aspects: 159e21e040cae622eb9b889e6fa7934aa94ed51b
   Bolts: dc620a31cf67c29bce3e3d14a07a12e797a1a154
   BPXLUUIDHandler: 6101cdb6862f18146983881c75dc0b9a0012f2ff
   Bugsnag: 165e71d6169549a7ea51c76691318a06bfd59c76

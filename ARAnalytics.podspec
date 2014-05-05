@@ -54,7 +54,7 @@ Pod::Spec.new do |s|
 
   s.subspec "DSL" do |ss| 
     ss.source_files = ['ARDSL.{h,m}']
-    ss.dependency 'Aspects', '~> 1.0'
+    ss.dependency 'Aspects', '~> 1.3'
     ss.platforms = [:ios, :osx]
   end
 
