@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Artsy. All rights reserved.
 //
 
-#import <ARAnalytics/ARAnalytics.h>
+#import "ARAnalytics.h"
 
 extern NSString * const ARAnalyticsTrackedEvents;
 extern NSString * const ARAnalyticsTrackedScreens;
