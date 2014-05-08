@@ -34,43 +34,9 @@
     
     //iterate through properties, add them to event 'tsEvent'
     [properties enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        
-        if ([obj isKindOfClass:[NSString class]]) {
-            [tsEvent addValue:obj forKey:key];
-        }
-        else if ([obj isKindOfClass:[NSNumber class]]){
-            if (strcmp([obj objCType], @encode(BOOL)) == 0) {
-                [tsEvent addBooleanValue:[obj boolValue] forKey:key];
-            }
-            else if (strcmp([obj objCType], @encode(int)) == 0) {
-                [tsEvent addBooleanValue:[obj intValue] forKey:key];
-            }
-            else if (strcmp([obj objCType], @encode(double)) == 0) {
-                [tsEvent addBooleanValue:[obj doubleValue] forKey:key];
-            }
-            else {
-                //only throw exception in debug mode, otherwise do nothing.
-#ifdef DEBUG
-                NSException *e = [NSException
-                                  exceptionWithName:@"ARAnalyticsTapstreamNumberException"
-                                  reason:[NSString stringWithFormat:@"*** Tapstream cannot send number of type: %s", [obj objCType]]
-                                  userInfo:nil];
-                @throw e;
-#endif
-            }
-        }
-        else {
-            //only throw exception in debug mode, otherwise do nothing.
-#ifdef DEBUG
-            NSException *e = [NSException
-                              exceptionWithName:@"ARAnalyticsTapstreamPropertyException"
-                              reason:[NSString stringWithFormat:@"*** Tapstream cannot send parameters of type: %@", NSStringFromClass([obj class])]
-                              userInfo:nil];
-            @throw e;
-#endif
-        }
+        [tsEvent addValue:obj forKey:key];
     }];
-    
+     
     [tracker fireEvent:tsEvent];
     
 }
