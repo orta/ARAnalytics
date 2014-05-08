@@ -86,8 +86,9 @@
 
 - (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval {
     [self event:event withProperties:@{ @"value": interval }];
+    // By Google's header, the interval should be seconds in milliseconds.
     GAIDictionaryBuilder *builder = [GAIDictionaryBuilder createTimingWithCategory:@"default"
-                                                                          interval:interval
+                                                                          interval:@((int)([interval doubleValue]*1000))
                                                                               name:event
                                                                              label:nil];
     [self.tracker send:[builder build]];
