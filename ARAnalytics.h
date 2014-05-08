@@ -181,3 +181,4 @@ extern const NSString *ARParseApplicationID;
 extern const NSString *ARParseClientKey;
 extern const NSString *ARHeapAppID;
 extern const NSString *ARChartbeatID;
+extern const NSString *ARUMengAnalyticsID;
