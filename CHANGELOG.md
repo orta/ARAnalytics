@@ -1,5 +1,10 @@
 #ARAnalytics
 
+## Version 2.7
+
+* Support for UMeng added ( thanks Cai Guo )
+* Fixes to Tapsteam provider
+
 ## Version 2.6.0
 
 * New DSL for analytics ( thanks @AshFurrow )
