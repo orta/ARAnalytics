@@ -4,6 +4,7 @@
 
 * Support for UMeng added ( thanks Cai Guo )
 * Fixes to Tapsteam provider
+* Fixes for Google Analytics v3 timing events ( thanks @travisyu )
 
 ## Version 2.6.0
 
