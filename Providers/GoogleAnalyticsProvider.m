@@ -84,10 +84,22 @@
     [self.tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
-- (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval {
-    [self event:event withProperties:@{ @"value": interval }];
+- (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval  properties:(NSDictionary *)properties{
+    // Prepare properties dictionary
+    if (!properties) {
+        properties = @{ @"value": @([interval intValue]) };
+    } else {
+        NSMutableDictionary *newProperties = [properties mutableCopy];
+        newProperties[@"value"] = @([interval intValue]);
+        properties = newProperties;
+    }
+    
+    // Send event
+    [self event:event withProperties:properties];
+    
+    // By Google's header, the interval should be seconds in milliseconds.
     GAIDictionaryBuilder *builder = [GAIDictionaryBuilder createTimingWithCategory:@"default"
-                                                                          interval:interval
+                                                                          interval:@((int)([interval doubleValue]*1000))
                                                                               name:event
                                                                              label:nil];
     [self.tracker send:[builder build]];
