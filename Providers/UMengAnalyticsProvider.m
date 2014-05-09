@@ -31,13 +31,13 @@
 
 /// Submit an event with a time interval
 - (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval {
-	[MobClick event:event durations:interval.intValue];
+	[MobClick event:event durations:(int)([interval doubleValue]*1000)];
 }
 
 /// Submit an event with a time interval and extra properties
 /// @warning the properites must not contain the key string `length`.
 - (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval properties:(NSDictionary *)properties {
-	[MobClick event:event attributes:properties durations:interval.intValue];
+	[MobClick event:event attributes:properties durations:(int)([interval doubleValue]*1000)];
 }
 
 #endif
