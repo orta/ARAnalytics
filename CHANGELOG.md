@@ -1,5 +1,10 @@
 #ARAnalytics
 
+## Version 2.7.1
+
+* Fixes to Aspect retaining memory management ( thanks @aschuch )
+* Add support for CocoaDocs colours
+
 ## Version 2.7
 
 * Support for UMeng added ( thanks Cai Guo )
