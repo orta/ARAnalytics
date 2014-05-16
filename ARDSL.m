@@ -83,8 +83,6 @@ static BOOL ar_shouldFireForInstance (NSDictionary *dictionary, id instance, NSA
         } else {
             [self storeAspectRef:aspectRef forClass:klass andSelector:selector];
         }
-
-        [self storeAspectRef:aspectRef forClass:klass andSelector:selector];
     }];
 }
 
