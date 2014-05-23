@@ -55,7 +55,7 @@ Pod::Spec.new do |s|
     ss.platforms = [:ios]
   end
 
-  s.subspec "DSL" do |ss| 
+  s.subspec "DSL" do |ss|
     ss.source_files = ['*.{h,m}', 'ARDSL.{h,m}', 'Providers/ARAnalyticalProvider.{h,m}', 'Providers/ARAnalyticsProviders.h']
     ss.dependency 'Aspects', '~> 1.3.1'
     ss.platforms = [:ios, :osx]
@@ -86,7 +86,7 @@ Pod::Spec.new do |s|
         ss.dependency 'ARAnalytics/CoreMac'
         ss.platforms = [:osx]
         $all_osx_names << providername
-        
+
       else
         ss.ios.source_files = sources
         ss.dependency 'ARAnalytics/CoreIOS'
@@ -95,15 +95,8 @@ Pod::Spec.new do |s|
       end
 
       # If there's a podspec dependency include it
-      if analytics_spec[:dependency]
-        if analytics_spec[:dependency].is_a? Array
-          analytics_spec[:dependency].each do |dep|
-            ss.dependency dep
-          end
-
-        else
-          ss.dependency analytics_spec[:dependency]
-        end
+      Array(analytics_spec[:dependency]).each do |dep|
+        ss.dependency dep
       end
 
     end
@@ -140,11 +133,11 @@ Pod::Spec.new do |s|
   # set default subspec no_clash_NAME where NAME is the subspec we want to use.
   # This will give us all possible subspecs that do not clash with NAME.
   s.default_subspec = 'no_clash_HockeyApp'
-  
+
   # I always forget to keep the description up to date as provider support is added and removed, thus automation.
-  
+
   ios_spec_names = $all_ios_names[0...-1].join(", ") + " and " + $all_ios_names[-1]
   osx_spec_names = $all_osx_names[0...-1].join(", ") + " and " + $all_osx_names[-1]
   s.description  =  "ARAnalytics is a analytics abstraction library offering a sane API for tracking events and user data. It currently supports on iOS: #{ ios_spec_names }. And for OS X: #{ osx_spec_names }. It does this by using CocoaPods subspecs to let you decide which libraries you'd like to use. You are free to also use the official API for any provider too. Also, comes with an amazing DSL to clear up your methods."
-  
+
 end
