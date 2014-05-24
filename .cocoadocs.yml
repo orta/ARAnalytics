@@ -1,7 +1,7 @@
-$highlight_color: #08f594; 
-$highlight-dark-color: #00a98b; 
-$darker-color: #b2c6b9; 
-$darker-dark-color: #94a8a7; 
-$background-colour: #e5f2ec; 
-$alt-link-color: #00a98b; 
-$warning-color: #b88391; 
+$highlight_color: "#08f594;" 
+$highlight-dark-color: "#00a98b;"
+$darker-color: "#b2c6b9;" 
+$darker-dark-color: "#94a8a7;"
+$background-colour: "#e5f2ec;"
+$alt-link-color: "#00a98b;"
+$warning-color: "#b88391;"
