@@ -1,5 +1,5 @@
 PODS:
-  - Amplitude-iOS (2.0.0)
+  - Amplitude-iOS (2.1.0)
   - ARAnalytics (2.5.0):
     - ARAnalytics/no_clash_HockeyApp
   - ARAnalytics/Amplitude (2.5.0):
@@ -79,37 +79,40 @@ PODS:
     - ARAnalytics/CoreIOS
     - BPXLUUIDHandler
     - TestFlightSDK
+  - Bolts (1.1.0)
   - BPXLUUIDHandler (0.0.1)
   - Bugsnag (3.1.2)
   - Chartbeat (0.0.1)
   - Countly (2.0.0)
   - Expecta (0.3.0)
-  - Facebook-iOS-SDK (3.13.1)
-  - FlurrySDK (4.4.0):
+  - Facebook-iOS-SDK (3.14.1):
+    - Bolts
+  - FlurrySDK (5.0.0):
     - FlurrySDK/FlurrySDK
-  - FlurrySDK/FlurrySDK (4.4.0)
-  - GoogleAnalytics-iOS-SDK (3.0.6)
-  - Heap (1.0.0)
+  - FlurrySDK/FlurrySDK (5.0.0)
+  - GoogleAnalytics-iOS-SDK (3.0.7)
+  - Heap (1.1.4)
   - Helpshift (4.4.0)
   - HockeySDK (3.5.5)
   - KISSmetrics (1.2.0)
   - Localytics-iOS-Client (2.23.0)
-  - Mixpanel (2.3.5)
-  - Mixpanel-OSX-Community (2.0.0)
-  - NewRelicAgent (3.289)
+  - Mixpanel (2.3.6)
+  - Mixpanel-OSX-Community (2.1.0)
+  - NewRelicAgent (3.324)
   - OCMock (2.2.4)
   - Parse-iOS-SDK (1.2.19):
     - Facebook-iOS-SDK (~> 3.7)
   - ReactiveCocoa (2.3):
-    - ReactiveCocoa/Core
-    - ReactiveCocoa/no-arc
+    - ReactiveCocoa/UI
   - ReactiveCocoa/Core (2.3):
     - ReactiveCocoa/no-arc
   - ReactiveCocoa/no-arc (2.3)
+  - ReactiveCocoa/UI (2.3):
+    - ReactiveCocoa/Core
   - RSSwizzle (0.1.0)
   - Specta (0.2.1)
   - Tapstream (2.7)
-  - TestFlightSDK (3.0.0)
+  - TestFlightSDK (3.0.2)
 
 DEPENDENCIES:
   - ARAnalytics (from `../`)
@@ -127,30 +130,31 @@ EXTERNAL SOURCES:
     :git: https://github.com/orta/mixpanel-osx-unofficial
 
 SPEC CHECKSUMS:
-  Amplitude-iOS: 88d27d819a5ad9aa7bdbd700b03b1db8ff5e1fd8
+  Amplitude-iOS: f0e9a04e7bb7003a3576f2b0954fa2d1d128adc2
   ARAnalytics: 253314fadb80fe085bc781ddce91f3bbdfedcb04
-  BPXLUUIDHandler: 6101cdb6862f18146983881c75dc0b9a0012f2ff
-  Bugsnag: 165e71d6169549a7ea51c76691318a06bfd59c76
-  Chartbeat: e2dd858448f5bc0310ea5632ec1da40e98ee47f8
-  Countly: 8f3b7882e842d89b6f22a8b9519a939a0ec97712
-  Expecta: 322f1dc42610106a5ba9871b4924cf1635d80833
-  Facebook-iOS-SDK: 47ae9e54684c84f93d75d4e6ab47cd031abdf406
-  FlurrySDK: 2cd8f2ce2383ca152c5d96fa34cb9ef29706feda
-  GoogleAnalytics-iOS-SDK: 16dfcc0c4491148bf372edc85a8470cc405ffb72
-  Heap: f8d287afe98b6c2bffefff24d543bea92da733ba
-  Helpshift: 0c4c39b232e968acd732224d3d938af11db00f33
-  HockeySDK: 350ef1cf18d2fc9a13801ad077c307cece8c6c64
-  KISSmetrics: 25336738c9203dc5f7ce5d9aa9b88ed22e544ca0
-  Localytics-iOS-Client: 0a9dabe02620569ae8f69e7162908b49ca97f15f
-  Mixpanel: 79ff289920b67399475b93057ac11e48637585d7
-  Mixpanel-OSX-Community: b829ac6c8ea601849a2ce74a478b046ee661d3f1
-  NewRelicAgent: c851e3d60e2450c6c3052cf5ae96d5651e930bda
-  OCMock: 5008fae4b4789b8fc3e48cd7660f2eb5ef8ce89e
-  Parse-iOS-SDK: 48e366fb9a8956c4e50d93cfd16243176938fae1
-  ReactiveCocoa: 1f6265f9d521923d3efcc37b00722cefc16df269
-  RSSwizzle: 41c280b15547f7c94f1273111fe4ce29d5d14e3a
-  Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
-  Tapstream: 0353dd88680c53361605886fd8f327c57980b937
-  TestFlightSDK: fe0567a897456b6f65b180541892ef0154986e01
+  Bolts: 91c2af8eae1d44e1dd75946a5b0ae04a43ea43e4
+  BPXLUUIDHandler: 12376ecdba7aa93b7fb3da32e9130e6593d7ef99
+  Bugsnag: 74d109dfa41b55d16890c987c7551ca071afd3d2
+  Chartbeat: c77a243f92c396abb7e647819d7806b01b339b91
+  Countly: 8d39cae855e6925578ff65b82c42db379fb9863d
+  Expecta: ce8a51b9fad15a2cd573b291cb2909aaed865350
+  Facebook-iOS-SDK: e9b3d5ac54ee3e5e693f4eef470b97911b3d076d
+  FlurrySDK: 1fa28436e86e533e51ab1164c43d8f3b5f8ff99f
+  GoogleAnalytics-iOS-SDK: bb285d8eef15a682f1b82971becd0d22edd0e53b
+  Heap: a9c23c08259be95de91ae2deaed7f3fdd2d01079
+  Helpshift: a38b2a317eeff3643aa4374c8af3b1b1796612c1
+  HockeySDK: f9af97c2f5df4eb6ca6d2a9c408f2ff498edd608
+  KISSmetrics: 67213618a68b1e730d9dd50ef0b263f278cc43af
+  Localytics-iOS-Client: 3f878379d40c67945ea5972c1e1bf9762b5e5b9f
+  Mixpanel: 9aba38257fc4d2777ab5db1afc55e22bdfd57a4a
+  Mixpanel-OSX-Community: 039dd549dd13ff493e39ae1487d1684078d4dae4
+  NewRelicAgent: 36d31c220b7a7fa2c83a71df87c62d48d0c7d1c4
+  OCMock: 6db79185520e24f9f299548f2b8b07e41d881bd5
+  Parse-iOS-SDK: 5e1f7e649a02f1cc19e73cc95bd43d7778848314
+  ReactiveCocoa: 2066583826c17dde8e90c41e489f682048cc57c9
+  RSSwizzle: ab39962b7ec56d19c2318ec1127e253797121363
+  Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
+  Tapstream: 1c945ae1e9d25af25915c96e5d506485b26f52f0
+  TestFlightSDK: 0c24c533748d0d84bfe7a3cb6036fa79124d84ee
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.33.1
