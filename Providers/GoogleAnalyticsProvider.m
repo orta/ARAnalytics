@@ -65,41 +65,23 @@
     if (!category) {
         category = @"default"; // category is a required value
     }
-    
-#ifdef DEBUG
-    [self warnAboutIgnoredProperies:properties];
-#endif
-    
     GAIDictionaryBuilder *builder = [GAIDictionaryBuilder createEventWithCategory:category
                                                                            action:event
                                                                             label:properties.label
                                                                             value:properties.value];
-
     [self.tracker send:[builder build]];
 }
 
 - (void)didShowNewPageView:(NSString *)pageTitle {
-    [self event:@"Screen view" withProperties:@{ @"label": pageTitle }];
+    [self event:@"Screen view" withProperties:@{ @"screen": pageTitle }];
     [self.tracker set:kGAIScreenName value:pageTitle];
     [self.tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
-- (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval  properties:(NSDictionary *)properties{
-    // Prepare properties dictionary
-    if (!properties) {
-        properties = @{ @"value": @([interval intValue]) };
-    } else {
-        NSMutableDictionary *newProperties = [properties mutableCopy];
-        newProperties[@"value"] = @([interval intValue]);
-        properties = newProperties;
-    }
-    
-    // Send event
-    [self event:event withProperties:properties];
-    
-    // By Google's header, the interval should be seconds in milliseconds.
+- (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval {
+    [self event:event withProperties:@{ @"length": interval }];
     GAIDictionaryBuilder *builder = [GAIDictionaryBuilder createTimingWithCategory:@"default"
-                                                                          interval:@((int)([interval doubleValue]*1000))
+                                                                          interval:interval
                                                                               name:event
                                                                              label:nil];
     [self.tracker send:[builder build]];
@@ -109,21 +91,6 @@
 
 - (void)dispatchGA {
     [[GAI sharedInstance] dispatch];
-}
-
-#pragma mark - Warnings
-
--(void) warnAboutIgnoredProperies:(NSDictionary*)propertiesDictionary
-{
-    for (id key in propertiesDictionary) {
-        if (    [key isEqualToString:[NSDictionary googleAnalyticsLabelKey]] ||
-                [key isEqualToString:[NSDictionary googleAnalyticsCategoryKey]] ||
-                [key isEqualToString:[NSDictionary googleAnalyticsValueKey]]
-            ) {
-            continue;
-        }
-        NSLog(@"%@: property ignored %@:%@",self,key,propertiesDictionary[key]);
-    }
 }
 
 #endif

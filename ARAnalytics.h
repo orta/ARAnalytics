@@ -2,8 +2,8 @@
 //  ARAnalytics.h
 //  Art.sy
 //
-//  Created by Orta Therox on 18/12/2012.
-//  Copyright (c) 2012 - Present Orta Therox & Art.sy. All rights reserved.
+//  Created by orta therox on 18/12/2012.
+//  Copyright (c) 2012 Art.sy. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -26,17 +26,6 @@
 //  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 //  OTHER DEALINGS IN THE SOFTWARE.
 
-// For OS X support we need to mock up UIVIewController/UINavigationViewController
-
-#if !TARGET_OS_IPHONE
-@interface UIViewController : NSObject @end
-@interface UINavigationController : NSObject @end
-@protocol UINavigationControllerDelegate <NSObject> @end
-#endif
-
-@class TSConfig;
-@class ARAnalyticalProvider;
-
 /**
  @class
  ARAnalytics Main Class.
@@ -50,9 +39,9 @@
  <pre>
 
  [ARAnalytics setupWithAnalytics: @{
- ARCrittercismAppID : @"KEY",
- ARKISSMetricsAPIKey : @"KEY",
- ARGoogleAnalyticsID : @"KEY"
+    ARCrittercismAppID : @"KEY",
+    ARKISSMetricsAPIKey : @"KEY",
+    ARGoogleAnalyticsID : @"KEY"
  }];
 
  </pre>
@@ -60,6 +49,17 @@
  For more advanced usage, please see the <a
  href="https://github.com/orta/ARAnalytics">ARAnalytics Readme</a>.
  */
+
+// For OS X support we need to mock up UIVIewController/UINavigationViewController
+
+#if !TARGET_OS_IPHONE
+@interface UIViewController : NSObject @end
+@interface UINavigationController : NSObject @end
+@protocol UINavigationControllerDelegate <NSObject> @end
+#endif
+
+@class TSConfig;
+@class ARAnalyticalProvider;
 
 @interface ARAnalytics : NSObject <UINavigationControllerDelegate>
 
@@ -181,4 +181,3 @@ extern const NSString *ARParseApplicationID;
 extern const NSString *ARParseClientKey;
 extern const NSString *ARHeapAppID;
 extern const NSString *ARChartbeatID;
-extern const NSString *ARUMengAnalyticsID;
