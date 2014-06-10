@@ -112,7 +112,7 @@ static BOOL ar_shouldFireForInstance (NSDictionary *dictionary, id instance, NSA
                     pageName = dictionaryPageName;
                 } else {
                     pageName = [instance valueForKeyPath:pageNameKeypath];
-                    NSAssert(pageName, @"Value for Key on `%@` returned nil.", pageNameKeypath);
+                    NSAssert(pageName, @"Value for Key on `%@` returned nil from instance of class: `%@`", pageNameKeypath, NSStringFromClass([instance class]));
                 }
 
                 [ARAnalytics pageView:pageName];
