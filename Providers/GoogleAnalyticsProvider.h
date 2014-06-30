@@ -10,6 +10,10 @@
 
 @interface GoogleAnalyticsProvider : ARAnalyticalProvider
 
+/***
+ * This dictionary maps custom names to GAI customDimensions
+ * i.e. @{@"FooDimension":[GAIFields customDimensionForIndex:1], @"BarDimension":[GAIFields customDimensionForIndex:2]}
+ */
 @property (nonatomic, strong) NSDictionary *customDimensionMappings;
 
 @end
