@@ -74,8 +74,18 @@
                                                                            action:event
                                                                             label:properties.label
                                                                             value:properties.value];
-
-    [self.tracker send:[builder build]];
+    
+    NSMutableDictionary *newProperties = [builder build];
+    
+    // adding custom Dimension values if we can find a key in the mappings
+    for (NSString *key in self.customDimensionMappings.allKeys) {
+        NSString *potentialValue = properties[key];
+        if (potentialValue) {
+            [newProperties setObject:potentialValue forKey:self.customDimensionMappings[key]];
+        }
+    }
+    
+    [self.tracker send:newProperties];
 }
 
 - (void)didShowNewPageView:(NSString *)pageTitle {
@@ -118,7 +128,8 @@
     for (id key in propertiesDictionary) {
         if (    [key isEqualToString:[NSDictionary googleAnalyticsLabelKey]] ||
                 [key isEqualToString:[NSDictionary googleAnalyticsCategoryKey]] ||
-                [key isEqualToString:[NSDictionary googleAnalyticsValueKey]]
+                [key isEqualToString:[NSDictionary googleAnalyticsValueKey]] ||
+                [self.customDimensionMappings.allKeys containsObject:key]
             ) {
             continue;
         }

@@ -9,4 +9,7 @@
 #import "ARAnalyticalProvider.h"
 
 @interface GoogleAnalyticsProvider : ARAnalyticalProvider
+
+@property (nonatomic, strong) NSDictionary *customDimensionMappings;
+
 @end
