@@ -33,11 +33,11 @@
 
 - (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
     if (userID) {
-        [TestFlight addCustomEnvironmentInformation:@"id" forKey:userID];
+        [TestFlight addCustomEnvironmentInformation:userID forKey:@"user_id"];
     }
     
     if (email) {
-        [TestFlight addCustomEnvironmentInformation:@"email" forKey:email];
+        [TestFlight addCustomEnvironmentInformation:email forKey:@"email"];
     }
 }
 
