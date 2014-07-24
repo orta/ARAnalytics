@@ -88,7 +88,7 @@
 + (void)setupParseAnalyticsWithApplicationID:(NSString *)appID clientKey:(NSString *)clientKey;
 + (void)setupHeapAnalyticsWithApplicationID:(NSString *)appID;
 + (void)setupChartbeatWithApplicationID:(NSString *)appID;
-
++ (void)setupLibratoWithEmail:(NSString *)email token:(NSString *)token prefix:(NSString *)prefix;
 
 /// Add a provider manually
 + (void)setupProvider:(ARAnalyticalProvider *)provider;
@@ -182,3 +182,6 @@ extern const NSString *ARParseClientKey;
 extern const NSString *ARHeapAppID;
 extern const NSString *ARChartbeatID;
 extern const NSString *ARUMengAnalyticsID;
+extern const NSString *ARLibratoEmail;
+extern const NSString *ARLibratoToken;
+extern const NSString *ARLibratoPrefix;

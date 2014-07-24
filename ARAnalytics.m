@@ -118,6 +118,10 @@ static ARAnalytics *_sharedAnalytics;
         [self setupUMengAnalyticsIDWithAppkey:analyticsDictionary[ARUMengAnalyticsID]];
     }
     
+    if (analyticsDictionary[ARLibratoEmail] && analyticsDictionary[ARLibratoToken]) {
+        [self setupLibratoWithEmail:analyticsDictionary[ARLibratoEmail] token:analyticsDictionary[ARLibratoToken] prefix:analyticsDictionary[ARLibratoPrefix]];
+    }
+
     // Crashlytics / Crittercism should stay at the bottom of this,
     // as they both need to register exceptions, and you'd only use one.
 
@@ -160,7 +164,9 @@ static ARAnalytics *_sharedAnalytics;
 }
 
 + (void)setupMixpanelWithToken:(NSString *)token {
+#ifdef AR_MIXPANEL_EXISTS
     [self setupMixpanelWithToken:token andHost:nil];
+#endif
 }
 
 + (void)setupMixpanelWithToken:(NSString *)token andHost:(NSString *)host {
@@ -295,7 +301,12 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 }
 
-
++ (void)setupLibratoWithEmail:(NSString *)email token:(NSString *)token prefix:(NSString *)prefix {
+#ifdef AR_LIBRATO_EXISTS
+    LibratoProvider *provider = [[LibratoProvider alloc] initWithEmail:email token:token prefix:prefix];
+    [self setupProvider:provider];
+#endif
+}
 
 #pragma mark -
 #pragma mark User Setup
@@ -500,3 +511,6 @@ const NSString *ARParseClientKey = @"ARParseClientKey";
 const NSString *ARHeapAppID = @"ARHeapAppID";
 const NSString *ARChartbeatID = @"ARChartbeatID";
 const NSString *ARUMengAnalyticsID = @"ARUMengAnalyticsID";
+const NSString *ARLibratoEmail = @"ARLibratoEmail";
+const NSString *ARLibratoToken = @"ARLibratoToken";
+const NSString *ARLibratoPrefix = @"ARLibratoPrefix";
