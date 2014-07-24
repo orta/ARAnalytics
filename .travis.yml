@@ -5,7 +5,7 @@ before_script:
   - brew update
   - brew uninstall xctool
   - brew install xctool
-  - cd Bootstrap; pod install ; cd ..
+  - cd Bootstrap; pod update ; cd ..
 xcode_workspace: Bootstrap/ARAnalyticsTests.xcworkspace
 xcode_scheme: ARAnalyticsBootstrapiOS
 xcode_sdk: iphonesimulator
