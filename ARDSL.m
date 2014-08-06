@@ -40,15 +40,34 @@ static BOOL ar_shouldFireForInstance (NSDictionary *dictionary, id instance, NSA
 
 + (void)setupWithAnalytics:(NSDictionary *)analyticsDictionary configuration:(NSDictionary *)configurationDictionary {
     [self setupWithAnalytics:analyticsDictionary];
+    
+    void (^assertionBlock)(void (^)(void)) = ^(void (^block)(void)){
+        NSParameterAssert(block);
+        BOOL failed = NO;
+        
+        @try {
+            block();
+        }
+        @catch (NSException *exception) {
+            failed = YES;
+        }
+        @finally {
+            NSAssert(failed == NO, @"There was an error setting up ARAnalytics' using the DSL. Likely, something went wrong with a selector lookup. Double check your configurationDictionary.");
+        }
+    };
 
     NSArray *trackedScreenClasses = configurationDictionary[ARAnalyticsTrackedScreens];
     [trackedScreenClasses enumerateObjectsUsingBlock:^(NSDictionary *screenDictionary, NSUInteger idx, BOOL *stop) {
-        [self addScreenMonitoringAnalyticsHook:screenDictionary];
+        assertionBlock(^{
+            [self addScreenMonitoringAnalyticsHook:screenDictionary];
+        });
     }];
 
     NSArray *trackedEventClasses = configurationDictionary[ARAnalyticsTrackedEvents];
     [trackedEventClasses enumerateObjectsUsingBlock:^(NSDictionary *eventDictionary, NSUInteger idx, BOOL *stop) {
-        [self addEventAnalyticsHooks:eventDictionary];
+        assertionBlock(^{
+            [self addEventAnalyticsHooks:eventDictionary];
+        });
     }];
 }
 
