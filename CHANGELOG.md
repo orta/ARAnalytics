@@ -1,5 +1,9 @@
 #ARAnalytics
 
+## Next
+
+* Added `ARAnalyticsSelector` for use with DSL ( thanks @AshFurrow )
+
 ## Version 2.7.2
 * Add support for CocoaDocs colours
 
