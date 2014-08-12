@@ -25,6 +25,20 @@
 
 SpecBegin(ARAnalyticsDSLTests)
 
+it(@"asserts that something went wrong with unknown selectors", ^{
+    expect(^{
+        [ARAnalytics setupWithAnalytics:nil configuration:@{
+            ARAnalyticsTrackedEvents: @[@{
+                ARAnalyticsClass: TestObject.class,
+                ARAnalyticsDetails: @{
+                    ARAnalyticsEventName: @"event",
+                    ARAnalyticsSelectorName: @"badSelector"
+                }
+            }]
+        }];
+    }).to.raiseAny();
+});
+
 describe(@"setup with configuration", ^{
     it(@"calls super", ^{
         NSDictionary *dictionary = [NSDictionary dictionary];
