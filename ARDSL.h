@@ -8,6 +8,8 @@
 
 #import "ARAnalytics.h"
 
+#define ARAnalyticsSelector(name) NSStringFromSelector(@selector(name))
+
 extern NSString * const ARAnalyticsTrackedEvents;
 extern NSString * const ARAnalyticsTrackedScreens;
 
