@@ -122,6 +122,10 @@ static ARAnalytics *_sharedAnalytics;
         [self setupLibratoWithEmail:analyticsDictionary[ARLibratoEmail] token:analyticsDictionary[ARLibratoToken] prefix:analyticsDictionary[ARLibratoPrefix]];
     }
 
+    if (analyticsDictionary[ARSegmentioWriteKey]) {
+        [self setupSegmentioWithWriteKey:analyticsDictionary[ARSegmentioWriteKey]];
+    }
+
     // Crashlytics / Crittercism should stay at the bottom of this,
     // as they both need to register exceptions, and you'd only use one.
 
@@ -304,6 +308,13 @@ static ARAnalytics *_sharedAnalytics;
 + (void)setupLibratoWithEmail:(NSString *)email token:(NSString *)token prefix:(NSString *)prefix {
 #ifdef AR_LIBRATO_EXISTS
     LibratoProvider *provider = [[LibratoProvider alloc] initWithEmail:email token:token prefix:prefix];
+    [self setupProvider:provider];
+#endif
+}
+
++ (void)setupSegmentioWithWriteKey:(NSString*)key {
+#ifdef AR_SEGMENTIO_EXISTS
+    SegmentioProvider *provider = [[SegmentioProvider alloc] initWithIdentifier:key];
     [self setupProvider:provider];
 #endif
 }
@@ -514,3 +525,5 @@ const NSString *ARUMengAnalyticsID = @"ARUMengAnalyticsID";
 const NSString *ARLibratoEmail = @"ARLibratoEmail";
 const NSString *ARLibratoToken = @"ARLibratoToken";
 const NSString *ARLibratoPrefix = @"ARLibratoPrefix";
+const NSString *ARSegmentioWriteKey = @"ARSegmentioWriteKey";
+
