@@ -10,19 +10,7 @@
 
 #ifdef AR_SEGMENTIO_EXISTS
 - (id)initWithIdentifier:(NSString *)identifier {
-
-    // TODO: remove after testing
-    SEGAnalyticsConfiguration *config = [SEGAnalyticsConfiguration configurationWithWriteKey:identifier];
-    config.flushAt = 1;
-    [SEGAnalytics setupWithConfiguration:config];
-
-    // TODO: uncomment
-    // [SEGAnalytics setupWithConfiguration:[SEGAnalyticsConfiguration configurationWithWriteKey:identifier]];
-
-    // TODO: remove
-    [SEGAnalytics debug:YES];
-
-
+    [SEGAnalytics setupWithConfiguration:[SEGAnalyticsConfiguration configurationWithWriteKey:identifier]];
     return [super init];
 }
 
