@@ -9,6 +9,10 @@ end
 
 target :ARAnalyticsBootstrapiOS do
   platform :ios, '6.0'
+  
+  # think 3.5.5 / 3.5.6 are broken
+  pod 'HockeySDK', '3.5.4'
+  
   pod 'ARAnalytics', :path => "../"
   pod 'ARAnalytics/DSL', :path => "../"
 end
