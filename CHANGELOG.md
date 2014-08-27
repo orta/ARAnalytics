@@ -3,6 +3,7 @@
 ## Next
 
 * Added `ARAnalyticsSelector` for use with DSL ( thanks @AshFurrow )
+* Added a new provider, Segment.io (server-side only) ( thanks @wka )
 
 ## Version 2.7.2
 * Add support for CocoaDocs colours
