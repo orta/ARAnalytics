@@ -1,5 +1,10 @@
 PODS:
-  - Amplitude-iOS (2.1.0)
+  - Amplitude-iOS (2.1.1)
+  - Analytics/Core-iOS (1.6.2):
+    - Analytics/Segmentio
+    - TRVSDictionaryWithCaseInsensitivity (= 0.0.2)
+  - Analytics/Segmentio (1.6.2):
+    - Analytics/Core-iOS
   - ARAnalytics (2.7.2):
     - ARAnalytics/no_clash_HockeyApp
   - ARAnalytics/Amplitude (2.7.2):
@@ -41,6 +46,8 @@ PODS:
   - ARAnalytics/KISSmetricsOSX (2.7.2):
     - ARAnalytics/CoreMac
     - KISSmetrics
+  - ARAnalytics/Librato (2.7.2):
+    - ARAnalytics/CoreIOS
   - ARAnalytics/Localytics (2.7.2):
     - ARAnalytics/CoreIOS
     - Localytics-iOS-Client
@@ -63,17 +70,22 @@ PODS:
     - ARAnalytics/HockeyApp
     - ARAnalytics/KISSmetrics
     - ARAnalytics/KISSmetricsOSX
+    - ARAnalytics/Librato
     - ARAnalytics/Localytics
     - ARAnalytics/Mixpanel
     - ARAnalytics/MixpanelOSX
     - ARAnalytics/NewRelic
     - ARAnalytics/ParseAnalytics
+    - ARAnalytics/Segmentio
     - ARAnalytics/Tapstream
     - ARAnalytics/TestFlight
     - ARAnalytics/UMengAnalytics
   - ARAnalytics/ParseAnalytics (2.7.2):
     - ARAnalytics/CoreIOS
     - Parse-iOS-SDK
+  - ARAnalytics/Segmentio (2.7.2):
+    - Analytics/Segmentio
+    - ARAnalytics/CoreIOS
   - ARAnalytics/Tapstream (2.7.2):
     - ARAnalytics/CoreIOS
     - Tapstream
@@ -85,32 +97,33 @@ PODS:
     - ARAnalytics/CoreIOS
     - UMengAnalytics
   - Aspects (1.3.1)
-  - Bolts (1.1.0)
+  - Bolts (1.1.2)
   - BPXLUUIDHandler (0.0.1)
   - Bugsnag (3.1.2)
   - Chartbeat (0.0.1)
   - Countly (2.0.0)
   - Expecta (0.3.1)
-  - Facebook-iOS-SDK (3.16.1):
+  - Facebook-iOS-SDK (3.17.0):
     - Bolts
-  - FlurrySDK (5.2.0):
+  - FlurrySDK (5.3.0):
     - FlurrySDK/FlurrySDK
-  - FlurrySDK/FlurrySDK (5.2.0)
-  - GoogleAnalytics-iOS-SDK (3.0.8)
-  - Heap (1.2.0)
+  - FlurrySDK/FlurrySDK (5.3.0)
+  - GoogleAnalytics-iOS-SDK (3.0.9)
+  - Heap (1.2.2)
   - Helpshift (4.6.0)
-  - HockeySDK (3.5.6)
+  - HockeySDK (3.5.4)
   - KISSmetrics (1.2.0)
-  - Localytics-iOS-Client (2.23.0)
-  - Mixpanel (2.4.1)
+  - Localytics-iOS-Client (2.60.0)
+  - Mixpanel (2.5.0)
   - Mixpanel-OSX-Community (2.1.0)
-  - NewRelicAgent (3.343)
+  - NewRelicAgent (3.398)
   - OCMock (2.2.4)
   - Parse-iOS-SDK (1.2.19):
     - Facebook-iOS-SDK (~> 3.7)
   - Specta (0.2.1)
-  - Tapstream (2.7.4)
+  - Tapstream (2.8.1)
   - TestFlightSDK (3.0.2)
+  - TRVSDictionaryWithCaseInsensitivity (0.0.2)
   - UMengAnalytics (3.1.2)
 
 DEPENDENCIES:
@@ -118,6 +131,7 @@ DEPENDENCIES:
   - ARAnalytics/DSL (from `../`)
   - ARAnalytics/KISSmetricsOSX (from `../`)
   - Expecta (~> 0.2)
+  - HockeySDK (= 3.5.4)
   - Mixpanel-OSX-Community (from `https://github.com/orta/mixpanel-osx-unofficial`)
   - OCMock (= 2.2.4)
   - Specta (~> 0.2)
@@ -129,31 +143,33 @@ EXTERNAL SOURCES:
     :git: https://github.com/orta/mixpanel-osx-unofficial
 
 SPEC CHECKSUMS:
-  Amplitude-iOS: f0e9a04e7bb7003a3576f2b0954fa2d1d128adc2
-  ARAnalytics: 8507e00a4edc54db060eddaa9901d7efc58b6d5a
+  Amplitude-iOS: e72b65479dc035ef671a57e34e1a981767224318
+  Analytics: 87ef2522f29985ced073b4f2da5c95b212f61f5f
+  ARAnalytics: f35158b41d6ae18892ce226f132cfcba9abf52fd
   Aspects: 7f1aea592d35c0c1af74ee2a5efa5c555b0ebfc9
-  Bolts: 91c2af8eae1d44e1dd75946a5b0ae04a43ea43e4
+  Bolts: 2635e8698a630774689441047f3465d78c48d485
   BPXLUUIDHandler: 12376ecdba7aa93b7fb3da32e9130e6593d7ef99
   Bugsnag: 74d109dfa41b55d16890c987c7551ca071afd3d2
   Chartbeat: c77a243f92c396abb7e647819d7806b01b339b91
   Countly: 8d39cae855e6925578ff65b82c42db379fb9863d
   Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
-  Facebook-iOS-SDK: 594f0e2398fe62b0a44b6f7ae113c7795cfabfa4
-  FlurrySDK: 5322b9eb0d0b538f1a1983a6717f3a2e2ba03047
-  GoogleAnalytics-iOS-SDK: a3206c68ee5f2a014ed67383d1f779072b653988
-  Heap: 09c7a04debbf2c122786ac9036107694c3727b12
+  Facebook-iOS-SDK: f20274d809f112ba540842e2b6cbe50128d51b7b
+  FlurrySDK: e1142ae33e294f8307bd6d2209cc082e79b66e90
+  GoogleAnalytics-iOS-SDK: d9e198b1f955259a72886769be7377cdfcdb2250
+  Heap: 60cc2947a8bdb8304dbd4e8108a15674ba050f30
   Helpshift: 235f6e1569c368ea40b7fe9e2fb3a6ce21f5002c
-  HockeySDK: 27d8b411208f9d3f70c8f6695a8defa2a3465721
+  HockeySDK: bf0e17f8d0c2b4778dff5ffd42248569a007ccbf
   KISSmetrics: 67213618a68b1e730d9dd50ef0b263f278cc43af
-  Localytics-iOS-Client: 3f878379d40c67945ea5972c1e1bf9762b5e5b9f
-  Mixpanel: a29ff32db93936dea24162f0dc4fecc4a8f17071
+  Localytics-iOS-Client: 8ac0465be1a255288653a493a92af448944d27cc
+  Mixpanel: e2cbef6022acff6e0182c994ed69b18613209611
   Mixpanel-OSX-Community: 039dd549dd13ff493e39ae1487d1684078d4dae4
-  NewRelicAgent: 95b45c10c8f53738fb8a65034e6d6ae72e90570f
+  NewRelicAgent: 304f41a46470705beed9c36b9eef8dbccb986f37
   OCMock: 6db79185520e24f9f299548f2b8b07e41d881bd5
   Parse-iOS-SDK: 5e1f7e649a02f1cc19e73cc95bd43d7778848314
   Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
-  Tapstream: 2daf868cb81834eeb0d317e2be2d3ed63f271889
+  Tapstream: 87a9dba9b9b0466dcd5fa2a32e897369a234eda2
   TestFlightSDK: 0c24c533748d0d84bfe7a3cb6036fa79124d84ee
+  TRVSDictionaryWithCaseInsensitivity: a61daa8469fa079e05b694f6aad5441785c837d1
   UMengAnalytics: db0b67f5334f356f8ac53dcc0abcc4bd9d0ffb45
 
 COCOAPODS: 0.33.1

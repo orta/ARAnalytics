@@ -25,6 +25,7 @@
 		60A5E6271698DB4400686918 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60A5E6261698DB4400686918 /* Default-568h@2x.png */; };
 		60A5E62A1698DB4400686918 /* ORViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60A5E6291698DB4400686918 /* ORViewController.m */; };
 		60A5E62D1698DB4400686918 /* ORViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60A5E62B1698DB4400686918 /* ORViewController.xib */; };
+		60AC3E5319AEB6DF00E48C37 /* ORLibratoStubs.m in Sources */ = {isa = PBXBuildFile; fileRef = 60AC3E5219AEB6DF00E48C37 /* ORLibratoStubs.m */; };
 		60FB51DD1699032C00040CC8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60FB51DC1699032C00040CC8 /* Crashlytics.framework */; };
 		60FF267C1749771E005F8435 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 60FF267A1749771E005F8435 /* InfoPlist.strings */; };
 		60FF267E1749771E005F8435 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 60FF267D1749771E005F8435 /* main.m */; };
@@ -78,6 +79,8 @@
 		60A5E6281698DB4400686918 /* ORViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ORViewController.h; sourceTree = "<group>"; };
 		60A5E6291698DB4400686918 /* ORViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ORViewController.m; sourceTree = "<group>"; };
 		60A5E62C1698DB4400686918 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ORViewController.xib; sourceTree = "<group>"; };
+		60AC3E5119AEB6DF00E48C37 /* ORLibratoStubs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORLibratoStubs.h; sourceTree = "<group>"; };
+		60AC3E5219AEB6DF00E48C37 /* ORLibratoStubs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORLibratoStubs.m; sourceTree = "<group>"; };
 		60FB51DC1699032C00040CC8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		60FF26701749771E005F8435 /* ARAnalyticsBootstrapMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARAnalyticsBootstrapMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60FF26741749771E005F8435 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -215,6 +218,8 @@
 				60A5E6291698DB4400686918 /* ORViewController.m */,
 				60A5E62B1698DB4400686918 /* ORViewController.xib */,
 				60A5E6171698DB4400686918 /* Supporting Files */,
+				60AC3E5119AEB6DF00E48C37 /* ORLibratoStubs.h */,
+				60AC3E5219AEB6DF00E48C37 /* ORLibratoStubs.m */,
 			);
 			name = ARAnalyticsTestsiOS;
 			path = ARAnalyticsTests;
@@ -549,6 +554,7 @@
 			files = (
 				60A5E61D1698DB4400686918 /* main.m in Sources */,
 				60A5E6211698DB4400686918 /* ORAppDelegate.m in Sources */,
+				60AC3E5319AEB6DF00E48C37 /* ORLibratoStubs.m in Sources */,
 				60A5E62A1698DB4400686918 /* ORViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
