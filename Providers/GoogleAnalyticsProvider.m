@@ -84,7 +84,15 @@
             [newProperties setObject:potentialValue forKey:self.customDimensionMappings[key]];
         }
     }
-    
+
+    // adding custom Metric values if we can find a key in the mappings
+    for (NSString *key in self.customMetricMappings.allKeys) {
+        NSString *potentialValue = properties[key];
+        if (potentialValue) {
+            [newProperties setObject:potentialValue forKey:self.customMetricMappings[key]];
+        }
+    }
+
     [self.tracker send:newProperties];
 }
 
