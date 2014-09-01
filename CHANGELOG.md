@@ -1,9 +1,10 @@
 #ARAnalytics
 
-## Next
+## Version 2.8.0
 
 * Added `ARAnalyticsSelector` for use with DSL ( thanks @AshFurrow )
 * Added a new provider, Segment.io (server-side only) ( thanks @wka )
+* Added custom metrics to GAI ( thanks @briomusic )
 
 ## Version 2.7.2
 * Add support for CocoaDocs colours
@@ -113,7 +114,7 @@
 
 * Support for Countly
 * Rewrite into a more modular codebase
-* Supports more features of Google Analytics 
+* Supports more features of Google Analytics
 * Supports using custom Mixpanel URLS ( thanks gabrielrinaldi )
 
 ## Version 1.0
