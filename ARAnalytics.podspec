@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   newRelic       = { :spec_name => "NewRelic",         :dependency => "NewRelicAgent" }
   amplitude      = { :spec_name => "Amplitude",        :dependency => "Amplitude-iOS" }
   hockeyApp      = { :spec_name => "HockeyApp",        :dependency => "HockeySDK" }
-  parseAnalytics = { :spec_name => "ParseAnalytics",   :dependency => "Parse-iOS-SDK" }
+  parseAnalytics = { :spec_name => "ParseAnalytics",   :dependency => "Parse" }
   heap           = { :spec_name => "HeapAnalytics",    :dependency => "Heap" }
   chartbeat      = { :spec_name => "Chartbeat",        :dependency => "Chartbeat", :has_extension => true }
   umeng          = { :spec_name => "UMengAnalytics",   :dependency => "UMengAnalytics" }
