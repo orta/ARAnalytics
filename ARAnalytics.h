@@ -63,6 +63,16 @@
 
 @interface ARAnalytics : NSObject <UINavigationControllerDelegate>
 
+/**
+ *  A flag that setup ARAnalytics to print it's log (ARLog) to stdout or not.
+ *
+ *  By default, ARLog collects log messages to providers and print them on the stdout.
+ *  If you want make the stdout clean while developing, you could set this flag to NO.
+ *
+ *  @param shouldPrint If YES, the ARLog will also print log message to stdout
+ */
++ (void)logShouldPrintStdout:(BOOL)shouldPrint;
+
 /// A global setup analytics API, keys are provided at the bottom of the documentation.
 + (void)setupWithAnalytics:(NSDictionary *)analyticsDictionary;
 
