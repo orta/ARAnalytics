@@ -160,7 +160,7 @@
 @end
 
 /// an NSLog-like command that send to providers
-extern void ARLog (NSString *format, ...);
+extern void ARLog (NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 
 /// A try-catch for nil protection wrapped event
 extern void ARAnalyticsEvent (NSString *event, NSDictionary *properties);
