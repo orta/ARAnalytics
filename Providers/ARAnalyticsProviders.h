@@ -90,3 +90,7 @@
 #ifdef AR_SEGMENTIO_EXISTS
 #import "SegmentioProvider.h"
 #endif
+
+#ifdef AR_YANDEXMMOBILEMETRICA_EXISTS
+#import "YandexMobileMetricaProvider.h"
+#endif
