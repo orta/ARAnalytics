@@ -11,6 +11,7 @@
 #import "ARAnalyticsProviders.h"
 
 static ARAnalytics *_sharedAnalytics;
+static BOOL _ARLogShouldPrintStdout = YES;
 
 @interface ARAnalytics ()
 @property (strong) NSMutableDictionary *eventsDictionary;
@@ -40,6 +41,10 @@ static ARAnalytics *_sharedAnalytics;
         _sharedAnalytics = [[ARAnalytics alloc] init];
         _sharedAnalytics.providers = [NSSet set];
     });
+}
+
++ (void)logShouldPrintStdout:(BOOL)shouldPrint {
+    _ARLogShouldPrintStdout = shouldPrint;
 }
 
 #pragma mark -
@@ -464,7 +469,9 @@ static ARAnalytics *_sharedAnalytics;
 
 void ARLog (NSString *format, ...) {
     if (format == nil) {
-        printf("nil \n");
+        if (_ARLogShouldPrintStdout) {
+            printf("nil \n");
+        }
         return;
     }
     // Get a reference to the arguments that follow the format parameter
@@ -473,13 +480,15 @@ void ARLog (NSString *format, ...) {
     // Perform format string argument substitution, reinstate %% escapes, then print
 
     @autoreleasepool {
-      NSString *parsedFormatString = [[NSString alloc] initWithFormat:format arguments:argList];
-      parsedFormatString = [parsedFormatString stringByReplacingOccurrencesOfString:@"%%" withString:@"%%%%"];
-      printf("ARLog : %s\n", parsedFormatString.UTF8String);
+        NSString *parsedFormatString = [[NSString alloc] initWithFormat:format arguments:argList];
+        parsedFormatString = [parsedFormatString stringByReplacingOccurrencesOfString:@"%%" withString:@"%%%%"];
+        if (_ARLogShouldPrintStdout) {
+            printf("ARLog : %s\n", parsedFormatString.UTF8String);
+        }
 
-      [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
-          [provider remoteLog:parsedFormatString];
-      }];
+        [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
+            [provider remoteLog:parsedFormatString];
+        }];
     }
 
     va_end(argList);
