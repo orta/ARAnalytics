@@ -153,9 +153,21 @@ static BOOL _ARLogShouldPrintStdout = YES;
     _sharedAnalytics.providers = mutableSet.copy;
 }
 
-+ (NSSet *)currentProviders
-{
++ (NSSet *)currentProviders {
     return _sharedAnalytics.providers;
+}
+
++ (ARAnalyticalProvider *)providerInstanceOfClass:(Class)ProviderClass {
+    if (![ProviderClass isSubclassOfClass:[ARAnalyticalProvider class]]) {
+        return nil;
+    }
+    ARAnalyticalProvider *__block providerInstance = nil;
+    [_sharedAnalytics.providers enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+        if ((*stop = [obj isKindOfClass:ProviderClass])) {
+            providerInstance = obj;
+        }
+    }];
+    return providerInstance;
 }
 
 + (void)setupTestFlightWithAppToken:(NSString *)token {

@@ -109,7 +109,7 @@
 
 /// Show all current providers
 + (NSSet *)currentProviders;
-
++ (ARAnalyticalProvider *)providerInstanceOfClass:(Class)ProviderClass;
 
 /// Set a per user property
 /// @warning Deprecated, will be removed in next major release
