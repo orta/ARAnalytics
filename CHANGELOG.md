@@ -1,5 +1,9 @@
 #ARAnalytics
 
+## Next
+
+* Added Yandex Mobile Metrica provider ( thanks @BamX )
+
 ## Version 2.8.0
 
 * Added `ARAnalyticsSelector` for use with DSL ( thanks @AshFurrow )
