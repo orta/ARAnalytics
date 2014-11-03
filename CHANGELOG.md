@@ -3,6 +3,9 @@
 ## Next
 
 * Added Yandex Mobile Metrica provider ( thanks @BamX )
+* Stopped pinning to a specific Hockey version ( @orta )
+* Updated to use official Parse Pod ( thanks @kylef )
+* Added a getter for providers ( thanks @sodastsai )
 
 ## Version 2.8.0
 
