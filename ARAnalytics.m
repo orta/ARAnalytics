@@ -141,6 +141,10 @@ static BOOL _ARLogShouldPrintStdout = YES;
     if (analyticsDictionary[ARCrittercismAppID]) {
         [self setupCrittercismWithAppID:analyticsDictionary[ARCrittercismAppID]];
     }
+
+    if (analyticsDictionary[ARYandexMobileMetricaAPIKey]) {
+        [self setupYandexMobileMetricaWithAPIKey:analyticsDictionary[ARYandexMobileMetricaAPIKey]];
+    }
 }
 
 + (void)setupProvider:(ARAnalyticalProvider*)provider {
@@ -320,6 +324,13 @@ static BOOL _ARLogShouldPrintStdout = YES;
 + (void)setupSegmentioWithWriteKey:(NSString*)key {
 #ifdef AR_SEGMENTIO_EXISTS
     SegmentioProvider *provider = [[SegmentioProvider alloc] initWithIdentifier:key];
+    [self setupProvider:provider];
+#endif
+}
+
++ (void)setupYandexMobileMetricaWithAPIKey:(NSString*)key {
+#ifdef AR_YANDEXMMOBILEMETRICA_EXISTS
+    YandexMobileMetricaProvider *provider = [[YandexMobileMetricaProvider alloc] initWithIdentifier:key];
     [self setupProvider:provider];
 #endif
 }
@@ -535,4 +546,5 @@ const NSString *ARLibratoEmail = @"ARLibratoEmail";
 const NSString *ARLibratoToken = @"ARLibratoToken";
 const NSString *ARLibratoPrefix = @"ARLibratoPrefix";
 const NSString *ARSegmentioWriteKey = @"ARSegmentioWriteKey";
+const NSString *ARYandexMobileMetricaAPIKey = @"ARYandexMobileMetricaAPIKey";
 
