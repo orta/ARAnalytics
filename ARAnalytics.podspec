@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         =  'ARAnalytics'
-  s.version      =  '2.8.0'
+  s.version      =  '2.9.0'
   s.license      =  {:type => 'MIT', :file => 'LICENSE' }
   s.summary      =  'Use multiple major analytics platforms with one clean API.'
   s.homepage     =  'https://github.com/orta/ARAnalytics'
@@ -27,11 +27,12 @@ Pod::Spec.new do |s|
   newRelic       = { :spec_name => "NewRelic",         :dependency => "NewRelicAgent" }
   amplitude      = { :spec_name => "Amplitude",        :dependency => "Amplitude-iOS" }
   hockeyApp      = { :spec_name => "HockeyApp",        :dependency => "HockeySDK" }
-  parseAnalytics = { :spec_name => "ParseAnalytics",   :dependency => "Parse-iOS-SDK" }
+  parseAnalytics = { :spec_name => "ParseAnalytics",   :dependency => "Parse" }
   heap           = { :spec_name => "HeapAnalytics",    :dependency => "Heap" }
   chartbeat      = { :spec_name => "Chartbeat",        :dependency => "Chartbeat", :has_extension => true }
   umeng          = { :spec_name => "UMengAnalytics",   :dependency => "UMengAnalytics" }
   segmentio      = { :spec_name => "Segmentio",        :dependency => "Analytics/Segmentio" }
+  yandex         = { :spec_name => "YandexMobileMetrica", :dependency => "YandexMobileMetrica" }
 
   librato        = { :spec_name => "Librato" }
   crashlytics    = { :spec_name => "Crashlytics" }
@@ -40,7 +41,7 @@ Pod::Spec.new do |s|
 #  countly_mac     = { :spec_name => "CountlyOSX",      :dependency => "Countly",                :osx => true,  :provider => "Countly" }
   mixpanel_mac    = { :spec_name => "MixpanelOSX",     :dependency => "Mixpanel-OSX-Community", :osx => true,  :provider => "Mixpanel"}
 
-  $all_analytics = [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly, helpshift,kissmetrics_mac, mixpanel_mac, tapstream, newRelic, amplitude, hockeyApp, parseAnalytics, heap, chartbeat, umeng, librato, segmentio]
+  $all_analytics = [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly, helpshift,kissmetrics_mac, mixpanel_mac, tapstream, newRelic, amplitude, hockeyApp, parseAnalytics, heap, chartbeat, umeng, librato, segmentio, yandex]
 
   # To make the pod spec API cleaner, subspecs are "iOS/KISSmetrics"
 
@@ -98,15 +99,7 @@ Pod::Spec.new do |s|
 
       # If there's a podspec dependency include it
       Array(analytics_spec[:dependency]).each do |dep|
-
-        # This can be removed maybe once 3.6 comes out?
-        # see https://github.com/orta/ARAnalytics/issues/96
-
-        if dep == "HockeySDK"
-          ss.dependency "HockeySDK", "3.5.4"
-        else
           ss.dependency dep
-        end
       end
 
     end

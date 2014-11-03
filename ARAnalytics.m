@@ -11,6 +11,7 @@
 #import "ARAnalyticsProviders.h"
 
 static ARAnalytics *_sharedAnalytics;
+static BOOL _ARLogShouldPrintStdout = YES;
 
 @interface ARAnalytics ()
 @property (strong) NSMutableDictionary *eventsDictionary;
@@ -40,6 +41,10 @@ static ARAnalytics *_sharedAnalytics;
         _sharedAnalytics = [[ARAnalytics alloc] init];
         _sharedAnalytics.providers = [NSSet set];
     });
+}
+
++ (void)logShouldPrintStdout:(BOOL)shouldPrint {
+    _ARLogShouldPrintStdout = shouldPrint;
 }
 
 #pragma mark -
@@ -136,6 +141,10 @@ static ARAnalytics *_sharedAnalytics;
     if (analyticsDictionary[ARCrittercismAppID]) {
         [self setupCrittercismWithAppID:analyticsDictionary[ARCrittercismAppID]];
     }
+
+    if (analyticsDictionary[ARYandexMobileMetricaAPIKey]) {
+        [self setupYandexMobileMetricaWithAPIKey:analyticsDictionary[ARYandexMobileMetricaAPIKey]];
+    }
 }
 
 + (void)setupProvider:(ARAnalyticalProvider*)provider {
@@ -148,9 +157,24 @@ static ARAnalytics *_sharedAnalytics;
     _sharedAnalytics.providers = mutableSet.copy;
 }
 
-+ (NSSet *)currentProviders
-{
++ (NSSet *)currentProviders {
     return _sharedAnalytics.providers;
+}
+
++ (ARAnalyticalProvider *)providerInstanceOfClass:(Class)ProviderClass {
+    // Check whether the ProviderClass is subclass of ARAnalyticalProvider or not
+    if (![ProviderClass isSubclassOfClass:[ARAnalyticalProvider class]]) {
+        return nil;
+    }
+    // Find the instance by enumerating the providers set
+    ARAnalyticalProvider *__block providerInstance = nil;
+    [_sharedAnalytics.providers enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+        // Get the proivder and return it
+        if ((*stop = [obj isKindOfClass:ProviderClass])) {
+            providerInstance = obj;
+        }
+    }];
+    return providerInstance;
 }
 
 + (void)setupTestFlightWithAppToken:(NSString *)token {
@@ -319,6 +343,13 @@ static ARAnalytics *_sharedAnalytics;
 #endif
 }
 
++ (void)setupYandexMobileMetricaWithAPIKey:(NSString*)key {
+#ifdef AR_YANDEXMMOBILEMETRICA_EXISTS
+    YandexMobileMetricaProvider *provider = [[YandexMobileMetricaProvider alloc] initWithIdentifier:key];
+    [self setupProvider:provider];
+#endif
+}
+
 #pragma mark -
 #pragma mark User Setup
 
@@ -464,7 +495,9 @@ static ARAnalytics *_sharedAnalytics;
 
 void ARLog (NSString *format, ...) {
     if (format == nil) {
-        printf("nil \n");
+        if (_ARLogShouldPrintStdout) {
+            printf("nil \n");
+        }
         return;
     }
     // Get a reference to the arguments that follow the format parameter
@@ -473,13 +506,15 @@ void ARLog (NSString *format, ...) {
     // Perform format string argument substitution, reinstate %% escapes, then print
 
     @autoreleasepool {
-      NSString *parsedFormatString = [[NSString alloc] initWithFormat:format arguments:argList];
-      parsedFormatString = [parsedFormatString stringByReplacingOccurrencesOfString:@"%%" withString:@"%%%%"];
-      printf("ARLog : %s\n", parsedFormatString.UTF8String);
+        NSString *parsedFormatString = [[NSString alloc] initWithFormat:format arguments:argList];
+        parsedFormatString = [parsedFormatString stringByReplacingOccurrencesOfString:@"%%" withString:@"%%%%"];
+        if (_ARLogShouldPrintStdout) {
+            printf("ARLog : %s\n", parsedFormatString.UTF8String);
+        }
 
-      [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
-          [provider remoteLog:parsedFormatString];
-      }];
+        [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
+            [provider remoteLog:parsedFormatString];
+        }];
     }
 
     va_end(argList);
@@ -526,4 +561,5 @@ const NSString *ARLibratoEmail = @"ARLibratoEmail";
 const NSString *ARLibratoToken = @"ARLibratoToken";
 const NSString *ARLibratoPrefix = @"ARLibratoPrefix";
 const NSString *ARSegmentioWriteKey = @"ARSegmentioWriteKey";
+const NSString *ARYandexMobileMetricaAPIKey = @"ARYandexMobileMetricaAPIKey";
 

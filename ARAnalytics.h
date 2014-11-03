@@ -63,6 +63,16 @@
 
 @interface ARAnalytics : NSObject <UINavigationControllerDelegate>
 
+/**
+ *  A flag that setup ARAnalytics to print it's log (ARLog) to stdout or not.
+ *
+ *  By default, ARLog collects log messages to providers and print them on the stdout.
+ *  If you want make the stdout clean while developing, you could set this flag to NO.
+ *
+ *  @param shouldPrint If YES, the ARLog will also print log message to stdout
+ */
++ (void)logShouldPrintStdout:(BOOL)shouldPrint;
+
 /// A global setup analytics API, keys are provided at the bottom of the documentation.
 + (void)setupWithAnalytics:(NSDictionary *)analyticsDictionary;
 
@@ -90,6 +100,7 @@
 + (void)setupChartbeatWithApplicationID:(NSString *)appID;
 + (void)setupLibratoWithEmail:(NSString *)email token:(NSString *)token prefix:(NSString *)prefix;
 + (void)setupSegmentioWithWriteKey:(NSString*)key;
++ (void)setupYandexMobileMetricaWithAPIKey:(NSString*)key;
 
 /// Add a provider manually
 + (void)setupProvider:(ARAnalyticalProvider *)provider;
@@ -100,6 +111,10 @@
 /// Show all current providers
 + (NSSet *)currentProviders;
 
+/// Get the instance of provider class which is setup ready.
+/// Developer must setup this provider ready via above methods and the argument must be a subclass of
+/// ARAnalyticalProvider or this methid returns nil.
++ (ARAnalyticalProvider *)providerInstanceOfClass:(Class)ProviderClass;
 
 /// Set a per user property
 /// @warning Deprecated, will be removed in next major release
@@ -150,7 +165,7 @@
 @end
 
 /// an NSLog-like command that send to providers
-extern void ARLog (NSString *format, ...);
+extern void ARLog (NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 
 /// A try-catch for nil protection wrapped event
 extern void ARAnalyticsEvent (NSString *event, NSDictionary *properties);
@@ -187,3 +202,4 @@ extern const NSString *ARLibratoEmail;
 extern const NSString *ARLibratoToken;
 extern const NSString *ARLibratoPrefix;
 extern const NSString *ARSegmentioWriteKey;
+extern const NSString *ARYandexMobileMetricaAPIKey;
