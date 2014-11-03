@@ -111,6 +111,10 @@
 /// Show all current providers
 + (NSSet *)currentProviders;
 
+/// Get the instance of provider class which is setup ready.
+/// Developer must setup this provider ready via above methods and the argument must be a subclass of
+/// ARAnalyticalProvider or this methid returns nil.
++ (ARAnalyticalProvider *)providerInstanceOfClass:(Class)ProviderClass;
 
 /// Set a per user property
 /// @warning Deprecated, will be removed in next major release
