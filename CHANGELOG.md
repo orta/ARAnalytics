@@ -1,6 +1,6 @@
 #ARAnalytics
 
-## Next
+## Version 2.9.0
 
 * Added Yandex Mobile Metrica provider ( thanks @BamX )
 * Stopped pinning to a specific Hockey version ( @orta )
