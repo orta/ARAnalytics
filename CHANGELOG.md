@@ -6,6 +6,7 @@
 * Stopped pinning to a specific Hockey version ( @orta )
 * Updated to use official Parse Pod ( thanks @kylef )
 * Added a getter for providers ( thanks @sodastsai )
+* Setting user id for Google Analytics ( thanks @glentregoning, @janj - Indiegogo)
 
 ## Version 2.8.0
 
