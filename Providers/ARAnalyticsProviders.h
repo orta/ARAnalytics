@@ -94,3 +94,7 @@
 #ifdef AR_YANDEXMMOBILEMETRICA_EXISTS
 #import "YandexMobileMetricaProvider.h"
 #endif
+
+#ifdef AR_ADJUST_EXISTS
+#import "AdjustProvider.h"
+#endif

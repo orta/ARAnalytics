@@ -101,6 +101,7 @@
 + (void)setupLibratoWithEmail:(NSString *)email token:(NSString *)token prefix:(NSString *)prefix;
 + (void)setupSegmentioWithWriteKey:(NSString*)key;
 + (void)setupYandexMobileMetricaWithAPIKey:(NSString*)key;
++ (void)setupAdjustWithAppToken:(NSString *)token;
 
 /// Add a provider manually
 + (void)setupProvider:(ARAnalyticalProvider *)provider;
