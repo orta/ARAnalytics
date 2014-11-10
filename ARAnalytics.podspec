@@ -13,7 +13,6 @@ Pod::Spec.new do |s|
   s.summary      =  'Using subspecs you can define your analytics provider with the same API on iOS and OS X.'
   # s.description is at the bottom as it is partially generated.
 
-  testflight_sdk = { :spec_name => "TestFlight",       :dependency => ["TestFlightSDK", "BPXLUUIDHandler"] }
   mixpanel       = { :spec_name => "Mixpanel",         :dependency => "Mixpanel" }
   localytics     = { :spec_name => "Localytics",       :dependency => "Localytics-iOS-Client" }
   flurry         = { :spec_name => "Flurry",           :dependency => "FlurrySDK" }
@@ -35,6 +34,7 @@ Pod::Spec.new do |s|
   yandex         = { :spec_name => "YandexMobileMetrica", :dependency => "YandexMobileMetrica" }
   adjust         = { :spec_name => "Adjust",           :dependency => "Adjust" }
   librato        = { :spec_name => "Librato" }
+  testflight_sdk = { :spec_name => "TestFlight",       :dependency => ["TestFlightSDK", "BPXLUUIDHandler"] }
   crashlytics    = { :spec_name => "Crashlytics" }
 
   kissmetrics_mac = { :spec_name => "KISSmetricsOSX",  :dependency => "KISSmetrics",            :osx => true,  :provider => "KISSmetrics" }
