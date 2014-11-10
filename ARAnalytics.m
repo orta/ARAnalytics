@@ -145,6 +145,10 @@ static BOOL _ARLogShouldPrintStdout = YES;
     if (analyticsDictionary[ARYandexMobileMetricaAPIKey]) {
         [self setupYandexMobileMetricaWithAPIKey:analyticsDictionary[ARYandexMobileMetricaAPIKey]];
     }
+    
+    if (analyticsDictionary[ARAdjustAppTokenKey]) {
+        [self setupAdjustWithAppToken:analyticsDictionary[ARAdjustAppTokenKey]];
+    }
 }
 
 + (void)setupProvider:(ARAnalyticalProvider*)provider {
@@ -346,6 +350,13 @@ static BOOL _ARLogShouldPrintStdout = YES;
 + (void)setupYandexMobileMetricaWithAPIKey:(NSString*)key {
 #ifdef AR_YANDEXMMOBILEMETRICA_EXISTS
     YandexMobileMetricaProvider *provider = [[YandexMobileMetricaProvider alloc] initWithIdentifier:key];
+    [self setupProvider:provider];
+#endif
+}
+
++ (void)setupAdjustWithAppToken:(NSString *)token {
+#ifdef AR_ADJUST_EXISTS
+    AdjustProvider *provider = [[AdjustProvider alloc] initWithIdentifier:token];
     [self setupProvider:provider];
 #endif
 }
@@ -562,4 +573,5 @@ const NSString *ARLibratoToken = @"ARLibratoToken";
 const NSString *ARLibratoPrefix = @"ARLibratoPrefix";
 const NSString *ARSegmentioWriteKey = @"ARSegmentioWriteKey";
 const NSString *ARYandexMobileMetricaAPIKey = @"ARYandexMobileMetricaAPIKey";
+const NSString *ARAdjustAppTokenKey = @"ARAdjustAppTokenKey";
 

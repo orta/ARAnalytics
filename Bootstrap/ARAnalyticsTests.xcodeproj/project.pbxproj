@@ -49,8 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		079BB5D924064A80955EFB54 /* Pods-ARAnalyticsiOSTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARAnalyticsiOSTests.xcconfig"; path = "Pods/Pods-ARAnalyticsiOSTests.xcconfig"; sourceTree = "<group>"; };
 		098BAA2082A04DABA4E2599A /* libPods-ARAnalyticsiOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ARAnalyticsiOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		11CF516674AC2BCFAA067061 /* Pods-ARAnalyticsiOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARAnalyticsiOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARAnalyticsiOSTests/Pods-ARAnalyticsiOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		4CA562281B834E738D18B40A /* libPods-ARAnalyticsBootstrapiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ARAnalyticsBootstrapiOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E0E7BCE1913D57400DA982C /* ARAnalyticsDSLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARAnalyticsDSLTests.m; sourceTree = "<group>"; };
 		603AE9F118E1AE49004AEBF8 /* ARAnalyticsiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARAnalyticsiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,9 +95,10 @@
 		60FF26841749771E005F8435 /* ORAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ORAppDelegate.m; sourceTree = "<group>"; };
 		60FF26871749771F005F8435 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		60FF268C17498318005F8435 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		6233AE386FE995967DF9371B /* Pods-ARAnalyticsiOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARAnalyticsiOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARAnalyticsiOSTests/Pods-ARAnalyticsiOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B30A82DFC7B4673C53BE834E /* Pods-ARAnalyticsBootstrapiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARAnalyticsBootstrapiOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARAnalyticsBootstrapiOS/Pods-ARAnalyticsBootstrapiOS.release.xcconfig"; sourceTree = "<group>"; };
+		C9C95C4F94D6FA85E08D83B3 /* Pods-ARAnalyticsBootstrapiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARAnalyticsBootstrapiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARAnalyticsBootstrapiOS/Pods-ARAnalyticsBootstrapiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		DBFC8EEA18444170B5070ED6 /* libPods-ARAnalyticsBootstrapMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ARAnalyticsBootstrapMac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E861E9D6090641B887FE64AC /* Pods-ARAnalyticsBootstrapiOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARAnalyticsBootstrapiOS.xcconfig"; path = "Pods/Pods-ARAnalyticsBootstrapiOS.xcconfig"; sourceTree = SOURCE_ROOT; };
-		EB0B9A3AEE8F4C46BCD55B4D /* Pods-ARAnalyticsBootstrapMac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARAnalyticsBootstrapMac.xcconfig"; path = "Pods/Pods-ARAnalyticsBootstrapMac.xcconfig"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,9 +177,7 @@
 				603AEA0718E1B5C2004AEBF8 /* CHANGELOG.md */,
 				604DAAAF1698DBCB00FD89BB /* ARAnalytics */,
 				603AE9F618E1AE49004AEBF8 /* ARAnalyticsiOSTests */,
-				EB0B9A3AEE8F4C46BCD55B4D /* Pods-ARAnalyticsBootstrapMac.xcconfig */,
-				E861E9D6090641B887FE64AC /* Pods-ARAnalyticsBootstrapiOS.xcconfig */,
-				079BB5D924064A80955EFB54 /* Pods-ARAnalyticsiOSTests.xcconfig */,
+				87A6CC5412BEE1BC49D201EC /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -270,6 +269,17 @@
 				60FF26801749771E005F8435 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		87A6CC5412BEE1BC49D201EC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C9C95C4F94D6FA85E08D83B3 /* Pods-ARAnalyticsBootstrapiOS.debug.xcconfig */,
+				B30A82DFC7B4673C53BE834E /* Pods-ARAnalyticsBootstrapiOS.release.xcconfig */,
+				6233AE386FE995967DF9371B /* Pods-ARAnalyticsiOSTests.debug.xcconfig */,
+				11CF516674AC2BCFAA067061 /* Pods-ARAnalyticsiOSTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -475,7 +485,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-ARAnalyticsBootstrapiOS-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARAnalyticsBootstrapiOS/Pods-ARAnalyticsBootstrapiOS-resources.sh\"\n";
 		};
 		B4FD8B0A43374393B7308167 /* Upload Bugsnag dSYM */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -518,7 +528,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-ARAnalyticsiOSTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARAnalyticsiOSTests/Pods-ARAnalyticsiOSTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E4F935CFB69346AFA2E005E4 /* Copy Pods Resources */ = {
@@ -632,7 +642,7 @@
 /* Begin XCBuildConfiguration section */
 		603AEA0218E1AE49004AEBF8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 079BB5D924064A80955EFB54 /* Pods-ARAnalyticsiOSTests.xcconfig */;
+			baseConfigurationReference = 6233AE386FE995967DF9371B /* Pods-ARAnalyticsiOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ARAnalyticsBootstrapiOS.app/ARAnalyticsBootstrapiOS";
 				CLANG_ENABLE_MODULES = YES;
@@ -665,7 +675,7 @@
 		};
 		603AEA0318E1AE49004AEBF8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 079BB5D924064A80955EFB54 /* Pods-ARAnalyticsiOSTests.xcconfig */;
+			baseConfigurationReference = 11CF516674AC2BCFAA067061 /* Pods-ARAnalyticsiOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ARAnalyticsBootstrapiOS.app/ARAnalyticsBootstrapiOS";
 				CLANG_ENABLE_MODULES = YES;
@@ -751,7 +761,7 @@
 		};
 		60A5E6311698DB4400686918 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E861E9D6090641B887FE64AC /* Pods-ARAnalyticsBootstrapiOS.xcconfig */;
+			baseConfigurationReference = C9C95C4F94D6FA85E08D83B3 /* Pods-ARAnalyticsBootstrapiOS.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -768,7 +778,7 @@
 		};
 		60A5E6321698DB4400686918 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E861E9D6090641B887FE64AC /* Pods-ARAnalyticsBootstrapiOS.xcconfig */;
+			baseConfigurationReference = B30A82DFC7B4673C53BE834E /* Pods-ARAnalyticsBootstrapiOS.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -785,7 +795,6 @@
 		};
 		60FF268A1749771F005F8435 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB0B9A3AEE8F4C46BCD55B4D /* Pods-ARAnalyticsBootstrapMac.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -806,7 +815,6 @@
 		};
 		60FF268B1749771F005F8435 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB0B9A3AEE8F4C46BCD55B4D /* Pods-ARAnalyticsBootstrapMac.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
