@@ -562,4 +562,5 @@ const NSString *ARLibratoToken = @"ARLibratoToken";
 const NSString *ARLibratoPrefix = @"ARLibratoPrefix";
 const NSString *ARSegmentioWriteKey = @"ARSegmentioWriteKey";
 const NSString *ARYandexMobileMetricaAPIKey = @"ARYandexMobileMetricaAPIKey";
+const NSString *ARAdjustAppTokenKey = @"ARAdjustAppTokenKey";
 
