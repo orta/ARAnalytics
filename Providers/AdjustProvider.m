@@ -15,10 +15,10 @@
     NSAssert([Adjust class], @"Adjust is not included");
     [Adjust appDidLaunch:identifier];
     
-#if defined (RELEASE)
-    [Adjust setEnvironment:AIEnvironmentProduction];
-#else
+#if defined (DEBUG)
     [Adjust setEnvironment:AIEnvironmentSandbox];
+#else
+    [Adjust setEnvironment:AIEnvironmentProduction];
 #endif
     
     return [super init];
