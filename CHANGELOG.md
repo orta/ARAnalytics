@@ -2,6 +2,7 @@
 
 ## Version 2.9.0
 
+* Added Adjust provider ( thanks @ekurutepe )
 * Added Yandex Mobile Metrica provider ( thanks @BamX )
 * Stopped pinning to a specific Hockey version ( @orta )
 * Updated to use official Parse Pod ( thanks @kylef )
