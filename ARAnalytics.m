@@ -348,7 +348,7 @@ static BOOL _ARLogShouldPrintStdout = YES;
 }
 
 + (void)setupYandexMobileMetricaWithAPIKey:(NSString*)key {
-#ifdef AR_YANDEXMMOBILEMETRICA_EXISTS
+#ifdef AR_YANDEXMOBILEMETRICA_EXISTS
     YandexMobileMetricaProvider *provider = [[YandexMobileMetricaProvider alloc] initWithIdentifier:key];
     [self setupProvider:provider];
 #endif

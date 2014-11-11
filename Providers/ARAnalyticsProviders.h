@@ -91,7 +91,7 @@
 #import "SegmentioProvider.h"
 #endif
 
-#ifdef AR_YANDEXMMOBILEMETRICA_EXISTS
+#ifdef AR_YANDEXMOBILEMETRICA_EXISTS
 #import "YandexMobileMetricaProvider.h"
 #endif
 
