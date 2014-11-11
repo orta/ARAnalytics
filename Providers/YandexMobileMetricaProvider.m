@@ -26,7 +26,7 @@
     [YMMYandexMetrica reportEvent:event parameters:properties onFailure:nil];
 }
 
-- (void)error:(NSError *)error withMessage:(NSStrmessageing *) {
+- (void)error:(NSError *)error withMessage:(NSString *)message {
 	NSAssert(error, @"NSError instance has to be supplied");
 	
     NSException *exception = [NSException exceptionWithName:error.name
