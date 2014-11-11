@@ -8,12 +8,12 @@
 
 #import "YandexMobileMetricaProvider.h"
 
-#ifdef AR_YANDEXMMOBILEMETRICA_EXISTS
+#ifdef AR_YANDEXMOBILEMETRICA_EXISTS
 #import "YandexMobileMetrica.h"
 #endif
 
 @implementation YandexMobileMetricaProvider
-#ifdef AR_YANDEXMMOBILEMETRICA_EXISTS
+#ifdef AR_YANDEXMOBILEMETRICA_EXISTS
 
 - (id)initWithIdentifier:(NSString *)identifier {
     NSAssert([YMMYandexMetrica class], @"Yandex Mobile Metrica is not included");
@@ -26,10 +26,11 @@
     [YMMYandexMetrica reportEvent:event parameters:properties onFailure:nil];
 }
 
-- (void)error:(NSError *)error withMessage:(NSStrmessageing *) {
+- (void)error:(NSError *)error withMessage:(NSString *)message {
 	NSAssert(error, @"NSError instance has to be supplied");
 	
-    NSException *exception = [NSException exceptionWithName:error.name
+    NSString *errorName = [NSString stringWithFormat:@"Error #%i", (int)error.code];
+    NSException *exception = [NSException exceptionWithName:errorName
                                                      reason:error.localizedFailureReason
                                                    userInfo:@{ @"NSError" : error }];
 
