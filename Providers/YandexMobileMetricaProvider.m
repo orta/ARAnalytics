@@ -29,7 +29,8 @@
 - (void)error:(NSError *)error withMessage:(NSString *)message {
 	NSAssert(error, @"NSError instance has to be supplied");
 	
-    NSException *exception = [NSException exceptionWithName:error.name
+    NSString *errorName = [NSString stringWithFormat:@"Error #%i", (int)error.code];
+    NSException *exception = [NSException exceptionWithName:errorName
                                                      reason:error.localizedFailureReason
                                                    userInfo:@{ @"NSError" : error }];
 
