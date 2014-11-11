@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         =  'ARAnalytics'
-  s.version      =  '2.9.0'
+  s.version      =  '2.9.1'
   s.license      =  {:type => 'MIT', :file => 'LICENSE' }
   s.summary      =  'Use multiple major analytics platforms with one clean API.'
   s.homepage     =  'https://github.com/orta/ARAnalytics'
@@ -13,28 +13,28 @@ Pod::Spec.new do |s|
   s.summary      =  'Using subspecs you can define your analytics provider with the same API on iOS and OS X.'
   # s.description is at the bottom as it is partially generated.
 
-  mixpanel       = { :spec_name => "Mixpanel",         :dependency => "Mixpanel" }
-  localytics     = { :spec_name => "Localytics",       :dependency => "Localytics-iOS-Client" }
-  flurry         = { :spec_name => "Flurry",           :dependency => "FlurrySDK" }
-  google         = { :spec_name => "GoogleAnalytics",  :dependency => "GoogleAnalytics-iOS-SDK", :has_extension => true }
-  kissmetrics    = { :spec_name => "KISSmetrics",      :dependency => "KISSmetrics" }
-  crittercism    = { :spec_name => "Crittercism",      :dependency => "CrittercismSDK" }
-  countly        = { :spec_name => "Countly",          :dependency => "Countly" }
-  bugsnag        = { :spec_name => "Bugsnag",          :dependency => "Bugsnag" }
-  helpshift      = { :spec_name => "Helpshift",        :dependency => "Helpshift" }
-  tapstream      = { :spec_name => "Tapstream",        :dependency => "Tapstream" }
-  newRelic       = { :spec_name => "NewRelic",         :dependency => "NewRelicAgent" }
-  amplitude      = { :spec_name => "Amplitude",        :dependency => "Amplitude-iOS" }
-  hockeyApp      = { :spec_name => "HockeyApp",        :dependency => "HockeySDK" }
-  parseAnalytics = { :spec_name => "ParseAnalytics",   :dependency => "Parse" }
-  heap           = { :spec_name => "HeapAnalytics",    :dependency => "Heap" }
-  chartbeat      = { :spec_name => "Chartbeat",        :dependency => "Chartbeat", :has_extension => true }
-  umeng          = { :spec_name => "UMengAnalytics",   :dependency => "UMengAnalytics" }
-  segmentio      = { :spec_name => "Segmentio",        :dependency => "Analytics/Segmentio" }
+  mixpanel       = { :spec_name => "Mixpanel",            :dependency => "Mixpanel" }
+  localytics     = { :spec_name => "Localytics",          :dependency => "Localytics-iOS-Client" }
+  flurry         = { :spec_name => "Flurry",              :dependency => "FlurrySDK" }
+  google         = { :spec_name => "GoogleAnalytics",     :dependency => "GoogleAnalytics-iOS-SDK", :has_extension => true }
+  kissmetrics    = { :spec_name => "KISSmetrics",         :dependency => "KISSmetrics" }
+  crittercism    = { :spec_name => "Crittercism",         :dependency => "CrittercismSDK" }
+  countly        = { :spec_name => "Countly",             :dependency => "Countly" }
+  bugsnag        = { :spec_name => "Bugsnag",             :dependency => "Bugsnag" }
+  helpshift      = { :spec_name => "Helpshift",           :dependency => "Helpshift" }
+  tapstream      = { :spec_name => "Tapstream",           :dependency => "Tapstream" }
+  newRelic       = { :spec_name => "NewRelic",            :dependency => "NewRelicAgent" }
+  amplitude      = { :spec_name => "Amplitude",           :dependency => "Amplitude-iOS" }
+  hockeyApp      = { :spec_name => "HockeyApp",           :dependency => "HockeySDK" }
+  parseAnalytics = { :spec_name => "ParseAnalytics",      :dependency => "Parse" }
+  heap           = { :spec_name => "HeapAnalytics",       :dependency => "Heap" }
+  chartbeat      = { :spec_name => "Chartbeat",           :dependency => "Chartbeat", :has_extension => true }
+  umeng          = { :spec_name => "UMengAnalytics",      :dependency => "UMengAnalytics" }
+  segmentio      = { :spec_name => "Segmentio",           :dependency => "Analytics/Segmentio" }
   yandex         = { :spec_name => "YandexMobileMetrica", :dependency => "YandexMobileMetrica" }
-  adjust         = { :spec_name => "Adjust",           :dependency => "Adjust" }
+  adjust         = { :spec_name => "Adjust",              :dependency => "Adjust" }
   librato        = { :spec_name => "Librato" }
-  testflight_sdk = { :spec_name => "TestFlight",       :dependency => ["TestFlightSDK", "BPXLUUIDHandler"] }
+  testflight_sdk = { :spec_name => "TestFlight",          :dependency => ["TestFlightSDK", "BPXLUUIDHandler"] }
   crashlytics    = { :spec_name => "Crashlytics" }
 
   kissmetrics_mac = { :spec_name => "KISSmetricsOSX",  :dependency => "KISSmetrics",            :osx => true,  :provider => "KISSmetrics" }
