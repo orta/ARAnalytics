@@ -8,12 +8,12 @@
 
 #import "YandexMobileMetricaProvider.h"
 
-#ifdef AR_YANDEXMMOBILEMETRICA_EXISTS
+#ifdef AR_YANDEXMOBILEMETRICA_EXISTS
 #import "YandexMobileMetrica.h"
 #endif
 
 @implementation YandexMobileMetricaProvider
-#ifdef AR_YANDEXMMOBILEMETRICA_EXISTS
+#ifdef AR_YANDEXMOBILEMETRICA_EXISTS
 
 - (id)initWithIdentifier:(NSString *)identifier {
     NSAssert([YMMYandexMetrica class], @"Yandex Mobile Metrica is not included");
