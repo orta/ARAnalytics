@@ -29,6 +29,7 @@
 }
 
 -(void)event:(NSString *)event withProperties:(NSDictionary *)properties {
+    NSString *formattedEvent=[self replacespacesWithUnderscore:event];
     if (properties) {
         //values must be strings
         //https://parse.com/docs/ios/api/Classes/PFAnalytics.html#//api/name/trackEvent:dimensions:
@@ -36,15 +37,22 @@
         
         NSMutableDictionary *dimensions = [NSMutableDictionary new];
         [properties enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            dimensions[key]=[obj description];
+            NSString *formattedKey=[self replacespacesWithUnderscore:key];
+            NSString *formattedDescription=[self replacespacesWithUnderscore:[obj description]];
+            dimensions[formattedKey]=formattedDescription;
         }];
         
-        [PFAnalytics trackEvent:event dimensions:dimensions];
+        [PFAnalytics trackEvent:formattedEvent dimensions:dimensions];
         
     }
     else {
-        [PFAnalytics trackEvent:event];
+        [PFAnalytics trackEvent:formattedEvent];
     }
+}
+
+-(NSString *)replacespacesWithUnderscore:(NSString *)input
+{
+    return [input stringByReplacingOccurrencesOfString:@" " withString:@"_"];
 }
 
 -(void)applicationDidFinishLaunching:(NSNotification *)notification {
