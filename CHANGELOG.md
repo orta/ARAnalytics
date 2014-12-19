@@ -1,5 +1,12 @@
 #ARAnalytics
 
+## Version 3.0.0
+
+* Analytics DSL has switched back to ReactiveCocoa.
+* Removed deprecated methods from 2.x.x
+* Added super properties that get sent with all event methods
+* Added support for AppsFlyer ( thanks @cdzombak )
+
 ## Version 2.9.0
 
 * Added Adjust provider ( thanks @ekurutepe )

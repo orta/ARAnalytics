@@ -1,4 +1,4 @@
-ARAnalytics v2.9.0 [![Build Status](https://travis-ci.org/orta/ARAnalytics.svg?branch=master)](https://travis-ci.org/orta/ARAnalytics)
+ARAnalytics v3.0.0 [![Build Status](https://travis-ci.org/orta/ARAnalytics.svg?branch=master)](https://travis-ci.org/orta/ARAnalytics)
 ================
 
 ARAnalytics is to iOS what [Analytical](https://github.com/jkrall/analytical) is to ruby, or [Analytics.js](http://segmentio.github.com/analytics.js/) is to javascript.
@@ -48,6 +48,10 @@ Event Tracking
 /// Submit user events
 + (void)event:(NSString *)event;
 + (void)event:(NSString *)event withProperties:(NSDictionary *)properties;
+
+// Add extra properties to get sent along with every event
++ (void)addEventSuperProperties:(NSDictionary *)superProperties;
+
 
 /// Let ARAnalytics deal with the timing of an event
 + (void)startTimingEvent:(NSString *)event;
