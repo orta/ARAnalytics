@@ -90,3 +90,7 @@
 #ifdef AR_ADJUST_EXISTS
 #import "AdjustProvider.h"
 #endif
+
+#ifdef AR_APPSFLYER_EXISTS
+#import "AppsFlyerProvider.h"
+#endif
