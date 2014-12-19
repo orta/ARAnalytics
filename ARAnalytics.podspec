@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         =  'ARAnalytics'
-  s.version      =  '2.9.1'
+  s.version      =  '3.0.0'
   s.license      =  {:type => 'MIT', :file => 'LICENSE' }
   s.summary      =  'Use multiple major analytics platforms with one clean API.'
   s.homepage     =  'https://github.com/orta/ARAnalytics'
@@ -60,7 +60,8 @@ Pod::Spec.new do |s|
 
   s.subspec "DSL" do |ss|
     ss.source_files = ['*.{h,m}', 'ARDSL.{h,m}', 'Providers/ARAnalyticalProvider.{h,m}', 'Providers/ARAnalyticsProviders.h']
-    ss.dependency 'Aspects', '~> 1.3.1'
+    ss.dependency 'RSSwizzle', '0.1.0'
+    ss.dependency 'ReactiveCocoa', '~> 2.3'
     ss.platforms = [:ios, :osx]
   end
 
@@ -141,6 +142,6 @@ Pod::Spec.new do |s|
 
   ios_spec_names = $all_ios_names[0...-1].join(", ") + " and " + $all_ios_names[-1]
   osx_spec_names = $all_osx_names[0...-1].join(", ") + " and " + $all_osx_names[-1]
-  s.description  =  "ARAnalytics is a analytics abstraction library offering a sane API for tracking events and user data. It currently supports on iOS: #{ ios_spec_names }. And for OS X: #{ osx_spec_names }. It does this by using CocoaPods subspecs to let you decide which libraries you'd like to use. You are free to also use the official API for any provider too. Also, comes with an amazing DSL to clear up your methods."
+  s.description  =  "ARAnalytics is a analytics abstraction library offering a sane API for tracking events and user data. It currently supports on iOS: #{ ios_spec_names }. And for OS X: #{ osx_spec_names }. It does this by using CocoaPods subspecs to let you decide which libraries you'd like to use. You are free to also use the official API for any provider too. Also, comes with an amazing DSL to separate out your analytics calls from your app methods."
 
 end

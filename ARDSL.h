@@ -1,4 +1,5 @@
 #import "ARAnalytics.h"
+#import <ReactiveCocoa/RACTuple.h>
 
 #define ARAnalyticsSelector(name) NSStringFromSelector(@selector(name))
 
@@ -14,8 +15,8 @@ extern NSString * const ARAnalyticsSelectorName;
 extern NSString * const ARAnalyticsEventProperties;
 extern NSString * const ARAnalyticsShouldFire;
 
-typedef NSDictionary*(^ARAnalyticsEventPropertiesBlock)(id instance, NSArray *arguments);
-typedef BOOL(^ARAnalyticsEventShouldFireBlock)(id instance, NSArray *arguments);
+typedef NSDictionary*(^ARAnalyticsEventPropertiesBlock)(id instance, RACTuple *context);
+typedef BOOL(^ARAnalyticsEventShouldFireBlock)(id instance, RACTuple *context);
 
 @interface ARAnalytics (DSL)
 
@@ -33,7 +34,6 @@ typedef BOOL(^ARAnalyticsEventShouldFireBlock)(id instance, NSArray *arguments);
  *  Register a new hook in ARAnalytics
  *
  *  @param analyticsDictionary A dictionary with two keys, ARAnalyticsClass which takes a class
- *                          saying what to to hook into and ARAnalyticsDetails holding details
  *                          like ARAnalyticsSelectorName / ARAnalyticsEventName / 
  *                               ARAnalyticsEventProperties / ARAnalyticsShouldFire
  */
