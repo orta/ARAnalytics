@@ -1,11 +1,3 @@
-//
-//  ARDSL.m
-//  Artsy
-//
-//  Created by Ash Furrow on 04/29/14.
-//  Copyright (c) 2014 Artsy. All rights reserved.
-//
-
 #import "ARDSL.h"
 #import <Aspects/Aspects.h>
 

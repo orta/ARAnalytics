@@ -1,11 +1,3 @@
-//
-//  NewRelicProvider.m
-//  Pods
-//
-//  Created by Daniel Haight on 01/08/2013.
-//
-//
-
 #import "NewRelicProvider.h"
 #import <NewRelicAgent/NewRelic.h>
 

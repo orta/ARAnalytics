@@ -1,11 +1,3 @@
-//
-//  YandexMobileMetricaProvider.m
-//  ARAnalyticsTests
-//
-//  Created by Nikolay Volosatov on 31/10/2014.
-//  
-//
-
 #import "YandexMobileMetricaProvider.h"
 
 #ifdef AR_YANDEXMOBILEMETRICA_EXISTS

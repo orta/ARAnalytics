@@ -1,11 +1,3 @@
-//
-//  TapstreamProvider.m
-//  Pods
-//
-//  Created by Daniel Haight on 28/07/2013.
-//
-//
-
 #import "TapstreamProvider.h"
 #import "TSTapstream.h"
 

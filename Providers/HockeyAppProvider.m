@@ -1,11 +1,3 @@
-//
-//  HockeyAppProvider.m
-//  
-//
-//  Created by Daniel Haight on 16/08/2013.
-//
-//
-
 #import "HockeyAppProvider.h"
 #import <HockeySDK/HockeySDK.h>
 

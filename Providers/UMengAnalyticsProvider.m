@@ -1,11 +1,3 @@
-//
-//  UMengAnalyticsProvider.m
-//  ARAnalyticsTests
-//
-//  Created by Cai Guo on 08/05/2014.
-//
-//
-
 #import "UMengAnalyticsProvider.h"
 #import "ARAnalyticsProviders.h"
 #import "MobClick.h"

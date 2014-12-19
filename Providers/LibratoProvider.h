@@ -1,11 +1,3 @@
-//
-//  LibratoProvider.h
-//  Pods
-//
-//  Created by Param Aggarwal on 24/07/2014.
-//
-//
-
 #import "ARAnalyticalProvider.h"
 
 // Whilst we do not include the Librato library

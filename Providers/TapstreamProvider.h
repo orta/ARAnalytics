@@ -1,11 +1,3 @@
-//
-//  TapstreamProvider.h
-//  Pods
-//
-//  Created by Daniel Haight on 28/07/2013.
-//
-//
-
 #import "ARAnalyticalProvider.h"
 #import "TSTapstream.h"
 

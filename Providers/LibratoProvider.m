@@ -1,11 +1,3 @@
-//
-//  LibratoProvider.m
-//  Pods
-//
-//  Created by Param Aggarwal on 24/07/2014.
-//
-//
-
 #import "LibratoProvider.h"
 
 @interface LibratoProvider ()

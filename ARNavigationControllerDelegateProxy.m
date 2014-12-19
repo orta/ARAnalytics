@@ -1,11 +1,3 @@
-//
-//  ARNavigationControllerDelegateProxy.m
-//  ARAnalytics
-//
-//  Created by Richard Hodgkins on 22/03/2014.
-//
-//
-
 #import "ARNavigationControllerDelegateProxy.h"
 
 @interface ARNavigationControllerDelegateProxy ()
