@@ -364,12 +364,6 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #pragma mark -
 #pragma mark User Setup
 
-// deprecated; use the one without the typo
-+ (void)identifyUserwithID:(NSString *)userID andEmailAddress:(NSString *)email {
-    [self identifyUserWithID:userID andEmailAddress:email];
-}
-
-
 + (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
     [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
         [provider identifyUserWithID:userID andEmailAddress:email];

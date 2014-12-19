@@ -117,10 +117,6 @@
 /// ARAnalyticalProvider or this methid returns nil.
 + (ARAnalyticalProvider *)providerInstanceOfClass:(Class)ProviderClass;
 
-/// Set a per user property
-/// @warning Deprecated, will be removed in next major release
-+ (void)identifyUserwithID:(NSString *)userID andEmailAddress:(NSString *)email __attribute__((deprecated));
-
 /// Register a user and an associated email address, it is fine to send nils for either.
 + (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email;
 
