@@ -109,6 +109,18 @@ describe(@"ARAnalytics API", ^{
             expect(provider.lastEventName).to.equal(key);
             expect(provider.lastEventProperties).to.equal(properties);
         });
+
+        it(@"send super properties", ^{
+            NSString *key = @"brush";
+            NSDictionary *properties = @{ @"brush" : @"green" };
+            NSDictionary *supers = @{ @"paint" : @"blue" };
+
+            [ARAnalytics addEventSuperProperties:supers];
+            [ARAnalytics event:key withProperties:properties];
+
+            expect(provider.lastEventProperties.allKeys.count).to.equal(2);
+        });
+
     });
     
     describe(@"Errors", ^{

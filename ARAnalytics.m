@@ -6,6 +6,7 @@ static ARAnalytics *_sharedAnalytics;
 static BOOL _ARLogShouldPrintStdout = YES;
 
 @interface ARAnalytics ()
+@property (readwrite, nonatomic, strong) NSMutableDictionary *superProperties;
 @property (readwrite, nonatomic, strong) NSMutableDictionary *eventsDictionary;
 @property (readwrite, nonatomic, copy) NSSet *providers;
 @end
@@ -33,6 +34,7 @@ static BOOL _ARLogShouldPrintStdout = YES;
     dispatch_once(&pred, ^{
         _sharedAnalytics = [[ARAnalytics alloc] init];
         _sharedAnalytics.providers = [NSSet set];
+        _sharedAnalytics.superProperties = [NSMutableDictionary dictionary];
     });
 }
 
@@ -426,9 +428,17 @@ static BOOL _ARLogShouldPrintStdout = YES;
 
 + (void)event:(NSString *)event withProperties:(NSDictionary *)properties
 {
+    NSMutableDictionary *fullProperties = [NSMutableDictionary dictionaryWithDictionary:properties];
+    [fullProperties addEntriesFromDictionary:_sharedAnalytics.superProperties];
+
     [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
-        [provider event:event withProperties:properties];
+        [provider event:event withProperties:fullProperties];
     }];
+}
+
++ (void)addEventSuperProperties:(NSDictionary *)superProperties
+{
+    [_sharedAnalytics.superProperties addEntriesFromDictionary:superProperties];
 }
 
 #pragma mark -

@@ -104,6 +104,10 @@
 /// Submit user events to providers with additional properties
 + (void)event:(NSString *)event withProperties:(NSDictionary *)properties;
 
+/// Adds super properties, these are properties that are sent along with
+/// in addition to the event properties.
++ (void)addEventSuperProperties:(NSDictionary *)superProperties;
+
 /// Submit errors to providers
 + (void)error:(NSError *)error;
 
