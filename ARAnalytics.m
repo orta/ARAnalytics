@@ -128,6 +128,10 @@ static BOOL _ARLogShouldPrintStdout = YES;
         [self setupSegmentioWithWriteKey:analyticsDictionary[ARSegmentioWriteKey]];
     }
 
+    if (analyticsDictionary[ARAppsFlyerAppID] && analyticsDictionary[ARAppsFlyerDevKey]) {
+        [self setupAppsFlyerWithAppID:analyticsDictionary[ARAppsFlyerAppID] devKey:analyticsDictionary[ARAppsFlyerDevKey]];
+    }
+
     // Crashlytics / Crittercism should stay at the bottom of this,
     // as they both need to register exceptions, and you'd only use one.
 
@@ -389,6 +393,14 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
++ (void)setupAppsFlyerWithAppID:(NSString *)appID devKey:(NSString *)devKey 
+{
+#ifdef AR_APPSFLYER_EXISTS
+    AppsFlyerProvider *provider = [[AppsFlyerProvider alloc] initWithAppID:appID devKey:devKey];
+    [self setupProvider:provider];
+#endif
+}
+
 #pragma mark -
 #pragma mark User Setup
 
@@ -399,7 +411,8 @@ static BOOL _ARLogShouldPrintStdout = YES;
     }];
 }
 
-+ (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
++ (void)setUserProperty:(NSString *)property toValue:(NSString *)value 
+{
     if (value == nil) {
         NSLog(@"ARAnalytics: Value cannot be nil ( %@ ) ", property);
         return;
@@ -519,7 +532,6 @@ static BOOL _ARLogShouldPrintStdout = YES;
 
 + (void)finishTimingEvent:(NSString *)event withProperties:(NSDictionary *)properties
 {
-
     NSDate *startDate = _sharedAnalytics.eventsDictionary[event];
     if (!startDate) {
         NSLog(@"ARAnalytics: finish timing event called without a corrosponding start timing event");
@@ -617,4 +629,6 @@ const NSString *ARLibratoPrefix = @"ARLibratoPrefix";
 const NSString *ARSegmentioWriteKey = @"ARSegmentioWriteKey";
 const NSString *ARYandexMobileMetricaAPIKey = @"ARYandexMobileMetricaAPIKey";
 const NSString *ARAdjustAppTokenKey = @"ARAdjustAppTokenKey";
-
+const NSString *ARAppsFlyerAppID = @"ARAppsFlyerAppID";
+const NSString *ARAppsFlyerDevKey = @"ARAppsFlyerDevKey";
+                                      

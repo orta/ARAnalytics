@@ -177,3 +177,6 @@ extern const NSString *ARLibratoPrefix;
 extern const NSString *ARSegmentioWriteKey;
 extern const NSString *ARYandexMobileMetricaAPIKey;
 extern const NSString *ARAdjustAppTokenKey;
+extern const NSString *ARAppsFlyerAppID;
+extern const NSString *ARAppsFlyerDevKey;
+
