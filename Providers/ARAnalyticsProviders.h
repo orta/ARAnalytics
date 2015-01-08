@@ -83,6 +83,10 @@
 #import "SegmentioProvider.h"
 #endif
 
+#ifdef AR_SWRVE_EXISTS
+#import "SwrveProvider.h"
+#endif
+
 #ifdef AR_YANDEXMOBILEMETRICA_EXISTS
 #import "YandexMobileMetricaProvider.h"
 #endif
