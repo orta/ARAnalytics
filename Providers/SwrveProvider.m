@@ -15,11 +15,9 @@
 }
 
 - (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
-    if (!userID && !email) return;
+    if (!userID) return;
     
-    NSMutableDictionary *traits = NSMutableDictionary.dictionary;
-    if (userID) traits[@"id"] = userID;
-    if (email) traits[@"email"] = email;
+    NSDictionary *traits = email ? @{ @"id": userID, @"email": email } : @{ @"id": userID };
     [Swrve.sharedInstance userUpdate:traits];
 }
 
