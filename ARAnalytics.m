@@ -128,6 +128,10 @@ static BOOL _ARLogShouldPrintStdout = YES;
         [self setupSegmentioWithWriteKey:analyticsDictionary[ARSegmentioWriteKey]];
     }
 
+    if (analyticsDictionary[ARSwrveAppID] && analyticsDictionary[ARSwrveAPIKey]) {
+        [self setupSwrveWithAppID:analyticsDictionary[ARSwrveAppID] apiKey:analyticsDictionary[ARSwrveAPIKey]];
+    }
+
     if (analyticsDictionary[ARAppsFlyerAppID] && analyticsDictionary[ARAppsFlyerDevKey]) {
         [self setupAppsFlyerWithAppID:analyticsDictionary[ARAppsFlyerAppID] devKey:analyticsDictionary[ARAppsFlyerDevKey]];
     }
@@ -373,6 +377,14 @@ static BOOL _ARLogShouldPrintStdout = YES;
 {
 #ifdef AR_SEGMENTIO_EXISTS
     SegmentioProvider *provider = [[SegmentioProvider alloc] initWithIdentifier:key];
+    [self setupProvider:provider];
+#endif
+}
+
++ (void)setupSwrveWithAppID:(NSString *)appID apiKey:(NSString *)apiKey
+{
+#ifdef AR_SWRVE_EXISTS
+    SwrveProvider *provider = [[SwrveProvider alloc] initWithAppID:appID apiKey:apiKey];
     [self setupProvider:provider];
 #endif
 }
@@ -627,6 +639,8 @@ const NSString *ARLibratoEmail = @"ARLibratoEmail";
 const NSString *ARLibratoToken = @"ARLibratoToken";
 const NSString *ARLibratoPrefix = @"ARLibratoPrefix";
 const NSString *ARSegmentioWriteKey = @"ARSegmentioWriteKey";
+const NSString *ARSwrveAppID = @"ARSwrveAppID";
+const NSString *ARSwrveAPIKey = @"ARSwrveAPIKey";
 const NSString *ARYandexMobileMetricaAPIKey = @"ARYandexMobileMetricaAPIKey";
 const NSString *ARAdjustAppTokenKey = @"ARAdjustAppTokenKey";
 const NSString *ARAppsFlyerAppID = @"ARAppsFlyerAppID";

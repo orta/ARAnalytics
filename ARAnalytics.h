@@ -72,6 +72,7 @@
 + (void)setupChartbeatWithApplicationID:(NSString *)appID;
 + (void)setupLibratoWithEmail:(NSString *)email token:(NSString *)token prefix:(NSString *)prefix;
 + (void)setupSegmentioWithWriteKey:(NSString*)key;
++ (void)setupSwrveWithAppID:(NSString *)appID apiKey:(NSString *)apiKey;
 + (void)setupYandexMobileMetricaWithAPIKey:(NSString*)key;
 + (void)setupAdjustWithAppToken:(NSString *)token;
 
@@ -175,6 +176,8 @@ extern const NSString *ARLibratoEmail;
 extern const NSString *ARLibratoToken;
 extern const NSString *ARLibratoPrefix;
 extern const NSString *ARSegmentioWriteKey;
+extern const NSString *ARSwrveAppID;
+extern const NSString *ARSwrveAPIKey;
 extern const NSString *ARYandexMobileMetricaAPIKey;
 extern const NSString *ARAdjustAppTokenKey;
 extern const NSString *ARAppsFlyerAppID;
