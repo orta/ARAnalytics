@@ -1,5 +1,5 @@
 #import "LocalyticsProvider.h"
-#import "LocalyticsSession.h"
+#import "Localytics.h"
 
 @interface LocalyticsProvider ()
 
@@ -12,11 +12,12 @@
 #ifdef AR_LOCALYTICS_EXISTS
 
 - (id)initWithIdentifier:(NSString *)identifier {
-    NSAssert([LocalyticsSession class], @"Localytics is not included");
+    NSAssert([Localytics class], @"Localytics is not included");
 
     if( ( self = [super init] ) ) {
-        [[LocalyticsSession sharedLocalyticsSession] startSession:identifier];
-
+        
+        [Localytics integrate:identifier];
+        
         for( NSString *activeEvent in @[ UIApplicationDidBecomeActiveNotification, 
                                          UIApplicationWillEnterForegroundNotification ]) {
             [[NSNotificationCenter defaultCenter] addObserver:self
@@ -40,26 +41,24 @@
 
 - (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
     if (userID) {
-        [[LocalyticsSession sharedLocalyticsSession] setCustomerName:userID];
+        [Localytics setCustomerId:userID];
     }
 
     if (email) {
-        [[LocalyticsSession sharedLocalyticsSession] setCustomerEmail:email];
+        [Localytics setValue:email forIdentifier:@"email"];
     }
 }
 
 -(void)setUserProperty:(NSString *)property toValue:(NSString *)value {
-    // This is for enterprise only...
-    [[LocalyticsSession sharedLocalyticsSession] setValueForIdentifier:property value:value];
+    [Localytics setValue:value forIdentifier:property];
 }
 
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
-    [[LocalyticsSession sharedLocalyticsSession] tagEvent:event attributes:properties];
+    [Localytics tagEvent:event attributes:properties];
 }
 
 - (void)didShowNewPageView:(NSString *)pageTitle {
-    // This is for enterprise only...
-    [[LocalyticsSession sharedLocalyticsSession] tagScreen:pageTitle];
+    [Localytics tagScreen:pageTitle];
 }
 
 - (void)dealloc {
@@ -69,13 +68,13 @@
 #pragma mark - Localytics events
 
 - (void)startLocalytics {
-    [[LocalyticsSession sharedLocalyticsSession] resume];
-    [[LocalyticsSession sharedLocalyticsSession] upload];
+    [Localytics openSession];
+    [Localytics upload];
 }
 
 - (void)stopLocalytics {
-    [[LocalyticsSession sharedLocalyticsSession] close];
-    [[LocalyticsSession sharedLocalyticsSession] upload];
+    [Localytics closeSession];
+    [Localytics upload];
 }
 
 #endif
