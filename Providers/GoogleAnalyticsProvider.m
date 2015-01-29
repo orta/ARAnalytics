@@ -60,7 +60,7 @@
     }
     
 #ifdef DEBUG
-    [self warnAboutIgnoredProperies:properties];
+    [self warnAboutIgnoredProperties:properties];
 #endif
     
     GAIDictionaryBuilder *builder = [GAIDictionaryBuilder createEventWithCategory:category
@@ -124,7 +124,7 @@
 
 #pragma mark - Warnings
 
--(void) warnAboutIgnoredProperies:(NSDictionary*)propertiesDictionary
+- (void)warnAboutIgnoredProperties:(NSDictionary*)propertiesDictionary
 {
     for (id key in propertiesDictionary) {
         if (    [key isEqualToString:[NSDictionary googleAnalyticsLabelKey]] ||
