@@ -75,6 +75,7 @@
 + (void)setupSwrveWithAppID:(NSString *)appID apiKey:(NSString *)apiKey;
 + (void)setupYandexMobileMetricaWithAPIKey:(NSString*)key;
 + (void)setupAdjustWithAppToken:(NSString *)token;
++ (void)setupBranchWithAPIKey:(NSString *)key;
 
 /// Add a provider manually
 + (void)setupProvider:(ARAnalyticalProvider *)provider;
@@ -182,4 +183,5 @@ extern const NSString *ARYandexMobileMetricaAPIKey;
 extern const NSString *ARAdjustAppTokenKey;
 extern const NSString *ARAppsFlyerAppID;
 extern const NSString *ARAppsFlyerDevKey;
+extern const NSString *ARBranchAPIKey;
 

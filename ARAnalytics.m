@@ -413,6 +413,13 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
++ (void)setupBranchWithAPIKey:(NSString *)key {
+#ifdef AR_BRANCH_EXISTS
+    BranchProvider *provider = [[BranchProvider alloc] initWithAPIKey:key];
+    [self setupProvider:provider];
+#endif
+}
+
 #pragma mark -
 #pragma mark User Setup
 
@@ -645,4 +652,5 @@ const NSString *ARYandexMobileMetricaAPIKey = @"ARYandexMobileMetricaAPIKey";
 const NSString *ARAdjustAppTokenKey = @"ARAdjustAppTokenKey";
 const NSString *ARAppsFlyerAppID = @"ARAppsFlyerAppID";
 const NSString *ARAppsFlyerDevKey = @"ARAppsFlyerDevKey";
+const NSString *ARBranchAPIKey = @"ARBranchAPIKey";
                                       
