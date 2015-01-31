@@ -5,7 +5,7 @@
 
 #import "ARAnalyticalProvider.h"
 
-@interface Branch : ARAnalyticalProvider
+@interface BranchProvider : ARAnalyticalProvider
 
 - (id)initWithAPIKey:(NSString *)key;
 
