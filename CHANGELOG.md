@@ -7,6 +7,10 @@
 * Added super properties that get sent with all event methods
 * Added support for AppsFlyer ( thanks @cdzombak )
 
+## Version 2.9.2
+
+* Added support for Branch.io ( thanks @scotthasbrouck )
+
 ## Version 2.9.0
 
 * Added Adjust provider ( thanks @ekurutepe )
