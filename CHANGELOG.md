@@ -2,13 +2,9 @@
 
 ## Version 3.0.0
 
-* Analytics DSL has switched back to ReactiveCocoa.
 * Removed deprecated methods from 2.x.x
 * Added super properties that get sent with all event methods
 * Added support for AppsFlyer ( thanks @cdzombak )
-
-## Version 2.9.2
-
 * Added support for Branch.io ( thanks @scotthasbrouck )
 
 ## Version 2.9.0

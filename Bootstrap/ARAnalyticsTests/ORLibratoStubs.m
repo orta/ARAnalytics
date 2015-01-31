@@ -26,7 +26,7 @@
 
 + (instancetype)metricNamed:(NSString *)name valued:(NSNumber *)value
 {
-    
+    return [super init];
 }
 
 @end
