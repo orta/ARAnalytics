@@ -11,7 +11,7 @@
 #ifdef AR_BRANCH_EXISTS
 - (id)initWithAPIKey:(NSString *)key {
     NSAssert([Branch class], @"Branch is not included");
-    [Branch getInstance:apiKey];
+    [Branch getInstance:key];
     return [super init];
 }
 
@@ -31,7 +31,7 @@
 
 - (void)incrementUserProperty:(NSString *)counterName byInt:(NSNumber *)amount {
     if (!counterName || !amount) return;
-    if ([counterName isEqualToString:@"redeem") {
+    if ([counterName isEqualToString:@"redeem"]) {
         [[Branch getInstance] redeemRewards:[amount intValue]];
     }
 }
