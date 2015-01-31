@@ -38,7 +38,7 @@ Pod::Spec.new do |s|
   testflight_sdk = { :spec_name => "TestFlight",          :dependency => ["TestFlightSDK", "BPXLUUIDHandler"] }
   crashlytics    = { :spec_name => "Crashlytics" }
   appsflyer      = { :spec_name => "AppsFlyer",           :dependency => "AppsFlyer-SDK" }
-  branch         = { :spec_name => "Branch"               :dependency => "Branch" }
+  branch         = { :spec_name => "Branch",               :dependency => "Branch" }
 
   kissmetrics_mac = { :spec_name => "KISSmetricsOSX",  :dependency => "KISSmetrics",            :osx => true,  :provider => "KISSmetrics" }
 #  countly_mac     = { :spec_name => "CountlyOSX",      :dependency => "Countly",                :osx => true,  :provider => "Countly" }
