@@ -13,23 +13,33 @@
 
 - (id)initWithIdentifier:(NSString *)identifier {
     NSAssert([Adjust class], @"Adjust is not included");
-    [Adjust appDidLaunch:identifier];
-    
+
+    NSString *environment;
+    ADJConfig *adjustConfig;
+
 #if defined (DEBUG)
-    [Adjust setEnvironment:AIEnvironmentSandbox];
+    environment = ADJEnvironmentSandbox;
 #else
-    [Adjust setEnvironment:AIEnvironmentProduction];
+    environment = ADJEnvironmentProduction;
 #endif
-    
+
+    adjustConfig = [ADJConfig configWithAppToken:identifier
+                                     environment:environment];
+
+    [Adjust appDidLaunch:adjustConfig];
+
     return [super init];
 }
 
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
-    [Adjust trackEvent:event withParameters:properties];
+
+    ADJEvent *const adjustEvent = [ADJEvent eventWithEventToken:event];
+
+    [properties enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
+        [adjustEvent addCallbackParameter:key value:value];
+    }];
+
+    [Adjust trackEvent:adjustEvent];
 }
-
-
-
-
 
 @end
