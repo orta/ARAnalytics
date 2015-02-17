@@ -6,6 +6,6 @@
 
 @property (nonatomic, strong) NSObject<UINavigationControllerDelegate> *originalDelegate;
 
-- (instancetype)initWithAnalyticsDelegate:(id<UINavigationControllerDelegate>)analyticsDelegate;
+- (instancetype)initWithAnalyticsDelegate:(NSObject<UINavigationControllerDelegate> *)analyticsDelegate;
 
 @end
