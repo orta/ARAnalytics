@@ -7,6 +7,8 @@
 * Added super properties that get sent with all event methods ( @orta )
 * Added support for AppsFlyer ( thanks @cdzombak )
 * Added support for Branch.io ( thanks @scotthasbrouck )
+* Updated Adjust provider to support Adjust 4.0 ( thanks @HeEAaD )
+* Fixes warnings generated from ARNavigationControllerDelegateProxy (thanks @ashfurrow )
 
 ## Version 2.9.0
 
