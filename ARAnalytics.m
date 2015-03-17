@@ -154,6 +154,10 @@ static BOOL _ARLogShouldPrintStdout = YES;
     if (analyticsDictionary[ARAdjustAppTokenKey]) {
         [self setupAdjustWithAppToken:analyticsDictionary[ARAdjustAppTokenKey]];
     }
+
+    if (analyticsDictionary[ARSnowplowURL]) {
+        [self setupSnowplowWithAddress:analyticsDictionary[ARSnowplowURL]];
+    }
 }
 
 + (void)setupProvider:(ARAnalyticalProvider*)provider
@@ -420,6 +424,15 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
++ (void)setupSnowplowWithAddress:(NSString *)address
+{
+#ifdef AR_SNOWPLOW_EXISTS
+    SnowplowProvider *provider = [[SnowplowProvider alloc] initWithAddress:address];
+    [self setupProvider:provider];
+#endif
+}
+
+
 #pragma mark -
 #pragma mark User Setup
 
@@ -653,4 +666,5 @@ const NSString *ARAdjustAppTokenKey = @"ARAdjustAppTokenKey";
 const NSString *ARAppsFlyerAppID = @"ARAppsFlyerAppID";
 const NSString *ARAppsFlyerDevKey = @"ARAppsFlyerDevKey";
 const NSString *ARBranchAPIKey = @"ARBranchAPIKey";
-                                      
+const NSString *ARSnowplowURL = @"ARSnowplowURL";
+

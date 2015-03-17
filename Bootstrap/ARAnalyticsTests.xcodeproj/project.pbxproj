@@ -63,6 +63,7 @@
 		603AEA0518E1AF6D004AEBF8 /* ORStubbedProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORStubbedProvider.m; sourceTree = "<group>"; };
 		603AEA0718E1B5C2004AEBF8 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		603AEA0818E1B631004AEBF8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		60647C711A938F4600A45247 /* ARAnalytics.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ARAnalytics.podspec; path = ../ARAnalytics.podspec; sourceTree = "<group>"; };
 		60A5E60D1698DB4400686918 /* ARAnalyticsBootstrapiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARAnalyticsBootstrapiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60A5E6101698DB4400686918 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		60A5E6121698DB4400686918 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -173,6 +174,7 @@
 		60A5E6041698DB4400686918 = {
 			isa = PBXGroup;
 			children = (
+				60647C711A938F4600A45247 /* ARAnalytics.podspec */,
 				603AEA0818E1B631004AEBF8 /* README.md */,
 				603AEA0718E1B5C2004AEBF8 /* CHANGELOG.md */,
 				604DAAAF1698DBCB00FD89BB /* ARAnalytics */,

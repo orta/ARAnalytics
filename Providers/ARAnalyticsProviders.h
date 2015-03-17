@@ -102,3 +102,7 @@
 #ifdef AR_BRANCH_EXISTS
 #import "BranchProvider.h"
 #endif
+
+#ifdef AR_SNOWPLOW_EXISTS
+#import "SnowplowProvider.h"
+#endif

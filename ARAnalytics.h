@@ -76,6 +76,8 @@
 + (void)setupYandexMobileMetricaWithAPIKey:(NSString*)key;
 + (void)setupAdjustWithAppToken:(NSString *)token;
 + (void)setupBranchWithAPIKey:(NSString *)key;
++ (void)setupSnowplowWithAddress:(NSString *)address;
+
 
 /// Add a provider manually
 + (void)setupProvider:(ARAnalyticalProvider *)provider;
@@ -184,4 +186,4 @@ extern const NSString *ARAdjustAppTokenKey;
 extern const NSString *ARAppsFlyerAppID;
 extern const NSString *ARAppsFlyerDevKey;
 extern const NSString *ARBranchAPIKey;
-
+extern const NSString *ARSnowplowURL;

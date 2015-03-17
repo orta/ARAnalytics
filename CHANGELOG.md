@@ -2,8 +2,9 @@
 
 ## Version 3.0.0
 
-* Removed deprecated methods from 2.x.x
-* Added super properties that get sent with all event methods
+* Removed deprecated methods from 2.x.x ( @orta )
+* Added support for Snowplow analytics ( @orta )
+* Added super properties that get sent with all event methods ( @orta )
 * Added support for AppsFlyer ( thanks @cdzombak )
 * Added support for Branch.io ( thanks @scotthasbrouck )
 
