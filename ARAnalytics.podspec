@@ -62,7 +62,8 @@ Pod::Spec.new do |s|
 
   s.subspec "DSL" do |ss|
     ss.source_files = ['*.{h,m}', 'ARDSL.{h,m}', 'Providers/ARAnalyticalProvider.{h,m}', 'Providers/ARAnalyticsProviders.h']
-    ss.dependency 'Aspects', '~> 1.3.1'
+    ss.dependency 'RSSwizzle', '~> 0.1.0'
+    ss.dependency 'ReactiveCocoa', '2.3'
     ss.platforms = [:ios, :osx]
   end
 
