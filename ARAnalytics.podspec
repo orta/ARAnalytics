@@ -34,7 +34,6 @@ Pod::Spec.new do |s|
   yandex         = { :spec_name => "YandexMobileMetrica", :dependency => "YandexMobileMetrica" }
   adjust         = { :spec_name => "Adjust",              :dependency => "Adjust" }
   librato        = { :spec_name => "Librato" }
-  testflight_sdk = { :spec_name => "TestFlight",          :dependency => ["TestFlightSDK", "BPXLUUIDHandler"] }
   crashlytics    = { :spec_name => "Crashlytics" }
   appsflyer      = { :spec_name => "AppsFlyer",           :dependency => "AppsFlyer-SDK" }
   branch         = { :spec_name => "Branch",              :dependency => "Branch" }
@@ -44,7 +43,7 @@ Pod::Spec.new do |s|
 # countly_mac     = { :spec_name => "CountlyOSX",      :dependency => "Countly",                :osx => true,  :provider => "Countly" }
   mixpanel_mac    = { :spec_name => "MixpanelOSX",     :dependency => "Mixpanel-OSX-Community", :osx => true,  :provider => "Mixpanel"}
 
-  $all_analytics = [testflight_sdk, mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly, helpshift,kissmetrics_mac, mixpanel_mac, tapstream, newRelic, amplitude, hockeyApp, parseAnalytics, heap, chartbeat, umeng, librato, segmentio, swrve, yandex, adjust, appsflyer, branch, snowplow]
+  $all_analytics = [mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, bugsnag, countly, helpshift,kissmetrics_mac, mixpanel_mac, tapstream, newRelic, amplitude, hockeyApp, parseAnalytics, heap, chartbeat, umeng, librato, segmentio, swrve, yandex, adjust, appsflyer, branch, snowplow]
 
   # To make the pod spec API cleaner, subspecs are "iOS/KISSmetrics"
 
