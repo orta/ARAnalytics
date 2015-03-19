@@ -2,6 +2,7 @@
 
 ## Version 3.0.0
 
+* Removes TestFlight ( @ashfurrow )
 * Removed deprecated methods from 2.x.x ( @orta )
 * Added support for Snowplow analytics ( @orta )
 * Added super properties that get sent with all event methods ( @orta )
