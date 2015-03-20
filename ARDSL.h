@@ -24,7 +24,6 @@ typedef BOOL(^ARAnalyticsEventShouldFireBlock)(id instance, NSArray *arguments);
  *
  *  @param analyticsDictionary     The normal ARAnalytics dictionary with provider keys & secrets
  *  @param configurationDictionary A dictionary consisting of ARAnalyticsTrackedEvents & ARAnalyticsTrackedScreens
- *  @see                           addEventAnalyticsHooks, addScreenMonitoringAnalyticsHook
  */
 
 + (void)setupWithAnalytics:(NSDictionary *)analyticsDictionary configuration:(NSDictionary *)configurationDictionary;

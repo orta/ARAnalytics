@@ -30,8 +30,6 @@ static BOOL ar_shouldFireForInstance (NSDictionary *dictionary, id instance, RAC
 static SEL ar_selectorForEventAnalyticsDetails (NSDictionary *detailsDictionary) {
     NSString *selectorName = detailsDictionary[ARAnalyticsSelectorName];
     SEL selector = NSSelectorFromString(selectorName);
-    NSCAssert(selector != NULL, @"Event selector lookup failed.");
-
     return selector;
 }
 
@@ -40,11 +38,10 @@ static SEL ar_selectorForScreenAnalyticsDetails (NSDictionary *dictionary, Class
     NSString *selectorName = dictionary[ARAnalyticsSelectorName];
     if (selectorName) {
         selector = NSSelectorFromString(selectorName);
-
     } else {
 #if TARGET_OS_IPHONE
         selector = @selector(viewDidAppear:);
-        NSCAssert([[klass new] isKindOfClass:[UIViewController class]], @"Default selector of viewDidAppear: must only be used on classes extending UIViewController.");
+        NSCAssert([klass isSubclassOfClass:UIViewController.class] || klass == UIViewController.class, @"Default selector of viewDidAppear: must only be used on classes extending UIViewController or UIViewController itself.");
 #else
         NSCAssert(NO, @"You must specify a selector name for page views on OS X.");
 #endif
@@ -64,24 +61,22 @@ static SEL ar_selectorForScreenAnalyticsDetails (NSDictionary *dictionary, Class
 
     NSArray *trackedEventClasses = configurationDictionary[ARAnalyticsTrackedEvents];
     [trackedEventClasses enumerateObjectsUsingBlock:^(NSDictionary *eventDictionary, NSUInteger idx, BOOL *stop) {
-        [self addEventAnalyticsHooks:eventDictionary];
+        [self addEventAnalyticsHook:eventDictionary];
     }];
 }
 
-+ (void)addEventAnalyticsHooks:(NSDictionary *)eventDictionary {
++ (void)addEventAnalyticsHook:(NSDictionary *)eventDictionary {
     Class klass = eventDictionary[ARAnalyticsClass];
-
-    NSArray *analyticsDetails = eventDictionary[ARAnalyticsDetails];
 
     RSSwizzleClassMethod(klass, @selector(alloc), RSSWReturnType(id), void, RSSWReplacement({
         id instance = RSSWCallOriginal();
-        __weak __typeof(instance) weakInstance = instance;
 
-        [analyticsDetails enumerateObjectsUsingBlock:^(id object, NSUInteger idx, BOOL *stop) {
-            SEL selector = ar_selectorForEventAnalyticsDetails(eventDictionary);
+        [eventDictionary[ARAnalyticsDetails] enumerateObjectsUsingBlock:^(id object, NSUInteger idx, BOOL *stop) {
+            SEL selector = ar_selectorForEventAnalyticsDetails(object);
 
             NSString *event = object[ARAnalyticsEventName];
 
+            __weak __typeof(instance) weakInstance = instance;
             [[instance rac_signalForSelector:selector] subscribeNext:^(RACTuple *parameters) {
                 id instance = weakInstance;
 
@@ -105,13 +100,11 @@ static SEL ar_selectorForScreenAnalyticsDetails (NSDictionary *dictionary, Class
 
 + (void)addScreenMonitoringAnalyticsHook:(NSDictionary *)screenDictionary {
     Class klass = screenDictionary[ARAnalyticsClass];
-    NSArray *analyticsDetails = screenDictionary[ARAnalyticsDetails];
 
     RSSwizzleClassMethod(klass, @selector(alloc), RSSWReturnType(id), void, RSSWReplacement({
         id instance = RSSWCallOriginal();
-        __weak __typeof(instance) weakInstance = instance;
 
-        [analyticsDetails enumerateObjectsUsingBlock:^(id object, NSUInteger idx, BOOL *stop) {
+        [screenDictionary[ARAnalyticsDetails] enumerateObjectsUsingBlock:^(id object, NSUInteger idx, BOOL *stop) {
             SEL selector = ar_selectorForScreenAnalyticsDetails(object, klass);
 
             // Try to grab the page name from the dictionary.
@@ -120,6 +113,7 @@ static SEL ar_selectorForScreenAnalyticsDetails (NSDictionary *dictionary, Class
             // If there wasn't one, then try to invoke keypath.
             NSString *pageNameKeypath = object[ARAnalyticsPageNameKeyPath];
 
+            __weak __typeof(instance) weakInstance = instance;
             [[instance rac_signalForSelector:selector] subscribeNext:^(RACTuple *parameters) {
                 id instance = weakInstance;
 
@@ -138,7 +132,7 @@ static SEL ar_selectorForScreenAnalyticsDetails (NSDictionary *dictionary, Class
                 }
             }];
         }];
-        
+
         return instance;
     }));
 }
