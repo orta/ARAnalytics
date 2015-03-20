@@ -6,6 +6,7 @@ before_script:
   - brew uninstall xctool
   - brew install xctool
   - cd Bootstrap; pod update ; cd ..
+  - echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 xcode_workspace: Bootstrap/ARAnalyticsTests.xcworkspace
 xcode_scheme: ARAnalyticsBootstrapiOS
 xcode_sdk: iphonesimulator
