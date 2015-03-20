@@ -1,5 +1,6 @@
 language: objective-c
 before_script:
+  - echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - export LANG=en_US.UTF-8
   - gem i cocoapods --no-ri --no-rdoc
   - brew update

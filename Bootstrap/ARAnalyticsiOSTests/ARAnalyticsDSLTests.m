@@ -1,43 +1,33 @@
-//
-//  ARAnalyticsDSLTests.m
-//  ARAnalyticsTests
-//
-//  Created by Ash Furrow on 2014-05-02.
-//  Copyright (c) 2014 Orta Therox. All rights reserved.
-//
-
 #import <OCMock/OCMock.h>
 
 #import <ARAnalytics/ARAnalytics.h>
 #import <ARAnalytics/ARDSL.h>
 
 @interface TestObject : NSObject
-- (void)method1;
-- (void)method2;
+- (void)methodToBeExecuted;
+- (void)methodToBeExecutedWithProperties;
+- (void)methodToBeSkipped;
+- (void)methodToNotBeSkipped;
+- (void)appearedMethod;
 @end
 
 @implementation TestObject
 // Do nothing, for hooking into
-- (void)method1 {}
-- (void)method2 {}
+- (void)methodToBeExecuted {}
+- (void)methodToBeExecutedWithProperties {}
+- (void)methodToBeSkipped {}
+- (void)methodToNotBeSkipped {}
+- (void)appearedMethod {}
 @end
 
+@interface ARAnalytics (Testing)
+
++ (void)addEventAnalyticsHook:(NSDictionary *)eventDictionary;
++ (void)addScreenMonitoringAnalyticsHook:(NSDictionary *)screenDictionary;
+
+@end
 
 SpecBegin(ARAnalyticsDSLTests)
-
-it(@"asserts that something went wrong with unknown selectors", ^{
-    expect(^{
-        [ARAnalytics setupWithAnalytics:nil configuration:@{
-            ARAnalyticsTrackedEvents: @[@{
-                ARAnalyticsClass: TestObject.class,
-                ARAnalyticsDetails: @{
-                    ARAnalyticsEventName: @"event",
-                    ARAnalyticsSelectorName: @"badSelector"
-                }
-            }]
-        }];
-    }).to.raiseAny();
-});
 
 describe(@"setup with configuration", ^{
     it(@"calls super", ^{
@@ -55,7 +45,7 @@ describe(@"setup with configuration", ^{
         __block id analyticsMock;
 
         beforeEach(^{
-            // We don't want to have ARAnalytics get set up.
+            // We don't want to have ARAnalytics actually get set up.
             analyticsMock = [OCMockObject mockForClass:ARAnalytics.class];
             [[analyticsMock stub] setupWithAnalytics:OCMArg.any];
         });
@@ -70,7 +60,7 @@ describe(@"setup with configuration", ^{
 
             [[[analyticsMock stub] andDo:^(NSInvocation *invocation) {
                 invocationCount++;
-            }] addEventAnalyticsHooks:OCMArg.any];
+            }] addEventAnalyticsHook:OCMArg.any];
 
             [ARAnalytics setupWithAnalytics:nil configuration:@{
                 ARAnalyticsTrackedEvents: @[ @{}, @{} ]
@@ -96,136 +86,99 @@ describe(@"setup with configuration", ^{
 });
 
 describe(@"events", ^{
-
-    __block NSString *selector1Name, *selector2Name;
-    __block NSString *event1, *event2;
+    __block NSString * event;
     __block id analyticsMock;
 
     beforeEach(^{
+        event = [[NSUUID UUID] UUIDString];
         analyticsMock = [OCMockObject mockForClass:ARAnalytics.class];
-
-        selector1Name = NSStringFromSelector(@selector(method1));
-        selector2Name = NSStringFromSelector(@selector(method2));
-
-        event1 = @"event";
-        event2 = @"event_has_properties";
     });
 
     afterEach(^{
         [analyticsMock verify];
         [analyticsMock stopMocking];
-
-        [ARAnalytics removeAllAnalyticsHooks];
-    });
-
-    it(@"successfully removes all hooks", ^{
-
-        [[analyticsMock expect] event:event1 withProperties:nil];
-
-        [ARAnalytics addEventAnalyticsHooks: @{
-            ARAnalyticsClass: TestObject.class,
-            ARAnalyticsDetails: @[ @{
-               ARAnalyticsEventName: event1,
-               ARAnalyticsSelectorName: selector1Name,
-            }]
-        }];
-
-        // Set it up to verify the event gets called
-
-        [[[TestObject alloc] init] method1];
-        [analyticsMock verify];
-        [analyticsMock stopMocking];
-
-        [ARAnalytics removeAllAnalyticsHooks];
-
-        // Set it up a second time to verify it isn't called.
-
-        id classMock2 = [OCMockObject mockForClass:ARAnalytics.class];
-        [[classMock2 reject] event:event1 withProperties:nil];
-
-        [[[TestObject alloc] init] method1];
     });
 
     it(@"calls the event method on ARAnalytics after the method", ^{
-        [[analyticsMock expect] event:@"event" withProperties:nil];
+        [[analyticsMock expect] event:event withProperties:OCMOCK_ANY];
         
-        [ARAnalytics addEventAnalyticsHooks: @{
+        [ARAnalytics addEventAnalyticsHook: @{
             ARAnalyticsClass: TestObject.class,
-            ARAnalyticsDetails: @[ @{
-                ARAnalyticsEventName: event1,
-                ARAnalyticsSelectorName: selector1Name,
+            ARAnalyticsDetails: @[@{
+                ARAnalyticsEventName: event,
+                ARAnalyticsSelectorName: ARAnalyticsSelector(methodToBeExecuted),
             }]
         }];
         
-        [[[TestObject alloc] init] method1];
+        [[[TestObject alloc] init] methodToBeExecuted];
     });
-    
+
     it(@"respects the properties given by ARAnalyticsEventProperties", ^{
         NSString *propertyKey = @"airplanes";
 
-        [[analyticsMock expect] event:event2 withProperties:[OCMArg checkWithBlock:^BOOL(NSDictionary *properties) {
+        [[analyticsMock expect] event:event withProperties:[OCMArg checkWithBlock:^BOOL(NSDictionary *properties) {
             return properties[propertyKey] != nil;
         }]];
 
-        [ARAnalytics addEventAnalyticsHooks: @{
+        [ARAnalytics addEventAnalyticsHook: @{
             ARAnalyticsClass: TestObject.class,
             ARAnalyticsDetails: @[ @{
-                ARAnalyticsEventName: event2,
-                ARAnalyticsSelectorName: selector1Name,
-                ARAnalyticsEventProperties: ^ NSDictionary *(TestObject *object, NSArray *arguments) {
+                ARAnalyticsEventName: event,
+                ARAnalyticsSelectorName: ARAnalyticsSelector(methodToBeExecutedWithProperties),
+                ARAnalyticsEventProperties: ^NSDictionary *(TestObject *object, NSArray *arguments) {
                     return @{ propertyKey : @"Oh yeah" };
                 }
             }]
         }];
 
-        [[[TestObject alloc] init] method1];
+        [[[TestObject alloc] init] methodToBeExecutedWithProperties];
     });
-    
+
     describe(@"should fire", ^{
-        __block BOOL didFire = NO;
+        __block BOOL didCheck;
 
         beforeEach(^{
-            didFire = NO;
+            didCheck = NO;
         });
 
         afterEach(^{
-            expect(didFire).to.beTruthy();
+            expect(didCheck).to.beTruthy();
         });
 
         it(@"skips event when shouldFire = NO", ^{
-            [[analyticsMock reject] event:event1 withProperties:nil];
+            [[analyticsMock reject] event:event withProperties:OCMOCK_ANY];
             
-            [ARAnalytics addEventAnalyticsHooks: @{
+            [ARAnalytics addEventAnalyticsHook: @{
                 ARAnalyticsClass: TestObject.class,
                 ARAnalyticsDetails: @[ @{
-                    ARAnalyticsEventName: event1,
-                    ARAnalyticsSelectorName: selector2Name,
+                    ARAnalyticsEventName: event,
+                    ARAnalyticsSelectorName: ARAnalyticsSelector(methodToBeSkipped),
                     ARAnalyticsShouldFire: ^BOOL(id o, NSArray *_) {
-                        didFire = YES;
+                        didCheck = YES;
                         return NO;
                     }
                 }]
             }];
             
-            [[[TestObject alloc] init] method2];
+            [[[TestObject alloc] init] methodToBeSkipped];
         });
 
-        it(@"skips event when shouldFire = YES", ^{
-            [[analyticsMock expect] event:event1 withProperties:nil];
+        it(@"fires event when shouldFire = YES", ^{
+            [[analyticsMock expect] event:event withProperties:OCMOCK_ANY];
 
-            [ARAnalytics addEventAnalyticsHooks: @{
+            [ARAnalytics addEventAnalyticsHook: @{
                 ARAnalyticsClass: TestObject.class,
                 ARAnalyticsDetails: @[ @{
-                    ARAnalyticsEventName: event1,
-                    ARAnalyticsSelectorName: selector2Name,
+                    ARAnalyticsEventName: event,
+                    ARAnalyticsSelectorName: ARAnalyticsSelector(methodToNotBeSkipped),
                     ARAnalyticsShouldFire: ^BOOL(id o, NSArray *_) {
-                        didFire = YES;
+                        didCheck = YES;
                         return YES;
                     }
                 }]
             }];
 
-            [[[TestObject alloc] init] method2];
+            [[[TestObject alloc] init] methodToNotBeSkipped];
         });
 
     });
@@ -240,11 +193,11 @@ describe(@"tracking screens", ^{
             ARAnalyticsClass: TestObject.class,
             ARAnalyticsDetails: @[ @{
                 ARAnalyticsPageName: @"page",
-                ARAnalyticsSelectorName: @"method1",
+                ARAnalyticsSelectorName: ARAnalyticsSelector(appearedMethod),
             }]
         }];
         
-        [[[TestObject alloc] init] method1];
+        [[[TestObject alloc] init] appearedMethod];
         
         [classMock verify];
         [classMock stopMocking];

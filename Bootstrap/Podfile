@@ -1,7 +1,7 @@
 target :ARAnalyticsBootstrapiOS do
   platform :ios, '7.0'
   
-  pod 'ARAnalytics', :path => "../"
+  pod 'ARAnalytics/Mixpanel', :path => "../"
   pod 'ARAnalytics/DSL', :path => "../"
 end
 

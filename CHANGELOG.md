@@ -2,6 +2,7 @@
 
 ## Version 3.0.0
 
+* Changes to DSL to allow for multiple hooks per class hierarchy ( @ashfurrow )
 * Removes TestFlight ( @ashfurrow )
 * Removed deprecated methods from 2.x.x ( @orta )
 * Added support for Snowplow analytics ( @orta )
