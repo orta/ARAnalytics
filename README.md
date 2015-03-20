@@ -85,7 +85,7 @@ Page View Tracking
 
 On top of this you get access to use the original SDK. ARAnalytics provides a common API between lots of providers, so it will try to map most of the functionality between providers, but if you're doing complex things, expect to also use your provider's SDK.
 
-DSL
+Aspect-Oriented DSL
 ----
 There is also a DSL-like setup constructor in the `ARAnalytics/DSL` subspec that lets you do all of your analytics setup at once. Example usage:
 
@@ -102,6 +102,10 @@ There is also a DSL-like setup constructor in the `ARAnalytics/DSL` subspec that
       ARAnalyticsDetails: @[ @{
           ARAnalyticsEventName: @"button pressed",
           ARAnalyticsSelectorName: NSStringFromSelector(@selector(buttonPressed:)),
+      },
+      @{
+          ARAnalyticsEventName: @"switch switched",
+          ARAnalyticsSelectorName: NSStringFromSelector(@selector(switchSwitched:)),
       }]
    },
    ...
@@ -109,22 +113,30 @@ There is also a DSL-like setup constructor in the `ARAnalytics/DSL` subspec that
 
 The above configuration specifies that the "button pressed" event be sent whenever the selector `buttonPressed:` is invoked on *any* instance of `MyViewController`. Additionally, every view controller will send a page view with its title as the page name whenever `viewDidAppear:` is called. There are also advanced uses using blocks in the DSL to selectively disable certain events, or to provide event property dictionaries.
 
-``` objc
+```objc
 [ARAnalytics setupWithAnalytics: @{ /* keys */ } configuration: @{
-   ARAnalyticsTrackedEvents: @[ @{
+  ARAnalyticsTrackedEvents: @[ @{
     ARAnalyticsClass: MyViewController.class,
     ARAnalyticsDetails: @[ @{
-        ARAnalyticsEventName: @"button pressed",
-        ARAnalyticsSelectorName: NSStringFromSelector(@selector(buttonPressed:)),
-        ARAnalyticsShouldFire: ^BOOL(MyViewController *controller, RACTuple *parameters) {
-            return /* some condition */;
-        },
-        ARAnalyticsEventProperties: ^NSDictionary*(MyViewController *controller, RACTuple * parameters) {
-            return @{ /* Custom properties */ };
-        }
+      ARAnalyticsEventName: @"button pressed",
+      ARAnalyticsSelectorName: NSStringFromSelector(@selector(buttonPressed:)),
+      ARAnalyticsShouldFire: ^BOOL(MyViewController *controller, NSArray *parameters) {
+        return /* some condition */;
+      },
+      ARAnalyticsEventProperties: ^NSDictionary*(MyViewController *controller, NSArray *parameters) {
+        return @{ /* Custom properties */ };
+      }
     }]
+  },
+  ...
+```
+
+Note that when using page tracking on `UIViewControllers`, *all* instances *must* have a non-`nil` value for their `title` property. If your app uses nested view controllers, that may not be the case. In this instance, use the `ARAnalyticsShouldFire` block to disable these view controllers from firing analytics events. 
+
+```objc
+ARAnalyticsShouldFire: ^BOOL(MyViewController *controller, NSArray *parameters) {
+  return controller.title != nil;
 },
-...
 ```
 
 Contributing
