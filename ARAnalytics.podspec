@@ -50,21 +50,20 @@ Pod::Spec.new do |s|
   s.subspec "CoreMac" do |ss|
     ss.source_files = ['*.{h,m}', 'Providers/ARAnalyticalProvider.{h,m}', 'Providers/ARAnalyticsProviders.h']
     ss.exclude_files = ['ARDSL.{h,m}']
-    ss.platforms = [:osx]
+    ss.platform = :osx
   end
 
   s.subspec "CoreIOS" do |ss|
     ss.source_files = ['*.{h,m}', 'Providers/ARAnalyticalProvider.{h,m}', 'Providers/ARAnalyticsProviders.h']
     ss.exclude_files = ['ARDSL.{h,m}']
     ss.private_header_files = 'ARNavigationControllerDelegateProxy.h'
-    ss.platforms = [:ios]
+    ss.platform = :ios
   end
 
   s.subspec "DSL" do |ss|
     ss.source_files = ['*.{h,m}', 'ARDSL.{h,m}', 'Providers/ARAnalyticalProvider.{h,m}', 'Providers/ARAnalyticsProviders.h']
     ss.dependency 'RSSwizzle', '~> 0.1.0'
     ss.dependency 'ReactiveCocoa', '2.3'
-    ss.platforms = [:ios, :osx]
   end
 
   # for the description
@@ -90,13 +89,13 @@ Pod::Spec.new do |s|
       if analytics_spec[:osx]
         ss.osx.source_files = sources
         ss.dependency 'ARAnalytics/CoreMac'
-        ss.platforms = [:osx]
+        ss.platform = :osx
         $all_osx_names << providername
 
       else
         ss.ios.source_files = sources
         ss.dependency 'ARAnalytics/CoreIOS'
-        ss.platforms = [:ios]
+        ss.platform = :ios
         $all_ios_names << providername
       end
 
