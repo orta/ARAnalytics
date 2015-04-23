@@ -1,7 +1,7 @@
 PODS:
   - ARAnalytics/CoreIOS (3.0.0)
   - ARAnalytics/DSL (3.0.0):
-    - ReactiveCocoa (= 2.3)
+    - ReactiveCocoa (~> 2.0)
     - RSSwizzle (~> 0.1.0)
   - ARAnalytics/Mixpanel (3.0.0):
     - ARAnalytics/CoreIOS
@@ -30,15 +30,15 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   ARAnalytics:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  ARAnalytics: e0eba4bd2ecedc3b07c34eca73eb86f3f6c68339
-  Expecta: ee641011fe10aa1855d487b40e4976dac50ec342
-  Mixpanel: def38b9e600f101686b8d647e05660a72c089c65
-  OCMock: 6db79185520e24f9f299548f2b8b07e41d881bd5
-  ReactiveCocoa: 2066583826c17dde8e90c41e489f682048cc57c9
-  RSSwizzle: ab39962b7ec56d19c2318ec1127e253797121363
-  Specta: 1df326d6ec48603c77f507a0ab1f89ad2df1c582
+  ARAnalytics: c331321fc6b034ad6249cd43e226d0b262436ce5
+  Expecta: 8c507baf13211207b1e9d0a741480600e6b4ed15
+  Mixpanel: e9bcb16eb0e2a98fc330ceeb0d8b7f4aec4182ab
+  OCMock: a6a7dc0e3997fb9f35d99f72528698ebf60d64f2
+  ReactiveCocoa: fbe689fe218063b7bbed41032912c9ca4fdbe172
+  RSSwizzle: d561958f595028bfcef98c7d55c318b3878a61c6
+  Specta: a353759f073ffcc0a365b782fe4aaeac064c03c6
 
-COCOAPODS: 0.36.0
+COCOAPODS: 0.36.4
