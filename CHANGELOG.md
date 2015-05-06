@@ -1,5 +1,9 @@
 #ARAnalytics
 
+## Version 3.0.1
+
+* Fixes `+[GAIDictionaryBuilder createAppView]` deprecation warings ( @sodastsai )
+
 ## Version 3.0.0
 
 * Changes to DSL to allow for multiple hooks per class hierarchy ( @ashfurrow )
