@@ -92,7 +92,14 @@
 - (void)didShowNewPageView:(NSString *)pageTitle {
     [self event:@"Screen view" withProperties:@{ @"label": pageTitle }];
     [self.tracker set:kGAIScreenName value:pageTitle];
-    [self.tracker send:[[GAIDictionaryBuilder createAppView] build]];
+    if ([GAIDictionaryBuilder respondsToSelector:@selector(createScreenView)]) {
+        [self.tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        [self.tracker send:[[GAIDictionaryBuilder createAppView] build]];
+#pragma clang diagnostic pop
+    }
 }
 
 - (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval  properties:(NSDictionary *)properties{
