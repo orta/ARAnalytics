@@ -8,6 +8,7 @@
 
 #import "ORStubbedProvider.h"
 #import <ARAnalytics/ARAnalytics.h>
+#import <asl.h>
 
 SpecBegin(ARAnalyticsTests)
 
@@ -185,6 +186,34 @@ describe(@"ARAnalytics API", ^{
             NSString *event = @"Time to go";
             ARLog(@"%@", event);
             expect(provider.lastRemoteLog).to.equal(event);
+        });
+
+        it(@"persists log messages", ^{
+            expect(provider.logFacility).to.equal(@"ARAnalytics-ORStubbedProvider");
+
+            // First send the log message we want to find, to the same facility, but from a different PID.
+            pid_t other_pid = fork();
+            if (other_pid == 0) {
+                char pid[128];
+                sprintf(pid, "From other process (%d)", getpid());
+                aslmsg msg = asl_new(ASL_TYPE_MSG);
+                asl_set(msg, ASL_KEY_MSG, pid);
+                asl_set(msg, ASL_KEY_LEVEL, ASL_STRING_EMERG);
+                asl_set(msg, ASL_KEY_FACILITY, provider.logFacility.UTF8String);
+                asl_send(NULL, msg);
+                exit(0);
+            }
+            waitpid(other_pid, NULL, 0);
+
+            // Now send the message we do *not* want to find from our current PID
+            [provider localLog:[NSString stringWithFormat:@"From this process (%d)", getpid()]];
+            dispatch_sync([ARAnalyticalProvider loggingQueue], ^{}); // wait till logging is performed
+
+            // Give ASL some time to flush all the pipes.
+            CFRunLoopRunInMode(kCFRunLoopDefaultMode, 1, false);
+
+            NSString *expectedMessage = [NSString stringWithFormat:@"From other process (%d)", other_pid];
+            expect([provider messagesForProcessID:(NSUInteger)other_pid]).to.equal(@[expectedMessage]);
         });
     });
 });

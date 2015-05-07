@@ -1,7 +1,16 @@
 #import <Foundation/Foundation.h>
 #import "ARAnalyticalProvider.h"
 
+#import <objc/runtime.h>
+#import <asl.h>
+#import <sys/stat.h>
+
 static NSString *const ARTimingEventLengthKey = @"length";
+
+@interface ARAnalyticalProvider () {
+  aslclient _ASLClient;
+}
+@end
 
 @implementation ARAnalyticalProvider
 
@@ -55,5 +64,77 @@ static NSString *const ARTimingEventLengthKey = @"length";
 }
 
 - (void)remoteLog:(NSString *)parsedString {}
+
+#pragma mark - File Logging
+
+// There is really no need to ever release this once it's being used,
+// analytics are collected over the lifetime of the application.
++ (dispatch_queue_t)loggingQueue;
+{
+    static dispatch_once_t onceToken = 0;
+    static dispatch_queue_t _loggingQueue = NULL;
+    dispatch_once(&onceToken, ^{
+        _loggingQueue = dispatch_queue_create("net.artsy.ARAnalytics-logging", DISPATCH_QUEUE_SERIAL);
+    });
+    return _loggingQueue;
+}
+
+- (NSString *)logFacility;
+{
+    return [NSString stringWithFormat:@"ARAnalytics-%s", class_getName(self.class)];
+}
+
+- (aslclient)ASLClient;
+{
+    if (_ASLClient == NULL) {
+        // There is really no need to ever release this once it's being used,
+        // analytics are collected over the lifetime of the application.
+        _ASLClient = asl_open(NULL, self.logFacility.UTF8String, 0);
+        NSAssert(_ASLClient != NULL, @"Unable to create ASL client.");
+
+        // Generates a warning because the macro uses just 1 instead of 1UL.
+        //
+        //     asl_set_filter(_ASLClient, ASL_FILTER_MASK_UPTO(ASL_FILTER_MASK_DEBUG));
+        //
+        // For now we're just using the default ‘debug’ level for all log messages, so this filter is enough.
+        asl_set_filter(_ASLClient, ASL_FILTER_MASK_DEBUG);
+    }
+    return _ASLClient;
+}
+
+- (void)localLog:(NSString *)message;
+{
+    dispatch_async(self.class.loggingQueue, ^{
+        aslmsg msg = asl_new(ASL_TYPE_MSG);
+        asl_set(msg, ASL_KEY_MSG, message.UTF8String);
+        asl_set(msg, ASL_KEY_FACILITY, self.logFacility.UTF8String);
+        NSAssert(asl_send(self.ASLClient, msg) == 0, @"Unable to send log message.");
+        asl_free(msg);
+    });
+}
+
+- (NSArray *)messagesForProcessID:(NSUInteger)processID;
+{
+    NSMutableArray *messages = [NSMutableArray new];
+    dispatch_sync(self.class.loggingQueue, ^{
+        char pid[6];
+        sprintf(pid, "%lu", processID);
+
+        aslmsg query = asl_new(ASL_TYPE_QUERY);
+        asl_set_query(query, ASL_KEY_FACILITY, self.logFacility.UTF8String, ASL_QUERY_OP_EQUAL);
+        asl_set_query(query, ASL_KEY_PID, pid, ASL_QUERY_OP_EQUAL);
+
+        aslresponse response = asl_search(self.ASLClient, query);
+        if (response != NULL) {
+            aslmsg message = NULL;
+            while ((message = aslresponse_next(response)) != NULL) {
+                [messages addObject:[NSString stringWithUTF8String:asl_get(message, ASL_KEY_MSG)]];
+            }
+            aslresponse_free(response);
+        }
+        asl_free(query);
+    });
+    return [messages copy];
+}
 
 @end
