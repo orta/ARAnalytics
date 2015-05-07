@@ -31,7 +31,10 @@
 /// Submit a string to the provider's logging system
 - (void)remoteLog:(NSString *)parsedString;
 
+/// Submit a string to the local persisted logging system
 - (void)localLog:(NSString *)message;
+
+/// Retrieve messages provided to the local persisted logging system originating from a specified process.
 - (NSArray *)messagesForProcessID:(NSUInteger)processID;
 
 @end
