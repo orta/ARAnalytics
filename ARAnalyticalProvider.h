@@ -31,8 +31,6 @@
 /// Submit a string to the provider's logging system
 - (void)remoteLog:(NSString *)parsedString;
 
-+ (dispatch_queue_t)loggingQueue;
-- (NSString *)logFacility;
 - (void)localLog:(NSString *)message;
 - (NSArray *)messagesForProcessID:(NSUInteger)processID;
 

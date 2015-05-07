@@ -10,6 +10,11 @@
 #import <ARAnalytics/ARAnalytics.h>
 #import <asl.h>
 
+@interface ARAnalyticalProvider (Private)
+- (dispatch_queue_t)loggingQueue;
+- (NSString *)logFacility;
+@end
+
 SpecBegin(ARAnalyticsTests)
 
 
@@ -207,10 +212,10 @@ describe(@"ARAnalytics API", ^{
 
             // Now send the message we do *not* want to find from our current PID
             [provider localLog:[NSString stringWithFormat:@"From this process (%d)", getpid()]];
-            dispatch_sync([ARAnalyticalProvider loggingQueue], ^{}); // wait till logging is performed
+            dispatch_sync(provider.loggingQueue, ^{}); // wait till logging is performed
 
             // Give ASL some time to flush all the pipes.
-            CFRunLoopRunInMode(kCFRunLoopDefaultMode, 1, false);
+            CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0.1, false);
 
             NSString *expectedMessage = [NSString stringWithFormat:@"From other process (%d)", other_pid];
             expect([provider messagesForProcessID:(NSUInteger)other_pid]).to.equal(@[expectedMessage]);

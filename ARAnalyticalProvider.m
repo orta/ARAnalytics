@@ -8,7 +8,9 @@
 static NSString *const ARTimingEventLengthKey = @"length";
 
 @interface ARAnalyticalProvider () {
-  aslclient _ASLClient;
+    aslclient _ASLClient;
+    dispatch_queue_t _loggingQueue;
+    NSString *_logFacility;
 }
 @end
 
@@ -65,30 +67,42 @@ static NSString *const ARTimingEventLengthKey = @"length";
 
 - (void)remoteLog:(NSString *)parsedString {}
 
-#pragma mark - File Logging
+#pragma mark - Local Persisted Logging
 
-// There is really no need to ever release this once it's being used,
-// analytics are collected over the lifetime of the application.
-+ (dispatch_queue_t)loggingQueue;
+// While it's highly unlikely that a provider will ever be released during the lifetime of an application,
+// let's do the right thing anyways.
+- (void)dealloc;
 {
-    static dispatch_once_t onceToken = 0;
-    static dispatch_queue_t _loggingQueue = NULL;
-    dispatch_once(&onceToken, ^{
-        _loggingQueue = dispatch_queue_create("net.artsy.ARAnalytics-logging", DISPATCH_QUEUE_SERIAL);
-    });
-    return _loggingQueue;
+    if (_ASLClient != NULL) {
+        asl_close(_ASLClient);
+    }
 }
 
 - (NSString *)logFacility;
 {
-    return [NSString stringWithFormat:@"ARAnalytics-%s", class_getName(self.class)];
+    @synchronized(self) {
+        if (_logFacility == nil) {
+            _logFacility = [NSString stringWithFormat:@"ARAnalytics-%s", class_getName(self.class)];
+        }
+    }
+    return _logFacility;
 }
 
+- (dispatch_queue_t)loggingQueue;
+{
+    @synchronized(self) {
+        if (_loggingQueue == NULL) {
+            NSString *name = [NSString stringWithFormat:@"net.artsy.%@", self.logFacility];
+            _loggingQueue = dispatch_queue_create(name.UTF8String, DISPATCH_QUEUE_SERIAL);
+        }
+    }
+    return _loggingQueue;
+}
+
+// No need to synchronize access, but it should only be accessed from the `loggingQueue`.
 - (aslclient)ASLClient;
 {
     if (_ASLClient == NULL) {
-        // There is really no need to ever release this once it's being used,
-        // analytics are collected over the lifetime of the application.
         _ASLClient = asl_open(NULL, self.logFacility.UTF8String, 0);
         NSAssert(_ASLClient != NULL, @"Unable to create ASL client.");
 
@@ -104,7 +118,7 @@ static NSString *const ARTimingEventLengthKey = @"length";
 
 - (void)localLog:(NSString *)message;
 {
-    dispatch_async(self.class.loggingQueue, ^{
+    dispatch_async(self.loggingQueue, ^{
         aslmsg msg = asl_new(ASL_TYPE_MSG);
         asl_set(msg, ASL_KEY_MSG, message.UTF8String);
         asl_set(msg, ASL_KEY_FACILITY, self.logFacility.UTF8String);
@@ -116,7 +130,7 @@ static NSString *const ARTimingEventLengthKey = @"length";
 - (NSArray *)messagesForProcessID:(NSUInteger)processID;
 {
     NSMutableArray *messages = [NSMutableArray new];
-    dispatch_sync(self.class.loggingQueue, ^{
+    dispatch_sync(self.loggingQueue, ^{
         char pid[6];
         sprintf(pid, "%lu", processID);
 
