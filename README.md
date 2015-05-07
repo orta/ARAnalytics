@@ -117,16 +117,19 @@ The above configuration specifies that the "button pressed" event be sent whenev
 [ARAnalytics setupWithAnalytics: @{ /* keys */ } configuration: @{
   ARAnalyticsTrackedEvents: @[ @{
     ARAnalyticsClass: MyViewController.class,
-    ARAnalyticsDetails: @[ @{
-      ARAnalyticsEventName: @"button pressed",
-      ARAnalyticsSelectorName: NSStringFromSelector(@selector(buttonPressed:)),
-      ARAnalyticsShouldFire: ^BOOL(MyViewController *controller, NSArray *parameters) {
-        return /* some condition */;
+    ARAnalyticsDetails: @[ 
+      @{
+        ARAnalyticsEventName: @"button pressed",
+        ARAnalyticsSelectorName: NSStringFromSelector(@selector(buttonPressed:)),
+        ARAnalyticsShouldFire: ^BOOL(MyViewController *controller, NSArray *parameters) {
+          return /* some condition */;
+        },
+        ARAnalyticsEventProperties: ^NSDictionary*(MyViewController *controller, NSArray *parameters) {
+          return @{ /* Custom properties */ };
+        }
       },
-      ARAnalyticsEventProperties: ^NSDictionary*(MyViewController *controller, NSArray *parameters) {
-        return @{ /* Custom properties */ };
-      }
-    }]
+      /* more events for this class */
+    ]
   },
   ...
 ```
