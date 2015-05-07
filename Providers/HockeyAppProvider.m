@@ -81,7 +81,7 @@
 
 #pragma mark - BITCrashManagerDelegate
 - (NSString *)applicationLogForCrashManager:(BITCrashManager *)crashManager {
-    NSUInteger processID = crashManager.lastSessionCrashDetails.processIdentifier;
+    NSUInteger processID = crashManager.lastSessionCrashDetails.appProcessIdentifier;
     NSArray *messages = [self messagesForProcessID:processID];
     return [messages componentsJoinedByString:@"\n"];
 }
