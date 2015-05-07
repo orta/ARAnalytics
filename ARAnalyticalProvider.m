@@ -127,10 +127,10 @@ static NSString *const ARTimingEventLengthKey = @"length";
         aslresponse response = asl_search(self.ASLClient, query);
         if (response != NULL) {
             aslmsg message = NULL;
-            while ((message = aslresponse_next(response)) != NULL) {
+            while ((message = asl_next(response)) != NULL) {
                 [messages addObject:[NSString stringWithUTF8String:asl_get(message, ASL_KEY_MSG)]];
             }
-            aslresponse_free(response);
+            asl_release(response);
         }
         asl_free(query);
     });
