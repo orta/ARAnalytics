@@ -45,6 +45,15 @@
     _userEmail = email;
 }
 
+#pragma mark - Log breadcrumbs
+- (void)remoteLog:(NSString *)message {
+    [self localLog:message];
+}
+
+- (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
+    [self localLog:[NSString stringWithFormat:@"[%@] %@", event, properties]];
+}
+
 #pragma mark - BITUpdateManagerDelegate
 - (NSString *)customDeviceIdentifierForUpdateManager:(BITUpdateManager *)updateManager {
 #ifdef DEBUG
@@ -68,6 +77,13 @@
 
 -(NSString *)userEmailForHockeyManager:(BITHockeyManager *)hockeyManager componentManager:(BITHockeyBaseManager *)componentManager {
     return _userEmail;
+}
+
+#pragma mark - BITCrashManagerDelegate
+- (NSString *)applicationLogForCrashManager:(BITCrashManager *)crashManager {
+    NSUInteger processID = crashManager.lastSessionCrashDetails.processIdentifier;
+    NSArray *messages = [self messagesForProcessID:processID];
+    return [messages componentsJoinedByString:@"\n"];
 }
 
 @end
