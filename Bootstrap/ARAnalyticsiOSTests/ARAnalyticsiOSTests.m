@@ -215,10 +215,11 @@ describe(@"ARAnalytics API", ^{
             dispatch_sync(provider.loggingQueue, ^{}); // wait till logging is performed
 
             // Give ASL some time to flush all the pipes.
-            CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0.1, false);
+            CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0.5, false);
 
-            NSString *expectedMessage = [NSString stringWithFormat:@"From other process (%d)", other_pid];
-            expect([provider messagesForProcessID:(NSUInteger)other_pid]).to.equal(@[expectedMessage]);
+            NSArray *messages = [provider messagesForProcessID:(NSUInteger)other_pid];
+            expect(messages.count).to.equal(1);
+            expect(messages[0]).to.endWith([NSString stringWithFormat:@"From other process (%d)", other_pid]);
         });
     });
 });

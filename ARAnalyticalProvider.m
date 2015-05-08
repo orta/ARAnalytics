@@ -125,6 +125,15 @@ static NSString *const ARTimingEventLengthKey = @"length";
     });
 }
 
+static NSString *
+FormattedTimestampAndMessage(const char *seconds, const char *nsec, const char *message)
+{
+    time_t time = atoi(seconds);
+    char timestamp[20];
+    strftime(timestamp, 20, "%Y-%m-%d %H:%M:%S", localtime(&time));
+    return [NSString stringWithFormat:@"[%s.%.3s]: %s", timestamp, nsec, message];
+}
+
 - (NSArray *)messagesForProcessID:(NSUInteger)processID;
 {
     NSMutableArray *messages = [NSMutableArray new];
@@ -140,7 +149,9 @@ static NSString *const ARTimingEventLengthKey = @"length";
         if (response != NULL) {
             aslmsg message = NULL;
             while ((message = asl_next(response)) != NULL) {
-                [messages addObject:[NSString stringWithUTF8String:asl_get(message, ASL_KEY_MSG)]];
+                [messages addObject:FormattedTimestampAndMessage(asl_get(message, ASL_KEY_TIME),
+                                                                 asl_get(message, ASL_KEY_TIME_NSEC),
+                                                                 asl_get(message, ASL_KEY_MSG))];
             }
             asl_release(response);
         }
