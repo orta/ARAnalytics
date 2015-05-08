@@ -106,12 +106,10 @@ static NSString *const ARTimingEventLengthKey = @"length";
         _ASLClient = asl_open(NULL, self.logFacility.UTF8String, 0);
         NSAssert(_ASLClient != NULL, @"Unable to create ASL client.");
 
-        // Generates a warning because the macro uses just 1 instead of 1UL.
-        //
-        //     asl_set_filter(_ASLClient, ASL_FILTER_MASK_UPTO(ASL_FILTER_MASK_DEBUG));
-        //
-        // For now we're just using the default ‘debug’ level for all log messages, so this filter is enough.
-        asl_set_filter(_ASLClient, ASL_FILTER_MASK_DEBUG);
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshift-count-overflow"
+        asl_set_filter(_ASLClient, ASL_FILTER_MASK_UPTO(ASL_FILTER_MASK_DEBUG));
+#pragma clang diagnostic pop
     }
     return _ASLClient;
 }
