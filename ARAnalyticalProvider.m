@@ -132,7 +132,7 @@ FormattedTimestampAndMessage(const char *seconds, const char *nsec, const char *
     time_t time = atoi(seconds);
     char timestamp[20];
     strftime(timestamp, 20, "%Y-%m-%d %H:%M:%S", localtime(&time));
-    return [NSString stringWithFormat:@"[%s.%.3s]: %s", timestamp, nsec, message];
+    return [NSString stringWithFormat:@"[%s.%.3s] %s", timestamp, nsec, message];
 }
 
 - (NSArray *)messagesForProcessID:(NSUInteger)processID;

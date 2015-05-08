@@ -1,6 +1,8 @@
 #import "HockeyAppProvider.h"
 #import <HockeySDK/HockeySDK.h>
 
+#define MAX_HOCKEY_LOG_MESSAGES 100
+
 @interface HockeyAppProvider () <BITHockeyManagerDelegate, BITUpdateManagerDelegate, BITCrashManagerDelegate> {
     NSString *_username;
     NSString *_userEmail;
@@ -83,6 +85,10 @@
 - (NSString *)applicationLogForCrashManager:(BITCrashManager *)crashManager {
     NSUInteger processID = crashManager.lastSessionCrashDetails.appProcessIdentifier;
     NSArray *messages = [self messagesForProcessID:processID];
+    NSUInteger count = messages.count;
+    if (count > MAX_HOCKEY_LOG_MESSAGES) {
+        messages = [messages subarrayWithRange:NSMakeRange(count-MAX_HOCKEY_LOG_MESSAGES, MAX_HOCKEY_LOG_MESSAGES)];
+    }
     return [messages componentsJoinedByString:@"\n"];
 }
 
