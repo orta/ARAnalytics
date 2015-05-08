@@ -118,6 +118,7 @@ static NSString *const ARTimingEventLengthKey = @"length";
 {
     dispatch_async(self.loggingQueue, ^{
         aslmsg msg = asl_new(ASL_TYPE_MSG);
+        asl_set(msg, ASL_KEY_READ_UID, "-1");
         asl_set(msg, ASL_KEY_MSG, message.UTF8String);
         asl_set(msg, ASL_KEY_FACILITY, self.logFacility.UTF8String);
         NSAssert(asl_send(self.ASLClient, msg) == 0, @"Unable to send log message.");
