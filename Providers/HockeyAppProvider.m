@@ -3,6 +3,17 @@
 
 #define MAX_HOCKEY_LOG_MESSAGES 100
 
+static BOOL
+IsHockeySDKCompatibleForLogging(void)
+{
+    static dispatch_once_t onceToken = 0;
+    static BOOL compatible = NO;
+    dispatch_once(&onceToken, ^{
+        compatible = [[BITCrashDetails class] instancesRespondToSelector:@selector(appProcessIdentifier)];
+    });
+    return compatible;
+}
+
 @interface HockeyAppProvider () <BITHockeyManagerDelegate, BITUpdateManagerDelegate, BITCrashManagerDelegate> {
     NSString *_username;
     NSString *_userEmail;
@@ -49,11 +60,15 @@
 
 #pragma mark - Log breadcrumbs
 - (void)remoteLog:(NSString *)message {
-    [self localLog:message];
+    if (IsHockeySDKCompatibleForLogging()) {
+        [self localLog:message];
+    }
 }
 
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
-    [self localLog:[NSString stringWithFormat:@"[%@] %@", event, properties]];
+    if (IsHockeySDKCompatibleForLogging()) {
+        [self localLog:[NSString stringWithFormat:@"[%@] %@", event, properties]];
+    }
 }
 
 #pragma mark - BITUpdateManagerDelegate
@@ -83,6 +98,10 @@
 
 #pragma mark - BITCrashManagerDelegate
 - (NSString *)applicationLogForCrashManager:(BITCrashManager *)crashManager {
+    if (!IsHockeySDKCompatibleForLogging()) {
+        return @"";
+    }
+
     NSUInteger processID = crashManager.lastSessionCrashDetails.appProcessIdentifier;
     NSArray *messages = [self messagesForProcessID:processID];
     NSUInteger count = messages.count;
