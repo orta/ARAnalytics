@@ -214,10 +214,17 @@ describe(@"ARAnalytics API", ^{
             [provider localLog:[NSString stringWithFormat:@"From this process (%d)", getpid()]];
             dispatch_sync(provider.loggingQueue, ^{}); // wait till logging is performed
 
-            // Give ASL some time to flush all the pipes.
-            CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0.5, false);
+            NSArray *messages = nil;
 
-            NSArray *messages = [provider messagesForProcessID:(NSUInteger)other_pid];
+            // Give ASL some time to flush all the pipes.
+            float step = 0.1;
+            float timeout = 5;
+            while ((messages = [provider messagesForProcessID:(NSUInteger)other_pid]) &&
+                    messages.count == 0 && timeout > 0) {
+                CFRunLoopRunInMode(kCFRunLoopDefaultMode, step, false);
+                timeout -= step;
+            }
+
             expect(messages.count).to.equal(1);
             expect(messages[0]).to.endWith([NSString stringWithFormat:@"From other process (%d)", other_pid]);
         });
