@@ -1,5 +1,6 @@
 #import "HockeyAppProvider.h"
 #import <HockeySDK/HockeySDK.h>
+#import <objc/message.h>
 
 #define MAX_HOCKEY_LOG_MESSAGES 100
 
@@ -102,7 +103,12 @@ IsHockeySDKCompatibleForLogging(void)
         return @"";
     }
 
-    NSUInteger processID = crashManager.lastSessionCrashDetails.appProcessIdentifier;
+    BITCrashDetails *crashDetails = crashManager.lastSessionCrashDetails;
+    NSUInteger processID = ((NSUInteger (*)(id, SEL))objc_msgSend)(crashDetails, @selector(appProcessIdentifier));
+    if (processID == 0) {
+        return @"";
+    }
+
     NSArray *messages = [self messagesForProcessID:processID];
     NSUInteger count = messages.count;
     if (count > MAX_HOCKEY_LOG_MESSAGES) {
