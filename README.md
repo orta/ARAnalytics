@@ -142,6 +142,11 @@ ARAnalyticsShouldFire: ^BOOL(MyViewController *controller, NSArray *parameters) 
 },
 ```
 
+HockeyApp
+----
+
+Starting with HockeyApp version **TODO**, the HockeyApp provider will automatically keep logs of events and include those in crash reports, thus adding ‘breadcrumbs’ to your report and hopefully providing helpful context for your crasp reports. Any messages logged with `ARLog()` will also get included in the report.
+
 Contributing
 ====
 See [Contributing](https://github.com/orta/ARAnalytics/blob/master/CONTRIBUTING.md)
