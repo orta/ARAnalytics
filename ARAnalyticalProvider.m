@@ -1,7 +1,18 @@
 #import <Foundation/Foundation.h>
 #import "ARAnalyticalProvider.h"
 
+#import <objc/runtime.h>
+#import <asl.h>
+#import <sys/stat.h>
+
 static NSString *const ARTimingEventLengthKey = @"length";
+
+@interface ARAnalyticalProvider () {
+    aslclient _ASLClient;
+    dispatch_queue_t _loggingQueue;
+    NSString *_logFacility;
+}
+@end
 
 @implementation ARAnalyticalProvider
 
@@ -55,5 +66,99 @@ static NSString *const ARTimingEventLengthKey = @"length";
 }
 
 - (void)remoteLog:(NSString *)parsedString {}
+
+#pragma mark - Local Persisted Logging
+
+// While it's highly unlikely that a provider will ever be released during the lifetime of an application,
+// let's do the right thing anyways.
+- (void)dealloc;
+{
+    if (_ASLClient != NULL) {
+        asl_close(_ASLClient);
+    }
+}
+
+- (NSString *)logFacility;
+{
+    @synchronized(self) {
+        if (_logFacility == nil) {
+            _logFacility = [NSString stringWithFormat:@"ARAnalytics-%s", class_getName(self.class)];
+        }
+    }
+    return _logFacility;
+}
+
+- (dispatch_queue_t)loggingQueue;
+{
+    @synchronized(self) {
+        if (_loggingQueue == NULL) {
+            NSString *name = [NSString stringWithFormat:@"net.artsy.%@", self.logFacility];
+            _loggingQueue = dispatch_queue_create(name.UTF8String, DISPATCH_QUEUE_SERIAL);
+        }
+    }
+    return _loggingQueue;
+}
+
+// No need to synchronize access, but it should only be accessed from the `loggingQueue`.
+- (aslclient)ASLClient;
+{
+    if (_ASLClient == NULL) {
+        _ASLClient = asl_open(NULL, self.logFacility.UTF8String, 0);
+        NSAssert(_ASLClient != NULL, @"Unable to create ASL client.");
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshift-count-overflow"
+        asl_set_filter(_ASLClient, ASL_FILTER_MASK_UPTO(ASL_FILTER_MASK_DEBUG));
+#pragma clang diagnostic pop
+    }
+    return _ASLClient;
+}
+
+- (void)localLog:(NSString *)message;
+{
+    dispatch_async(self.loggingQueue, ^{
+        aslmsg msg = asl_new(ASL_TYPE_MSG);
+        asl_set(msg, ASL_KEY_READ_UID, "-1");
+        asl_set(msg, ASL_KEY_MSG, message.UTF8String);
+        asl_set(msg, ASL_KEY_FACILITY, self.logFacility.UTF8String);
+        NSAssert(asl_send(self.ASLClient, msg) == 0, @"Unable to send log message.");
+        asl_free(msg);
+    });
+}
+
+static NSString *
+FormattedTimestampAndMessage(const char *seconds, const char *nsec, const char *message)
+{
+    time_t time = atoi(seconds);
+    char timestamp[20];
+    strftime(timestamp, 20, "%Y-%m-%d %H:%M:%S", localtime(&time));
+    return [NSString stringWithFormat:@"[%s.%.3s] %s", timestamp, nsec, message];
+}
+
+- (NSArray *)messagesForProcessID:(NSUInteger)processID;
+{
+    NSMutableArray *messages = [NSMutableArray new];
+    dispatch_sync(self.loggingQueue, ^{
+        char pid[6];
+        sprintf(pid, "%lu", processID);
+
+        aslmsg query = asl_new(ASL_TYPE_QUERY);
+        asl_set_query(query, ASL_KEY_FACILITY, self.logFacility.UTF8String, ASL_QUERY_OP_EQUAL);
+        asl_set_query(query, ASL_KEY_PID, pid, ASL_QUERY_OP_EQUAL);
+
+        aslresponse response = asl_search(self.ASLClient, query);
+        if (response != NULL) {
+            aslmsg message = NULL;
+            while ((message = asl_next(response)) != NULL) {
+                [messages addObject:FormattedTimestampAndMessage(asl_get(message, ASL_KEY_TIME),
+                                                                 asl_get(message, ASL_KEY_TIME_NSEC),
+                                                                 asl_get(message, ASL_KEY_MSG))];
+            }
+            asl_release(response);
+        }
+        asl_free(query);
+    });
+    return [messages copy];
+}
 
 @end

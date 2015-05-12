@@ -1,4 +1,8 @@
-#ARAnalytics
+# ARAnalytics
+
+## Version 3.1.0
+
+* Added support for breadcrumb logging to the HockeyApp provider ( @alloy )
 
 ## Version 3.0.1
 

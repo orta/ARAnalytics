@@ -1,5 +1,19 @@
 #import "HockeyAppProvider.h"
 #import <HockeySDK/HockeySDK.h>
+#import <objc/message.h>
+
+#define MAX_HOCKEY_LOG_MESSAGES 100
+
+static BOOL
+IsHockeySDKCompatibleForLogging(void)
+{
+    static dispatch_once_t onceToken = 0;
+    static BOOL compatible = NO;
+    dispatch_once(&onceToken, ^{
+        compatible = [[BITCrashDetails class] instancesRespondToSelector:@selector(appProcessIdentifier)];
+    });
+    return compatible;
+}
 
 @interface HockeyAppProvider () <BITHockeyManagerDelegate, BITUpdateManagerDelegate, BITCrashManagerDelegate> {
     NSString *_username;
@@ -45,6 +59,19 @@
     _userEmail = email;
 }
 
+#pragma mark - Log breadcrumbs
+- (void)remoteLog:(NSString *)message {
+    if (IsHockeySDKCompatibleForLogging()) {
+        [self localLog:message];
+    }
+}
+
+- (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
+    if (IsHockeySDKCompatibleForLogging()) {
+        [self localLog:[NSString stringWithFormat:@"[%@] %@", event, properties]];
+    }
+}
+
 #pragma mark - BITUpdateManagerDelegate
 - (NSString *)customDeviceIdentifierForUpdateManager:(BITUpdateManager *)updateManager {
 #ifdef DEBUG
@@ -68,6 +95,26 @@
 
 -(NSString *)userEmailForHockeyManager:(BITHockeyManager *)hockeyManager componentManager:(BITHockeyBaseManager *)componentManager {
     return _userEmail;
+}
+
+#pragma mark - BITCrashManagerDelegate
+- (NSString *)applicationLogForCrashManager:(BITCrashManager *)crashManager {
+    if (!IsHockeySDKCompatibleForLogging()) {
+        return @"";
+    }
+
+    BITCrashDetails *crashDetails = crashManager.lastSessionCrashDetails;
+    NSUInteger processID = ((NSUInteger (*)(id, SEL))objc_msgSend)(crashDetails, @selector(appProcessIdentifier));
+    if (processID == 0) {
+        return @"";
+    }
+
+    NSArray *messages = [self messagesForProcessID:processID];
+    NSUInteger count = messages.count;
+    if (count > MAX_HOCKEY_LOG_MESSAGES) {
+        messages = [messages subarrayWithRange:NSMakeRange(count-MAX_HOCKEY_LOG_MESSAGES, MAX_HOCKEY_LOG_MESSAGES)];
+    }
+    return [messages componentsJoinedByString:@"\n"];
 }
 
 @end
