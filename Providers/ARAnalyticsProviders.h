@@ -31,6 +31,10 @@
 #import "CrashlyticsProvider.h"
 #endif
 
+#ifdef AR_FABRIC_EXISTS
+#import "FabricProvider.h"
+#endif
+
 #ifdef AR_BUGSNAG_EXISTS
 #import "BugsnagProvider.h"
 #endif

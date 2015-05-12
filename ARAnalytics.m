@@ -142,6 +142,9 @@ static BOOL _ARLogShouldPrintStdout = YES;
     if (analyticsDictionary[ARCrashlyticsAPIKey]) {
         [self setupCrashlyticsWithAPIKey:analyticsDictionary[ARCrashlyticsAPIKey]];
     }
+    if (analyticsDictionary[ARFabricKits]) {
+        [self setupFabricWithKits:analyticsDictionary[ARFabricKits]];
+    }
 
     if (analyticsDictionary[ARCrittercismAppID]) {
         [self setupCrittercismWithAppID:analyticsDictionary[ARCrittercismAppID]];
@@ -208,6 +211,16 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #ifdef AR_CRASHLYTICS_EXISTS
     CrashlyticsProvider *provider = [[CrashlyticsProvider alloc] initWithIdentifier:key];
     [self setupProvider:provider];
+#endif
+}
+
++ (void)setupFabricWithKits:(NSDictionary *)kits
+{
+#ifdef AR_FABRIC_EXISTS
+    FabricProvider *provider = [[FabricProvider alloc] initWithKits:kits];
+    if (provider){
+        [self setupProvider:provider];
+    }
 #endif
 }
 
@@ -632,6 +645,7 @@ const NSString *ARCountlyAppKey = @"ARCountlyAppKey";
 const NSString *ARCountlyHost = @"ARCountlyHost";
 const NSString *ARTestFlightAppToken = @"ARTestFlight";
 const NSString *ARCrashlyticsAPIKey = @"ARCrashlytics";
+const NSString *ARFabricKits = @"ARFabricKits";
 const NSString *ARMixpanelToken = @"ARMixpanel";
 const NSString *ARMixpanelHost = @"ARMixpanelHost";
 const NSString *ARFlurryAPIKey = @"ARFlurry";
