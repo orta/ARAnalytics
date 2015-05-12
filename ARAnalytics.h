@@ -51,6 +51,7 @@
 /// Setup methods for each individual analytics providers
 + (void)setupTestFlightWithAppToken:(NSString *)token;
 + (void)setupCrashlyticsWithAPIKey:(NSString *)key;
++ (void)setupFabricWithKits:(NSDictionary *)kits;
 + (void)setupMixpanelWithToken:(NSString *)token;
 + (void)setupMixpanelWithToken:(NSString *)token andHost:(NSString *)host;
 + (void)setupFlurryWithAPIKey:(NSString *)key;
@@ -152,6 +153,7 @@ extern const NSString *ARCountlyAppKey;
 extern const NSString *ARCountlyHost;
 extern const NSString *ARTestFlightAppToken;
 extern const NSString *ARCrashlyticsAPIKey;
+extern const NSString *ARFabricKits;
 extern const NSString *ARMixpanelToken;
 extern const NSString *ARMixpanelHost;
 extern const NSString *ARFlurryAPIKey;
