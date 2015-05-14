@@ -110,3 +110,7 @@
 #ifdef AR_SNOWPLOW_EXISTS
 #import "SnowplowProvider.h"
 #endif
+
+#ifdef AR_SENTRY_EXISTS
+#import "SentryProvider.h"
+#endif

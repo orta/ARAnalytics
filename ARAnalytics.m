@@ -161,6 +161,10 @@ static BOOL _ARLogShouldPrintStdout = YES;
     if (analyticsDictionary[ARSnowplowURL]) {
         [self setupSnowplowWithAddress:analyticsDictionary[ARSnowplowURL]];
     }
+    
+    if (analyticsDictionary[ARSentryID]) {
+        [self setupSentryWithID:analyticsDictionary[ARSentryID]];
+    }
 }
 
 + (void)setupProvider:(ARAnalyticalProvider*)provider
@@ -445,6 +449,13 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
++ (void)setupSentryWithID:(NSString *)identifier {
+#ifdef AR_SENTRY_EXISTS
+    SentryProvider *provider = [[SentryProvider alloc] initWithIdentifier:identifier];
+    [self setupProvider:provider];
+#endif
+}
+
 
 #pragma mark -
 #pragma mark User Setup
@@ -681,4 +692,4 @@ const NSString *ARAppsFlyerAppID = @"ARAppsFlyerAppID";
 const NSString *ARAppsFlyerDevKey = @"ARAppsFlyerDevKey";
 const NSString *ARBranchAPIKey = @"ARBranchAPIKey";
 const NSString *ARSnowplowURL = @"ARSnowplowURL";
-
+const NSString *ARSentryID = @"ARSentryID";

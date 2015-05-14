@@ -1,8 +1,14 @@
 # ARAnalytics
 
+
+## Version 3.2.0
+
+* Added support for Sentry ( @BohdanOrlov )
+
 ## Version 3.1.0
 
 * Added support for breadcrumb logging to the HockeyApp provider ( @alloy )
+* Added support for Fabric ( @BohdanOrlov )
 
 ## Version 3.0.1
 
