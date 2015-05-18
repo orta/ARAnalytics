@@ -526,7 +526,7 @@ static BOOL _ARLogShouldPrintStdout = YES;
 }
 
 #pragma mark -
-#pragma mark Monitor Navigation Controller
+#pragma mark Screen views
 
 + (void)pageView:(NSString *)pageTitle
 {
@@ -536,6 +536,18 @@ static BOOL _ARLogShouldPrintStdout = YES;
         [provider didShowNewPageView:pageTitle];
     }];
 }
+
++ (void)pageView:(NSString *)pageTitle withProperties:(NSDictionary *)properties
+{
+    if (!pageTitle) return;
+    
+    [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
+        [provider didShowNewPageView:pageTitle withProperties:properties];
+    }];
+}
+
+#pragma mark -
+#pragma mark Monitor Navigation Controller
 
 + (void)monitorNavigationViewController:(UINavigationController *)controller
 {

@@ -128,6 +128,20 @@ describe(@"ARAnalytics API", ^{
         });
 
     });
+
+    describe(@"Screen views", ^{
+        it(@"sends a screen view event", ^{
+            [ARAnalytics pageView:@"home"];
+            expect(provider.lastEventName).to.equal(@"Screen view");
+            expect(provider.lastEventProperties).to.equal(@{ @"screen":@"home" });
+        });
+
+        it(@"sends a screen view event with extra properties", ^{
+            [ARAnalytics pageView:@"home" withProperties:@{ @"alone":@YES }];
+            expect(provider.lastEventName).to.equal(@"Screen view");
+            expect(provider.lastEventProperties).to.equal(@{ @"screen":@"home", @"alone":@YES });
+        });
+    });
     
     describe(@"Errors", ^{
         it(@"provider reacts to error:", ^{
@@ -152,7 +166,7 @@ describe(@"ARAnalytics API", ^{
             NSString *key = @"straightener";
             [ARAnalytics pageView:key];
             
-            expect(provider.lastLookedAtPagetitle).to.equal(key);
+            expect(provider.lastEventProperties).to.equal(@{ @"screen":key });
         });
     });
     

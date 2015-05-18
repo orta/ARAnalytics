@@ -50,11 +50,6 @@
     _lastErrorMessage = message;
 }
 
-- (void)didShowNewPageView:(NSString *)pageTitle
-{
-    _lastLookedAtPagetitle = pageTitle;
-}
-
 - (void)monitorNavigationViewController:(UINavigationController *)controller
 {
     _lastMonitoredNavigationController = controller;
