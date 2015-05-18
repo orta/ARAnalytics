@@ -7,14 +7,15 @@ extern NSString * const ARAnalyticsTrackedScreens;
 
 extern NSString * const ARAnalyticsClass;
 extern NSString * const ARAnalyticsDetails;
+extern NSString * const ARAnalyticsProperties;
 extern NSString * const ARAnalyticsPageName;
 extern NSString * const ARAnalyticsPageNameKeyPath;
 extern NSString * const ARAnalyticsEventName;
 extern NSString * const ARAnalyticsSelectorName;
-extern NSString * const ARAnalyticsEventProperties;
+extern NSString * const ARAnalyticsEventProperties __attribute__((deprecated("Renamed to ARAnalyticsProperties")));
 extern NSString * const ARAnalyticsShouldFire;
 
-typedef NSDictionary*(^ARAnalyticsEventPropertiesBlock)(id instance, NSArray *arguments);
+typedef NSDictionary*(^ARAnalyticsPropertiesBlock)(id instance, NSArray *arguments);
 typedef BOOL(^ARAnalyticsEventShouldFireBlock)(id instance, NSArray *arguments);
 
 @interface ARAnalytics (DSL)

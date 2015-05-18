@@ -7,12 +7,13 @@ NSString * const ARAnalyticsTrackedScreens = @"trackedScreens";
 
 NSString * const ARAnalyticsClass = @"class";
 NSString * const ARAnalyticsDetails = @"details";
+NSString * const ARAnalyticsProperties = @"properties";
 NSString * const ARAnalyticsPageName = @"pageName";
 NSString * const ARAnalyticsPageNameKeyPath = @"keypath";
 NSString * const ARAnalyticsEventName = @"event";
 NSString * const ARAnalyticsSelectorName = @"selector";
 NSString * const ARAnalyticsEventProperties = @"properties";
-NSString * const ARAnalyticsShouldFire = @"shouldFire";;
+NSString * const ARAnalyticsShouldFire = @"shouldFire";
 
 static BOOL ar_shouldFireForInstance (NSDictionary *dictionary, id instance, RACTuple *context) {
     ARAnalyticsEventShouldFireBlock shouldFireBlock = dictionary[ARAnalyticsShouldFire];
@@ -65,6 +66,16 @@ static SEL ar_selectorForScreenAnalyticsDetails (NSDictionary *dictionary, Class
     }];
 }
 
+static NSDictionary *
+ARExtractProperties(id object, NSDictionary *analyticsEntry, RACTuple *parameters)
+{
+    ARAnalyticsPropertiesBlock propertiesBlock = analyticsEntry[ARAnalyticsProperties];
+    if (propertiesBlock) {
+        return propertiesBlock(object, parameters.allObjects);
+    }
+    return nil;
+}
+
 + (void)addEventAnalyticsHook:(NSDictionary *)eventDictionary {
     Class klass = eventDictionary[ARAnalyticsClass];
 
@@ -83,13 +94,7 @@ static SEL ar_selectorForScreenAnalyticsDetails (NSDictionary *dictionary, Class
                 BOOL shouldFire = ar_shouldFireForInstance(object, instance, parameters);
 
                 if (shouldFire) {
-                    NSDictionary *properties;
-                    ARAnalyticsEventPropertiesBlock propertiesBlock = object[ARAnalyticsEventProperties];
-                    if (propertiesBlock) {
-                        properties = propertiesBlock(instance, parameters.allObjects);
-                    }
-
-                    [ARAnalytics event:event withProperties:properties];
+                    [ARAnalytics event:event withProperties:ARExtractProperties(instance, object, parameters)];
                 }
             }];
         }];
@@ -128,7 +133,15 @@ static SEL ar_selectorForScreenAnalyticsDetails (NSDictionary *dictionary, Class
                         NSAssert(pageName, @"Value for Key on `%@` returned nil.", pageNameKeypath);
                     }
 
-                    [ARAnalytics pageView:pageName];
+                    // Because of backwards compatibility we can't currently expect
+                    // `-[ARAnalyticsProvider pageView:withProperties:]` to call existing
+                    // `-[ARAnalyticsProvider pageView:]` implementations, so call the right one.
+                    NSDictionary *properties = ARExtractProperties(instance, object, parameters);
+                    if (properties) {
+                        [ARAnalytics pageView:pageName withProperties:properties];
+                    } else {
+                        [ARAnalytics pageView:pageName];
+                    }
                 }
             }];
         }];

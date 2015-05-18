@@ -125,7 +125,7 @@ describe(@"events", ^{
             ARAnalyticsDetails: @[ @{
                 ARAnalyticsEventName: event,
                 ARAnalyticsSelectorName: ARAnalyticsSelector(methodToBeExecutedWithProperties),
-                ARAnalyticsEventProperties: ^NSDictionary *(TestObject *object, NSArray *arguments) {
+                ARAnalyticsProperties: ^NSDictionary *(TestObject *object, NSArray *arguments) {
                     return @{ propertyKey : @"Oh yeah" };
                 }
             }]
@@ -185,7 +185,7 @@ describe(@"events", ^{
 });
 
 describe(@"tracking screens", ^{
-    it(@"tracks page views", ^{
+    it(@"tracks page views without properties", ^{
         id classMock = [OCMockObject mockForClass:[ARAnalytics class]];
         [[classMock expect] pageView:@"page"];
         
@@ -194,6 +194,27 @@ describe(@"tracking screens", ^{
             ARAnalyticsDetails: @[ @{
                 ARAnalyticsPageName: @"page",
                 ARAnalyticsSelectorName: ARAnalyticsSelector(appearedMethod),
+            }]
+        }];
+        
+        [[[TestObject alloc] init] appearedMethod];
+        
+        [classMock verify];
+        [classMock stopMocking];
+    });
+
+    it(@"tracks page views with properties", ^{
+        id classMock = [OCMockObject mockForClass:[ARAnalytics class]];
+        [[classMock expect] pageView:@"page" withProperties:@{ @"airplanes": @"Oh yeah" }];
+        
+        [ARAnalytics addScreenMonitoringAnalyticsHook: @{
+            ARAnalyticsClass: TestObject.class,
+            ARAnalyticsDetails: @[ @{
+                ARAnalyticsPageName: @"page",
+                ARAnalyticsSelectorName: ARAnalyticsSelector(appearedMethod),
+                ARAnalyticsProperties: ^NSDictionary *(TestObject *object, NSArray *arguments) {
+                    return @{ @"airplanes": @"Oh yeah" };
+                }
             }]
         }];
         
