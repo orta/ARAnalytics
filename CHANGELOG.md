@@ -1,5 +1,8 @@
 # ARAnalytics
 
+## Version 3.3.0
+
+* Added support for extra properties on screen views ( @alloy )
 
 ## Version 3.2.0
 
