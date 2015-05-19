@@ -16,6 +16,8 @@ extern NSString * const ARAnalyticsEventProperties __attribute__((deprecated("Re
 extern NSString * const ARAnalyticsShouldFire;
 
 typedef NSDictionary*(^ARAnalyticsPropertiesBlock)(id instance, NSArray *arguments);
+typedef ARAnalyticsPropertiesBlock ARAnalyticsEventPropertiesBlock __attribute__((deprecated("Renamed to ARAnalyticsPropertiesBlock")));
+
 typedef BOOL(^ARAnalyticsEventShouldFireBlock)(id instance, NSArray *arguments);
 
 @interface ARAnalytics (DSL)
