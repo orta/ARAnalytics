@@ -113,6 +113,12 @@
 /// in addition to the event properties.
 + (void)addEventSuperProperties:(NSDictionary *)superProperties;
 
+/// Removes a super property from the super properties.
++ (void)removeEventSuperProperty:(NSString *)key;
+
+/// Removes super properties from the super properties.
++ (void)removeEventSuperProperties:(NSArray *)keys;
+
 /// Submit errors to providers
 + (void)error:(NSError *)error;
 
