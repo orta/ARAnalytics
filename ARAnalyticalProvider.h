@@ -28,6 +28,9 @@
 /// Pass a specific event for showing a page
 - (void)didShowNewPageView:(NSString *)pageTitle;
 
+/// Pass a specific event for showing a page with additional properties
+- (void)didShowNewPageView:(NSString *)pageTitle withProperties:(NSDictionary *)properties;
+
 /// Submit a string to the provider's logging system
 - (void)remoteLog:(NSString *)parsedString;
 

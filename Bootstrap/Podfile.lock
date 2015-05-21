@@ -1,25 +1,27 @@
 PODS:
-  - ARAnalytics/CoreIOS (3.0.0)
-  - ARAnalytics/DSL (3.0.0):
+  - ARAnalytics/CoreIOS (3.2.0)
+  - ARAnalytics/DSL (3.2.0):
     - ReactiveCocoa (~> 2.0)
     - RSSwizzle (~> 0.1.0)
-  - ARAnalytics/Mixpanel (3.0.0):
+  - ARAnalytics/Mixpanel (3.2.0):
     - ARAnalytics/CoreIOS
     - Mixpanel
-  - Expecta (0.3.2)
-  - Mixpanel (2.7.2):
-    - Mixpanel/MPCategoryHelpers (= 2.7.2)
-  - Mixpanel/MPCategoryHelpers (2.7.2)
+  - Expecta (0.4.2)
+  - Mixpanel (2.8.1):
+    - Mixpanel/Mixpanel (= 2.8.1)
+  - Mixpanel/Mixpanel (2.8.1):
+    - Mixpanel/MPCategoryHelpers
+  - Mixpanel/MPCategoryHelpers (2.8.1)
   - OCMock (2.2.4)
-  - ReactiveCocoa (2.3):
-    - ReactiveCocoa/UI (= 2.3)
-  - ReactiveCocoa/Core (2.3):
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.3)
-  - ReactiveCocoa/UI (2.3):
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
   - RSSwizzle (0.1.0)
-  - Specta (0.4.0)
+  - Specta (0.5.0)
 
 DEPENDENCIES:
   - ARAnalytics/DSL (from `../`)
@@ -30,15 +32,15 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   ARAnalytics:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
-  ARAnalytics: c331321fc6b034ad6249cd43e226d0b262436ce5
-  Expecta: 8c507baf13211207b1e9d0a741480600e6b4ed15
-  Mixpanel: e9bcb16eb0e2a98fc330ceeb0d8b7f4aec4182ab
+  ARAnalytics: c5dc6244764f1b436c8ac446044a6f19b9095494
+  Expecta: 78b4e8b0c8291fa4524d7f74016b6065c2e391ec
+  Mixpanel: 93c4825025e6380ced273ed7178496282e385077
   OCMock: a6a7dc0e3997fb9f35d99f72528698ebf60d64f2
-  ReactiveCocoa: fbe689fe218063b7bbed41032912c9ca4fdbe172
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   RSSwizzle: d561958f595028bfcef98c7d55c318b3878a61c6
-  Specta: a353759f073ffcc0a365b782fe4aaeac064c03c6
+  Specta: eb90708ed77569bbda089f8ead10bb99b8e9489e
 
-COCOAPODS: 0.37.0
+COCOAPODS: 0.37.1

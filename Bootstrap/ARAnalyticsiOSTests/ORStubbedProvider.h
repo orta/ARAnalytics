@@ -26,7 +26,6 @@
 @property (readonly, nonatomic, copy) NSString *lastErrorMessage;
 
 @property (readonly, nonatomic, strong) UINavigationController *lastMonitoredNavigationController;
-@property (readonly, nonatomic, copy) NSString *lastLookedAtPagetitle;
 
 @property (readonly, nonatomic, copy) NSString *lastRemoteLog;
 

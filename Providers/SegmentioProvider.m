@@ -29,7 +29,10 @@
 
 - (void)didShowNewPageView:(NSString *)pageTitle {
     [[SEGAnalytics sharedAnalytics] screen:pageTitle];
+}
 
+- (void)didShowNewPageView:(NSString *)pageTitle withProperties:(NSDictionary *)properties {
+    [[SEGAnalytics sharedAnalytics] screen:pageTitle properties:properties];
 }
 
 #endif
