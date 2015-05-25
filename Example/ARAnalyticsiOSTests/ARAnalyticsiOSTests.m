@@ -127,6 +127,23 @@ describe(@"ARAnalytics API", ^{
             expect(provider.lastEventProperties.allKeys.count).to.equal(2);
         });
 
+        it(@"removes super properties", ^{
+            NSString *key = @"brush";
+            NSDictionary *properties = @{ @"brush" : @"green" };
+            NSDictionary *supers = @{ @"paint" : @"blue" };
+
+            [ARAnalytics addEventSuperProperties:supers];
+            [ARAnalytics removeEventSuperProperty:@"paint"];
+
+            [ARAnalytics event:key withProperties:properties];
+
+            expect(provider.lastEventProperties.allKeys.count).to.equal(1);
+
+            [ARAnalytics addEventSuperProperties:supers];
+            [ARAnalytics removeEventSuperProperties:@[@"paint"]];
+            expect(provider.lastEventProperties.allKeys.count).to.equal(1);
+        });
+
     });
 
     describe(@"Screen views", ^{
