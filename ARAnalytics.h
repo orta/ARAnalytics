@@ -51,7 +51,7 @@
 /// Setup methods for each individual analytics providers
 + (void)setupTestFlightWithAppToken:(NSString *)token;
 + (void)setupCrashlyticsWithAPIKey:(NSString *)key;
-+ (void)setupFabricWithKits:(NSDictionary *)kits;
++ (void)setupFabricWithKits:(NSArray *)kits;
 + (void)setupMixpanelWithToken:(NSString *)token;
 + (void)setupMixpanelWithToken:(NSString *)token andHost:(NSString *)host;
 + (void)setupFlurryWithAPIKey:(NSString *)key;

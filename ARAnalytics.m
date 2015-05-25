@@ -218,7 +218,7 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
-+ (void)setupFabricWithKits:(NSDictionary *)kits
++ (void)setupFabricWithKits:(NSArray *)kits
 {
 #ifdef AR_FABRIC_EXISTS
     FabricProvider *provider = [[FabricProvider alloc] initWithKits:kits];
