@@ -510,6 +510,16 @@ static BOOL _ARLogShouldPrintStdout = YES;
     [_sharedAnalytics.superProperties addEntriesFromDictionary:superProperties];
 }
 
++ (void)removeEventSuperProperty:(NSString *)key;
+{
+    [_sharedAnalytics.superProperties removeObjectForKey:key];
+}
+
++ (void)removeEventSuperProperties:(NSArray *)keys;
+{
+    [_sharedAnalytics.superProperties removeObjectsForKeys:keys];
+}
+
 #pragma mark -
 #pragma mark Errors
 
