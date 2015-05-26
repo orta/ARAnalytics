@@ -51,7 +51,7 @@
 /// Setup methods for each individual analytics providers
 + (void)setupTestFlightWithAppToken:(NSString *)token;
 + (void)setupCrashlyticsWithAPIKey:(NSString *)key;
-+ (void)setupFabricWithKits:(NSDictionary *)kits;
++ (void)setupFabricWithKits:(NSArray *)kits;
 + (void)setupMixpanelWithToken:(NSString *)token;
 + (void)setupMixpanelWithToken:(NSString *)token andHost:(NSString *)host;
 + (void)setupFlurryWithAPIKey:(NSString *)key;
@@ -112,6 +112,12 @@
 /// Adds super properties, these are properties that are sent along with
 /// in addition to the event properties.
 + (void)addEventSuperProperties:(NSDictionary *)superProperties;
+
+/// Removes a super property from the super properties.
++ (void)removeEventSuperProperty:(NSString *)key;
+
+/// Removes super properties from the super properties.
++ (void)removeEventSuperProperties:(NSArray *)keys;
 
 /// Submit errors to providers
 + (void)error:(NSError *)error;

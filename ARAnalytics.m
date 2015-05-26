@@ -218,7 +218,7 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
-+ (void)setupFabricWithKits:(NSDictionary *)kits
++ (void)setupFabricWithKits:(NSArray *)kits
 {
 #ifdef AR_FABRIC_EXISTS
     FabricProvider *provider = [[FabricProvider alloc] initWithKits:kits];
@@ -508,6 +508,16 @@ static BOOL _ARLogShouldPrintStdout = YES;
 + (void)addEventSuperProperties:(NSDictionary *)superProperties
 {
     [_sharedAnalytics.superProperties addEntriesFromDictionary:superProperties];
+}
+
++ (void)removeEventSuperProperty:(NSString *)key;
+{
+    [_sharedAnalytics.superProperties removeObjectForKey:key];
+}
+
++ (void)removeEventSuperProperties:(NSArray *)keys;
+{
+    [_sharedAnalytics.superProperties removeObjectsForKeys:keys];
 }
 
 #pragma mark -

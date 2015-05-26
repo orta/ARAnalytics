@@ -3,6 +3,8 @@
 ## Version 3.3.0
 
 * Added support for extra properties on screen views ( @alloy )
+* Corrected interface of `+[ARAnalytics setupFabricWithKits:]`. (from NSDictionary to NSArray) ( @sodastsai )
+* Added the ability to remove super poperties ( @mishagray )
 
 ## Version 3.2.0
 
