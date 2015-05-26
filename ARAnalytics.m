@@ -551,7 +551,7 @@ static BOOL _ARLogShouldPrintStdout = YES;
     [fullProperties addEntriesFromDictionary:_sharedAnalytics.superProperties];
 
     [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
-        [provider didShowNewPageView:pageTitle withProperties:properties];
+        [provider didShowNewPageView:pageTitle withProperties:fullProperties];
     }];
 }
 

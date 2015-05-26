@@ -158,6 +158,23 @@ describe(@"ARAnalytics API", ^{
             expect(provider.lastEventName).to.equal(@"Screen view");
             expect(provider.lastEventProperties).to.equal(@{ @"screen":@"home", @"alone":@YES });
         });
+
+        describe(@"super properties", ^{
+            beforeEach(^{
+                NSDictionary *supers = @{ @"paint": @"blue" };
+                [ARAnalytics addEventSuperProperties:supers];
+            });
+
+            afterEach(^{
+                [ARAnalytics removeEventSuperProperties:@[@"paint"]];
+            });
+
+            it(@"merges with super properties", ^{
+                [ARAnalytics pageView:@"home"];
+                expect(provider.lastEventName).to.equal(@"Screen view");
+                expect(provider.lastEventProperties).to.equal(@{ @"screen": @"home", @"paint": @"blue" });
+            });
+        });
     });
     
     describe(@"Errors", ^{

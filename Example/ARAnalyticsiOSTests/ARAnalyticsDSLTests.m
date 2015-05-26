@@ -1,5 +1,6 @@
 #import <OCMock/OCMock.h>
 
+#import "ORStubbedProvider.h"
 #import <ARAnalytics/ARAnalytics.h>
 #import <ARAnalytics/ARDSL.h>
 
@@ -185,10 +186,18 @@ describe(@"events", ^{
 });
 
 describe(@"tracking screens", ^{
+    __block ORStubbedProvider *provider = nil;
+
+    beforeEach(^{
+        provider = [[ORStubbedProvider alloc] init];
+        [ARAnalytics setupProvider:provider];
+    });
+
+    afterEach(^{
+        [ARAnalytics removeProvider:provider];
+    });
+
     it(@"tracks page views without properties", ^{
-        id classMock = [OCMockObject mockForClass:[ARAnalytics class]];
-        [[classMock expect] pageView:@"page"];
-        
         [ARAnalytics addScreenMonitoringAnalyticsHook: @{
             ARAnalyticsClass: TestObject.class,
             ARAnalyticsDetails: @[ @{
@@ -198,15 +207,12 @@ describe(@"tracking screens", ^{
         }];
         
         [[[TestObject alloc] init] appearedMethod];
-        
-        [classMock verify];
-        [classMock stopMocking];
+
+        expect(provider.lastEventName).to.equal(@"Screen view");
+        expect(provider.lastEventProperties).to.equal(@{ @"screen": @"page"});
     });
 
     it(@"tracks page views with properties", ^{
-        id classMock = [OCMockObject mockForClass:[ARAnalytics class]];
-        [[classMock expect] pageView:@"page" withProperties:@{ @"airplanes": @"Oh yeah" }];
-        
         [ARAnalytics addScreenMonitoringAnalyticsHook: @{
             ARAnalyticsClass: TestObject.class,
             ARAnalyticsDetails: @[ @{
@@ -219,9 +225,9 @@ describe(@"tracking screens", ^{
         }];
         
         [[[TestObject alloc] init] appearedMethod];
-        
-        [classMock verify];
-        [classMock stopMocking];
+
+        expect(provider.lastEventName).to.equal(@"Screen view");
+        expect(provider.lastEventProperties).to.equal(@{ @"airplanes": @"Oh yeah", @"screen": @"page"});
     });
 });
 
