@@ -114,3 +114,7 @@
 #ifdef AR_SENTRY_EXISTS
 #import "SentryProvider.h"
 #endif
+
+#if AR_INTERCOM_EXISTS
+#import "IntercomProvider.h"
+#endif

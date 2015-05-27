@@ -3,7 +3,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 target :ARAnalyticsBootstrapiOS do
   platform :ios, '7.0'
   
-  pod 'ARAnalytics/Mixpanel', :path => "../"
+  pod 'ARAnalytics/Intercom', :path => "../"
   pod 'ARAnalytics/DSL', :path => "../"
 end
 

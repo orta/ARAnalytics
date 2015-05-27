@@ -165,6 +165,11 @@ static BOOL _ARLogShouldPrintStdout = YES;
     if (analyticsDictionary[ARSentryID]) {
         [self setupSentryWithID:analyticsDictionary[ARSentryID]];
     }
+
+    if (analyticsDictionary[ARIntercomAppID] && analyticsDictionary[ARIntercomAPIKey]) {
+        [self setupIntercomWithAppID:analyticsDictionary[ARIntercomAppID] apiKey:analyticsDictionary[ARIntercomAPIKey]];
+    }
+
 }
 
 + (void)setupProvider:(ARAnalyticalProvider*)provider
@@ -449,9 +454,18 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
-+ (void)setupSentryWithID:(NSString *)identifier {
++ (void)setupSentryWithID:(NSString *)identifier
+{
 #ifdef AR_SENTRY_EXISTS
     SentryProvider *provider = [[SentryProvider alloc] initWithIdentifier:identifier];
+    [self setupProvider:provider];
+#endif
+}
+
++ (void)setupIntercomWithAppID:(NSString *)identifier apiKey:(NSString *)apiKey
+{
+#ifdef AR_INTERCOM_EXISTS
+    IntercomProvider *provider = [[IntercomProvider alloc] initWithWithAppID:identifier apiKey:apiKey];
     [self setupProvider:provider];
 #endif
 }
@@ -715,3 +729,5 @@ const NSString *ARAppsFlyerDevKey = @"ARAppsFlyerDevKey";
 const NSString *ARBranchAPIKey = @"ARBranchAPIKey";
 const NSString *ARSnowplowURL = @"ARSnowplowURL";
 const NSString *ARSentryID = @"ARSentryID";
+const NSString *ARIntercomAppID = @"ARIntercomAppID";
+const NSString *ARIntercomAPIKey = @"ARIntercomAPIKey";

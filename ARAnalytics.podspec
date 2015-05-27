@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         =  'ARAnalytics'
-  s.version      =  '3.3.0'
+  s.version      =  '3.4.0'
   s.license      =  {:type => 'MIT', :file => 'LICENSE' }
   s.homepage     =  'https://github.com/orta/ARAnalytics'
   s.authors      =  { 'orta' => 'orta.therox@gmail.com', 'Daniel Haight' => "confidence.designed@gmail.com" }
@@ -33,6 +33,7 @@ Pod::Spec.new do |s|
   swrve          = { :spec_name => "Swrve",               :dependency => "SwrveSDK" }
   yandex         = { :spec_name => "YandexMobileMetrica", :dependency => "YandexMobileMetrica" }
   adjust         = { :spec_name => "Adjust",              :dependency => "Adjust" }
+  intercom       = { :spec_name => "Intercom",            :dependency => "Intercom" }
   librato        = { :spec_name => "Librato" }
   crashlytics    = { :spec_name => "Crashlytics" }
   fabric         = { :spec_name => "Fabric" }
@@ -45,7 +46,7 @@ Pod::Spec.new do |s|
 # countly_mac     = { :spec_name => "CountlyOSX",      :dependency => "Countly",                :osx => true,  :provider => "Countly" }
   mixpanel_mac    = { :spec_name => "MixpanelOSX",     :dependency => "Mixpanel-OSX-Community", :osx => true,  :provider => "Mixpanel"}
 
-  $all_analytics = [mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, fabric, bugsnag, countly, helpshift,kissmetrics_mac, mixpanel_mac, tapstream, newRelic, amplitude, hockeyApp, parseAnalytics, heap, chartbeat, umeng, librato, segmentio, swrve, yandex, adjust, appsflyer, branch, snowplow, sentry]
+  $all_analytics = [mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, fabric, bugsnag, countly, helpshift,kissmetrics_mac, mixpanel_mac, tapstream, newRelic, amplitude, hockeyApp, parseAnalytics, heap, chartbeat, umeng, librato, segmentio, swrve, yandex, adjust, appsflyer, branch, snowplow, sentry, intercom]
 
   # To make the pod spec API cleaner, subspecs are "iOS/KISSmetrics"
 

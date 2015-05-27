@@ -79,6 +79,7 @@
 + (void)setupBranchWithAPIKey:(NSString *)key;
 + (void)setupSnowplowWithAddress:(NSString *)address;
 + (void)setupSentryWithID:(NSString *)identifier;
++ (void)setupIntercomWithAppID:(NSString *)identifier apiKey:(NSString *)apiKey;
 
 /// Add a provider manually
 + (void)setupProvider:(ARAnalyticalProvider *)provider;
@@ -199,3 +200,5 @@ extern const NSString *ARAppsFlyerDevKey;
 extern const NSString *ARBranchAPIKey;
 extern const NSString *ARSnowplowURL;
 extern const NSString *ARSentryID;
+extern const NSString *ARIntercomAppID;
+extern const NSString *ARIntercomAPIKey;
