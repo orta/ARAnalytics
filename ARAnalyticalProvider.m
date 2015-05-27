@@ -72,7 +72,7 @@ static NSString *const ARTimingEventLengthKey = @"length";
         merge[@"screen"] = pageTitle;
         props = [merge copy];
     } else {
-        props = @{ @"screen":pageTitle };
+        props = @{ @"screen": pageTitle };
     }
     [self event:@"Screen view" withProperties:props];
 }
