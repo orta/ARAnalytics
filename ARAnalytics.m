@@ -540,19 +540,18 @@ static BOOL _ARLogShouldPrintStdout = YES;
 
 + (void)pageView:(NSString *)pageTitle
 {
-    if (!pageTitle) return;
-    
-    [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
-        [provider didShowNewPageView:pageTitle];
-    }];
+    [self pageView:pageTitle withProperties:nil];
 }
 
 + (void)pageView:(NSString *)pageTitle withProperties:(NSDictionary *)properties
 {
     if (!pageTitle) return;
-    
+
+    NSMutableDictionary *fullProperties = [properties ?: @{} mutableCopy];
+    [fullProperties addEntriesFromDictionary:_sharedAnalytics.superProperties];
+
     [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
-        [provider didShowNewPageView:pageTitle withProperties:properties];
+        [provider didShowNewPageView:pageTitle withProperties:fullProperties];
     }];
 }
 
