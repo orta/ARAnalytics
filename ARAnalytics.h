@@ -92,7 +92,7 @@
 
 /// Get the instance of provider class which is setup ready.
 /// Developer must setup this provider ready via above methods and the argument must be a subclass of
-/// ARAnalyticalProvider or this methid returns nil.
+/// ARAnalyticalProvider or this method returns nil.
 + (ARAnalyticalProvider *)providerInstanceOfClass:(Class)ProviderClass;
 
 /// Register a user and an associated email address, it is fine to send nils for either.
