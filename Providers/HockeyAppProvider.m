@@ -10,7 +10,10 @@ IsHockeySDKCompatibleForLogging(void)
     static dispatch_once_t onceToken = 0;
     static BOOL compatible = NO;
     dispatch_once(&onceToken, ^{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
         compatible = [[BITCrashDetails class] instancesRespondToSelector:@selector(appProcessIdentifier)];
+#pragma clang diagnostic pop
     });
     return compatible;
 }
@@ -78,7 +81,6 @@ IsHockeySDKCompatibleForLogging(void)
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
-
     if ([[UIDevice currentDevice] respondsToSelector:@selector(uniqueIdentifier)]){
         return [[UIDevice currentDevice] performSelector:@selector(uniqueIdentifier)];
     }
@@ -104,7 +106,11 @@ IsHockeySDKCompatibleForLogging(void)
     }
 
     BITCrashDetails *crashDetails = crashManager.lastSessionCrashDetails;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
     NSUInteger processID = ((NSUInteger (*)(id, SEL))objc_msgSend)(crashDetails, @selector(appProcessIdentifier));
+#pragma clang diagnostic pop
+
     if (processID == 0) {
         return @"";
     }
