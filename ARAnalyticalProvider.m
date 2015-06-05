@@ -56,7 +56,9 @@ static NSString *const ARTimingEventLengthKey = @"length";
     }
     
     NSMutableDictionary *mutableProperties = [NSMutableDictionary dictionaryWithDictionary:properties];
-    mutableProperties[ARTimingEventLengthKey] = interval;
+    if (interval) {
+        mutableProperties[ARTimingEventLengthKey] = interval;
+    }
     
     [self event:event withProperties:mutableProperties];
 }
