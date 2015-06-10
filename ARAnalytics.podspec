@@ -44,7 +44,7 @@ Pod::Spec.new do |s|
 
   kissmetrics_mac = { :spec_name => "KISSmetricsOSX",  :dependency => "KISSmetrics",            :osx => true,  :provider => "KISSmetrics" }
 # countly_mac     = { :spec_name => "CountlyOSX",      :dependency => "Countly",                :osx => true,  :provider => "Countly" }
-  mixpanel_mac    = { :spec_name => "MixpanelOSX",     :dependency => '"Mixpanel-OSX-Community", :git => "https://github.com/levigroker/mixpanel-osx-unofficial.git"', :osx => true,  :provider => "Mixpanel"}
+  mixpanel_mac    = { :spec_name => "MixpanelOSX",     :dependency => "GRK-Mixpanel-OSX", :osx => true,  :provider => "Mixpanel"}
 
   $all_analytics = [mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, fabric, bugsnag, countly, helpshift,kissmetrics_mac, mixpanel_mac, tapstream, newRelic, amplitude, hockeyApp, parseAnalytics, heap, chartbeat, umeng, librato, segmentio, swrve, yandex, adjust, appsflyer, branch, snowplow, sentry, intercom]
 
