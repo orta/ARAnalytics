@@ -80,7 +80,7 @@
 + (void)setupSnowplowWithAddress:(NSString *)address;
 + (void)setupSentryWithID:(NSString *)identifier;
 + (void)setupIntercomWithAppID:(NSString *)identifier apiKey:(NSString *)apiKey;
-+ (void)setupKeenWithProjectId:(NSString *)projectId andWriteKey:(NSString *)writeKey andReadKey:(NSString *)readKey;
++ (void)setupKeenWithProjectID:(NSString *)projectId andWriteKey:(NSString *)writeKey andReadKey:(NSString *)readKey;
 
 /// Add a provider manually
 + (void)setupProvider:(ARAnalyticalProvider *)provider;

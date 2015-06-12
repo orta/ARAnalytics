@@ -2,7 +2,7 @@
 
 @interface KeenProvider : ARAnalyticalProvider
 
-- (instancetype)initWithProjectId:(NSString *)projectId andWriteKey:(NSString *)writeKey andReadKey:(NSString *)readKey;
+- (instancetype)initWithProjectID:(NSString *)projectID andWriteKey:(NSString *)writeKey andReadKey:(NSString *)readKey;
 
 // ARAnalyticalProvider methods to implement in the future:
 //- (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email;

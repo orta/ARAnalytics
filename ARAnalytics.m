@@ -137,7 +137,7 @@ static BOOL _ARLogShouldPrintStdout = YES;
     }
 
     if (analyticsDictionary[ARKeenProjectID] && analyticsDictionary[ARKeenWriteKey] && analyticsDictionary[ARKeenReadKey]) {
-        [self setupKeenWithProjectId:analyticsDictionary[ARKeenProjectID] andWriteKey:analyticsDictionary[ARKeenWriteKey] andReadKey:analyticsDictionary[ARKeenReadKey]];
+        [self setupKeenWithProjectID:analyticsDictionary[ARKeenProjectID] andWriteKey:analyticsDictionary[ARKeenWriteKey] andReadKey:analyticsDictionary[ARKeenReadKey]];
     }
 
     // Crashlytics / Crittercism should stay at the bottom of this,
@@ -474,10 +474,10 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
-+ (void)setupKeenWithProjectId:(NSString *)projectId andWriteKey:(NSString *)writeKey andReadKey:(NSString *)readKey
++ (void)setupKeenWithProjectID:(NSString *)projectId andWriteKey:(NSString *)writeKey andReadKey:(NSString *)readKey
 {
 #ifdef AR_KEEN_EXISTS
-    KeenProvider *provider = [[KeenProvider alloc] initWithProjectId:projectId andWriteKey:writeKey andReadKey:readKey];
+    KeenProvider *provider = [[KeenProvider alloc] initWithProjectID:projectId andWriteKey:writeKey andReadKey:readKey];
     [self setupProvider:provider];
 #endif
 }
