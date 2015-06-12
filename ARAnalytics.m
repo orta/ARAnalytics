@@ -136,6 +136,10 @@ static BOOL _ARLogShouldPrintStdout = YES;
         [self setupAppsFlyerWithAppID:analyticsDictionary[ARAppsFlyerAppID] devKey:analyticsDictionary[ARAppsFlyerDevKey]];
     }
 
+    if (analyticsDictionary[ARKeenProjectID] && analyticsDictionary[ARKeenWriteKey] && analyticsDictionary[ARKeenReadKey]) {
+        [self setupKeenWithProjectId:analyticsDictionary[ARKeenProjectID] andWriteKey:analyticsDictionary[ARKeenWriteKey] andReadKey:analyticsDictionary[ARKeenReadKey]];
+    }
+
     // Crashlytics / Crittercism should stay at the bottom of this,
     // as they both need to register exceptions, and you'd only use one.
 
@@ -470,6 +474,13 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
++ (void)setupKeenWithProjectId:(NSString *)projectId andWriteKey:(NSString *)writeKey andReadKey:(NSString *)readKey
+{
+#ifdef AR_KEEN_EXISTS
+    KeenProvider *provider = [[KeenProvider alloc] initWithProjectId:projectId andWriteKey:writeKey andReadKey:readKey];
+    [self setupProvider:provider];
+#endif
+}
 
 #pragma mark -
 #pragma mark User Setup
@@ -730,3 +741,6 @@ const NSString *ARSnowplowURL = @"ARSnowplowURL";
 const NSString *ARSentryID = @"ARSentryID";
 const NSString *ARIntercomAppID = @"ARIntercomAppID";
 const NSString *ARIntercomAPIKey = @"ARIntercomAPIKey";
+const NSString *ARKeenProjectID = @"ARKeenProjectID";
+const NSString *ARKeenWriteKey = @"ARKeenWriteKey";
+const NSString *ARKeenReadKey = @"ARKeenReadKey";
