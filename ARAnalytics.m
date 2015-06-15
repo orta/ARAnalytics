@@ -136,24 +136,6 @@ static BOOL _ARLogShouldPrintStdout = YES;
         [self setupAppsFlyerWithAppID:analyticsDictionary[ARAppsFlyerAppID] devKey:analyticsDictionary[ARAppsFlyerDevKey]];
     }
 
-    if (analyticsDictionary[ARKeenProjectID] && analyticsDictionary[ARKeenWriteKey] && analyticsDictionary[ARKeenReadKey]) {
-        [self setupKeenWithProjectID:analyticsDictionary[ARKeenProjectID] andWriteKey:analyticsDictionary[ARKeenWriteKey] andReadKey:analyticsDictionary[ARKeenReadKey]];
-    }
-
-    // Crashlytics / Crittercism should stay at the bottom of this,
-    // as they both need to register exceptions, and you'd only use one.
-
-    if (analyticsDictionary[ARCrashlyticsAPIKey]) {
-        [self setupCrashlyticsWithAPIKey:analyticsDictionary[ARCrashlyticsAPIKey]];
-    }
-    if (analyticsDictionary[ARFabricKits]) {
-        [self setupFabricWithKits:analyticsDictionary[ARFabricKits]];
-    }
-
-    if (analyticsDictionary[ARCrittercismAppID]) {
-        [self setupCrittercismWithAppID:analyticsDictionary[ARCrittercismAppID]];
-    }
-
     if (analyticsDictionary[ARYandexMobileMetricaAPIKey]) {
         [self setupYandexMobileMetricaWithAPIKey:analyticsDictionary[ARYandexMobileMetricaAPIKey]];
     }
@@ -174,6 +156,27 @@ static BOOL _ARLogShouldPrintStdout = YES;
         [self setupIntercomWithAppID:analyticsDictionary[ARIntercomAppID] apiKey:analyticsDictionary[ARIntercomAPIKey]];
     }
 
+    if (analyticsDictionary[ARKeenProjectID] && analyticsDictionary[ARKeenWriteKey] && analyticsDictionary[ARKeenReadKey]) {
+        [self setupKeenWithProjectID:analyticsDictionary[ARKeenProjectID] andWriteKey:analyticsDictionary[ARKeenWriteKey] andReadKey:analyticsDictionary[ARKeenReadKey]];
+    }
+
+    // Add future integrations here:
+
+
+
+    // Crashlytics / Crittercism should stay at the bottom of this method,
+    // as they both need to register exceptions, and you'd only use one.
+
+    if (analyticsDictionary[ARCrashlyticsAPIKey]) {
+        [self setupCrashlyticsWithAPIKey:analyticsDictionary[ARCrashlyticsAPIKey]];
+    }
+    if (analyticsDictionary[ARFabricKits]) {
+        [self setupFabricWithKits:analyticsDictionary[ARFabricKits]];
+    }
+
+    if (analyticsDictionary[ARCrittercismAppID]) {
+        [self setupCrittercismWithAppID:analyticsDictionary[ARCrittercismAppID]];
+    }
 }
 
 + (void)setupProvider:(ARAnalyticalProvider*)provider
