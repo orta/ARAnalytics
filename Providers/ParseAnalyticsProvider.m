@@ -1,5 +1,5 @@
 #import "ParseAnalyticsProvider.h"
-#import "Parse.h"
+#import <Parse/Parse.h>
 
 @implementation ParseAnalyticsProvider
 
