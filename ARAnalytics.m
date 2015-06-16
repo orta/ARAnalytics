@@ -156,7 +156,12 @@ static BOOL _ARLogShouldPrintStdout = YES;
         [self setupIntercomWithAppID:analyticsDictionary[ARIntercomAppID] apiKey:analyticsDictionary[ARIntercomAPIKey]];
     }
 
+    if (analyticsDictionary[ARKeenProjectID] && analyticsDictionary[ARKeenWriteKey] && analyticsDictionary[ARKeenReadKey]) {
+        [self setupKeenWithProjectID:analyticsDictionary[ARKeenProjectID] andWriteKey:analyticsDictionary[ARKeenWriteKey] andReadKey:analyticsDictionary[ARKeenReadKey]];
+    }
+
     // Add future integrations here:
+
 
 
     // Crashlytics / Crittercism should stay at the bottom of this method,
@@ -472,6 +477,13 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
++ (void)setupKeenWithProjectID:(NSString *)projectId andWriteKey:(NSString *)writeKey andReadKey:(NSString *)readKey
+{
+#ifdef AR_KEEN_EXISTS
+    KeenProvider *provider = [[KeenProvider alloc] initWithProjectID:projectId andWriteKey:writeKey andReadKey:readKey];
+    [self setupProvider:provider];
+#endif
+}
 
 #pragma mark -
 #pragma mark User Setup
@@ -732,3 +744,6 @@ const NSString *ARSnowplowURL = @"ARSnowplowURL";
 const NSString *ARSentryID = @"ARSentryID";
 const NSString *ARIntercomAppID = @"ARIntercomAppID";
 const NSString *ARIntercomAPIKey = @"ARIntercomAPIKey";
+const NSString *ARKeenProjectID = @"ARKeenProjectID";
+const NSString *ARKeenWriteKey = @"ARKeenWriteKey";
+const NSString *ARKeenReadKey = @"ARKeenReadKey";

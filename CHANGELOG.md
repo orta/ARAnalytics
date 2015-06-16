@@ -1,5 +1,9 @@
 # ARAnalytics
 
+## Version 3.5.0
+
+* Added support for Keen.io ( @cbowns )
+
 ## Version 3.4.0
 
 * Added support for Intercom ( @orta )

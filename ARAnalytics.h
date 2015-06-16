@@ -80,6 +80,7 @@
 + (void)setupSnowplowWithAddress:(NSString *)address;
 + (void)setupSentryWithID:(NSString *)identifier;
 + (void)setupIntercomWithAppID:(NSString *)identifier apiKey:(NSString *)apiKey;
++ (void)setupKeenWithProjectID:(NSString *)projectId andWriteKey:(NSString *)writeKey andReadKey:(NSString *)readKey;
 
 /// Add a provider manually
 + (void)setupProvider:(ARAnalyticalProvider *)provider;
@@ -202,3 +203,6 @@ extern const NSString *ARSnowplowURL;
 extern const NSString *ARSentryID;
 extern const NSString *ARIntercomAppID;
 extern const NSString *ARIntercomAPIKey;
+extern const NSString *ARKeenProjectID;
+extern const NSString *ARKeenWriteKey;
+extern const NSString *ARKeenReadKey;
