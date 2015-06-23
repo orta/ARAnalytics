@@ -122,3 +122,7 @@
 #if AR_KEEN_EXISTS
 #import "KeenProvider.h"
 #endif
+
+#ifdef AR_ADOBE_EXISTS
+#import "AdobeProvider.h"
+#endif

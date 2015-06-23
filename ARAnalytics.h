@@ -81,6 +81,7 @@
 + (void)setupSentryWithID:(NSString *)identifier;
 + (void)setupIntercomWithAppID:(NSString *)identifier apiKey:(NSString *)apiKey;
 + (void)setupKeenWithProjectID:(NSString *)projectId andWriteKey:(NSString *)writeKey andReadKey:(NSString *)readKey;
++ (void)setupAdobeWithData:(NSDictionary *)additionalData;
 
 /// Add a provider manually
 + (void)setupProvider:(ARAnalyticalProvider *)provider;
@@ -206,3 +207,4 @@ extern const NSString *ARIntercomAPIKey;
 extern const NSString *ARKeenProjectID;
 extern const NSString *ARKeenWriteKey;
 extern const NSString *ARKeenReadKey;
+extern const NSString *ARAdobeData;

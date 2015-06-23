@@ -160,6 +160,10 @@ static BOOL _ARLogShouldPrintStdout = YES;
         [self setupKeenWithProjectID:analyticsDictionary[ARKeenProjectID] andWriteKey:analyticsDictionary[ARKeenWriteKey] andReadKey:analyticsDictionary[ARKeenReadKey]];
     }
 
+    if (analyticsDictionary[ARAdobeData]) {
+        [self setupAdobeWithData:analyticsDictionary[ARAdobeData]];
+    }
+
     // Add future integrations here:
 
 
@@ -485,6 +489,14 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
++ (void)setupAdobeWithData:(NSDictionary *)additionalData
+{
+#ifdef AR_ADOBE_EXISTS
+    AdobeProvider *provider = [[AdobeProvider alloc] initWithData:additionalData];
+    [self setupProvider:provider];
+#endif
+}
+
 #pragma mark -
 #pragma mark User Setup
 
@@ -747,3 +759,4 @@ const NSString *ARIntercomAPIKey = @"ARIntercomAPIKey";
 const NSString *ARKeenProjectID = @"ARKeenProjectID";
 const NSString *ARKeenWriteKey = @"ARKeenWriteKey";
 const NSString *ARKeenReadKey = @"ARKeenReadKey";
+const NSString *ARAdobeData = @"ARAdobeData";
