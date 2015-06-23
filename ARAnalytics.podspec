@@ -43,7 +43,7 @@ Pod::Spec.new do |s|
   snowplow       = { :spec_name => "Snowplow",            :dependency => "SnowplowTracker" }
   sentry         = { :spec_name => "Sentry",              :dependency => "Raven" }
   keen           = { :spec_name => "Keen",                :dependency => "KeenClient" }
-  adobe          = { :spec_name => "Adobe",               :dependency => "ADBMobile" }
+  adobe          = { :spec_name => "Adobe",               :dependency => "AdobeMobileSDK" }
 
   kissmetrics_mac = { :spec_name => "KISSmetricsOSX",  :dependency => "KISSmetrics",            :osx => true,  :provider => "KISSmetrics" }
 # countly_mac     = { :spec_name => "CountlyOSX",      :dependency => "Countly",                :osx => true,  :provider => "Countly" }
