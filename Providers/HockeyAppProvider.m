@@ -1,6 +1,13 @@
 #import "HockeyAppProvider.h"
-#import <HockeySDK/HockeySDK.h>
 #import <objc/message.h>
+
+#ifdef AR_HOCKEYAPP_EXISTS
+#import <HockeySDK-Source/HockeySDK.h>
+#import <HockeySDK-Source/BITCrashDetails.h>
+#import <HockeySDK-Source/BITUpdateManagerDelegate.h>
+#import <HockeySDK-Source/BITCrashManager.h>
+#import <HockeySDK-Source/BITCrashManagerDelegate.h>
+#endif
 
 #define MAX_HOCKEY_LOG_MESSAGES 100
 
@@ -54,7 +61,9 @@ IsHockeySDKCompatibleForLogging(void)
     }
     
     [[BITHockeyManager sharedHockeyManager] startManager];
+#if HOCKEYSDK_FEATURE_AUTHENTICATOR
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
+#endif
 }
 
 - (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
