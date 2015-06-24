@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   tapstream      = { :spec_name => "Tapstream",           :dependency => "Tapstream" }
   newRelic       = { :spec_name => "NewRelic",            :dependency => "NewRelicAgent" }
   amplitude      = { :spec_name => "Amplitude",           :dependency => "Amplitude-iOS" }
-  hockeyApp      = { :spec_name => "HockeyApp",           :dependency => "HockeySDK" }
+  hockeyApp      = { :spec_name => "HockeyApp",           :dependency => "HockeySDK-Source" }
   parseAnalytics = { :spec_name => "ParseAnalytics",      :dependency => "Parse" }
   heap           = { :spec_name => "HeapAnalytics",       :dependency => "Heap" }
   chartbeat      = { :spec_name => "Chartbeat",           :dependency => "Chartbeat", :has_extension => true }
@@ -46,6 +46,7 @@ Pod::Spec.new do |s|
   kissmetrics_mac = { :spec_name => "KISSmetricsOSX",  :dependency => "KISSmetrics",            :osx => true,  :provider => "KISSmetrics" }
 # countly_mac     = { :spec_name => "CountlyOSX",      :dependency => "Countly",                :osx => true,  :provider => "Countly" }
   mixpanel_mac    = { :spec_name => "MixpanelOSX",     :dependency => "Mixpanel-OSX-Community", :osx => true,  :provider => "Mixpanel"}
+  hockeyApp_mac   = { :spec_name => "HockeyAppOSX",    :dependency => "HockeySDK-Mac", :osx => true,  :provider => "HockeyApp"}
 
   all_analytics = [mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, fabric, bugsnag, countly, helpshift,kissmetrics_mac, mixpanel_mac, tapstream, newRelic, amplitude, hockeyApp, parseAnalytics, heap, chartbeat, umeng, librato, segmentio, swrve, yandex, adjust, appsflyer, branch, snowplow, sentry, intercom, keen]
 
