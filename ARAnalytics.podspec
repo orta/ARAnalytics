@@ -75,8 +75,8 @@ Pod::Spec.new do |s|
   end
 
   # for the description
-  $all_ios_names = []
-  $all_osx_names = []
+  all_ios_names = []
+  all_osx_names = []
 
   # make specs for each analytics
   all_analytics.each do |analytics_spec|

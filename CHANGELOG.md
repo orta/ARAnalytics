@@ -3,6 +3,7 @@
 ## Version 3.6.0
 
 * Added support for Hockey's new Source subspec and OS X library ( @jhersh )
+* Added support for Adobe ADBMobile ( @eksdyne )
 
 ## Version 3.5.0
 
