@@ -1,5 +1,9 @@
 # ARAnalytics
 
+## Version 3.6.0
+
+* Added support for Hockey's new Source subspec and OS X library ( @jhersh )
+
 ## Version 3.5.0
 
 * Added support for Keen.io ( @cbowns )
