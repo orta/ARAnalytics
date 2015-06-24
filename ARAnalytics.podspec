@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         =  'ARAnalytics'
-  s.version      =  '3.4.0'
+  s.version      =  '3.6.1'
   s.license      =  {:type => 'MIT', :file => 'LICENSE' }
   s.homepage     =  'https://github.com/orta/ARAnalytics'
   s.authors      =  { 'orta' => 'orta.therox@gmail.com', 'Daniel Haight' => "confidence.designed@gmail.com" }
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   mixpanel       = { :spec_name => "Mixpanel",            :dependency => "Mixpanel" }
   localytics     = { :spec_name => "Localytics",          :dependency => "Localytics" }
   flurry         = { :spec_name => "Flurry",              :dependency => "FlurrySDK" }
-  google         = { :spec_name => "GoogleAnalytics",     :dependency => "GoogleAnalytics-iOS-SDK", :has_extension => true }
+  google         = { :spec_name => "GoogleAnalytics",     :dependency => "GoogleAnalytics", :has_extension => true }
   kissmetrics    = { :spec_name => "KISSmetrics",         :dependency => "KISSmetrics" }
   crittercism    = { :spec_name => "Crittercism",         :dependency => "CrittercismSDK" }
   countly        = { :spec_name => "Countly",             :dependency => "Countly" }
@@ -24,7 +24,8 @@ Pod::Spec.new do |s|
   tapstream      = { :spec_name => "Tapstream",           :dependency => "Tapstream" }
   newRelic       = { :spec_name => "NewRelic",            :dependency => "NewRelicAgent" }
   amplitude      = { :spec_name => "Amplitude",           :dependency => "Amplitude-iOS" }
-  hockeyApp      = { :spec_name => "HockeyApp",           :dependency => "HockeySDK" }
+  hockeyApp      = { :spec_name => "HockeyApp",           :dependency => "HockeySDK-Source" }
+  hockeyAppLib   = { :spec_name => "HockeyAppLib",        :dependency => "HockeySDK" }
   parseAnalytics = { :spec_name => "ParseAnalytics",      :dependency => "Parse" }
   heap           = { :spec_name => "HeapAnalytics",       :dependency => "Heap" }
   chartbeat      = { :spec_name => "Chartbeat",           :dependency => "Chartbeat", :has_extension => true }
@@ -41,12 +42,16 @@ Pod::Spec.new do |s|
   branch         = { :spec_name => "Branch",              :dependency => "Branch" }
   snowplow       = { :spec_name => "Snowplow",            :dependency => "SnowplowTracker" }
   sentry         = { :spec_name => "Sentry",              :dependency => "Raven" }
+  keen           = { :spec_name => "Keen",                :dependency => "KeenClient" }
+  adobe          = { :spec_name => "Adobe",               :dependency => "AdobeMobileSDK" }
 
   kissmetrics_mac = { :spec_name => "KISSmetricsOSX",  :dependency => "KISSmetrics",            :osx => true,  :provider => "KISSmetrics" }
 # countly_mac     = { :spec_name => "CountlyOSX",      :dependency => "Countly",                :osx => true,  :provider => "Countly" }
   mixpanel_mac    = { :spec_name => "MixpanelOSX",     :dependency => "GRK-Mixpanel-OSX", :osx => true,  :provider => "Mixpanel"}
+  hockeyApp_mac   = { :spec_name => "HockeyAppOSX",    :dependency => "HockeySDK-Mac",          :osx => true,  :provider => "HockeyApp"}
 
-  $all_analytics = [mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, fabric, bugsnag, countly, helpshift,kissmetrics_mac, mixpanel_mac, tapstream, newRelic, amplitude, hockeyApp, parseAnalytics, heap, chartbeat, umeng, librato, segmentio, swrve, yandex, adjust, appsflyer, branch, snowplow, sentry, intercom]
+
+  all_analytics = [mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, fabric, bugsnag, countly, helpshift, kissmetrics_mac, mixpanel_mac, tapstream, newRelic, amplitude, hockeyApp, hockeyAppLib, hockeyApp_mac, parseAnalytics, heap, chartbeat, umeng, librato, segmentio, swrve, yandex, adjust, appsflyer, branch, snowplow, sentry, intercom, keen, adobe]
 
   # To make the pod spec API cleaner, subspecs are "iOS/KISSmetrics"
 
@@ -70,11 +75,11 @@ Pod::Spec.new do |s|
   end
 
   # for the description
-  $all_ios_names = []
-  $all_osx_names = []
+  all_ios_names = []
+  all_osx_names = []
 
   # make specs for each analytics
-  $all_analytics.each do |analytics_spec|
+  all_analytics.each do |analytics_spec|
     s.subspec analytics_spec[:spec_name] do |ss|
 
       providername = analytics_spec[:provider]? analytics_spec[:provider] : analytics_spec[:spec_name]
@@ -93,13 +98,13 @@ Pod::Spec.new do |s|
         ss.osx.source_files = sources
         ss.dependency 'ARAnalytics/CoreMac'
         ss.platform = :osx
-        $all_osx_names << providername
+        all_osx_names << providername
 
       else
         ss.ios.source_files = sources
         ss.dependency 'ARAnalytics/CoreIOS'
         ss.platform = :ios
-        $all_ios_names << providername
+        all_ios_names << providername
       end
 
       # If there's a podspec dependency include it
@@ -121,7 +126,7 @@ Pod::Spec.new do |s|
 
   # cycle through clashing subspecs, removing all but the the one we want to form non_clashing array
   clashing_subspecs.each do |keep_subspec|
-    non_clash = $all_analytics
+    non_clash = all_analytics
     clashing_subspecs.each do |clashing|
       if clashing != keep_subspec then non_clash.delete(clashing) end
     end
@@ -144,8 +149,8 @@ Pod::Spec.new do |s|
 
   # I always forget to keep the description up to date as provider support is added and removed, thus automation.
 
-  ios_spec_names = $all_ios_names[0...-1].join(", ") + " and " + $all_ios_names[-1]
-  osx_spec_names = $all_osx_names[0...-1].join(", ") + " and " + $all_osx_names[-1]
+  ios_spec_names = all_ios_names[0...-1].join(", ") + " and " + all_ios_names[-1]
+  osx_spec_names = all_osx_names[0...-1].join(", ") + " and " + all_osx_names[-1]
   s.description  =  "ARAnalytics is a analytics abstraction library offering a sane API for tracking events and user data. It currently supports on iOS: #{ ios_spec_names }. And for OS X: #{ osx_spec_names }. It does this by using CocoaPods subspecs to let you decide which libraries you'd like to use. You are free to also use the official API for any provider too. Also, comes with an amazing DSL to clear up your methods."
 
 end

@@ -1,5 +1,16 @@
 # ARAnalytics
 
+## Version 3.6.0
+
+* Added support for Hockey's new Source subspec and OS X library ( @jhersh )
+* Added support for Adobe ADBMobile ( @eksdyne )
+
+## Version 3.5.0
+
+* Added support for Keen.io ( @cbowns )
+* Updated Mixpanel provider with event timing properties as expected by Mixpanel 2.8.1. ( @levigroker )
+* Parse fixes ( @alexanderedge )
+
 ## Version 3.4.0
 
 * Added support for Intercom ( @orta )

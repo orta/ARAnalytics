@@ -3,19 +3,18 @@ ARAnalytics v3.X.Y [![Build Status](https://travis-ci.org/orta/ARAnalytics.svg?b
 
 ARAnalytics is to iOS what [Analytical](https://github.com/jkrall/analytical) is to ruby, or [Analytics.js](http://segmentio.github.com/analytics.js/) is to javascript.
 
-ARAnalytics is a analytics abstraction library offering a sane API for tracking events and user data. It currently supports on iOS: TestFlight, Mixpanel, Localytics, Flurry, GoogleAnalytics, KISSmetrics, Crittercism, Crashlytics, Fabric, Bugsnag, Countly, Helpshift, Tapstream, NewRelic, Intercom, Amplitude, HockeyApp, ParseAnalytics, HeapAnalytics, Chartbeat, Yandex Mobile Metrica, Branch and Sentry. And for OS X: KISSmetrics and Mixpanel. It does this by using CocoaPods subspecs to let you decide which libraries you'd like to use. You are free to also use the official API for any provider too. Also, comes with an amazing [DSL](#aspect-oriented-dsl) to clear up your methods.
+ARAnalytics is a analytics abstraction library offering a sane API for tracking events and user data. It currently supports on iOS: Mixpanel, Localytics, Flurry, GoogleAnalytics, KISSmetrics, Crittercism, Crashlytics, Fabric, Bugsnag, Countly, Helpshift, Tapstream, NewRelic, Amplitude, HockeyApp, HockeyAppLib, ParseAnalytics, HeapAnalytics, Chartbeat, UMengAnalytics, Librato, Segmentio, Swrve, YandexMobileMetrica, Adjust, AppsFlyer, Branch, Snowplow, Sentry, Intercom, Keen and Adobe. And for OS X: KISSmetrics, Mixpanel and HockeyApp. It does this by using CocoaPods subspecs to let you decide which libraries you'd like to use. You are free to also use the official API for any provider too. Also, comes with an amazing DSL to clear up your methods.
+
+It does this by using CocoaPods subspecs to let you decide which libraries you'd like to use. You are free to also use the official API for any provider too. Also, comes with an amazing [DSL](#aspect-oriented-dsl) to clear up your methods.
 
 [Changelog](https://github.com/orta/ARAnalytics/blob/master/CHANGELOG.md)
 
-Installation
+Integration
 =====
-If you want to include all the options, just use: `pod "ARAnalytics"`
-
-If you're looking to use one or more the syntax is one per line.
+You shouldn't just use: `pod "ARAnalytics"`. Since CocoaPods 0.36+ you should do something like:
 
 ``` ruby
-  pod "ARAnalytics/Crashlytics"
-  pod "ARAnalytics/Mixpanel"
+  pod "ARAnalytics", :subspecs => ["Mixpanel", "Segmentio", "HockeyApp"]
 ```
 
 Usage
@@ -147,6 +146,15 @@ HockeyApp
 
 Starting with HockeyApp version 3.7.0, the HockeyApp provider will automatically keep logs of events and include those in crash reports, thus adding ‘breadcrumbs’ to your report and hopefully providing helpful context for your crash reports. Any messages logged with `ARLog()` will also get included in the report.
 
-Contributing
+
+Full list of subspecs
+----
+
+iOS: `Mixpanel`, `Localytics`, `Flurry`, `GoogleAnalytics`, `KISSmetrics`, `Crittercism`, `Countly`, `Bugsnag`, `Helpshift`, `Tapstream`, `NewRelic`, `Amplitude`, `HockeyApp`, `HockeyAppLib`, `ParseAnalytics`, `HeapAnalytics`, `Chartbeat`, `UMengAnalytics`, `Segmentio`, `Swrve`, `YandexMobileMetrica`, `Adjust`, `Intercom`, `Librato`, `Crashlytics`, `Fabric`, `AppsFlyer`, `Branch`, `Snowplow`, `Sentry`, `Keen` & `Adobe`.
+
+OSX: `KISSmetricsOSX`, `HockeyAppOSX` & `MixpanelOSX`.
+
+
+Contributing, or adding a new analytics provider
 ====
 See [Contributing](https://github.com/orta/ARAnalytics/blob/master/CONTRIBUTING.md)
