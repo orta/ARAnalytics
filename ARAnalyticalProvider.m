@@ -117,13 +117,16 @@ static NSString *const ARTimingEventLengthKey = @"length";
 - (aslclient)ASLClient;
 {
     if (_ASLClient == NULL) {
-        _ASLClient = asl_open(NULL, self.logFacility.UTF8String, 0);
+        _ASLClient = asl_open(NULL, self.logFacility.UTF8String, ASL_OPT_NO_DELAY|ASL_OPT_NO_REMOTE);
         NSAssert(_ASLClient != NULL, @"Unable to create ASL client.");
 
+#ifndef __clang_analyzer__
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wshift-count-overflow"
+        // This is using official API, it's safe to disable these analyzer/diagnostics checks.
         asl_set_filter(_ASLClient, ASL_FILTER_MASK_UPTO(ASL_FILTER_MASK_DEBUG));
 #pragma clang diagnostic pop
+#endif
     }
     return _ASLClient;
 }
@@ -135,7 +138,14 @@ static NSString *const ARTimingEventLengthKey = @"length";
         asl_set(msg, ASL_KEY_READ_UID, "-1");
         asl_set(msg, ASL_KEY_MSG, message.UTF8String);
         asl_set(msg, ASL_KEY_FACILITY, self.logFacility.UTF8String);
-        NSAssert(asl_send(self.ASLClient, msg) == 0, @"Unable to send log message.");
+        asl_set(msg, ASL_KEY_LEVEL, ASL_STRING_DEBUG);
+
+#ifndef NS_BLOCK_ASSERTIONS
+        int status =
+#endif
+        asl_send(self.ASLClient, msg);
+        NSAssert(status == 0, @"Unable to send log message.");
+
         asl_free(msg);
     });
 }
@@ -154,7 +164,7 @@ FormattedTimestampAndMessage(const char *seconds, const char *nsec, const char *
     NSMutableArray *messages = [NSMutableArray new];
     dispatch_sync(self.loggingQueue, ^{
         char pid[6];
-        sprintf(pid, "%lu", processID);
+        sprintf(pid, "%lu", (unsigned long)processID);
 
         aslmsg query = asl_new(ASL_TYPE_QUERY);
         asl_set_query(query, ASL_KEY_FACILITY, self.logFacility.UTF8String, ASL_QUERY_OP_EQUAL);

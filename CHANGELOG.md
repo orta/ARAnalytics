@@ -1,5 +1,9 @@
 # ARAnalytics
 
+## Version 3.6.1
+
+* Fixed breadcrumb logging in builds with `NS_BLOCK_ASSERTIONS` enabled ( @alloy )
+
 ## Version 3.6.0
 
 * Added support for Hockey's new Source subspec and OS X library ( @jhersh )
