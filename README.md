@@ -146,6 +146,8 @@ HockeyApp
 
 Starting with HockeyApp version 3.7.0, the HockeyApp provider will automatically keep logs of events and include those in crash reports, thus adding ‘breadcrumbs’ to your report and hopefully providing helpful context for your crash reports. Any messages logged with `ARLog()` will also get included in the report.
 
+Note, however, that on iOS `syslogd` will not keep logs around for a long time, as such you should only expect logs of people that re-start the application immediately after the application crashing.
+
 
 Full list of subspecs
 ----
