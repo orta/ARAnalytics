@@ -1,8 +1,12 @@
 # ARAnalytics
 
-## Version 3.6.1
+## Version 3.6.2
 
 * Fixed breadcrumb logging in builds with `NS_BLOCK_ASSERTIONS` enabled ( @alloy )
+
+## Version 3.6.1
+
+* Hockey's fix ( @jhersh )
 
 ## Version 3.6.0
 
