@@ -22,5 +22,4 @@ profile
 .DS_Store
 
 #pod stuff
-Podfile.lock
 Example/Pods/*
