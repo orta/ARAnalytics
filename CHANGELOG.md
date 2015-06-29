@@ -1,5 +1,10 @@
 # ARAnalytics
 
+## Version 3.6.3
+
+* Implement `didShowNewPageView:withProperties:` correctly (Google Analytics) ( @sodastsai )
+* Refine `custom dimension` and `custom metrics` checking/finalizing (Google Analytics) ( @sodastsai )
+
 ## Version 3.6.2
 
 * Fixed breadcrumb logging in builds with `NS_BLOCK_ASSERTIONS` enabled ( @alloy )

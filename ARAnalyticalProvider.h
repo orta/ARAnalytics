@@ -1,4 +1,8 @@
 @class UINavigationController, UIViewController;
+
+extern NSString *const ARAnalyticalProviderNewPageViewEventName;
+extern NSString *const ARAnalyticalProviderNewPageViewEventScreenPropertyKey;
+
 @interface ARAnalyticalProvider : NSObject
 
 /// Init
