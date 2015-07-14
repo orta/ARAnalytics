@@ -6,6 +6,8 @@
 #import <sys/stat.h>
 
 static NSString *const ARTimingEventLengthKey = @"length";
+NSString *const ARAnalyticalProviderNewPageViewEventName = @"Screen view";
+NSString *const ARAnalyticalProviderNewPageViewEventScreenPropertyKey = @"screen";
 
 @interface ARAnalyticalProvider () {
     aslclient _ASLClient;
@@ -71,12 +73,12 @@ static NSString *const ARTimingEventLengthKey = @"length";
     NSDictionary *props;
     if (properties.count > 0) {
         NSMutableDictionary *merge = [properties mutableCopy];
-        merge[@"screen"] = pageTitle;
+        merge[ARAnalyticalProviderNewPageViewEventScreenPropertyKey] = pageTitle;
         props = [merge copy];
     } else {
-        props = @{ @"screen": pageTitle };
+        props = @{ ARAnalyticalProviderNewPageViewEventScreenPropertyKey: pageTitle };
     }
-    [self event:@"Screen view" withProperties:props];
+    [self event:ARAnalyticalProviderNewPageViewEventName withProperties:props];
 }
 
 - (void)remoteLog:(NSString *)parsedString {}
