@@ -63,6 +63,10 @@
 #import "HockeyAppProvider.h"
 #endif
 
+#ifdef AR_HOCKEYAPPOSX_EXISTS
+#import "HockeyAppOSXProvider.h"
+#endif
+
 #ifdef AR_PARSEANALYTICS_EXISTS
 #import "ParseAnalyticsProvider.h"
 #endif
