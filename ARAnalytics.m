@@ -651,7 +651,7 @@ static BOOL _ARLogShouldPrintStdout = YES;
 {
     NSDate *startDate = _sharedAnalytics.eventsDictionary[event];
     if (!startDate) {
-        NSLog(@"ARAnalytics: finish timing event called without a corrosponding start timing event");
+        NSLog(@"ARAnalytics: finish timing event (%@) called without a corrosponding start timing event", event);
         return;
     }
 
