@@ -1,5 +1,10 @@
 # ARAnalytics
 
+## Version 3.6.4
+
+* Replace class method calls of Crashlytics by calls to `sharedInstances` (class methods are deprecated) ( @sodastsai )
+* Add dependencies to Crashlytics and Fabric to their providers. ( @sodastsai )
+
 ## Version 3.6.3
 
 * Implement `didShowNewPageView:withProperties:` correctly (Google Analytics) ( @sodastsai )
