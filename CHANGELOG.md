@@ -1,5 +1,9 @@
 # ARAnalytics
 
+## Version 3.6.4
+
+* Replace deprecated API usage of Amplitude ( @sodastsai )
+
 ## Version 3.6.3
 
 * Implement `didShowNewPageView:withProperties:` correctly (Google Analytics) ( @sodastsai )
