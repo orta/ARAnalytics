@@ -13,16 +13,16 @@
 
 - (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
     if (userID) {
-        [Crashlytics setUserIdentifier:userID];
+        [[Crashlytics sharedInstance] setUserIdentifier:userID];
     }
 
     if (email) {
-        [Crashlytics setUserEmail:email];
+        [[Crashlytics sharedInstance] setUserEmail:email];
     }
 }
 
 - (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
-    [Crashlytics setObjectValue:value forKey:property];
+    [[Crashlytics sharedInstance] setObjectValue:value forKey:property];
 }
 
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
@@ -32,7 +32,7 @@
     } else {
         log = event;
     }
-    
+
     CLSLog(@"%@", log);
 }
 

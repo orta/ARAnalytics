@@ -1,10 +1,11 @@
 #import "FabricProvider.h"
 
 @interface Crashlytics : NSObject
-+ (void)setUserIdentifier:(NSString *)identifier;
-+ (void)setUserName:(NSString *)name;
-+ (void)setUserEmail:(NSString *)email;
-+ (void)setObjectValue:(id)value forKey:(NSString *)key;
++ (Crashlytics *)sharedInstance;
+- (void)setUserIdentifier:(NSString *)identifier;
+- (void)setUserName:(NSString *)name;
+- (void)setUserEmail:(NSString *)email;
+- (void)setObjectValue:(id)value forKey:(NSString *)key;
 @end
 
 @implementation FabricProvider
@@ -28,16 +29,16 @@
 
 - (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
     if (userID) {
-        [Crashlytics setUserIdentifier:userID];
+        [[Crashlytics sharedInstance] setUserIdentifier:userID];
     }
 
     if (email) {
-        [Crashlytics setUserEmail:email];
+        [[Crashlytics sharedInstance] setUserEmail:email];
     }
 }
 
 - (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
-    [Crashlytics setObjectValue:value forKey:property];
+    [[Crashlytics sharedInstance] setObjectValue:value forKey:property];
 }
 
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
