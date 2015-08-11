@@ -163,6 +163,10 @@ static BOOL _ARLogShouldPrintStdout = YES;
     if (analyticsDictionary[ARAdobeData]) {
         [self setupAdobeWithData:analyticsDictionary[ARAdobeData]];
     }
+    
+    if (analyticsDictionary[ARInstallTrackerApplicationID]) {
+        [self setupInstallTrackerWithApplicationID:analyticsDictionary[ARInstallTrackerApplicationID]];
+    }
 
     // Add future integrations here:
 
@@ -497,6 +501,14 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
++ (void)setupInstallTrackerWithApplicationID:(NSString *)applicationID
+{
+#ifdef AR_INSTALLTRACKER_EXISTS
+    InstallTrackerProvider *provider = [[InstallTrackerProvider alloc] initWithIdentifier:applicationID];
+    [self setupProvider:provider];
+#endif
+}
+
 #pragma mark -
 #pragma mark User Setup
 
@@ -760,3 +772,4 @@ const NSString *ARKeenProjectID = @"ARKeenProjectID";
 const NSString *ARKeenWriteKey = @"ARKeenWriteKey";
 const NSString *ARKeenReadKey = @"ARKeenReadKey";
 const NSString *ARAdobeData = @"ARAdobeData";
+const NSString *ARInstallTrackerApplicationID = @"ARInstallTrackerApplicationID";

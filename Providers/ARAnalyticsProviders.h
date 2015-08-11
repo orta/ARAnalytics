@@ -130,3 +130,7 @@
 #ifdef AR_ADOBE_EXISTS
 #import "AdobeProvider.h"
 #endif
+
+#ifdef AR_INSTALLTRACKER_EXISTS
+#import "InstallTrackerProvider.h"
+#endif
