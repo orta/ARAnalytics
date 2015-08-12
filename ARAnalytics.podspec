@@ -36,15 +36,15 @@ Pod::Spec.new do |s|
   adjust         = { :spec_name => "Adjust",              :dependency => "Adjust" }
   intercom       = { :spec_name => "Intercom",            :dependency => "Intercom" }
   librato        = { :spec_name => "Librato" }
-  crashlytics    = { :spec_name => "Crashlytics" }
-  fabric         = { :spec_name => "Fabric" }
+  crashlytics    = { :spec_name => "Crashlytics",         :dependency => "Crashlytics" }
+  fabric         = { :spec_name => "Fabric",              :dependency => ["Fabric", "Crashlytics"] }
   appsflyer      = { :spec_name => "AppsFlyer",           :dependency => "AppsFlyer-SDK" }
   branch         = { :spec_name => "Branch",              :dependency => "Branch" }
   snowplow       = { :spec_name => "Snowplow",            :dependency => "SnowplowTracker" }
   sentry         = { :spec_name => "Sentry",              :dependency => "Raven" }
   keen           = { :spec_name => "Keen",                :dependency => "KeenClient" }
   adobe          = { :spec_name => "Adobe",               :dependency => "AdobeMobileSDK" }
-  installtracker = { :spec_name => "InstallTracker",               :dependency => "InstallTracker"}
+  installtracker = { :spec_name => "InstallTracker",      :dependency => "InstallTracker"}
 
   kissmetrics_mac = { :spec_name => "KISSmetricsOSX",  :dependency => "KISSmetrics",            :osx => true,  :provider => "KISSmetrics" }
 # countly_mac     = { :spec_name => "CountlyOSX",      :dependency => "Countly",                :osx => true,  :provider => "Countly" }

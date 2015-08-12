@@ -3,6 +3,11 @@
 ## Version 3.6.4
 
 * Replace deprecated API usage of Amplitude ( @sodastsai )
+* Replace class method calls of Crashlytics by calls to `sharedInstances` (class methods are deprecated) ( @sodastsai )
+* Add dependencies to Crashlytics and Fabric to their providers. ( @sodastsai )
+* Adds InstallTracker (@Brain89)
+* Shows the event name in finishTimingEvent (@rinatkhanov)
+* Fixes Keen integration (@rinatkhanov)
 
 ## Version 3.6.3
 
