@@ -44,6 +44,7 @@ Pod::Spec.new do |s|
   sentry         = { :spec_name => "Sentry",              :dependency => "Raven" }
   keen           = { :spec_name => "Keen",                :dependency => "KeenClient" }
   adobe          = { :spec_name => "Adobe",               :dependency => "AdobeMobileSDK" }
+  installtracker = { :spec_name => "InstallTracker",               :dependency => "InstallTracker"}
 
   kissmetrics_mac = { :spec_name => "KISSmetricsOSX",  :dependency => "KISSmetrics",            :osx => true,  :provider => "KISSmetrics" }
 # countly_mac     = { :spec_name => "CountlyOSX",      :dependency => "Countly",                :osx => true,  :provider => "Countly" }
@@ -51,7 +52,7 @@ Pod::Spec.new do |s|
   hockeyApp_mac   = { :spec_name => "HockeyAppOSX",    :dependency => "HockeySDK-Mac",          :osx => true,  :provider => "HockeyAppOSX"}
 
 
-  all_analytics = [mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, fabric, bugsnag, countly, helpshift, kissmetrics_mac, mixpanel_mac, tapstream, newRelic, amplitude, hockeyApp, hockeyAppLib, hockeyApp_mac, parseAnalytics, heap, chartbeat, umeng, librato, segmentio, swrve, yandex, adjust, appsflyer, branch, snowplow, sentry, intercom, keen, adobe]
+  all_analytics = [mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, fabric, bugsnag, countly, helpshift, kissmetrics_mac, mixpanel_mac, tapstream, newRelic, amplitude, hockeyApp, hockeyAppLib, hockeyApp_mac, parseAnalytics, heap, chartbeat, umeng, librato, segmentio, swrve, yandex, adjust, appsflyer, branch, snowplow, sentry, intercom, keen, adobe, installtracker]
 
   # To make the pod spec API cleaner, subspecs are "iOS/KISSmetrics"
 
