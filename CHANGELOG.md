@@ -1,5 +1,9 @@
 # ARAnalytics
 
+## Version 3.7
+
+* Migrates Google Analytics to use the official Podspec (@pietbrauer)
+
 ## Version 3.6.4
 
 * Replace deprecated API usage of Amplitude ( @sodastsai )
