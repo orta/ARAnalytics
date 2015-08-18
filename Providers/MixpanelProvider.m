@@ -4,6 +4,10 @@
 
 static NSString * const kMixpanelTimingPropertyKey = @"$duration";
 
+@interface MixpanelProvider()
+    @property (nonatomic, readonly) Mixpanel *mixpanel;
+@end
+
 @implementation MixpanelProvider
 
 - (id)initWithIdentifier:(NSString *)identifier {
@@ -14,10 +18,18 @@ static NSString * const kMixpanelTimingPropertyKey = @"$duration";
 #ifdef AR_MIXPANEL_EXISTS
 
     NSAssert([Mixpanel class], @"Mixpanel is not included");
-    [Mixpanel sharedInstanceWithToken:identifier];
+
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _mixpanel = [Mixpanel sharedInstanceWithToken:identifier];
+    });
+
+    if(! _mixpanel) {
+        _mixpanel = [[Mixpanel alloc] initWithToken:identifier launchOptions:nil andFlushInterval:60];
+    }
 
     if (host) {
-        [[Mixpanel sharedInstance] setServerURL:host];
+        _mixpanel.serverURL = host;
     }
 #endif
     return [super init];
@@ -26,24 +38,24 @@ static NSString * const kMixpanelTimingPropertyKey = @"$duration";
 #ifdef AR_MIXPANEL_EXISTS
 - (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
     if (userID) {
-        [[Mixpanel sharedInstance] identify:userID];
+        [self.mixpanel identify:userID];
     }
 
     if (email) {
-        [[[Mixpanel sharedInstance] people] set:@"$email" to:email];
+        [[self.mixpanel people] set:@"$email" to:email];
     }
 }
 
 - (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
-    [[[Mixpanel sharedInstance] people] set:property to:value];
+    [[self.mixpanel people] set:property to:value];
 }
 
 - (void)incrementUserProperty:(NSString *)counterName byInt:(NSNumber *)amount {
-    [[[Mixpanel sharedInstance] people] increment:counterName by:amount];
+    [[self.mixpanel people] increment:counterName by:amount];
 }
 
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
-    [[Mixpanel sharedInstance] track:event properties:properties];
+    [self.mixpanel track:event properties:properties];
 }
 
 - (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval properties:(NSDictionary *)properties {
@@ -60,6 +72,12 @@ static NSString * const kMixpanelTimingPropertyKey = @"$duration";
     }
     
     [self event:event withProperties:mutableProperties];
+}
+
+- (void)createAlias:(NSString *)alias
+{
+    [self.mixpanel createAlias:alias forDistinctID:self.mixpanel.distinctId];
+    [self identifyUserWithID:alias andEmailAddress:nil];
 }
 
 #endif
