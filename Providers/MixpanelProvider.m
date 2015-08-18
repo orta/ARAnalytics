@@ -18,7 +18,15 @@ static NSString * const kMixpanelTimingPropertyKey = @"$duration";
 #ifdef AR_MIXPANEL_EXISTS
 
     NSAssert([Mixpanel class], @"Mixpanel is not included");
-    _mixpanel = [[Mixpanel alloc] initWithToken:identifier launchOptions:nil andFlushInterval:60];
+
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _mixpanel = [Mixpanel sharedInstanceWithToken:identifier];
+    });
+
+    if(! _mixpanel) {
+        _mixpanel = [[Mixpanel alloc] initWithToken:identifier launchOptions:nil andFlushInterval:60];
+    }
 
     if (host) {
         _mixpanel.serverURL = host;
