@@ -1,7 +1,7 @@
 #import "LocalyticsProvider.h"
 
 #ifdef AR_LOCALYTICS_EXISTS
-#import "LocalyticsSession.h"
+#import "Localytics.h"
 #endif
 @interface LocalyticsProvider ()
 
@@ -14,11 +14,11 @@
 #ifdef AR_LOCALYTICS_EXISTS
 
 - (id)initWithIdentifier:(NSString *)identifier {
-    NSAssert([LocalyticsSession class], @"Localytics is not included");
+    NSAssert([Localytics class], @"Localytics is not included");
 
     if( ( self = [super init] ) ) {
         
-        [[LocalyticsSession sharedLocalyticsSession] LocalyticsSession:identifier];
+        [Localytics integrate:identifier];
         
         for( NSString *activeEvent in @[ UIApplicationDidBecomeActiveNotification, 
                                          UIApplicationWillEnterForegroundNotification ]) {
@@ -36,6 +36,8 @@
                                                          name:inactiveEvent
                                                        object:nil];
         }
+        
+        [Localytics openSession];
     }
 
     return self;
@@ -43,24 +45,24 @@
 
 - (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
     if (userID) {
-        [[LocalyticsSession sharedLocalyticsSession] setCustomerId:userID];
+        [Localytics setCustomerId:userID];
     }
 
     if (email) {
-        [[LocalyticsSession sharedLocalyticsSession] setCustomerEmail:email];
+        [Localytics setCustomerEmail:email];
     }
 }
 
 -(void)setUserProperty:(NSString *)property toValue:(NSString *)value {
-    [[LocalyticsSession sharedLocalyticsSession] setValueForIdentifier:property value:value];
+    [Localytics setValue:value forIdentifier:property];
 }
 
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
-    [[LocalyticsSession sharedLocalyticsSession] tagEvent:event attributes:properties];
+    [Localytics tagEvent:event attributes:properties];
 }
 
 - (void)didShowNewPageView:(NSString *)pageTitle {
-    [[LocalyticsSession sharedLocalyticsSession] tagScreen:pageTitle];
+    [Localytics tagScreen:pageTitle];
 }
 
 - (void)dealloc {
@@ -70,13 +72,13 @@
 #pragma mark - Localytics events
 
 - (void)startLocalytics {
-    [[LocalyticsSession sharedLocalyticsSession] open];
-    [[LocalyticsSession sharedLocalyticsSession] upload];
+    [Localytics openSession];
+    [Localytics upload];
 }
 
 - (void)stopLocalytics {
-    [[LocalyticsSession sharedLocalyticsSession] close];
-    [[LocalyticsSession sharedLocalyticsSession] upload];
+    [Localytics closeSession];
+    [Localytics upload];
 }
 
 #endif
