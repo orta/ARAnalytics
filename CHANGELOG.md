@@ -1,5 +1,11 @@
 # ARAnalytics
 
+## Version 3.7.1
+
+* Changed pointers to const immutable strings to const pointers to immutable strings (@diogot)
+* Updates to Localytics (@joelmarquez90)
+* Support multiple Mixpanel instances (@ed-at-work)
+
 ## Version 3.7
 
 * Migrates Google Analytics to use the official Podspec (@pietbrauer)
