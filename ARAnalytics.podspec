@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   amplitude      = { :spec_name => "Amplitude",           :dependency => "Amplitude-iOS" }
   hockeyApp      = { :spec_name => "HockeyApp",           :dependency => "HockeySDK-Source" }
   hockeyAppLib   = { :spec_name => "HockeyAppLib",        :dependency => "HockeySDK" }
-  parseAnalytics = { :spec_name => "ParseAnalytics",      :dependency => "Parse" }
+  parseAnalytics = { :spec_name => "ParseAnalytics",      :dependency => "Parse", :has_extension => true, :osx => true }
   heap           = { :spec_name => "HeapAnalytics",       :dependency => "Heap" }
   chartbeat      = { :spec_name => "Chartbeat",           :dependency => "Chartbeat", :has_extension => true }
   umeng          = { :spec_name => "UMengAnalytics",      :dependency => "UMengAnalytics" }
