@@ -92,7 +92,7 @@ Pod::Spec.new do |s|
 
       # It there's a category adding extra class methods to ARAnalytics
       if analytics_spec[:has_extension]
-        sources << "Extensions/*+#{analytics_spec[:spec_name]}.{h,m}"
+        sources << "Extensions/*+#{providername}.{h,m}"
       end
 
       # only add the files for the osx / iOS version
