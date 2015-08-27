@@ -20,7 +20,7 @@
     
     [Fabric with:kits];
     
-    if (![[Fabric sharedSDK] kitForClass:[Crashlytics class]]){
+    if (![kits containsObject:[Crashlytics class]]){
         return nil;// we don't need provider in case if we are not interested in Crashlytics but want to initialize Fabric
     }
 
