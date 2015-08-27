@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   amplitude      = { :spec_name => "Amplitude",           :dependency => "Amplitude-iOS" }
   hockeyApp      = { :spec_name => "HockeyApp",           :dependency => "HockeySDK-Source" }
   hockeyAppLib   = { :spec_name => "HockeyAppLib",        :dependency => "HockeySDK" }
-  parseAnalytics = { :spec_name => "ParseAnalytics",      :dependency => "Parse", :has_extension => true, :osx => true }
+  parseAnalytics = { :spec_name => "ParseAnalytics",      :dependency => "Parse", :has_extension => true }
   heap           = { :spec_name => "HeapAnalytics",       :dependency => "Heap" }
   chartbeat      = { :spec_name => "Chartbeat",           :dependency => "Chartbeat", :has_extension => true }
   umeng          = { :spec_name => "UMengAnalytics",      :dependency => "UMengAnalytics" }
@@ -50,9 +50,10 @@ Pod::Spec.new do |s|
 # countly_mac     = { :spec_name => "CountlyOSX",      :dependency => "Countly",                :osx => true,  :provider => "Countly" }
   mixpanel_mac    = { :spec_name => "MixpanelOSX",     :dependency => "Mixpanel-OSX-Community", :osx => true,  :provider => "Mixpanel"}
   hockeyApp_mac   = { :spec_name => "HockeyAppOSX",    :dependency => "HockeySDK-Mac",          :osx => true,  :provider => "HockeyAppOSX"}
+  parseAnalytics_mac = { :spec_name => "ParseAnalyticsOSX", :dependency => "Parse",             :osx => true,  :provider => "ParseAnalytics", :has_extension => true }
 
 
-  all_analytics = [mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, fabric, bugsnag, countly, helpshift, kissmetrics_mac, mixpanel_mac, tapstream, newRelic, amplitude, hockeyApp, hockeyAppLib, hockeyApp_mac, parseAnalytics, heap, chartbeat, umeng, librato, segmentio, swrve, yandex, adjust, appsflyer, branch, snowplow, sentry, intercom, keen, adobe, installtracker]
+  all_analytics = [mixpanel, localytics, flurry, google, kissmetrics, crittercism, crashlytics, fabric, bugsnag, countly, helpshift, kissmetrics_mac, mixpanel_mac, tapstream, newRelic, amplitude, hockeyApp, hockeyAppLib, hockeyApp_mac, parseAnalytics, parseAnalytics_mac, heap, chartbeat, umeng, librato, segmentio, swrve, yandex, adjust, appsflyer, branch, snowplow, sentry, intercom, keen, adobe, installtracker]
 
   # To make the pod spec API cleaner, subspecs are "iOS/KISSmetrics"
 
