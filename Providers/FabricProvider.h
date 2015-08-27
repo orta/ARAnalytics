@@ -8,7 +8,6 @@
 @interface Fabric : NSObject
 + (instancetype)with:(NSArray *)kits;
 + (instancetype)sharedSDK;
-- (id)kitForClass:(Class)klass;
 @end
 
 OBJC_EXTERN void CLSLog(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
