@@ -1,5 +1,11 @@
 # ARAnalytics
 
+## Version 3.8.0
+
+* Adds Parse for OS X (@stel)
+* Updates TandexMobileMetrics (@BamX)
+* Fix for Fabric (@Navideck-fotis)
+
 ## Version 3.7.1
 
 * Changed pointers to const immutable strings to const pointers to immutable strings (@diogot)
