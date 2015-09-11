@@ -15,7 +15,7 @@
 #ifdef AR_COUNTLY_EXISTS
 
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
-    [[Countly sharedInstance] recordEvent:event count:1];
+    [[Countly sharedInstance] recordEvent:event segmentation:properties count:1];
 }
 
 #endif
