@@ -19,7 +19,6 @@ const NSString * ARAppsFlyerEventPropertyValue = @"value";
 
     AppsFlyerTracker.sharedTracker.appsFlyerDevKey = devKey;
     AppsFlyerTracker.sharedTracker.appleAppID = appID;
-    AppsFlyerTracker.sharedTracker.isHTTPS = YES;
 
     [AppsFlyerTracker.sharedTracker trackAppLaunch];
 
