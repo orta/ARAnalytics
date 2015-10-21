@@ -669,9 +669,12 @@ static BOOL _ARLogShouldPrintStdout = YES;
 
     NSTimeInterval eventInterval = [[NSDate date] timeIntervalSinceDate:startDate];
     [_sharedAnalytics.eventsDictionary removeObjectForKey:event];
+    
+    NSMutableDictionary *fullProperties = [NSMutableDictionary dictionaryWithDictionary:properties];
+    [fullProperties addEntriesFromDictionary:_sharedAnalytics.superProperties];
 
     [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
-        [provider logTimingEvent:event withInterval:@(eventInterval) properties:properties];
+        [provider logTimingEvent:event withInterval:@(eventInterval) properties:fullProperties];
     }];
 }
 
