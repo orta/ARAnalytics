@@ -83,6 +83,7 @@
 + (void)setupKeenWithProjectID:(NSString *)projectId andWriteKey:(NSString *)writeKey andReadKey:(NSString *)readKey;
 + (void)setupAdobeWithData:(NSDictionary *)additionalData;
 + (void)setupInstallTrackerWithApplicationID:(NSString *)applicationID;
++ (void)setupAppseeWithAPIKey:(NSString *)key;
 
 /// Add a provider manually
 + (void)setupProvider:(ARAnalyticalProvider *)provider;
@@ -210,3 +211,4 @@ extern NSString * const ARKeenWriteKey;
 extern NSString * const ARKeenReadKey;
 extern NSString * const ARAdobeData;
 extern NSString * const ARInstallTrackerApplicationID;
+extern NSString * const ARAppseeAPIKey;

@@ -168,6 +168,10 @@ static BOOL _ARLogShouldPrintStdout = YES;
         [self setupInstallTrackerWithApplicationID:analyticsDictionary[ARInstallTrackerApplicationID]];
     }
 
+	if (analyticsDictionary[ARAppseeAPIKey]) {
+		[self setupAppseeWithAPIKey:analyticsDictionary[ARAppseeAPIKey]];
+	}
+
     // Add future integrations here:
 
 
@@ -509,6 +513,14 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
++ (void)setupAppseeWithAPIKey:(NSString *)key
+{
+#ifdef AR_APPSEE_EXISTS
+     AppseeProvider *provider = [[AppseeProvider alloc] initWithIdentifier:key];
+    [self setupProvider:provider];
+#endif
+}
+
 #pragma mark -
 #pragma mark User Setup
 
@@ -776,3 +788,4 @@ NSString * const ARKeenWriteKey = @"ARKeenWriteKey";
 NSString * const ARKeenReadKey = @"ARKeenReadKey";
 NSString * const ARAdobeData = @"ARAdobeData";
 NSString * const ARInstallTrackerApplicationID = @"ARInstallTrackerApplicationID";
+NSString * const ARAppseeAPIKey = @"ARAppseeAPIKey";
