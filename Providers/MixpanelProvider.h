@@ -5,4 +5,5 @@
 - (void)createAlias:(NSString *)alias;
 - (void)registerSuperProperties:(NSDictionary *)properties;
 - (NSDictionary *)currentSuperProperties;
+- (void)reset;
 @end
