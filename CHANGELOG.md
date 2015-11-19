@@ -1,5 +1,10 @@
 # ARAnalytics
 
+## Version 3.8.1
+
+* Adds AppSee support (@sgtsquiggs)
+* Adds Super properties for time events (@sp3esu)
+
 ## Version 3.8.0
 
 * Adds Parse for OS X (@stel)
