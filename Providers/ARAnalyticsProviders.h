@@ -134,3 +134,7 @@
 #ifdef AR_INSTALLTRACKER_EXISTS
 #import "InstallTrackerProvider.h"
 #endif
+
+#ifdef AR_APPSEE_EXISTS
+#import "AppseeProvider.h"
+#endif
