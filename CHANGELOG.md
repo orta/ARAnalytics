@@ -1,5 +1,9 @@
 # ARAnalytics
 
+## Version 3.8.2
+
+* Adds MobileAppTracker/Tune support (@fabiojgrocha)
+
 ## Version 3.8.1
 
 * Adds AppSee support (@sgtsquiggs)
