@@ -80,5 +80,20 @@ static NSString * const kMixpanelTimingPropertyKey = @"$duration";
     [self identifyUserWithID:alias andEmailAddress:nil];
 }
 
+- (void)registerSuperProperties:(NSDictionary *)properties
+{
+    [self.mixpanel registerSuperProperties:properties];
+}
+
+- (NSDictionary *)currentSuperProperties
+{
+    return [self.mixpanel currentSuperProperties];
+}
+
+- (void)reset
+{
+    [self.mixpanel reset];
+}
+
 #endif
 @end
