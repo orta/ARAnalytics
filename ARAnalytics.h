@@ -212,3 +212,6 @@ extern NSString * const ARKeenReadKey;
 extern NSString * const ARAdobeData;
 extern NSString * const ARInstallTrackerApplicationID;
 extern NSString * const ARAppseeAPIKey;
+extern NSString * const ARMobileAppTrackerAdvertiserID;
+extern NSString * const ARMobileAppTrackerConversionKey;
+extern NSString * const ARMobileAppTrackerAllowedEvents;

@@ -138,3 +138,7 @@
 #ifdef AR_APPSEE_EXISTS
 #import "AppseeProvider.h"
 #endif
+
+#ifdef AR_MOBILEAPPTRACKER_EXISTS
+#import "MobileAppTrackerProvider.h"
+#endif

@@ -171,6 +171,15 @@ static BOOL _ARLogShouldPrintStdout = YES;
 	if (analyticsDictionary[ARAppseeAPIKey]) {
 		[self setupAppseeWithAPIKey:analyticsDictionary[ARAppseeAPIKey]];
 	}
+    
+    if (analyticsDictionary[ARMobileAppTrackerAdvertiserID] &&
+        analyticsDictionary[ARMobileAppTrackerConversionKey] &&
+        analyticsDictionary[ARMobileAppTrackerAllowedEvents]) {
+        
+        [self setupMobileAppTrackerWithAdvertiserID:analyticsDictionary[ARMobileAppTrackerAdvertiserID]
+                                      conversionKey:analyticsDictionary[ARMobileAppTrackerConversionKey]
+                                      allowedEvents:analyticsDictionary[ARMobileAppTrackerAllowedEvents]];
+    }
 
     // Add future integrations here:
 
@@ -521,6 +530,15 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
++ (void)setupMobileAppTrackerWithAdvertiserID:(NSString *)advertiserID conversionKey:(NSString *)conversionKey allowedEvents:(NSArray *)allowedEvents {
+#ifdef AR_MOBILEAPPTRACKER_EXISTS
+    MobileAppTrackerProvider *provider = [[MobileAppTrackerProvider alloc] initWithAdvertiserId:advertiserID
+                                                                                  conversionKey:conversionKey
+                                                                                  allowedEvents:allowedEvents];
+    [self setupProvider:provider];
+#endif
+}
+
 #pragma mark -
 #pragma mark User Setup
 
@@ -789,3 +807,6 @@ NSString * const ARKeenReadKey = @"ARKeenReadKey";
 NSString * const ARAdobeData = @"ARAdobeData";
 NSString * const ARInstallTrackerApplicationID = @"ARInstallTrackerApplicationID";
 NSString * const ARAppseeAPIKey = @"ARAppseeAPIKey";
+NSString * const ARMobileAppTrackerAdvertiserID = @"ARMobileAppTrackerAdvertiserID";
+NSString * const ARMobileAppTrackerConversionKey = @"ARMobileAppTrackerConversionKey";
+NSString * const ARMobileAppTrackerAllowedEvents = @"ARMobileAppTrackerAllowedEvents";

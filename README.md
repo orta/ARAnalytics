@@ -3,7 +3,7 @@ ARAnalytics v3.X.Y [![Build Status](https://travis-ci.org/orta/ARAnalytics.svg?b
 
 ARAnalytics is to iOS what [Analytical](https://github.com/jkrall/analytical) is to ruby, or [Analytics.js](http://segmentio.github.com/analytics.js/) is to javascript.
 
-ARAnalytics is an analytics abstraction library offering a sane API for tracking events and user data. It currently supports on iOS: Mixpanel, Localytics, Flurry, GoogleAnalytics, KISSmetrics, Crittercism, Crashlytics, Fabric, Bugsnag, Countly, Helpshift, Tapstream, NewRelic, Amplitude, HockeyApp, HockeyAppLib, ParseAnalytics, HeapAnalytics, Chartbeat, UMengAnalytics, Librato, Segmentio, Swrve, YandexMobileMetrica, Adjust, AppsFlyer, Branch, Snowplow, Sentry, Intercom, Keen and Adobe. And for OS X: KISSmetrics, Mixpanel and HockeyApp. 
+ARAnalytics is an analytics abstraction library offering a sane API for tracking events and user data. It currently supports on iOS: Mixpanel, Localytics, Flurry, GoogleAnalytics, KISSmetrics, Crittercism, Crashlytics, Fabric, Bugsnag, Countly, Helpshift, Tapstream, NewRelic, Amplitude, HockeyApp, HockeyAppLib, ParseAnalytics, HeapAnalytics, Chartbeat, UMengAnalytics, Librato, Segmentio, Swrve, YandexMobileMetrica, Adjust, AppsFlyer, Branch, Snowplow, Sentry, Intercom, Keen, Adobe and MobileAppTracker/Tune. And for OS X: KISSmetrics, Mixpanel and HockeyApp. 
 
 It does this by using CocoaPods subspecs to let you decide which libraries you'd like to use. You are free to also use the official API for any provider too. Also, it comes with an amazing [DSL](#aspect-oriented-dsl) to clear up your methods.
 
@@ -152,7 +152,7 @@ Note, however, that on iOS `syslogd` will not keep logs around for a long time, 
 Full list of subspecs
 ----
 
-iOS: `Mixpanel`, `Localytics`, `Flurry`, `GoogleAnalytics`, `KISSmetrics`, `Crittercism`, `Countly`, `Bugsnag`, `Helpshift`, `Tapstream`, `NewRelic`, `Amplitude`, `HockeyApp`, `HockeyAppLib`, `ParseAnalytics`, `HeapAnalytics`, `Chartbeat`, `UMengAnalytics`, `Segmentio`, `Swrve`, `YandexMobileMetrica`, `Adjust`, `Intercom`, `Librato`, `Crashlytics`, `Fabric`, `AppsFlyer`, `Branch`, `Snowplow`, `Sentry`, `Keen` & `Adobe`.
+iOS: `Mixpanel`, `Localytics`, `Flurry`, `GoogleAnalytics`, `KISSmetrics`, `Crittercism`, `Countly`, `Bugsnag`, `Helpshift`, `Tapstream`, `NewRelic`, `Amplitude`, `HockeyApp`, `HockeyAppLib`, `ParseAnalytics`, `HeapAnalytics`, `Chartbeat`, `UMengAnalytics`, `Segmentio`, `Swrve`, `YandexMobileMetrica`, `Adjust`, `Intercom`, `Librato`, `Crashlytics`, `Fabric`, `AppsFlyer`, `Branch`, `Snowplow`, `Sentry`, `Keen`, `Adobe` & `MobileAppTracker`.
 
 OSX: `KISSmetricsOSX`, `HockeyAppOSX`, `MixpanelOSX` & `ParseAnalyticsOSX`.
 

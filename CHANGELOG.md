@@ -1,5 +1,9 @@
 # ARAnalytics
 
+## Version 3.8.3
+
+* Adds MobileAppTracker/Tune support (@fabiojgrocha)
+
 ## Version 3.8.2
 
 * Updated Mixpanel provider with methods to set super properties and to clean stored properties/distinct IDs. (@rais38)
