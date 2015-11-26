@@ -84,6 +84,7 @@
 + (void)setupAdobeWithData:(NSDictionary *)additionalData;
 + (void)setupInstallTrackerWithApplicationID:(NSString *)applicationID;
 + (void)setupAppseeWithAPIKey:(NSString *)key;
++ (void)setupMobileAppTrackerWithAdvertiserID:(NSString *)advertiserID conversionKey:(NSString *)conversionKey allowedEvents:(NSArray *)allowedEvents;
 
 /// Add a provider manually
 + (void)setupProvider:(ARAnalyticalProvider *)provider;
