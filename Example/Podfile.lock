@@ -28,10 +28,10 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   ARAnalytics:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  ARAnalytics: 3f46c97db3259614a2c1fb840039cf4bf59356ce
+  ARAnalytics: 2d3ab0af06af77e85307236bb12bf83622c50a96
   Expecta: 78b4e8b0c8291fa4524d7f74016b6065c2e391ec
   Intercom: 49dfec2dadadba595705e43b30f1148ed799fbc3
   OCMock: a6a7dc0e3997fb9f35d99f72528698ebf60d64f2
