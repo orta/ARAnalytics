@@ -59,12 +59,13 @@ describe(@"ARAnalytics API", ^{
     __block ORStubbedProvider *provider = nil;
     
     beforeEach(^{
-        if(provider) [ARAnalytics removeProvider:provider];
-        
         provider = [[ORStubbedProvider alloc] init];
         [ARAnalytics setupProvider:provider];
     });
     
+    afterEach(^{
+        [ARAnalytics removeProvider:provider];
+    });
     
     describe(@"User Properties", ^{
         it(@"provider reacts to identifyUserWithID:andEmailAddress:", ^{
