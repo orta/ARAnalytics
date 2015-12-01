@@ -51,7 +51,7 @@
     [self _setUserProperty:property toValue:value];
     if (self.hasIdentified) {
 #ifdef DEBUG
-#warning "Calling -[SegmentioProvider setUserProperty:toValue:] after identifying will perform an identity request for each call."
+        NSLog(@"Calling -[SegmentioProvider setUserProperty:toValue:] after identifying will perform an identity request for each call.");
 #endif
         [self identify];
     }
