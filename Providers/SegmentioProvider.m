@@ -4,7 +4,7 @@
 
 #import "SegmentioProvider.h"
 #import "ARAnalyticsProviders.h"
-#import "Analytics.h"
+#import "SEGAnalytics.h"
 
 #ifdef AR_SEGMENTIO_EXISTS
 @interface SegmentioProvider ()
@@ -40,7 +40,7 @@
 }
 
 - (void)_identify {
-    NSDictionary *options = self.anonymousID == nil ?: @{ @"anonymousId": self.anonymousID };
+    NSDictionary *options = self.anonymousID == nil ? nil : @{ @"anonymousId": self.anonymousID };
     [[SEGAnalytics sharedAnalytics] identify:self.userID traits:self.traits options:options];
     self.hasIdentified = YES;
 }
@@ -53,7 +53,7 @@
 #ifdef DEBUG
         NSLog(@"Calling -[SegmentioProvider setUserProperty:toValue:] after identifying will perform an identity request for each call.");
 #endif
-        [self identify];
+        [self _identify];
     }
 }
 
