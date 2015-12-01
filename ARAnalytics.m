@@ -168,9 +168,9 @@ static BOOL _ARLogShouldPrintStdout = YES;
         [self setupInstallTrackerWithApplicationID:analyticsDictionary[ARInstallTrackerApplicationID]];
     }
 
-	if (analyticsDictionary[ARAppseeAPIKey]) {
-		[self setupAppseeWithAPIKey:analyticsDictionary[ARAppseeAPIKey]];
-	}
+    if (analyticsDictionary[ARAppseeAPIKey]) {
+        [self setupAppseeWithAPIKey:analyticsDictionary[ARAppseeAPIKey]];
+    }
     
     if (analyticsDictionary[ARMobileAppTrackerAdvertiserID] &&
         analyticsDictionary[ARMobileAppTrackerConversionKey] &&
@@ -544,8 +544,13 @@ static BOOL _ARLogShouldPrintStdout = YES;
 
 + (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email
 {
+    [self identifyUserWithID:userID anonymousID:nil andEmailAddress:email];
+}
+
++ (void)identifyUserWithID:(NSString *)userID anonymousID:(NSString *)anonymousID andEmailAddress:(NSString *)email;
+{
     [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
-        [provider identifyUserWithID:userID andEmailAddress:email];
+        [provider identifyUserWithID:userID anonymousID:anonymousID andEmailAddress:email];
     }];
 }
 
