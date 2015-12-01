@@ -7,7 +7,7 @@ PODS:
     - ARAnalytics/CoreIOS
     - Intercom
   - Expecta (0.4.2)
-  - Intercom (2.3.15)
+  - Intercom (2.3.16)
   - OCMock (2.2.4)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
@@ -28,12 +28,12 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   ARAnalytics:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
   ARAnalytics: 2d3ab0af06af77e85307236bb12bf83622c50a96
   Expecta: 78b4e8b0c8291fa4524d7f74016b6065c2e391ec
-  Intercom: 49dfec2dadadba595705e43b30f1148ed799fbc3
+  Intercom: 296dfb41c92ff90de23adb1d975d337aa9dd422f
   OCMock: a6a7dc0e3997fb9f35d99f72528698ebf60d64f2
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   RSSwizzle: d561958f595028bfcef98c7d55c318b3878a61c6
