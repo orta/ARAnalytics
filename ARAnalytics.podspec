@@ -106,10 +106,11 @@ Pod::Spec.new do |s|
       else
         ss.ios.source_files = sources
         ss.dependency 'ARAnalytics/CoreIOS'
-        ss.platform = :ios
         if analytics_spec[:tvos]
           ss.tvos.source_files = sources
-          ss.platform = :tvos
+          ss.platforms = [:ios, :tvos]
+        else
+          ss.platform = :ios
         end
         all_ios_names << providername
       end
