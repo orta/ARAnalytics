@@ -6,21 +6,65 @@
 #import "ARAnalyticsProviders.h"
 #import "Analytics.h"
 
+#ifdef AR_SEGMENTIO_EXISTS
+@interface SegmentioProvider ()
+@property (assign) BOOL hasIdentified;
+@property (copy) NSString *userID;
+@property (copy) NSString *anonymousID;
+@property (copy) NSDictionary *traits;
+@end
+#endif
+
 @implementation SegmentioProvider
 
 #ifdef AR_SEGMENTIO_EXISTS
 - (id)initWithIdentifier:(NSString *)identifier {
-    [SEGAnalytics setupWithConfiguration:[SEGAnalyticsConfiguration configurationWithWriteKey:identifier]];
-    return [super init];
+    if ((self = [super initWithIdentifier:identifier])) {
+        [SEGAnalytics setupWithConfiguration:[SEGAnalyticsConfiguration configurationWithWriteKey:identifier]];
+        _traits = @{};
+    }
+    return self;
 }
 
 - (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
-    if (userID && email) {
-        [[SEGAnalytics sharedAnalytics] identify:userID traits:@{ @"email": email }];
+    [self identifyUserWithID:userID anonymousID:nil andEmailAddress:email];
+}
+
+- (void)identifyUserWithID:(NSString *)userID anonymousID:(NSString *)anonymousID andEmailAddress:(NSString *)email {
+    self.userID = userID;
+    self.anonymousID = anonymousID;
+    if (email) {
+        [self _setUserProperty:@"email" toValue:email];
     }
-    else if (userID) {
-        [[SEGAnalytics sharedAnalytics] identify:userID];
+    [self _identify];
+}
+
+- (void)_identify {
+    NSDictionary *options = self.anonymousID == nil ?: @{ @"anonymousId": self.anonymousID };
+    [[SEGAnalytics sharedAnalytics] identify:self.userID traits:self.traits options:options];
+    self.hasIdentified = YES;
+}
+
+// This will only call -identify if the user has identified before. This makes it possible to first set multiple
+// properties without making multiple identify requests.
+- (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
+    [self _setUserProperty:property toValue:value];
+    if (self.hasIdentified) {
+#ifdef DEBUG
+        NSLog(@"Calling -[SegmentioProvider setUserProperty:toValue:] after identifying will perform an identity request for each call.");
+#endif
+        [self identify];
     }
+}
+
+- (void)_setUserProperty:(NSString *)property toValue:(NSString *)value {
+    NSMutableDictionary *traits = [self.traits mutableCopy];
+    if (value) {
+        traits[property] = value;
+    } else {
+        [traits removeObjectForKey:property];
+    }
+    self.traits = traits;
 }
 
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties {

@@ -22,6 +22,12 @@ NSString *const ARAnalyticalProviderNewPageViewEventScreenPropertyKey = @"screen
     return [super init];
 }
 
+- (void)identifyUserWithID:(NSString *)userID anonymousID:(NSString *)anonymousID andEmailAddress:(NSString *)email {
+    [self identifyUserWithID:userID andEmailAddress:email];
+    if (anonymousID) {
+        [self setUserProperty:@"anonymous_id" toValue:anonymousID];
+    }
+}
 - (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {}
 - (void)setUserProperty:(NSString *)property toValue:(NSString *)value {}
 

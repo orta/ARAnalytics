@@ -9,8 +9,14 @@ extern NSString *const ARAnalyticalProviderNewPageViewEventScreenPropertyKey;
 - (id)initWithIdentifier:(NSString *)identifier;
 
 /// Set a per user property
-- (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email;
 - (void)setUserProperty:(NSString *)property toValue:(NSString *)value;
+- (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email;
+
+/// For backwards compatibility, this method by default invokes `-identifyUserWithID:andEmailAddress:` and assigns the
+/// `anonymousID` as a user property, if given, with the key `anonymous_id`.
+///
+/// @note If you override this method, be sure to also override that method and have it invoke this one instead.
+- (void)identifyUserWithID:(NSString *)userID anonymousID:(NSString *)anonymousID andEmailAddress:(NSString *)email;
 
 /// Submit user events
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties;

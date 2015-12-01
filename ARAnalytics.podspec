@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
   heap             = { :spec_name => "HeapAnalytics",       :dependency => "Heap" }
   chartbeat        = { :spec_name => "Chartbeat",           :dependency => "Chartbeat", :has_extension => true }
   umeng            = { :spec_name => "UMengAnalytics",      :dependency => "UMengAnalytics" }
-  segmentio        = { :spec_name => "Segmentio",           :dependency => "Analytics/Segmentio" , :tvos => true}
+  segmentio        = { :spec_name => "Segmentio",           :dependency => [["Analytics", ">= 3"]], :tvos => true}
   swrve            = { :spec_name => "Swrve",               :dependency => "SwrveSDK" }
   yandex           = { :spec_name => "YandexMobileMetrica", :dependency => "YandexMobileMetrica" }
   adjust           = { :spec_name => "Adjust",              :dependency => "Adjust" }
@@ -106,17 +106,18 @@ Pod::Spec.new do |s|
       else
         ss.ios.source_files = sources
         ss.dependency 'ARAnalytics/CoreIOS'
-        ss.platform = :ios
         if analytics_spec[:tvos]
           ss.tvos.source_files = sources
-          ss.platform = :tvos
+          ss.platforms = [:ios, :tvos]
+        else
+          ss.platform = :ios
         end
         all_ios_names << providername
       end
 
       # If there's a podspec dependency include it
       Array(analytics_spec[:dependency]).each do |dep|
-          ss.dependency dep
+          ss.dependency *dep
       end
 
     end

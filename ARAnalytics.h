@@ -103,6 +103,12 @@
 /// Register a user and an associated email address, it is fine to send nils for either.
 + (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email;
 
+/// Register a user and an associated email address, in addition allows you to pass in an ID that you previously used
+/// to track events when the user did not authenticate yet. E.g. `-[UIDevice identifierForVendor]`.
+///
+/// Currently only the Segment provider makes use of this and only when using version TODO or up of their SDK.
++ (void)identifyUserWithID:(NSString *)userID anonymousID:(NSString *)anonymousID andEmailAddress:(NSString *)email;
+
 /// Set a per user property
 + (void)setUserProperty:(NSString *)property toValue:(NSString *)value;
 
