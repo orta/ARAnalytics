@@ -3,6 +3,7 @@
 ## Version 3.8.3
 
 * Adds MobileAppTracker/Tune support (@fabiojgrocha)
+* Add support for optional anonymous ID  (@alloy)
 
 ## Version 3.8.2
 
