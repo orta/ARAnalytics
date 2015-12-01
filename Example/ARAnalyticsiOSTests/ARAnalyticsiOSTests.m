@@ -65,6 +65,7 @@ describe(@"ARAnalytics API", ^{
     
     afterEach(^{
         [ARAnalytics removeProvider:provider];
+        [ARAnalytics removeEventSuperProperty:@"paint"];
     });
     
     describe(@"User Properties", ^{
