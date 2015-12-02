@@ -547,14 +547,14 @@ static BOOL _ARLogShouldPrintStdout = YES;
     [self identifyUserWithID:userID anonymousID:nil andEmailAddress:email];
 }
 
-+ (void)identifyUserWithID:(NSString *)userID anonymousID:(NSString *)anonymousID andEmailAddress:(NSString *)email;
++ (void)identifyUserWithID:(NSString *)userID anonymousID:(NSString *)anonymousID andEmailAddress:(NSString *)email
 {
     [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
         [provider identifyUserWithID:userID anonymousID:anonymousID andEmailAddress:email];
     }];
 }
 
-+ (void)setUserProperty:(NSString *)property toValue:(NSString *)value 
++ (void)setUserProperty:(NSString *)property toValue:(id)value
 {
     if (value == nil) {
         NSLog(@"ARAnalytics: Value cannot be nil ( %@ ) ", property);

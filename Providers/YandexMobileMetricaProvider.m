@@ -23,7 +23,7 @@ https://tech.yandex.com/metrica-mobile-sdk/doc/mobile-sdk-dg/concepts/ios-histor
     return self;
 }
 
-- (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
+- (void)setUserProperty:(NSString *)property toValue:(id)value {
     [YMMYandexMetrica setEnvironmentValue:value forKey:property];
 }
 

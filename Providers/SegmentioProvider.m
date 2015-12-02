@@ -47,7 +47,7 @@
 
 // This will only call -identify if the user has identified before. This makes it possible to first set multiple
 // properties without making multiple identify requests.
-- (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
+- (void)setUserProperty:(NSString *)property toValue:(id)value {
     [self _setUserProperty:property toValue:value];
     if (self.hasIdentified) {
 #ifdef DEBUG
@@ -57,7 +57,7 @@
     }
 }
 
-- (void)_setUserProperty:(NSString *)property toValue:(NSString *)value {
+- (void)_setUserProperty:(NSString *)property toValue:(id)value {
     NSMutableDictionary *traits = [self.traits mutableCopy];
     if (value) {
         traits[property] = value;
