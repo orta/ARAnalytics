@@ -110,7 +110,7 @@
 + (void)identifyUserWithID:(NSString *)userID anonymousID:(NSString *)anonymousID andEmailAddress:(NSString *)email;
 
 /// Set a per user property
-+ (void)setUserProperty:(NSString *)property toValue:(NSString *)value;
++ (void)setUserProperty:(NSString *)property toValue:(id)value;
 
 /// Adds to a user property if support exists in the provider
 + (void)incrementUserProperty:(NSString *)counterName byInt:(NSInteger)amount;

@@ -53,7 +53,7 @@
     }
 }
 
--(void)setUserProperty:(NSString *)property toValue:(NSString *)value {
+- (void)setUserProperty:(NSString *)property toValue:(id)value {
     [Localytics setValue:value forIdentifier:property];
 }
 

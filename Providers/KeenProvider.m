@@ -29,7 +29,7 @@ static NSString * const kKeenEmailKey = @"email";
     [self setUserProperty:kKeenEmailKey toValue:email];
 }
 
-- (void)setUserProperty:(NSString *)property toValue:(NSString *)value
+- (void)setUserProperty:(NSString *)property toValue:(id)value {
 {
     KeenClient *client = [KeenClient sharedClient];
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:client.globalPropertiesDictionary];

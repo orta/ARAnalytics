@@ -46,7 +46,7 @@ static NSString * const kMixpanelTimingPropertyKey = @"$duration";
     }
 }
 
-- (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
+- (void)setUserProperty:(NSString *)property toValue:(id)value {
     [[self.mixpanel people] set:property to:value];
 }
 

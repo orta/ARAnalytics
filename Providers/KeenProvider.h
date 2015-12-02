@@ -11,7 +11,7 @@
 /// Sets @c userID or @c email to @c nil if a nil value is passed.
 - (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email;
 
-- (void)setUserProperty:(NSString *)property toValue:(NSString *)value;
+- (void)setUserProperty:(NSString *)property toValue:(id)value;
 
 
 // ARAnalyticalProvider methods to consider implementing in the future:

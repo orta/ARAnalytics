@@ -25,7 +25,7 @@
     [[Amplitude instance] logEvent:event withEventProperties:properties];
 }
 
--(void)setUserProperty:(NSString *)property toValue:(NSString *)value {
+- (void)setUserProperty:(NSString *)property toValue:(id)value {
     [[Amplitude instance] setUserProperties:@{property: value}];
 }
 

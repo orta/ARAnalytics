@@ -21,7 +21,7 @@
     }
 }
 
-- (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
+- (void)setUserProperty:(NSString *)property toValue:(id)value {
     [[Crashlytics sharedInstance] setObjectValue:value forKey:property];
 }
 

@@ -9,7 +9,7 @@ extern NSString *const ARAnalyticalProviderNewPageViewEventScreenPropertyKey;
 - (id)initWithIdentifier:(NSString *)identifier;
 
 /// Set a per user property
-- (void)setUserProperty:(NSString *)property toValue:(NSString *)value;
+- (void)setUserProperty:(NSString *)property toValue:(id)value;
 - (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email;
 
 /// For backwards compatibility, this method by default invokes `-identifyUserWithID:andEmailAddress:` and assigns the

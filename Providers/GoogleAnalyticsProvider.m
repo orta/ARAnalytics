@@ -49,7 +49,7 @@
     [self setUserProperty:@"&uid" toValue:userID];
 }
 
-- (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
+- (void)setUserProperty:(NSString *)property toValue:(id)value {
     [self.tracker set:property value:value];
 }
 

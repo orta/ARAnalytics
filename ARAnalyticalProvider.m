@@ -29,7 +29,7 @@ NSString *const ARAnalyticalProviderNewPageViewEventScreenPropertyKey = @"screen
     }
 }
 - (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {}
-- (void)setUserProperty:(NSString *)property toValue:(NSString *)value {}
+- (void)setUserProperty:(NSString *)property toValue:(id)value {}
 
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties {}
 - (void)incrementUserProperty:(NSString *)counterName byInt:(NSNumber *)amount {}
