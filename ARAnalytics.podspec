@@ -146,6 +146,9 @@ Pod::Spec.new do |s|
         if analytics_spec[:osx]
           ss.osx.dependency "ARAnalytics/#{analytics_spec[:spec_name]}"
         else
+          if analytics_spec[:tvos]
+            ss.tvos.dependency "ARAnalytics/#{analytics_spec[:spec_name]}"
+          end
           ss.ios.dependency "ARAnalytics/#{analytics_spec[:spec_name]}"
         end
       end
