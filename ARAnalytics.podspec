@@ -108,7 +108,8 @@ Pod::Spec.new do |s|
         ss.dependency 'ARAnalytics/CoreIOS'
         if analytics_spec[:tvos]
           ss.tvos.source_files = sources
-          ss.platforms = [:ios, :tvos]
+          ss.ios.deployment_target = "6.0"
+          ss.tvos.deployment_target = "9.0"
         else
           ss.platform = :ios
         end
