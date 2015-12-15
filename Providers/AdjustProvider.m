@@ -12,22 +12,27 @@
 @implementation AdjustProvider
 
 - (id)initWithIdentifier:(NSString *)identifier {
-    NSAssert([Adjust class], @"Adjust is not included");
+    return [self initWithIdentifier:identifier andConfigurationDelegate:nil];
+}
 
+-(instancetype)initWithIdentifier:(NSString *)identifier andConfigurationDelegate:(id<AdjustDelegate>)delegate {
+    NSAssert([Adjust class], @"Adjust is not included");
+    
     NSString *environment;
     ADJConfig *adjustConfig;
-
+    
 #if defined (DEBUG)
     environment = ADJEnvironmentSandbox;
 #else
     environment = ADJEnvironmentProduction;
 #endif
-
+    
     adjustConfig = [ADJConfig configWithAppToken:identifier
                                      environment:environment];
-
+    adjustConfig.delegate = delegate;
+    
     [Adjust appDidLaunch:adjustConfig];
-
+    
     return [super init];
 }
 
