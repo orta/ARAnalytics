@@ -7,6 +7,10 @@
 
 #import "ARAnalyticalProvider.h"
 
+@protocol AdjustDelegate;
+
 @interface AdjustProvider : ARAnalyticalProvider
+
+-(instancetype)initWithIdentifier:(NSString *)identifier andConfigurationDelegate:(id<AdjustDelegate>)delegate;
 
 @end
