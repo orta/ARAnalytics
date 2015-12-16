@@ -19,8 +19,15 @@
 
 #ifdef AR_SEGMENTIO_EXISTS
 - (id)initWithIdentifier:(NSString *)identifier {
+	return [self initWithIdentifier:identifier integrations:nil];
+}
+- (id)initWithIdentifier:(NSString *)identifier integrations:(NSArray *)integrations {
     if ((self = [super initWithIdentifier:identifier])) {
-        [SEGAnalytics setupWithConfiguration:[SEGAnalyticsConfiguration configurationWithWriteKey:identifier]];
+		SEGAnalyticsConfiguration *config = [SEGAnalyticsConfiguration configurationWithWriteKey:identifier];
+		for (id integration in integrations) {
+			[config use:integration];
+		}
+        [SEGAnalytics setupWithConfiguration:config];
         _traits = @{};
     }
     return self;

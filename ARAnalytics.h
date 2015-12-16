@@ -72,7 +72,7 @@
 + (void)setupHeapAnalyticsWithApplicationID:(NSString *)appID;
 + (void)setupChartbeatWithApplicationID:(NSString *)appID;
 + (void)setupLibratoWithEmail:(NSString *)email token:(NSString *)token prefix:(NSString *)prefix;
-+ (void)setupSegmentioWithWriteKey:(NSString*)key;
++ (void)setupSegmentioWithWriteKey:(NSString*)key integrations:(NSArray *)integrations;
 + (void)setupSwrveWithAppID:(NSString *)appID apiKey:(NSString *)apiKey;
 + (void)setupYandexMobileMetricaWithAPIKey:(NSString*)key;
 + (void)setupAdjustWithAppToken:(NSString *)token;
@@ -202,6 +202,7 @@ extern NSString * const ARLibratoEmail;
 extern NSString * const ARLibratoToken;
 extern NSString * const ARLibratoPrefix;
 extern NSString * const ARSegmentioWriteKey;
+extern NSString * const ARSegmentioIntegrationsKey;
 extern NSString * const ARSwrveAppID;
 extern NSString * const ARSwrveAPIKey;
 extern NSString * const ARYandexMobileMetricaAPIKey;
