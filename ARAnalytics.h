@@ -85,6 +85,7 @@
 + (void)setupInstallTrackerWithApplicationID:(NSString *)applicationID;
 + (void)setupAppseeWithAPIKey:(NSString *)key;
 + (void)setupMobileAppTrackerWithAdvertiserID:(NSString *)advertiserID conversionKey:(NSString *)conversionKey allowedEvents:(NSArray *)allowedEvents;
++ (void)setupLaunchKitWithAPIToken:(NSString *)token;
 
 /// Add a provider manually
 + (void)setupProvider:(ARAnalyticalProvider *)provider;
@@ -223,3 +224,4 @@ extern NSString * const ARAppseeAPIKey;
 extern NSString * const ARMobileAppTrackerAdvertiserID;
 extern NSString * const ARMobileAppTrackerConversionKey;
 extern NSString * const ARMobileAppTrackerAllowedEvents;
+extern NSString * const ARLaunchKitAPIToken;
