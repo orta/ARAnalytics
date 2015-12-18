@@ -142,3 +142,7 @@
 #ifdef AR_MOBILEAPPTRACKER_EXISTS
 #import "MobileAppTrackerProvider.h"
 #endif
+
+#ifdef AR_LAUNCHKIT_EXISTS
+#import "LaunchKitProvider.h"
+#endif

@@ -180,7 +180,11 @@ static BOOL _ARLogShouldPrintStdout = YES;
                                       conversionKey:analyticsDictionary[ARMobileAppTrackerConversionKey]
                                       allowedEvents:analyticsDictionary[ARMobileAppTrackerAllowedEvents]];
     }
-
+    
+    if (analyticsDictionary[ARLaunchKitAPIToken]) {
+        [self setupLaunchKitWithAPIToken:analyticsDictionary[ARLaunchKitAPIToken]];
+    }
+    
     // Add future integrations here:
 
 
@@ -539,6 +543,14 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
++ (void)setupLaunchKitWithAPIToken:(NSString *)token
+{
+#ifdef AR_LAUNCHKIT_EXISTS
+    LaunchKitProvider *provider = [[LaunchKitProvider alloc] initWithIdentifier:token];
+    [self setupProvider:provider];
+#endif
+}
+
 #pragma mark -
 #pragma mark User Setup
 
@@ -816,3 +828,4 @@ NSString * const ARAppseeAPIKey = @"ARAppseeAPIKey";
 NSString * const ARMobileAppTrackerAdvertiserID = @"ARMobileAppTrackerAdvertiserID";
 NSString * const ARMobileAppTrackerConversionKey = @"ARMobileAppTrackerConversionKey";
 NSString * const ARMobileAppTrackerAllowedEvents = @"ARMobileAppTrackerAllowedEvents";
+NSString * const ARLaunchKitAPIToken = @"ARLaunchKitAPIToken";
