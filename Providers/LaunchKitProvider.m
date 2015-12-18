@@ -1,7 +1,7 @@
 #import "LaunchKitProvider.h"
 #import <LaunchKit/LaunchKit.h>
 
-@implementation AppseeProvider
+@implementation LaunchKitProvider
 #ifdef AR_LAUNCHKIT_EXISTS
 
 -(id)initWithIdentifier:(NSString *)identifier {
