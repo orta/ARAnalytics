@@ -18,9 +18,8 @@
 
 - (void)didShowNewPageView:(NSString *)pageTitle {
 	[self event:@"Screen view" withProperties:@{ @"screen": pageTitle }];
-	[MobClick beginLogPageView:pageTitle];
 
-	// support Umeng's logPageView logic by set a fixed time
+	// support Umeng's logPageView logic by set a fixed 
 	[MobClick logPageView:pageTitle seconds:0.1];
 }
 
