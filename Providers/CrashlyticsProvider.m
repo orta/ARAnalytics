@@ -1,4 +1,5 @@
 #import "CrashlyticsProvider.h"
+#import <Crashlytics/Answers.h>
 
 @implementation CrashlyticsProvider
 #ifdef AR_CRASHLYTICS_EXISTS
@@ -32,6 +33,8 @@
     } else {
         log = event;
     }
+
+    [Answers logCustomEventWithName:event customAttributes:properties];
 
     CLSLog(@"%@", log);
 }
