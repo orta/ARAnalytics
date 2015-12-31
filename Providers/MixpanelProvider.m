@@ -25,7 +25,7 @@ static NSString * const kMixpanelTimingPropertyKey = @"$duration";
     });
 
     if(! _mixpanel) {
-        _mixpanel = [[Mixpanel alloc] initWithToken:identifier launchOptions:nil andFlushInterval:60];
+        _mixpanel = [[Mixpanel alloc] initWithToken:identifier andFlushInterval:60];
     }
 
     if (host) {
