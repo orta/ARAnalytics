@@ -1,9 +1,15 @@
 # ARAnalytics
 
-## Version 3.8.3
+## Version 3.9.0
 
 * Adds MobileAppTracker/Tune support (@fabiojgrocha)
 * Add support for optional anonymous ID  (@alloy)
+* Set user property is now `id` instead of `NSString`  (@alloy)
+* Let HockeySDK work with CocoaPods-Frameworks (@orta)
+* Improved Umeng support  (@ttgb)
+* Added LaunchKit (@axidms)
+* Add support for Segment 3.0 (@sgtsquiggs)
+* Improve initialiser for AdjustProvider (@BenchR267)
 
 ## Version 3.8.2
 
