@@ -12,10 +12,6 @@
 
 #if __has_include(<HockeySDK_Source/HockeySDK.h>)
   #import <HockeySDK_Source/HockeySDK.h>
-  #import <HockeySDK_Source/BITCrashDetails.h>
-  #import <HockeySDK_Source/BITUpdateManagerDelegate.h>
-  #import <HockeySDK_Source/BITCrashManager.h>
-  #import <HockeySDK_Source/BITCrashManagerDelegate.h>
 #endif
 
 #endif
