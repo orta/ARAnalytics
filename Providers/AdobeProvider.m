@@ -31,5 +31,11 @@
                      data:nil];
 }
 
+- (void)didShowNewPageView:(NSString *)pageTitle withProperties:(NSDictionary *)properties {
+    [ADBMobile trackState:pageTitle
+                     data:properties];
+}
+
+
 #endif
 @end
