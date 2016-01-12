@@ -76,7 +76,8 @@ static BOOL _ARLogShouldPrintStdout = YES;
         [self setupMixpanelWithToken:analyticsDictionary[ARMixpanelToken] andHost:analyticsDictionary[ARMixpanelHost]];
     }
 
-    if (analyticsDictionary[ARCountlyAppKey] && analyticsDictionary[ARCountlyHost]) {
+    if (analyticsDictionary[ARCountlyAppKey]) {
+        // ARCountlyHost is nil if you want the cloud host.
         [self setupCountlyWithAppKey:analyticsDictionary[ARCountlyAppKey] andHost:analyticsDictionary[ARCountlyHost]];
     }
 
