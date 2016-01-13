@@ -22,5 +22,9 @@
     [[Countly sharedInstance] recordEvent:event segmentation:properties count:1];
 }
 
+- (void)didShowNewPageView:(NSString *)pageTitle withProperties:(NSDictionary *)properties {
+    [self event:pageTitle withProperties:properties];
+}
+
 #endif
 @end
