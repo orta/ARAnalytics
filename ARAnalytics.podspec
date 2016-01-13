@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   mixpanel         = { :spec_name => "Mixpanel",            :dependency => "Mixpanel" }
   localytics       = { :spec_name => "Localytics",          :dependency => "Localytics" }
   flurry           = { :spec_name => "Flurry",              :dependency => "Flurry-iOS-SDK" }
-  google           = { :spec_name => "GoogleAnalytics",     :dependency => "Google/Analytics", :has_extension => true }
+  google           = { :spec_name => "GoogleAnalytics",     :dependency => "GoogleAnalytics", :has_extension => true }
   kissmetrics      = { :spec_name => "KISSmetrics",         :dependency => "KISSmetrics" }
   crittercism      = { :spec_name => "Crittercism",         :dependency => "CrittercismSDK" }
   countly          = { :spec_name => "Countly",             :dependency => "Countly" }
