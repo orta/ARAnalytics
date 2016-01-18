@@ -110,21 +110,34 @@ There is also a DSL-like setup constructor in the `ARAnalytics/DSL` subspec that
    ...
 ```
 
-The above configuration specifies that the "button pressed" event be sent whenever the selector `buttonPressed:` is invoked on *any* instance of `MyViewController`. Additionally, every view controller will send a page view with its title as the page name whenever `viewDidAppear:` is called. There are also advanced uses using blocks in the DSL to selectively disable certain events, or to provide event property dictionaries.
+The above configuration specifies that the "button pressed" event be sent whenever the selector `buttonPressed:` is invoked on *any* instance of `MyViewController`. Additionally, every view controller will send a page view with its title as the page name whenever `viewDidAppear:` is called. There are also advanced uses using blocks in the DSL to selectively disable certain events, provide custom page/event property dictionaries, or to provide dynamic page/event names. 
 
 ```objc
 [ARAnalytics setupWithAnalytics: @{ /* keys */ } configuration: @{
+   ARAnalyticsTrackedScreens: @[ @{
+      ARAnalyticsClass: UIViewController.class,
+      ARAnalyticsDetails: @[ @{
+          ARAnalyticsProperties: ^NSDictionary*(MyViewController *controller, NSArray *parameters) {
+            return @{ /* Custom screen view properties */ };
+          }, 
+          ARAnalyticsPageNameBlock:  ^NSDictionary*(MyViewController *controller, NSArray *parameters, NSDictionary *customProperties) {
+            return [NSString stringWithFormat:@"%@:%@:%@",controller.a, controller.b, controller.c];
+          }
+      }]
+  }],
   ARAnalyticsTrackedEvents: @[ @{
     ARAnalyticsClass: MyViewController.class,
     ARAnalyticsDetails: @[ 
       @{
-        ARAnalyticsEventName: @"button pressed",
         ARAnalyticsSelectorName: NSStringFromSelector(@selector(buttonPressed:)),
         ARAnalyticsShouldFire: ^BOOL(MyViewController *controller, NSArray *parameters) {
           return /* some condition */;
         },
-        ARAnalyticsEventProperties: ^NSDictionary*(MyViewController *controller, NSArray *parameters) {
+        ARAnalyticsProperties: ^NSDictionary*(MyViewController *controller, NSArray *parameters) {
           return @{ /* Custom properties */ };
+        },
+        ARAnalyticsEventNameBlock:  ^NSDictionary*(MyViewController *controller, NSArray *parameters, NSDictionary *customProperties) {
+          return [NSString stringWithFormat:@"%@ pressed", [(UIButton*)parameters[0] titleLabel].text];
         }
       },
       /* more events for this class */
