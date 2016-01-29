@@ -11,7 +11,7 @@ static NSString * const kKeenEmailKey = @"email";
 - (instancetype)initWithProjectID:(NSString *)projectID andWriteKey:(NSString *)writeKey andReadKey:(NSString *)readKey {
 #ifdef AR_KEEN_EXISTS
     NSAssert([KeenClient class], @"Keen Client is not included");
-    [KeenClient sharedClientWithProjectId:projectID andWriteKey:writeKey andReadKey:readKey];
+    [KeenClient sharedClientWithProjectID:projectID andWriteKey:writeKey andReadKey:readKey];
 #endif
     return [super init];
 }
@@ -29,7 +29,7 @@ static NSString * const kKeenEmailKey = @"email";
     [self setUserProperty:kKeenEmailKey toValue:email];
 }
 
-- (void)setUserProperty:(NSString *)property toValue:(NSString *)value
+- (void)setUserProperty:(NSString *)property toValue:(id)value {
 {
     KeenClient *client = [KeenClient sharedClient];
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:client.globalPropertiesDictionary];

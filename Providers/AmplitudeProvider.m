@@ -6,27 +6,27 @@
 
 -(id)initWithIdentifier:(NSString *)identifier {
     NSAssert([Amplitude class], @"Amplitude is not included");
-    [Amplitude initializeApiKey:identifier];
+    [[Amplitude instance] initializeApiKey:identifier];
     
     return [super init];
 }
 
 -(void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
     if (userID) {
-        [Amplitude setUserId:userID];
+        [[Amplitude instance] setUserId:userID];
     }
     
     if (email) {
-        [Amplitude setUserId:email];
+        [[Amplitude instance] setUserId:email];
     }
 }
 
 -(void)event:(NSString *)event withProperties:(NSDictionary *)properties {
-    [Amplitude logEvent:event withEventProperties:properties];
+    [[Amplitude instance] logEvent:event withEventProperties:properties];
 }
 
--(void)setUserProperty:(NSString *)property toValue:(NSString *)value {
-    [Amplitude setUserProperties:@{property: value}];
+- (void)setUserProperty:(NSString *)property toValue:(id)value {
+    [[Amplitude instance] setUserProperties:@{property: value}];
 }
 
 #endif

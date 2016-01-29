@@ -21,7 +21,7 @@
     [Swrve.sharedInstance userUpdate:traits];
 }
 
-- (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
+- (void)setUserProperty:(NSString *)property toValue:(id)value {
     if (!property) return;
     
     NSDictionary *traits = @{ property: value ?: NSNull.null };

@@ -8,7 +8,7 @@ target :ARAnalyticsBootstrapiOS do
 end
 
 target "ARAnalyticsiOSTests" do
-  pod 'Specta', '~> 0.2'
+  pod 'Specta', '~> 1'
   pod 'Expecta', '~> 0.2'
   pod 'OCMock', '2.2.4'
 end

@@ -76,7 +76,8 @@ static BOOL _ARLogShouldPrintStdout = YES;
         [self setupMixpanelWithToken:analyticsDictionary[ARMixpanelToken] andHost:analyticsDictionary[ARMixpanelHost]];
     }
 
-    if (analyticsDictionary[ARCountlyAppKey] && analyticsDictionary[ARCountlyHost]) {
+    if (analyticsDictionary[ARCountlyAppKey]) {
+        // ARCountlyHost is nil if you want the cloud host.
         [self setupCountlyWithAppKey:analyticsDictionary[ARCountlyAppKey] andHost:analyticsDictionary[ARCountlyHost]];
     }
 
@@ -125,7 +126,7 @@ static BOOL _ARLogShouldPrintStdout = YES;
     }
 
     if (analyticsDictionary[ARSegmentioWriteKey]) {
-        [self setupSegmentioWithWriteKey:analyticsDictionary[ARSegmentioWriteKey]];
+        [self setupSegmentioWithWriteKey:analyticsDictionary[ARSegmentioWriteKey] integrations:analyticsDictionary[ARSegmentioIntegrationsKey]];
     }
 
     if (analyticsDictionary[ARSwrveAppID] && analyticsDictionary[ARSwrveAPIKey]) {
@@ -163,7 +164,28 @@ static BOOL _ARLogShouldPrintStdout = YES;
     if (analyticsDictionary[ARAdobeData]) {
         [self setupAdobeWithData:analyticsDictionary[ARAdobeData]];
     }
+    
+    if (analyticsDictionary[ARInstallTrackerApplicationID]) {
+        [self setupInstallTrackerWithApplicationID:analyticsDictionary[ARInstallTrackerApplicationID]];
+    }
 
+    if (analyticsDictionary[ARAppseeAPIKey]) {
+        [self setupAppseeWithAPIKey:analyticsDictionary[ARAppseeAPIKey]];
+    }
+    
+    if (analyticsDictionary[ARMobileAppTrackerAdvertiserID] &&
+        analyticsDictionary[ARMobileAppTrackerConversionKey] &&
+        analyticsDictionary[ARMobileAppTrackerAllowedEvents]) {
+        
+        [self setupMobileAppTrackerWithAdvertiserID:analyticsDictionary[ARMobileAppTrackerAdvertiserID]
+                                      conversionKey:analyticsDictionary[ARMobileAppTrackerConversionKey]
+                                      allowedEvents:analyticsDictionary[ARMobileAppTrackerAllowedEvents]];
+    }
+    
+    if (analyticsDictionary[ARLaunchKitAPIToken]) {
+        [self setupLaunchKitWithAPIToken:analyticsDictionary[ARLaunchKitAPIToken]];
+    }
+    
     // Add future integrations here:
 
 
@@ -410,10 +432,10 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
-+ (void)setupSegmentioWithWriteKey:(NSString *)key
++ (void)setupSegmentioWithWriteKey:(NSString *)key integrations:(NSArray *)integrations
 {
 #ifdef AR_SEGMENTIO_EXISTS
-    SegmentioProvider *provider = [[SegmentioProvider alloc] initWithIdentifier:key];
+    SegmentioProvider *provider = [[SegmentioProvider alloc] initWithIdentifier:key integrations:integrations];
     [self setupProvider:provider];
 #endif
 }
@@ -497,17 +519,55 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
++ (void)setupInstallTrackerWithApplicationID:(NSString *)applicationID
+{
+#ifdef AR_INSTALLTRACKER_EXISTS
+    InstallTrackerProvider *provider = [[InstallTrackerProvider alloc] initWithIdentifier:applicationID];
+    [self setupProvider:provider];
+#endif
+}
+
++ (void)setupAppseeWithAPIKey:(NSString *)key
+{
+#ifdef AR_APPSEE_EXISTS
+     AppseeProvider *provider = [[AppseeProvider alloc] initWithIdentifier:key];
+    [self setupProvider:provider];
+#endif
+}
+
++ (void)setupMobileAppTrackerWithAdvertiserID:(NSString *)advertiserID conversionKey:(NSString *)conversionKey allowedEvents:(NSArray *)allowedEvents {
+#ifdef AR_MOBILEAPPTRACKER_EXISTS
+    MobileAppTrackerProvider *provider = [[MobileAppTrackerProvider alloc] initWithAdvertiserId:advertiserID
+                                                                                  conversionKey:conversionKey
+                                                                                  allowedEvents:allowedEvents];
+    [self setupProvider:provider];
+#endif
+}
+
++ (void)setupLaunchKitWithAPIToken:(NSString *)token
+{
+#ifdef AR_LAUNCHKIT_EXISTS
+    LaunchKitProvider *provider = [[LaunchKitProvider alloc] initWithIdentifier:token];
+    [self setupProvider:provider];
+#endif
+}
+
 #pragma mark -
 #pragma mark User Setup
 
 + (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email
 {
+    [self identifyUserWithID:userID anonymousID:nil andEmailAddress:email];
+}
+
++ (void)identifyUserWithID:(NSString *)userID anonymousID:(NSString *)anonymousID andEmailAddress:(NSString *)email
+{
     [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
-        [provider identifyUserWithID:userID andEmailAddress:email];
+        [provider identifyUserWithID:userID anonymousID:anonymousID andEmailAddress:email];
     }];
 }
 
-+ (void)setUserProperty:(NSString *)property toValue:(NSString *)value 
++ (void)setUserProperty:(NSString *)property toValue:(id)value
 {
     if (value == nil) {
         NSLog(@"ARAnalytics: Value cannot be nil ( %@ ) ", property);
@@ -651,15 +711,18 @@ static BOOL _ARLogShouldPrintStdout = YES;
 {
     NSDate *startDate = _sharedAnalytics.eventsDictionary[event];
     if (!startDate) {
-        NSLog(@"ARAnalytics: finish timing event called without a corrosponding start timing event");
+        NSLog(@"ARAnalytics: finish timing event (%@) called without a corrosponding start timing event", event);
         return;
     }
 
     NSTimeInterval eventInterval = [[NSDate date] timeIntervalSinceDate:startDate];
     [_sharedAnalytics.eventsDictionary removeObjectForKey:event];
+    
+    NSMutableDictionary *fullProperties = [NSMutableDictionary dictionaryWithDictionary:properties];
+    [fullProperties addEntriesFromDictionary:_sharedAnalytics.superProperties];
 
     [_sharedAnalytics iterateThroughProviders:^(ARAnalyticalProvider *provider) {
-        [provider logTimingEvent:event withInterval:@(eventInterval) properties:properties];
+        [provider logTimingEvent:event withInterval:@(eventInterval) properties:fullProperties];
     }];
 }
 
@@ -713,50 +776,57 @@ void ARAnalyticsEvent (NSString *event, NSDictionary *properties) {
   }
 }
 
-const NSString *ARCountlyAppKey = @"ARCountlyAppKey";
-const NSString *ARCountlyHost = @"ARCountlyHost";
-const NSString *ARTestFlightAppToken = @"ARTestFlight";
-const NSString *ARCrashlyticsAPIKey = @"ARCrashlytics";
-const NSString *ARFabricKits = @"ARFabricKits";
-const NSString *ARMixpanelToken = @"ARMixpanel";
-const NSString *ARMixpanelHost = @"ARMixpanelHost";
-const NSString *ARFlurryAPIKey = @"ARFlurry";
-const NSString *ARBugsnagAPIKey = @"ARBugsnag";
-const NSString *ARLocalyticsAppKey = @"ARLocalytics";
-const NSString *ARKISSMetricsAPIKey = @"ARKISSMetrics";
-const NSString *ARCrittercismAppID = @"ARCrittercism";
-const NSString *ARGoogleAnalyticsID = @"ARGoogleAnalytics";
-const NSString *ARHelpshiftAppID = @"ARHelpshiftAppID";
-const NSString *ARHelpshiftDomainName = @"ARHelpshiftDomainName";
-const NSString *ARHelpshiftAPIKey = @"ARHelpshiftAPIKey";
-const NSString *ARTapstreamAccountName = @"ARTapstreamAccountName";
-const NSString *ARTapstreamDeveloperSecret = @"ARTapstreamDeveloperSecret";
-const NSString *ARTapstreamConfig = @"ARTapstreamConfig";
-const NSString *ARNewRelicAppToken = @"ARNewRelicAppToken";
-const NSString *ARAmplitudeAPIKey = @"ARAmplitudeAPIKey";
-const NSString *ARHockeyAppLiveID = @"ARHockeyAppLiveID";
-const NSString *ARHockeyAppBetaID = @"ARHockeyAppBetaID";
-const NSString *ARParseApplicationID = @"ARParseApplicationID";
-const NSString *ARParseClientKey = @"ARParseClientKey";
-const NSString *ARHeapAppID = @"ARHeapAppID";
-const NSString *ARChartbeatID = @"ARChartbeatID";
-const NSString *ARUMengAnalyticsID = @"ARUMengAnalyticsID";
-const NSString *ARLibratoEmail = @"ARLibratoEmail";
-const NSString *ARLibratoToken = @"ARLibratoToken";
-const NSString *ARLibratoPrefix = @"ARLibratoPrefix";
-const NSString *ARSegmentioWriteKey = @"ARSegmentioWriteKey";
-const NSString *ARSwrveAppID = @"ARSwrveAppID";
-const NSString *ARSwrveAPIKey = @"ARSwrveAPIKey";
-const NSString *ARYandexMobileMetricaAPIKey = @"ARYandexMobileMetricaAPIKey";
-const NSString *ARAdjustAppTokenKey = @"ARAdjustAppTokenKey";
-const NSString *ARAppsFlyerAppID = @"ARAppsFlyerAppID";
-const NSString *ARAppsFlyerDevKey = @"ARAppsFlyerDevKey";
-const NSString *ARBranchAPIKey = @"ARBranchAPIKey";
-const NSString *ARSnowplowURL = @"ARSnowplowURL";
-const NSString *ARSentryID = @"ARSentryID";
-const NSString *ARIntercomAppID = @"ARIntercomAppID";
-const NSString *ARIntercomAPIKey = @"ARIntercomAPIKey";
-const NSString *ARKeenProjectID = @"ARKeenProjectID";
-const NSString *ARKeenWriteKey = @"ARKeenWriteKey";
-const NSString *ARKeenReadKey = @"ARKeenReadKey";
-const NSString *ARAdobeData = @"ARAdobeData";
+NSString * const ARCountlyAppKey = @"ARCountlyAppKey";
+NSString * const ARCountlyHost = @"ARCountlyHost";
+NSString * const ARTestFlightAppToken = @"ARTestFlight";
+NSString * const ARCrashlyticsAPIKey = @"ARCrashlytics";
+NSString * const ARFabricKits = @"ARFabricKits";
+NSString * const ARMixpanelToken = @"ARMixpanel";
+NSString * const ARMixpanelHost = @"ARMixpanelHost";
+NSString * const ARFlurryAPIKey = @"ARFlurry";
+NSString * const ARBugsnagAPIKey = @"ARBugsnag";
+NSString * const ARLocalyticsAppKey = @"ARLocalytics";
+NSString * const ARKISSMetricsAPIKey = @"ARKISSMetrics";
+NSString * const ARCrittercismAppID = @"ARCrittercism";
+NSString * const ARGoogleAnalyticsID = @"ARGoogleAnalytics";
+NSString * const ARHelpshiftAppID = @"ARHelpshiftAppID";
+NSString * const ARHelpshiftDomainName = @"ARHelpshiftDomainName";
+NSString * const ARHelpshiftAPIKey = @"ARHelpshiftAPIKey";
+NSString * const ARTapstreamAccountName = @"ARTapstreamAccountName";
+NSString * const ARTapstreamDeveloperSecret = @"ARTapstreamDeveloperSecret";
+NSString * const ARTapstreamConfig = @"ARTapstreamConfig";
+NSString * const ARNewRelicAppToken = @"ARNewRelicAppToken";
+NSString * const ARAmplitudeAPIKey = @"ARAmplitudeAPIKey";
+NSString * const ARHockeyAppLiveID = @"ARHockeyAppLiveID";
+NSString * const ARHockeyAppBetaID = @"ARHockeyAppBetaID";
+NSString * const ARParseApplicationID = @"ARParseApplicationID";
+NSString * const ARParseClientKey = @"ARParseClientKey";
+NSString * const ARHeapAppID = @"ARHeapAppID";
+NSString * const ARChartbeatID = @"ARChartbeatID";
+NSString * const ARUMengAnalyticsID = @"ARUMengAnalyticsID";
+NSString * const ARLibratoEmail = @"ARLibratoEmail";
+NSString * const ARLibratoToken = @"ARLibratoToken";
+NSString * const ARLibratoPrefix = @"ARLibratoPrefix";
+NSString * const ARSegmentioWriteKey = @"ARSegmentioWriteKey";
+NSString * const ARSegmentioIntegrationsKey = @"ARSegmentioIntegrationsKey";
+NSString * const ARSwrveAppID = @"ARSwrveAppID";
+NSString * const ARSwrveAPIKey = @"ARSwrveAPIKey";
+NSString * const ARYandexMobileMetricaAPIKey = @"ARYandexMobileMetricaAPIKey";
+NSString * const ARAdjustAppTokenKey = @"ARAdjustAppTokenKey";
+NSString * const ARAppsFlyerAppID = @"ARAppsFlyerAppID";
+NSString * const ARAppsFlyerDevKey = @"ARAppsFlyerDevKey";
+NSString * const ARBranchAPIKey = @"ARBranchAPIKey";
+NSString * const ARSnowplowURL = @"ARSnowplowURL";
+NSString * const ARSentryID = @"ARSentryID";
+NSString * const ARIntercomAppID = @"ARIntercomAppID";
+NSString * const ARIntercomAPIKey = @"ARIntercomAPIKey";
+NSString * const ARKeenProjectID = @"ARKeenProjectID";
+NSString * const ARKeenWriteKey = @"ARKeenWriteKey";
+NSString * const ARKeenReadKey = @"ARKeenReadKey";
+NSString * const ARAdobeData = @"ARAdobeData";
+NSString * const ARInstallTrackerApplicationID = @"ARInstallTrackerApplicationID";
+NSString * const ARAppseeAPIKey = @"ARAppseeAPIKey";
+NSString * const ARMobileAppTrackerAdvertiserID = @"ARMobileAppTrackerAdvertiserID";
+NSString * const ARMobileAppTrackerConversionKey = @"ARMobileAppTrackerConversionKey";
+NSString * const ARMobileAppTrackerAllowedEvents = @"ARMobileAppTrackerAllowedEvents";
+NSString * const ARLaunchKitAPIToken = @"ARLaunchKitAPIToken";

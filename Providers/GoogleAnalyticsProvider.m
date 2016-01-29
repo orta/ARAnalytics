@@ -49,7 +49,7 @@
     [self setUserProperty:@"&uid" toValue:userID];
 }
 
-- (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
+- (void)setUserProperty:(NSString *)property toValue:(id)value {
     [self.tracker set:property value:value];
 }
 
@@ -58,54 +58,47 @@
     if (!category) {
         category = @"default"; // category is a required value
     }
-    
-#ifdef DEBUG
-    [self warnAboutIgnoredProperties:properties];
-#endif
-    
-    GAIDictionaryBuilder *builder = [GAIDictionaryBuilder createEventWithCategory:category
-                                                                           action:event
-                                                                            label:properties.label
-                                                                            value:properties.value];
-    
-    NSMutableDictionary *newProperties = [builder build];
-    
-    // adding custom Dimension values if we can find a key in the mappings
-    for (NSString *key in self.customDimensionMappings.allKeys) {
-        NSString *potentialValue = properties[key];
-        if (potentialValue) {
-            [newProperties setObject:potentialValue forKey:self.customDimensionMappings[key]];
-        }
-    }
 
-    // adding custom Metric values if we can find a key in the mappings
-    for (NSString *key in self.customMetricMappings.allKeys) {
-        NSString *potentialValue = properties[key];
-        if (potentialValue) {
-            [newProperties setObject:potentialValue forKey:self.customMetricMappings[key]];
-        }
-    }
-
-    [self.tracker send:newProperties];
+    [self.tracker send:[self finalizedPropertyDictionaryFromBuilder:[GAIDictionaryBuilder
+                                                                     createEventWithCategory:category
+                                                                     action:event
+                                                                     label:properties.label
+                                                                     value:properties.value]
+                                                     withProperties:properties]];
 }
 
 - (void)didShowNewPageView:(NSString *)pageTitle {
-    [self event:@"Screen view" withProperties:@{ @"label": pageTitle }];
+    [self didShowNewPageView:pageTitle withProperties:nil];
+}
+
+- (void)didShowNewPageView:(NSString *)pageTitle withProperties:(NSDictionary *)properties {
+    if (!properties) {
+        properties = @{@"label": pageTitle};
+    } else {
+        NSMutableDictionary *newProperties = [properties mutableCopy];
+        newProperties[@"label"] = pageTitle;
+        properties = newProperties;
+    }
+
+    [self event:ARAnalyticalProviderNewPageViewEventName withProperties:properties];
+
     [self.tracker set:kGAIScreenName value:pageTitle];
+    GAIDictionaryBuilder *builder = nil;
     if ([GAIDictionaryBuilder respondsToSelector:@selector(createScreenView)]) {
-        [self.tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+        builder = [GAIDictionaryBuilder createScreenView];
     } else {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-        [self.tracker send:[[GAIDictionaryBuilder createAppView] build]];
+        builder = [GAIDictionaryBuilder createAppView];
 #pragma clang diagnostic pop
     }
+    [self.tracker send:[self finalizedPropertyDictionaryFromBuilder:builder withProperties:properties]];
 }
 
-- (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval  properties:(NSDictionary *)properties{
+- (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval properties:(NSDictionary *)properties {
     // Prepare properties dictionary
     if (!properties) {
-        properties = @{ @"value": @([interval intValue]) };
+        properties = @{@"value": @([interval intValue])};
     } else {
         NSMutableDictionary *newProperties = [properties mutableCopy];
         newProperties[@"value"] = @([interval intValue]);
@@ -120,7 +113,34 @@
                                                                           interval:@((int)([interval doubleValue]*1000))
                                                                               name:event
                                                                              label:nil];
-    [self.tracker send:[builder build]];
+    [self.tracker send:[self finalizedPropertyDictionaryFromBuilder:builder withProperties:properties]];
+}
+
+- (NSMutableDictionary *)finalizedPropertyDictionaryFromBuilder:(GAIDictionaryBuilder *)builder
+                                                 withProperties:(NSDictionary *)properties {
+    NSMutableDictionary *finalizedProperties = [builder build];
+
+#ifdef DEBUG
+    [self warnAboutIgnoredProperties:properties];
+#endif
+
+    // adding custom Dimension values if we can find a key in the mappings
+    for (NSString *key in self.customDimensionMappings.allKeys) {
+        NSString *potentialValue = properties[key];
+        if (potentialValue) {
+            [finalizedProperties setObject:potentialValue forKey:self.customDimensionMappings[key]];
+        }
+    }
+
+    // adding custom Metric values if we can find a key in the mappings
+    for (NSString *key in self.customMetricMappings.allKeys) {
+        NSString *potentialValue = properties[key];
+        if (potentialValue) {
+            [finalizedProperties setObject:potentialValue forKey:self.customMetricMappings[key]];
+        }
+    }
+
+    return finalizedProperties;
 }
 
 #pragma mark - Dispatch
@@ -131,14 +151,12 @@
 
 #pragma mark - Warnings
 
-- (void)warnAboutIgnoredProperties:(NSDictionary*)propertiesDictionary
-{
-    for (id key in propertiesDictionary) {
-        if (    [key isEqualToString:[NSDictionary googleAnalyticsLabelKey]] ||
-                [key isEqualToString:[NSDictionary googleAnalyticsCategoryKey]] ||
-                [key isEqualToString:[NSDictionary googleAnalyticsValueKey]] ||
-                [self.customDimensionMappings.allKeys containsObject:key]
-            ) {
+- (void)warnAboutIgnoredProperties:(NSDictionary*)propertiesDictionary {
+    for (NSString *key in propertiesDictionary) {
+        if ([key isEqualToString:[NSDictionary googleAnalyticsLabelKey]] ||
+            [key isEqualToString:[NSDictionary googleAnalyticsCategoryKey]] ||
+            [key isEqualToString:[NSDictionary googleAnalyticsValueKey]] ||
+            [self.customDimensionMappings.allKeys containsObject:key]) {
             continue;
         }
         NSLog(@"%@: property ignored %@:%@",self,key,propertiesDictionary[key]);

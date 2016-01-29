@@ -1,10 +1,11 @@
 #import "FabricProvider.h"
 
 @interface Crashlytics : NSObject
-+ (void)setUserIdentifier:(NSString *)identifier;
-+ (void)setUserName:(NSString *)name;
-+ (void)setUserEmail:(NSString *)email;
-+ (void)setObjectValue:(id)value forKey:(NSString *)key;
++ (Crashlytics *)sharedInstance;
+- (void)setUserIdentifier:(NSString *)identifier;
+- (void)setUserName:(NSString *)name;
+- (void)setUserEmail:(NSString *)email;
+- (void)setObjectValue:(id)value forKey:(NSString *)key;
 @end
 
 @implementation FabricProvider
@@ -19,7 +20,7 @@
     
     [Fabric with:kits];
     
-    if (![[Fabric sharedSDK] kitForClass:[Crashlytics class]]){
+    if (![kits containsObject:[Crashlytics class]]){
         return nil;// we don't need provider in case if we are not interested in Crashlytics but want to initialize Fabric
     }
 
@@ -28,16 +29,16 @@
 
 - (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email {
     if (userID) {
-        [Crashlytics setUserIdentifier:userID];
+        [[Crashlytics sharedInstance] setUserIdentifier:userID];
     }
 
     if (email) {
-        [Crashlytics setUserEmail:email];
+        [[Crashlytics sharedInstance] setUserEmail:email];
     }
 }
 
-- (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
-    [Crashlytics setObjectValue:value forKey:property];
+- (void)setUserProperty:(NSString *)property toValue:(id)value {
+    [[Crashlytics sharedInstance] setObjectValue:value forKey:property];
 }
 
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties {

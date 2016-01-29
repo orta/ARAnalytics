@@ -177,6 +177,7 @@
 				604DAAAF1698DBCB00FD89BB /* ARAnalytics */,
 				603AE9F618E1AE49004AEBF8 /* ARAnalyticsiOSTests */,
 				87A6CC5412BEE1BC49D201EC /* Pods */,
+				D78072DB556C738165B84642 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -280,6 +281,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D78072DB556C738165B84642 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -293,6 +301,7 @@
 				603AE9EF18E1AE49004AEBF8 /* Resources */,
 				E4BEF1165C524989BBDA92C0 /* Copy Pods Resources */,
 				A8FD6CFF3374464C9B2524FB /* Upload Bugsnag dSYM */,
+				520C24B7570F51A1F0E0C2FD /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -314,6 +323,7 @@
 				60A5E60B1698DB4400686918 /* Resources */,
 				B1A4DB6A8957418F8287D04E /* Copy Pods Resources */,
 				B4FD8B0A43374393B7308167 /* Upload Bugsnag dSYM */,
+				6137A38A286225CF675B10E5 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -439,6 +449,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		520C24B7570F51A1F0E0C2FD /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARAnalyticsiOSTests/Pods-ARAnalyticsiOSTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6137A38A286225CF675B10E5 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARAnalyticsBootstrapiOS/Pods-ARAnalyticsBootstrapiOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A693A8E365174E12BDAF524F /* Upload Bugsnag dSYM */ = {

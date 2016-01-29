@@ -33,7 +33,7 @@
     }
 }
 
-- (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
+- (void)setUserProperty:(NSString *)property toValue:(id)value {
     [TestFlight addCustomEnvironmentInformation:value forKey:property];
 }
 

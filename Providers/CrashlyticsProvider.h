@@ -7,10 +7,11 @@
 
 @interface Crashlytics : NSObject
 + (Crashlytics *)startWithAPIKey:(NSString *)apiKey;
-+ (void)setUserIdentifier:(NSString *)identifier;
-+ (void)setUserName:(NSString *)name;
-+ (void)setUserEmail:(NSString *)email;
-+ (void)setObjectValue:(id)value forKey:(NSString *)key;
++ (Crashlytics *)sharedInstance;
+- (void)setUserIdentifier:(NSString *)identifier;
+- (void)setUserName:(NSString *)name;
+- (void)setUserEmail:(NSString *)email;
+- (void)setObjectValue:(id)value forKey:(NSString *)key;
 @end
 
 OBJC_EXTERN void CLSLog(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);

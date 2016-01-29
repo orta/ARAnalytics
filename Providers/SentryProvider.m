@@ -29,7 +29,7 @@ const NSString *OFSARSentryID = @"OFSARSentryID";
     rc.tags = tags;
 }
 
-- (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
+- (void)setUserProperty:(NSString *)property toValue:(id)value {
     RavenClient* rc = [RavenClient sharedClient];
     NSMutableDictionary* extra = [rc.extra mutableCopy];
     extra[property] = value;

@@ -1,5 +1,63 @@
 # ARAnalytics
 
+## Version 3.9.0
+
+* Adds MobileAppTracker/Tune support (@fabiojgrocha)
+* Add support for optional anonymous ID  (@alloy)
+* Set user property is now `id` instead of `NSString`  (@alloy)
+* Let HockeySDK work with CocoaPods-Frameworks (@orta)
+* Improved Umeng support  (@ttgb)
+* Added LaunchKit (@axidms)
+* Add support for Segment 3.0 (@sgtsquiggs)
+* Improve initialiser for AdjustProvider (@BenchR267)
+
+## Version 3.8.2
+
+* Updated Mixpanel provider with methods to set super properties and to clean stored properties/distinct IDs. (@rais38)
+
+## Version 3.8.1
+
+* Adds AppSee support (@sgtsquiggs)
+* Adds Super properties for time events (@sp3esu)
+
+## Version 3.8.0
+
+* Adds Parse for OS X (@stel)
+* Updates TandexMobileMetrics (@BamX)
+* Fix for Fabric (@Navideck-fotis)
+
+## Version 3.7.1
+
+* Changed pointers to const immutable strings to const pointers to immutable strings (@diogot)
+* Updates to Localytics (@joelmarquez90)
+* Support multiple Mixpanel instances (@ed-at-work)
+
+## Version 3.7
+
+* Migrates Google Analytics to use the official Podspec (@pietbrauer)
+
+## Version 3.6.4
+
+* Replace deprecated API usage of Amplitude ( @sodastsai )
+* Replace class method calls of Crashlytics by calls to `sharedInstances` (class methods are deprecated) ( @sodastsai )
+* Add dependencies to Crashlytics and Fabric to their providers. ( @sodastsai )
+* Adds InstallTracker (@Brain89)
+* Shows the event name in finishTimingEvent (@rinatkhanov)
+* Fixes Keen integration (@rinatkhanov)
+
+## Version 3.6.3
+
+* Implement `didShowNewPageView:withProperties:` correctly (Google Analytics) ( @sodastsai )
+* Refine `custom dimension` and `custom metrics` checking/finalizing (Google Analytics) ( @sodastsai )
+
+## Version 3.6.2
+
+* Fixed breadcrumb logging in builds with `NS_BLOCK_ASSERTIONS` enabled ( @alloy )
+
+## Version 3.6.1
+
+* Hockey's fix ( @jhersh )
+
 ## Version 3.6.0
 
 * Added support for Hockey's new Source subspec and OS X library ( @jhersh )

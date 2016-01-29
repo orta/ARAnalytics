@@ -1,19 +1,11 @@
-#import "HockeyAppProvider.h"
+#import "HockeyAppOSXProvider.h"
 #import <objc/message.h>
 
-#ifdef AR_HOCKEYAPP_EXISTS
-#if __has_include(<HockeySDK-Source/HockeySDK.h>)
-  #import <HockeySDK-Source/HockeySDK.h>
-  #import <HockeySDK-Source/BITCrashDetails.h>
-  #import <HockeySDK-Source/BITUpdateManagerDelegate.h>
-  #import <HockeySDK-Source/BITCrashManager.h>
-  #import <HockeySDK-Source/BITCrashManagerDelegate.h>
-#endif
-
-#if __has_include(<HockeySDK_Source/HockeySDK.h>)
-  #import <HockeySDK_Source/HockeySDK.h>
-#endif
-
+#ifdef AR_HOCKEYAPPOSX_EXISTS
+#import <HockeySDK/HockeySDK.h>
+#import <HockeySDK/BITCrashDetails.h>
+#import <HockeySDK/BITCrashManager.h>
+#import <HockeySDK/BITCrashManagerDelegate.h>
 #endif
 
 #define MAX_HOCKEY_LOG_MESSAGES 100
@@ -32,27 +24,21 @@ IsHockeySDKCompatibleForLogging(void)
     return compatible;
 }
 
-@interface HockeyAppProvider () <BITHockeyManagerDelegate, BITUpdateManagerDelegate, BITCrashManagerDelegate> {
+@interface HockeyAppOSXProvider () <BITHockeyManagerDelegate, BITCrashManagerDelegate> {
     NSString *_username;
     NSString *_userEmail;
-    NSString *_betaIdentifier;
     NSString *_liveIdentifier;
 }
 
 @end
 
-@implementation HockeyAppProvider
+@implementation HockeyAppOSXProvider
 
 -(id)initWithIdentifier:(NSString *)identifier {
-    return [self initWithBetaIdentifier:identifier liveIdentifier:nil];
-}
-
--(id)initWithBetaIdentifier:(NSString *)betaIdentifier liveIdentifier:(NSString *)liveIdentfier {
     self = [super init];
     if (!self) return nil;
 
-    _betaIdentifier = betaIdentifier;
-    _liveIdentifier = liveIdentfier;
+    _liveIdentifier = identifier;
 
     [self performSelector:@selector(startManager) withObject:nil afterDelay:0.5];
 
@@ -60,12 +46,7 @@ IsHockeySDKCompatibleForLogging(void)
 }
 
 -(void)startManager {
-    if (_liveIdentifier) {
-        [[BITHockeyManager sharedHockeyManager] configureWithBetaIdentifier:_betaIdentifier liveIdentifier:_liveIdentifier delegate:self];
-    }
-    else {
-        [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:_betaIdentifier delegate:self];
-    }
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:_liveIdentifier delegate:self];
 
     [[BITHockeyManager sharedHockeyManager] startManager];
 #if HOCKEYSDK_FEATURE_AUTHENTICATOR
@@ -89,21 +70,6 @@ IsHockeySDKCompatibleForLogging(void)
     if (IsHockeySDKCompatibleForLogging()) {
         [self localLog:[NSString stringWithFormat:@"[%@] %@", event, properties]];
     }
-}
-
-#pragma mark - BITUpdateManagerDelegate
-- (NSString *)customDeviceIdentifierForUpdateManager:(BITUpdateManager *)updateManager {
-#ifdef DEBUG
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-    if ([[UIDevice currentDevice] respondsToSelector:@selector(uniqueIdentifier)]){
-        return [[UIDevice currentDevice] performSelector:@selector(uniqueIdentifier)];
-    }
-#pragma clang diagnostic pop
-
-#endif
-    return nil;
 }
 
 #pragma mark - BITHockeyManagerDelegate

@@ -21,7 +21,7 @@
     }
 }
 
-- (void)setUserProperty:(NSString *)property toValue:(NSString *)value {
+- (void)setUserProperty:(NSString *)property toValue:(id)value {
     [Crittercism setValue:value forKey:property];
 }
 

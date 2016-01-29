@@ -21,7 +21,7 @@
     [Heap identify:userDict];
 }
 
-- (void)setUserProperty:(NSString *)property toValue:(NSString *)value{
+- (void)setUserProperty:(NSString *)property toValue:(id)value {
     NSDictionary *userDict = @{
       property : value
     };

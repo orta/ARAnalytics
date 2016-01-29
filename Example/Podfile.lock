@@ -1,0 +1,42 @@
+PODS:
+  - ARAnalytics/CoreIOS (3.8.1)
+  - ARAnalytics/DSL (3.8.1):
+    - ReactiveCocoa (~> 2.0)
+    - RSSwizzle (~> 0.1.0)
+  - ARAnalytics/Intercom (3.8.1):
+    - ARAnalytics/CoreIOS
+    - Intercom
+  - Expecta (0.4.2)
+  - Intercom (2.3.16)
+  - OCMock (2.2.4)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
+  - RSSwizzle (0.1.0)
+  - Specta (1.0.5)
+
+DEPENDENCIES:
+  - ARAnalytics/DSL (from `../`)
+  - ARAnalytics/Intercom (from `../`)
+  - Expecta (~> 0.2)
+  - OCMock (= 2.2.4)
+  - Specta (~> 1)
+
+EXTERNAL SOURCES:
+  ARAnalytics:
+    :path: ../
+
+SPEC CHECKSUMS:
+  ARAnalytics: 2d3ab0af06af77e85307236bb12bf83622c50a96
+  Expecta: 78b4e8b0c8291fa4524d7f74016b6065c2e391ec
+  Intercom: 296dfb41c92ff90de23adb1d975d337aa9dd422f
+  OCMock: a6a7dc0e3997fb9f35d99f72528698ebf60d64f2
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  RSSwizzle: d561958f595028bfcef98c7d55c318b3878a61c6
+  Specta: ac94d110b865115fe60ff2c6d7281053c6f8e8a2
+
+COCOAPODS: 0.39.0
