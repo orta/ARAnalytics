@@ -85,6 +85,11 @@ static NSString * const kMixpanelTimingPropertyKey = @"$duration";
     [self.mixpanel registerSuperProperties:properties];
 }
 
+- (void)addPushDeviceToken:(NSData *)deviceToken
+{
+    [[self.mixpanel people] addPushDeviceToken:deviceToken];
+}
+
 - (NSDictionary *)currentSuperProperties
 {
     return [self.mixpanel currentSuperProperties];
