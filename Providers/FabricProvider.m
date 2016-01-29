@@ -8,6 +8,48 @@
 - (void)setObjectValue:(id)value forKey:(NSString *)key;
 @end
 
+#ifndef ANS_GENERIC
+#define ANS_GENERIC
+
+#if !__has_feature(nullability)
+#define nonnull
+#define nullable
+#define _Nullable
+#define _Nonnull
+#endif
+
+#ifndef NS_ASSUME_NONNULL_BEGIN
+#define NS_ASSUME_NONNULL_BEGIN
+#endif
+
+#ifndef NS_ASSUME_NONNULL_END
+#define NS_ASSUME_NONNULL_END
+#endif
+
+#if __has_feature(objc_generics)
+#define ANS_GENERIC_NSARRAY(type) NSArray<type>
+#define ANS_GENERIC_NSDICTIONARY(key_type,object_key) NSDictionary<key_type, object_key>
+#else
+#define ANS_GENERIC_NSARRAY(type) NSArray
+#define ANS_GENERIC_NSDICTIONARY(key_type,object_key) NSDictionary
+#endif
+
+#endif
+
+NS_ASSUME_NONNULL_BEGIN
+@interface Answers : NSObject
+
++ (void)logContentViewWithName:(nullable NSString *)contentNameOrNil
+                   contentType:(nullable NSString *)contentTypeOrNil
+                     contentId:(nullable NSString *)contentIdOrNil
+              customAttributes:(nullable ANS_GENERIC_NSDICTIONARY(NSString *, id) *)customAttributesOrNil;
+
++ (void)logCustomEventWithName:(NSString *)eventName
+              customAttributes:(nullable ANS_GENERIC_NSDICTIONARY(NSString *, id) *)customAttributesOrNil;
+
+@end
+NS_ASSUME_NONNULL_END
+
 @implementation FabricProvider
 #ifdef AR_FABRIC_EXISTS
 
@@ -42,14 +84,21 @@
 }
 
 - (void)event:(NSString *)event withProperties:(NSDictionary *)properties {
-    NSString *log;
-    if (properties) {
-        log = [NSString stringWithFormat:@"%@%@", event, properties];
-    } else {
-        log = event;
+    if (event.length > 0) {
+        properties = properties ?: @{};
+        [Answers logCustomEventWithName:event customAttributes:properties];
     }
-    
-    CLSLog(@"%@", log);
+}
+
+- (void)didShowNewPageView:(NSString *)pageTitle {
+    [self didShowNewPageView:pageTitle withProperties:nil];
+}
+
+- (void)didShowNewPageView:(NSString *)pageTitle withProperties:(NSDictionary *)properties {
+    if (pageTitle.length > 0) {
+        properties = properties ?: @{};
+        [Answers logContentViewWithName:pageTitle contentType:nil contentId:nil customAttributes:properties];
+    }
 }
 
 - (void)remoteLog:(NSString *)parsedString {
