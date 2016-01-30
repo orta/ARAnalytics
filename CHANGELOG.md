@@ -1,5 +1,8 @@
 # ARAnalytics
 
+## Version 3.9.1
+* Add support for dynamic page names and event names in the DSL (@arifken)
+
 ## Version 3.9.0
 
 * Adds MobileAppTracker/Tune support (@fabiojgrocha)
