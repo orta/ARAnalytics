@@ -162,7 +162,7 @@ static BOOL _ARLogShouldPrintStdout = YES;
     }
 
     if (analyticsDictionary[ARAdobeData]) {
-        [self setupAdobeWithData:analyticsDictionary[ARAdobeData]];
+        [self setupAdobeWithData:analyticsDictionary[ARAdobeData] otherSettings:analyticsDictionary[ARAdobeSettings]];
     }
     
     if (analyticsDictionary[ARInstallTrackerApplicationID]) {
@@ -511,10 +511,9 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
-+ (void)setupAdobeWithData:(NSDictionary *)additionalData
-{
++ (void)setupAdobeWithData:(NSDictionary *)additionalData otherSettings:(NSDictionary *)settings {
 #ifdef AR_ADOBE_EXISTS
-    AdobeProvider *provider = [[AdobeProvider alloc] initWithData:additionalData];
+    AdobeProvider *provider = [[AdobeProvider alloc] initWithData:additionalData settings:settings];
     [self setupProvider:provider];
 #endif
 }
@@ -824,6 +823,7 @@ NSString * const ARKeenProjectID = @"ARKeenProjectID";
 NSString * const ARKeenWriteKey = @"ARKeenWriteKey";
 NSString * const ARKeenReadKey = @"ARKeenReadKey";
 NSString * const ARAdobeData = @"ARAdobeData";
+NSString * const ARAdobeSettings = @"ARAdobeSettings";
 NSString * const ARInstallTrackerApplicationID = @"ARInstallTrackerApplicationID";
 NSString * const ARAppseeAPIKey = @"ARAppseeAPIKey";
 NSString * const ARMobileAppTrackerAdvertiserID = @"ARMobileAppTrackerAdvertiserID";

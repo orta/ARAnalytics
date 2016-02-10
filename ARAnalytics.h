@@ -81,7 +81,8 @@
 + (void)setupSentryWithID:(NSString *)identifier;
 + (void)setupIntercomWithAppID:(NSString *)identifier apiKey:(NSString *)apiKey;
 + (void)setupKeenWithProjectID:(NSString *)projectId andWriteKey:(NSString *)writeKey andReadKey:(NSString *)readKey;
-+ (void)setupAdobeWithData:(NSDictionary *)additionalData;
+
++ (void)setupAdobeWithData:(NSDictionary *)additionalData otherSettings:(NSDictionary *)settings;
 + (void)setupInstallTrackerWithApplicationID:(NSString *)applicationID;
 + (void)setupAppseeWithAPIKey:(NSString *)key;
 + (void)setupMobileAppTrackerWithAdvertiserID:(NSString *)advertiserID conversionKey:(NSString *)conversionKey allowedEvents:(NSArray *)allowedEvents;
@@ -219,6 +220,7 @@ extern NSString * const ARKeenProjectID;
 extern NSString * const ARKeenWriteKey;
 extern NSString * const ARKeenReadKey;
 extern NSString * const ARAdobeData;
+extern NSString * const ARAdobeSettings;
 extern NSString * const ARInstallTrackerApplicationID;
 extern NSString * const ARAppseeAPIKey;
 extern NSString * const ARMobileAppTrackerAdvertiserID;
