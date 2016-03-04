@@ -43,5 +43,9 @@
     CLSLog(@"%@", parsedString);
 }
 
+- (void)error:(NSError *)error withMessage:(NSString *)message {
+    [[Crashlytics sharedInstance] recordError:error withAdditionalUserInfo:@{@"message": message}];
+}
+
 #endif
 @end

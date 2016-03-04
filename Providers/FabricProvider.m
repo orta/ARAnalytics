@@ -6,6 +6,7 @@
 - (void)setUserName:(NSString *)name;
 - (void)setUserEmail:(NSString *)email;
 - (void)setObjectValue:(id)value forKey:(NSString *)key;
+- (void)recordError:(NSError *)error withAdditionalUserInfo:(NSDictionary *)userInfo;
 @end
 
 #ifndef ANS_GENERIC
@@ -103,6 +104,11 @@ NS_ASSUME_NONNULL_END
 
 - (void)remoteLog:(NSString *)parsedString {
     CLSLog(@"%@", parsedString);
+}
+
+
+- (void)error:(NSError *)error withMessage:(NSString *)message {
+    [[Crashlytics sharedInstance] recordError:error withAdditionalUserInfo:@{@"message": message}];
 }
 
 #endif
