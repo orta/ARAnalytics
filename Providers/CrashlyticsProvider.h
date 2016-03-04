@@ -12,7 +12,6 @@
 - (void)setUserName:(NSString *)name;
 - (void)setUserEmail:(NSString *)email;
 - (void)setObjectValue:(id)value forKey:(NSString *)key;
-- (void)setObjectValue:(id)value forKey:(NSString *)key;
 - (void)recordError:(NSError *)error withAdditionalUserInfo:(NSDictionary *)userInfo;
 @end
 
