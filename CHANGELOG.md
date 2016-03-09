@@ -3,6 +3,11 @@
 ## Version 3.9.1
 * Add support for dynamic page names and event names in the DSL (@arifken)
 * Add configuration setting to the Adobe provider for -trackAction:data: vs. -trackState:data: for screen views. When enabled, allows page views with custom properties to be tracked with -trackState:data: (@arifken)
+* Use proper error logging method for Fabric / Crashlytics (@wzs)
+* Improved Adobe Omniture (@arifken)
+* Mixpanel provider can register push notifications (@rad182)
+* Fixes to Localytics (@garnett)
+* Avoiding using the top level Google Pod due to not being Bitcode compatibole (@fotiDim)
 
 ## Version 3.9.0
 
