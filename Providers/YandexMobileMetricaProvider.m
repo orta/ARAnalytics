@@ -1,7 +1,7 @@
 #import "YandexMobileMetricaProvider.h"
 
 #ifdef AR_YANDEXMOBILEMETRICA_EXISTS
-#import "YandexMobileMetrica.h"
+#import <YandexMobileMetrica/YandexMobileMetrica.h>
 #endif
 
 @implementation YandexMobileMetricaProvider
