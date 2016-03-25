@@ -79,21 +79,21 @@ ARExtractProperties(id object, NSDictionary *analyticsEntry, RACTuple *parameter
 }
 
 static NSString *
-ARExtractPageName(id object, NSDictionary *analyticsEntry, RACTuple *parameters)
+ARExtractPageName(id object, NSDictionary *analyticsEntry, RACTuple *parameters, NSDictionary *extractedProperties)
 {
     ARAnalyticsNameBlock pageNameBlock = analyticsEntry[ARAnalyticsPageNameBlock];
     if (pageNameBlock) {
-        return pageNameBlock(object, parameters.allObjects, ARExtractProperties(object, analyticsEntry, parameters));
+        return pageNameBlock(object, parameters.allObjects, extractedProperties);
     }
     return nil;
 }
 
 static NSString *
-ARExtractEventName(id object, NSDictionary *analyticsEntry, RACTuple *parameters)
+ARExtractEventName(id object, NSDictionary *analyticsEntry, RACTuple *parameters, NSDictionary *extractedProperties)
 {
     ARAnalyticsNameBlock eventNameBlock = analyticsEntry[ARAnalyticsEventNameBlock];
     if (eventNameBlock) {
-        return eventNameBlock(object, parameters.allObjects, ARExtractProperties(object, analyticsEntry, parameters));
+        return eventNameBlock(object, parameters.allObjects, extractedProperties);
     }
     return nil;
 }
@@ -117,11 +117,13 @@ ARExtractEventName(id object, NSDictionary *analyticsEntry, RACTuple *parameters
 
                 if (shouldFire) {
                     NSString *eventName = event;
+                    NSDictionary *properties = ARExtractProperties(instance, object, parameters);
+
                     if (!eventName) {
                         // if the event name was not set statically, see if it's available via the block parameter
-                        eventName = ARExtractEventName(instance, object, parameters);
+                        eventName = ARExtractEventName(instance, object, parameters, properties);
                     }
-                    [ARAnalytics event:eventName withProperties:ARExtractProperties(instance, object, parameters)];
+                    [ARAnalytics event:eventName withProperties:properties];
                 }
             }];
         }];
@@ -153,6 +155,8 @@ ARExtractEventName(id object, NSDictionary *analyticsEntry, RACTuple *parameters
 
                 if (shouldFire) {
                     NSString *pageName;
+                    NSDictionary *properties = ARExtractProperties(instance, object, parameters);
+
                     if (dictionaryPageName) {
                         pageName = dictionaryPageName;
                     } else if (pageNameKeypath) {
@@ -160,13 +164,12 @@ ARExtractEventName(id object, NSDictionary *analyticsEntry, RACTuple *parameters
                         NSAssert(pageName, @"Value for Key on `%@` returned nil.", pageNameKeypath);
                     } else {
                         // if we still don't have a page name, check to see if it is supplied dynamically
-                        pageName = ARExtractPageName(instance, object, parameters);
+                        pageName = ARExtractPageName(instance, object, parameters, properties);
                     }
 
                     // Because of backwards compatibility we can't currently expect
                     // `-[ARAnalyticsProvider pageView:withProperties:]` to call existing
                     // `-[ARAnalyticsProvider pageView:]` implementations, so call the right one.
-                    NSDictionary *properties = ARExtractProperties(instance, object, parameters);
                     if (properties) {
                         [ARAnalytics pageView:pageName withProperties:properties];
                     } else {

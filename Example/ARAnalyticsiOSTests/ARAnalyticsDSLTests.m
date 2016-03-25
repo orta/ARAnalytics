@@ -129,6 +129,29 @@ describe(@"events", ^{
 
         OCMVerify([analyticsMock event:event withProperties:[OCMArg any]]);
     });
+    
+    it(@"only calls the block to extract properties once", ^{
+        __block NSInteger timesCalled = 0;
+        [ARAnalytics addEventAnalyticsHook:@{
+                ARAnalyticsClass : TestObject.class,
+                ARAnalyticsDetails : @[@{
+                       ARAnalyticsProperties: ^NSDictionary*(TestObject *controller, NSArray *parameters) {
+                            timesCalled++;
+                            return @{};
+                       },
+                       ARAnalyticsEventNameBlock : ^NSString *(TestObject *controller,
+                                                      NSArray *parameters, NSDictionary *customProperties) {
+                            return event;
+                       },
+                       ARAnalyticsSelectorName : ARAnalyticsSelector(methodToBeExecuted),
+                }]
+        }];
+        
+        [[[TestObject alloc] init] methodToBeExecuted];
+        
+        OCMVerify([analyticsMock event:event withProperties:[OCMArg any]]);
+        expect(timesCalled).to.equal(1);
+    });
 
     it(@"respects the properties given by ARAnalyticsEventProperties", ^{
         NSString *propertyKey = @"airplanes";
