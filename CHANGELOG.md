@@ -1,5 +1,8 @@
 # ARAnalytics
 
+## Version 3.9.2
+* Fix issue in DSL where properties block was being invoked more than once (@arifken)
+
 ## Version 3.9.1
 * Add support for dynamic page names and event names in the DSL (@arifken)
 * Add configuration setting to the Adobe provider for -trackAction:data: vs. -trackState:data: for screen views. When enabled, allows page views with custom properties to be tracked with -trackState:data: (@arifken)
