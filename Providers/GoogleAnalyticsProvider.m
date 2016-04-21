@@ -59,7 +59,7 @@
         category = @"default"; // category is a required value
     }
 
-    [self.tracker send:[self finalizedPropertyDictionaryFromBuilder:[GAIDictionaryBuilder
+    [self send:[self finalizedPropertyDictionaryFromBuilder:[GAIDictionaryBuilder
                                                                      createEventWithCategory:category
                                                                      action:event
                                                                      label:properties.label
@@ -92,7 +92,7 @@
         builder = [GAIDictionaryBuilder createAppView];
 #pragma clang diagnostic pop
     }
-    [self.tracker send:[self finalizedPropertyDictionaryFromBuilder:builder withProperties:properties]];
+    [self send:[self finalizedPropertyDictionaryFromBuilder:builder withProperties:properties]];
 }
 
 - (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval properties:(NSDictionary *)properties {
@@ -113,7 +113,7 @@
                                                                           interval:@((int)([interval doubleValue]*1000))
                                                                               name:event
                                                                              label:nil];
-    [self.tracker send:[self finalizedPropertyDictionaryFromBuilder:builder withProperties:properties]];
+    [self send:[self finalizedPropertyDictionaryFromBuilder:builder withProperties:properties]];
 }
 
 - (NSMutableDictionary *)finalizedPropertyDictionaryFromBuilder:(GAIDictionaryBuilder *)builder
@@ -149,6 +149,14 @@
     [[GAI sharedInstance] dispatch];
 }
 
+- (void)send:(NSDictionary *)parameters {
+	[self.tracker send:parameters];
+	//	send events immediately while debugging
+#ifdef DEBUG
+	[self dispatchGA];
+#endif
+}
+
 #pragma mark - Warnings
 
 - (void)warnAboutIgnoredProperties:(NSDictionary*)propertiesDictionary {
@@ -164,4 +172,5 @@
 }
 
 #endif
+
 @end

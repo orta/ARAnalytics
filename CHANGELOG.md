@@ -1,5 +1,9 @@
 # ARAnalytics
 
+## Master
+
+* Add Google Analytics event dispatching immediately after sending events while debugging (@superarts)
+
 ## Version 3.9.2
 * Fix issue in DSL where properties block was being invoked more than once (@arifken)
 
