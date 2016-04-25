@@ -19,8 +19,14 @@
     // Use ARAnalytics providerInstanceOfClass:IntercomProvider
     // to turn this off if you're getting too many events
 
-    if (self.registerTrackedEvents) {
+    if (!self.registerTrackedEvents) {
+        return;
+    }
+
+    if (properties && properties.count > 0) {
         [Intercom logEventWithName:event metaData:properties];
+    } else {
+        [Intercom logEventWithName:event];
     }
 }
 
