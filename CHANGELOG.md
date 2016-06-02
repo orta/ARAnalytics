@@ -1,6 +1,6 @@
 # ARAnalytics
 
-## Master
+## Version 4.0.0
 
 * Add Google Analytics event dispatching immediately after sending events while debugging (@superarts)
 * Added support for Firebase Analytics (@BenchR267)
