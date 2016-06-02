@@ -297,6 +297,14 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
++ (void)setupFirebaseAnalytics
+{
+#ifdef AR_FIREBASE_EXISTS
+    FirebaseProvider *provider = [[FirebaseProvider alloc] initWithIdentifier:nil];
+    [self setupProvider:provider];
+#endif
+}
+
 + (void)setupLocalyticsWithAppKey:(NSString *)key
 {
 #ifdef AR_LOCALYTICS_EXISTS

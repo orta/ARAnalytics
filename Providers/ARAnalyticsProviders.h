@@ -19,6 +19,10 @@
 #import "ARAnalytics+GoogleAnalytics.h"
 #endif
 
+#ifdef AR_FIREBASE_EXISTS
+#import "FirebaseProvider.h"
+#endif
+
 #ifdef AR_KISSMETRICS_EXISTS
 #import "KISSmetricsProvider.h"
 #endif

@@ -165,7 +165,7 @@ Note, however, that on iOS `syslogd` will not keep logs around for a long time, 
 Full list of subspecs
 ----
 
-iOS: `Mixpanel`, `Localytics`, `Flurry`, `GoogleAnalytics`, `KISSmetrics`, `Crittercism`, `Countly`, `Bugsnag`, `Helpshift`, `Tapstream`, `NewRelic`, `Amplitude`, `HockeyApp`, `HockeyAppLib`, `ParseAnalytics`, `HeapAnalytics`, `Chartbeat`, `UMengAnalytics`, `Segmentio`, `Swrve`, `YandexMobileMetrica`, `Adjust`, `Intercom`, `Librato`, `Crashlytics`, `Fabric`, `AppsFlyer`, `Branch`, `Snowplow`, `Sentry`, `Keen`, `Adobe` & `MobileAppTracker`.
+iOS: `Mixpanel`, `Localytics`, `Flurry`, `GoogleAnalytics`, `Firebase`, `KISSmetrics`, `Crittercism`, `Countly`, `Bugsnag`, `Helpshift`, `Tapstream`, `NewRelic`, `Amplitude`, `HockeyApp`, `HockeyAppLib`, `ParseAnalytics`, `HeapAnalytics`, `Chartbeat`, `UMengAnalytics`, `Segmentio`, `Swrve`, `YandexMobileMetrica`, `Adjust`, `Intercom`, `Librato`, `Crashlytics`, `Fabric`, `AppsFlyer`, `Branch`, `Snowplow`, `Sentry`, `Keen`, `Adobe` & `MobileAppTracker`.
 
 OSX: `KISSmetricsOSX`, `HockeyAppOSX`, `MixpanelOSX` & `ParseAnalyticsOSX`.
 
