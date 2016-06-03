@@ -25,6 +25,7 @@
     if (![value isKindOfClass:[NSString class]])
     {
         NSLog(@"Tried to log user property %@ for property name %@, but value is no NSString. Only NSString values are supported by Firebase Analytics.", value, property);
+        return;
     }
 
     NSString *stringValue = ((NSString *)value);
