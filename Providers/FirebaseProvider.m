@@ -10,7 +10,10 @@
     NSAssert([FIRAnalytics class], @"Firebase SDK is not included");
 
     if ((self = [super init])) {
-        [FIRApp configure];
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            [FIRApp configure];
+        });
     }
 
     return self;
