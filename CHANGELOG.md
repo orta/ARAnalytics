@@ -1,6 +1,10 @@
 # ARAnalytics
 
-## Master
+## Version 3.10.1
+
+* tvOS support actually works if you don't use cocoapods-expert-difficulty [orta]
+
+## Version 3.10.0
 
 * Add Google Analytics event dispatching immediately after sending events while debugging (@superarts)
 * Added support for Firebase Analytics (@BenchR267)

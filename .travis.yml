@@ -7,7 +7,9 @@ env:
 before_script:
   - echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - gem install cocoapods --no-document --pre --quiet
+  - bundle exec danger
   - cd Example; pod update ; cd ..
+  
 xcode_workspace: Example/ARAnalyticsTests.xcworkspace
 xcode_scheme: ARAnalyticsBootstrapiOS
 xcode_sdk: iphonesimulator
