@@ -1,13 +1,16 @@
 #import "UMengAnalyticsProvider.h"
 #import "ARAnalyticsProviders.h"
-#import "MobClick.h"
+#import "UMMobClick/MobClick.h"
 
 @implementation UMengAnalyticsProvider
 #ifdef AR_UMENGANALYTICS_EXISTS
 
 - (id)initWithIdentifier:(NSString *)identifier {
 	NSAssert([MobClick class], @"MobClick is not included");
-	[MobClick startWithAppkey:identifier];
+    UMAnalyticsConfig *config = [UMAnalyticsConfig sharedInstance];
+	config.appKey = identifier;
+	config.bCrashReportEnabled = NO;
+	[MobClick startWithConfigure:config];
 
 	return [super init];
 }

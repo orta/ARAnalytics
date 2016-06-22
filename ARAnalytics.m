@@ -551,10 +551,16 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
-+ (void)setupLaunchKitWithAPIToken:(NSString *)token
-{
++ (void)setupLaunchKitWithAPIToken:(NSString *)token {
 #ifdef AR_LAUNCHKIT_EXISTS
     LaunchKitProvider *provider = [[LaunchKitProvider alloc] initWithIdentifier:token];
+    [self setupProvider:provider];
+#endif
+}
+
++ (void)setupLeanplumWithAppId:(NSString *)appId developmentKey:(NSString *)developmentKey productionKey:(NSString *)productionKey {
+#ifdef AR_LEANPLUM_EXISTS
+    LeanplumProvider *provider = [[LeanplumProvider alloc] initWithAppId:appId developmentKey:developmentKey productionKey:productionKey];
     [self setupProvider:provider];
 #endif
 }

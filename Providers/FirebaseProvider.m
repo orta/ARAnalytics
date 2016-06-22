@@ -10,7 +10,10 @@
     NSAssert([FIRAnalytics class], @"Firebase SDK is not included");
 
     if ((self = [super init])) {
-        [FIRApp configure];
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            [FIRApp configure];
+        });
     }
 
     return self;
@@ -25,6 +28,7 @@
     if (![value isKindOfClass:[NSString class]])
     {
         NSLog(@"Tried to log user property %@ for property name %@, but value is no NSString. Only NSString values are supported by Firebase Analytics.", value, property);
+        return;
     }
 
     NSString *stringValue = ((NSString *)value);
