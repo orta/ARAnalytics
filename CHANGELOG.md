@@ -4,6 +4,7 @@
 
 * Add Google Analytics event dispatching immediately after sending events while debugging (@superarts)
 * Added support for Firebase Analytics (@BenchR267)
+* Added support for Leanplum (@BenchR267)
 
 ## Version 3.9.2
 * Fix issue in DSL where properties block was being invoked more than once (@arifken)

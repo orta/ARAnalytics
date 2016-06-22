@@ -71,6 +71,10 @@
 #import "HockeyAppOSXProvider.h"
 #endif
 
+#ifdef AR_LEANPLUM_EXISTS
+#import "LeanplumProvider.h"
+#endif
+
 #ifdef AR_PARSEANALYTICS_EXISTS
 #import "ParseAnalyticsProvider.h"
 #endif
