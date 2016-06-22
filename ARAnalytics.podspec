@@ -71,7 +71,8 @@ Pod::Spec.new do |s|
     ss.source_files = ['*.{h,m}', 'Providers/ARAnalyticalProvider.{h,m}', 'Providers/ARAnalyticsProviders.h']
     ss.exclude_files = ['ARDSL.{h,m}']
     ss.private_header_files = 'ARNavigationControllerDelegateProxy.h'
-    ss.platform = :ios
+    ss.tvos.deployment_target = '9.0'
+	  ss.ios.deployment_target = '7.0'
   end
 
   s.subspec "DSL" do |ss|
