@@ -8,7 +8,7 @@ warn("PR is classed as Work in Progress") if pr_title.include? "[WIP]"
 # Warn when there is a big PR
 warn("Big PR") if lines_of_code > 500
 
-declared_trivial = (pr_title + pr_body).include?("#trivial") || !has_app_changes
+declared_trivial = (pr_title + pr_body).include?("#trivial")
 if !modified_files.include?("CHANGELOG.md") && !declared_trivial
   fail("Please include a CHANGELOG entry. \nYou can find it at [CHANGELOG.md](https://github.com/orta/ARAnalytics/blob/master/CHANGELOG.md).")
 end
