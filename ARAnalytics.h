@@ -89,6 +89,7 @@
 + (void)setupMobileAppTrackerWithAdvertiserID:(NSString *)advertiserID conversionKey:(NSString *)conversionKey allowedEvents:(NSArray *)allowedEvents;
 + (void)setupLaunchKitWithAPIToken:(NSString *)token;
 + (void)setupLeanplumWithAppId:(NSString *)appId developmentKey:(NSString *)developmentKey productionKey:(NSString *)productionKey;
++ (void)setupAppboy;
 
 /// Add a provider manually
 + (void)setupProvider:(ARAnalyticalProvider *)provider;

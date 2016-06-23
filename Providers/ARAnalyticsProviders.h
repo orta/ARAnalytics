@@ -75,6 +75,10 @@
 #import "LeanplumProvider.h"
 #endif
 
+#ifdef AR_APPBOY_EXISTS
+#import "AppboyProvider.h"
+#endif
+
 #ifdef AR_PARSEANALYTICS_EXISTS
 #import "ParseAnalyticsProvider.h"
 #endif
