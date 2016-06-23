@@ -1,8 +1,9 @@
 # ARAnalytics
 
-## master
+## Master
 
 * changed return type of init methods to instancetype instead of id (@BenchR267)
+* Added support for Appboy (@BenchR267)
 
 ## Version 3.10.1
 

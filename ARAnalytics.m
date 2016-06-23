@@ -565,6 +565,13 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
++ (void)setupAppboy {
+#ifdef AR_APPBOY_EXISTS
+    AppboyProvider *provider = [[AppboyProvider alloc] initWithIdentifier:nil];
+    [self setupProvider:provider];
+#endif
+}
+
 #pragma mark -
 #pragma mark User Setup
 
