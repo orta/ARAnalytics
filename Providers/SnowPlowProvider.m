@@ -15,19 +15,19 @@
 
 @implementation SnowplowProvider
 
-- (id)initWithAddress:(NSString *)address
+- (instancetype)initWithAddress:(NSString *)address
 {
     NSString *bundleID  = [[NSBundle mainBundle] bundleIdentifier];
     return [self initWithAddress:address appID:bundleID namespace:nil];
 }
 
-- (id)initWithAddress:(NSString *)address appID:(NSString *)appID namespace:(NSString *)namespace
+- (instancetype)initWithAddress:(NSString *)address appID:(NSString *)appID namespace:(NSString *)namespace
 {
     SnowplowEmitter *emitter = [[SnowplowEmitter alloc] initWithURLRequest:[NSURL URLWithString:address]];
     return [self initWithEmitter:emitter appID:appID namespace:namespace];
 }
 
-- (id)initWithEmitter:(SnowplowEmitter *)emitter appID:(NSString *)appID namespace:(NSString *)namespace
+- (instancetype)initWithEmitter:(SnowplowEmitter *)emitter appID:(NSString *)appID namespace:(NSString *)namespace
 {
     self = [super initWithIdentifier:appID];
     if (!self) return nil;

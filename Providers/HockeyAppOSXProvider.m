@@ -34,7 +34,7 @@ IsHockeySDKCompatibleForLogging(void)
 
 @implementation HockeyAppOSXProvider
 
--(id)initWithIdentifier:(NSString *)identifier {
+-(instancetype)initWithIdentifier:(NSString *)identifier {
     self = [super init];
     if (!self) return nil;
 

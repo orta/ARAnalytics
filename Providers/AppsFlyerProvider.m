@@ -7,7 +7,7 @@ const NSString * ARAppsFlyerEventPropertyValue = @"value";
 @implementation AppsFlyerProvider
 #ifdef AR_APPSFLYER_EXISTS
 
-- (id)initWithIdentifier:(NSString *)identifier {
+- (instancetype)initWithIdentifier:(NSString *)identifier {
     NSLog(@"Use -[AppsFlyerProvider initWithAppID:devKey:] instead of %s", __PRETTY_FUNCTION__);
     [self doesNotRecognizeSelector:_cmd];
     return nil;

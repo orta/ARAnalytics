@@ -16,7 +16,7 @@
 @implementation GoogleAnalyticsProvider
 #ifdef AR_GOOGLEANALYTICS_EXISTS
 
-- (id)initWithIdentifier:(NSString *)identifier {
+- (instancetype)initWithIdentifier:(NSString *)identifier {
     NSAssert([GAI class], @"Google Analytics SDK is not included");
 
     if ((self = [super init])) {

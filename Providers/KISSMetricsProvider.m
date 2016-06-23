@@ -4,7 +4,7 @@
 @implementation KISSMetricsProvider
 #ifdef AR_KISSMETRICS_EXISTS
 
-- (id)initWithIdentifier:(NSString *)identifier {
+- (instancetype)initWithIdentifier:(NSString *)identifier {
     NSAssert([KISSMetricsAPI class], @"KISSMetrics is not included");
     [KISSMetricsAPI sharedAPIWithKey:identifier];
 

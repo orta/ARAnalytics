@@ -9,7 +9,7 @@
 @implementation SwrveProvider
 
 #ifdef AR_SWRVE_EXISTS
-- (id)initWithAppID:(NSString *)appID apiKey:(NSString *)apiKey {
+- (instancetype)initWithAppID:(NSString *)appID apiKey:(NSString *)apiKey {
     [Swrve sharedInstanceWithAppID:appID.intValue apiKey:apiKey];
     return [super init];
 }

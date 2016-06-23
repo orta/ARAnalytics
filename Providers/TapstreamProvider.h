@@ -3,7 +3,7 @@
 
 @interface TapstreamProvider : ARAnalyticalProvider
 
-- (id)initWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret;
-- (id)initWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret config:(TSConfig *)config;
+- (instancetype)initWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret;
+- (instancetype)initWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret config:(TSConfig *)config;
 
 @end

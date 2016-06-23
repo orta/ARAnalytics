@@ -8,8 +8,8 @@
 @class SnowplowEmitter;
 @interface SnowplowProvider : ARAnalyticalProvider
 
-- (id)initWithAddress:(NSString *)address;
-- (id)initWithAddress:(NSString *)address appID:(NSString *)appID namespace:(NSString *)namespace;
-- (id)initWithEmitter:(SnowplowEmitter *)emitter appID:(NSString *)appID namespace:(NSString *)namespace;
+- (instancetype)initWithAddress:(NSString *)address;
+- (instancetype)initWithAddress:(NSString *)address appID:(NSString *)appID namespace:(NSString *)namespace;
+- (instancetype)initWithEmitter:(SnowplowEmitter *)emitter appID:(NSString *)appID namespace:(NSString *)namespace;
 
 @end

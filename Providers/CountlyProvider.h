@@ -1,5 +1,7 @@
 #import "ARAnalyticalProvider.h"
 
 @interface CountlyProvider : ARAnalyticalProvider
-- (id)initWithAppKey:(NSString *)appKey andHost:(NSString *)host;
+
+- (instancetype)initWithAppKey:(NSString *)appKey andHost:(NSString *)host;
+
 @end

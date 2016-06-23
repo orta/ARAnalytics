@@ -4,7 +4,7 @@ extern NSString const *AdobeProviderCallsTrackStateForPageViewsWithProperties;
 
 @interface AdobeProvider : ARAnalyticalProvider
 
-- (id)initWithData:(NSDictionary *)additionalData;
-- (id)initWithData:(NSDictionary *)additionalData settings:(NSDictionary*)settings;
+- (instancetype)initWithData:(NSDictionary *)additionalData;
+- (instancetype)initWithData:(NSDictionary *)additionalData settings:(NSDictionary*)settings;
 
 @end

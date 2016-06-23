@@ -7,7 +7,7 @@
 @implementation YandexMobileMetricaProvider
 #ifdef AR_YANDEXMOBILEMETRICA_EXISTS
 
-- (id)initWithIdentifier:(NSString *)identifier {
+- (instancetype)initWithIdentifier:(NSString *)identifier {
     NSAssert([YMMYandexMetrica class], @"Yandex Mobile Metrica is not included");
     self = [super init];
     if (self != nil) {

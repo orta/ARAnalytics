@@ -4,7 +4,7 @@
 @implementation BugsnagProvider
 #ifdef AR_BUGSNAP_EXISTS
 
-- (id)initWithIdentifier:(NSString *)identifier {
+- (instancetype)initWithIdentifier:(NSString *)identifier {
     NSAssert([Bugsnag class], @"Bugsnag is not included");
     [Bugsnag startBugsnagWithApiKey:identifier];
 

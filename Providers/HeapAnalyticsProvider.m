@@ -5,7 +5,7 @@
 
 #ifdef AR_HEAPANALYTICS_EXISTS
 
--(id)initWithIdentifier:(id)identifier {
+-(instancetype)initWithIdentifier:(id)identifier {
     NSAssert([Heap class], @"Heap is not included");
     [Heap setAppId:identifier];
     

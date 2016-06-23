@@ -9,7 +9,7 @@
 @implementation BranchProvider
 
 #ifdef AR_BRANCH_EXISTS
-- (id)initWithAPIKey:(NSString *)key {
+- (instancetype)initWithAPIKey:(NSString *)key {
     NSAssert([Branch class], @"Branch is not included");
     [Branch getInstance:key];
     return [super init];

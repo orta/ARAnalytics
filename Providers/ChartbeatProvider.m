@@ -15,7 +15,7 @@
 @implementation ChartbeatProvider
 #ifdef AR_CHARTBEAT_EXISTS
 
-- (id)initWithIdentifier:(NSString *)identifier
+- (instancetype)initWithIdentifier:(NSString *)identifier
 {
     [[CBTracker sharedTracker] startTrackerWithAccountID:identifier.intValue];
     return self;

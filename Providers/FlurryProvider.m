@@ -5,7 +5,7 @@
 @implementation FlurryProvider
 #ifdef AR_FLURRY_EXISTS
 
-- (id)initWithIdentifier:(NSString *)identifier {
+- (instancetype)initWithIdentifier:(NSString *)identifier {
     NSAssert([Flurry class], @"Flurry is not included");
     [Flurry startSession:identifier];
 

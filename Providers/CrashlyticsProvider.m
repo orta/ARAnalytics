@@ -4,7 +4,7 @@
 @implementation CrashlyticsProvider
 #ifdef AR_CRASHLYTICS_EXISTS
 
-- (id)initWithIdentifier:(NSString *)identifier {
+- (instancetype)initWithIdentifier:(NSString *)identifier {
     NSAssert([Crashlytics class], @"Crashlytics is not included");
     NSAssert([[Crashlytics class] respondsToSelector:@selector(version)], @"Crashlytics library not installed correctly.");
     [Crashlytics startWithAPIKey:identifier];

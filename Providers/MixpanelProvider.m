@@ -10,11 +10,11 @@ static NSString * const kMixpanelTimingPropertyKey = @"$duration";
 
 @implementation MixpanelProvider
 
-- (id)initWithIdentifier:(NSString *)identifier {
+- (instancetype)initWithIdentifier:(NSString *)identifier {
     return [self initWithIdentifier:identifier andHost:nil];
 }
 
-- (id)initWithIdentifier:(NSString *)identifier andHost:(NSString *)host {
+- (instancetype)initWithIdentifier:(NSString *)identifier andHost:(NSString *)host {
 #ifdef AR_MIXPANEL_EXISTS
 
     NSAssert([Mixpanel class], @"Mixpanel is not included");

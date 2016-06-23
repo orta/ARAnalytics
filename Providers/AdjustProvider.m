@@ -11,7 +11,7 @@
 
 @implementation AdjustProvider
 
-- (id)initWithIdentifier:(NSString *)identifier {
+- (instancetype)initWithIdentifier:(NSString *)identifier {
     return [self initWithIdentifier:identifier andConfigurationDelegate:nil];
 }
 

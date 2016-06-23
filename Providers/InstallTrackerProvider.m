@@ -5,7 +5,7 @@
 @implementation InstallTrackerProvider
 #ifdef AR_INSTALLTRACKER_EXISTS
 
-- (id)initWithIdentifier:(NSString *)identifier {
+- (instancetype)initWithIdentifier:(NSString *)identifier {
     NSAssert([InstallTracker class], @"InstallTracker is not included");
     [InstallTracker setApplicationID:identifier];
 

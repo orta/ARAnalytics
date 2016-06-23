@@ -9,7 +9,7 @@
 
 @interface HelpshiftProvider : ARAnalyticalProvider
 
-- (id)initWithAppID:(NSString *)appID domainName:(NSString *)domainName apiKey:(NSString *)apiKey;
+- (instancetype)initWithAppID:(NSString *)appID domainName:(NSString *)domainName apiKey:(NSString *)apiKey;
 
 @end
 

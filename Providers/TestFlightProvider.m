@@ -6,7 +6,7 @@
 @implementation TestFlightProvider
 #ifdef AR_TESTFLIGHT_EXISTS
 
-- (id)initWithIdentifier:(NSString *)identifier {
+- (instancetype)initWithIdentifier:(NSString *)identifier {
     NSAssert([TestFlight class], @"TestFlight is not included");
     
     [TestFlight takeOff:identifier];

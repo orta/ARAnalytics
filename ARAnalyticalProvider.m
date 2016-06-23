@@ -18,7 +18,7 @@ NSString *const ARAnalyticalProviderNewPageViewEventScreenPropertyKey = @"screen
 
 @implementation ARAnalyticalProvider
 
-- (id)initWithIdentifier:(NSString *)identifier {
+- (instancetype)initWithIdentifier:(NSString *)identifier {
     return [super init];
 }
 

@@ -4,7 +4,7 @@
 @implementation AppseeProvider
 #ifdef AR_APPSEE_EXISTS
 
--(id)initWithIdentifier:(NSString *)identifier {
+-(instancetype)initWithIdentifier:(NSString *)identifier {
     NSAssert([Appsee class], @"Appsee is not included");
     [Appsee start:identifier];
     

@@ -4,7 +4,7 @@
 @implementation LaunchKitProvider
 #ifdef AR_LAUNCHKIT_EXISTS
 
--(id)initWithIdentifier:(NSString *)identifier {
+-(instancetype)initWithIdentifier:(NSString *)identifier {
     NSAssert([LaunchKit class], @"LaunchKit is not included");
     [LaunchKit launchWithToken:identifier];
     

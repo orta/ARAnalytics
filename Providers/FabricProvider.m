@@ -54,7 +54,7 @@ NS_ASSUME_NONNULL_END
 @implementation FabricProvider
 #ifdef AR_FABRIC_EXISTS
 
-- (id)initWithKits:(NSArray *)kits {
+- (instancetype)initWithKits:(NSArray *)kits {
     
     NSAssert([Fabric class], @"Fabric is not included");
     NSAssert([[Fabric class] respondsToSelector:@selector(sharedSDK)], @"Fabric library not installed correctly.");
