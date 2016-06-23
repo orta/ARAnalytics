@@ -6,7 +6,7 @@ extern NSString *const ARAnalyticalProviderNewPageViewEventScreenPropertyKey;
 @interface ARAnalyticalProvider : NSObject
 
 /// Init
-- (id)initWithIdentifier:(NSString *)identifier;
+- (instancetype)initWithIdentifier:(NSString *)identifier;
 
 /// Set a per user property
 - (void)setUserProperty:(NSString *)property toValue:(id)value;

@@ -18,11 +18,11 @@ NSString const *AdobeProviderCallsTrackStateForPageViewsWithProperties = @"calls
 @implementation AdobeProvider
 #ifdef AR_ADOBE_EXISTS
 
-- (id)initWithData:(NSDictionary *)additionalData {
+- (instancetype)initWithData:(NSDictionary *)additionalData {
     return [self initWithData:additionalData settings:nil];
 }
 
-- (id)initWithData:(NSDictionary *)additionalData settings:(NSDictionary*)settings {
+- (instancetype)initWithData:(NSDictionary *)additionalData settings:(NSDictionary*)settings {
     NSAssert([ADBMobile class], @"Adobe is not included");
     if(additionalData) {
         [ADBMobile collectLifecycleDataWithAdditionalData:additionalData];
@@ -37,7 +37,7 @@ NSString const *AdobeProviderCallsTrackStateForPageViewsWithProperties = @"calls
     return self;
 }
 
-- (id)initWithIdentifier:(NSString *)identifier
+- (instancetype)initWithIdentifier:(NSString *)identifier
 {
 	return [self initWithData:nil];
 }

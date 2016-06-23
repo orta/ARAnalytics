@@ -7,6 +7,6 @@
 
 @interface SwrveProvider : ARAnalyticalProvider
 
-- (id)initWithAppID:(NSString *)appID apiKey:(NSString *)apiKey;
+- (instancetype)initWithAppID:(NSString *)appID apiKey:(NSString *)apiKey;
 
 @end

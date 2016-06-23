@@ -3,7 +3,7 @@
 
 @implementation NewRelicProvider
 
-- (id)initWithIdentifier:(NSString *)identifier {
+- (instancetype)initWithIdentifier:(NSString *)identifier {
     NSAssert([NewRelic class], @"NewRelic is not included");
     [NewRelic startWithApplicationToken:identifier];
     

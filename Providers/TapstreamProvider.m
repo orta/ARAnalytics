@@ -3,11 +3,11 @@
 
 @implementation TapstreamProvider
 
-- (id)initWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret {
+- (instancetype)initWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret {
     return [self initWithAccountName:accountName developerSecret:developerSecret config:nil];
 }
 
-- (id)initWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret config:(TSConfig *)config {
+- (instancetype)initWithAccountName:(NSString *)accountName developerSecret:(NSString *)developerSecret config:(TSConfig *)config {
     NSAssert([TSTapstream class], @"Tapstream is not included");
     if (!config) {
         config = [TSConfig configWithDefaults];

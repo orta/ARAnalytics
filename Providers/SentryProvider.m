@@ -13,7 +13,7 @@ const NSString *OFSARSentryID = @"OFSARSentryID";
 
 @implementation SentryProvider
 
-- (id)initWithIdentifier:(NSString *)identifier {
+- (instancetype)initWithIdentifier:(NSString *)identifier {
     NSAssert([RavenClient class], @"Raven is not included");
     NSAssert([[RavenClient class] respondsToSelector:@selector(sharedClient)], @"Raven-ios library not installed correctly.");
     [RavenClient setSharedClient:[RavenClient clientWithDSN:identifier]];

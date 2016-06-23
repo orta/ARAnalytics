@@ -5,7 +5,7 @@
 @implementation FirebaseProvider
 #ifdef AR_FIREBASE_EXISTS
 
-- (id)initWithIdentifier:(NSString *)identifier {
+- (instancetype)initWithIdentifier:(NSString *)identifier {
     NSAssert([FIRApp class], @"Firebase SDK is not included");
     NSAssert([FIRAnalytics class], @"Firebase SDK is not included");
 

@@ -18,10 +18,10 @@
 @implementation SegmentioProvider
 
 #ifdef AR_SEGMENTIO_EXISTS
-- (id)initWithIdentifier:(NSString *)identifier {
+- (instancetype)initWithIdentifier:(NSString *)identifier {
 	return [self initWithIdentifier:identifier integrations:nil];
 }
-- (id)initWithIdentifier:(NSString *)identifier integrations:(NSArray *)integrations {
+- (instancetype)initWithIdentifier:(NSString *)identifier integrations:(NSArray *)integrations {
     if ((self = [super initWithIdentifier:identifier])) {
 		SEGAnalyticsConfiguration *config = [SEGAnalyticsConfiguration configurationWithWriteKey:identifier];
 		for (id integration in integrations) {

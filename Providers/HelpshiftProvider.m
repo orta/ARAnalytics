@@ -12,7 +12,7 @@
 @implementation HelpshiftProvider
 #ifdef AR_HELPSHIFT_EXISTS
 
-- (id)initWithAppID:(NSString *)appID domainName:(NSString *)domainName apiKey:(NSString *)apiKey {
+- (instancetype)initWithAppID:(NSString *)appID domainName:(NSString *)domainName apiKey:(NSString *)apiKey {
     NSAssert([Helpshift class], @"Helpshift is not included");
     
     [Helpshift installForApiKey:apiKey domainName:domainName appID:appID withOptions:nil];

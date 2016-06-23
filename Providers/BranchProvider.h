@@ -7,6 +7,6 @@
 
 @interface BranchProvider : ARAnalyticalProvider
 
-- (id)initWithAPIKey:(NSString *)key;
+- (instancetype)initWithAPIKey:(NSString *)key;
 
 @end

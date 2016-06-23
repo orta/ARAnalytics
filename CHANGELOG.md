@@ -1,5 +1,9 @@
 # ARAnalytics
 
+## master
+
+* changed return type of init methods to instancetype instead of id (@BenchR267)
+
 ## Version 3.10.1
 
 * tvOS support actually works if you don't use cocoapods-expert-difficulty [orta]

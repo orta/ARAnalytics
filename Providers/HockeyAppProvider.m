@@ -43,11 +43,11 @@ IsHockeySDKCompatibleForLogging(void)
 
 @implementation HockeyAppProvider
 
--(id)initWithIdentifier:(NSString *)identifier {
+-(instancetype)initWithIdentifier:(NSString *)identifier {
     return [self initWithBetaIdentifier:identifier liveIdentifier:nil];
 }
 
--(id)initWithBetaIdentifier:(NSString *)betaIdentifier liveIdentifier:(NSString *)liveIdentfier {
+-(instancetype)initWithBetaIdentifier:(NSString *)betaIdentifier liveIdentifier:(NSString *)liveIdentfier {
     self = [super init];
     if (!self) return nil;
 

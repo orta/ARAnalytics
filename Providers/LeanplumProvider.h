@@ -2,7 +2,7 @@
 
 @interface LeanplumProvider : ARAnalyticalProvider
 
-- (id)initWithIdentifier:(NSString *)identifier NS_UNAVAILABLE;
+- (instancetype)initWithIdentifier:(NSString *)identifier NS_UNAVAILABLE;
 
 /**
  * Initializes an instance of LeanplumProvider with the given parameters.

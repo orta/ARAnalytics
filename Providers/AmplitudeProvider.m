@@ -4,7 +4,7 @@
 @implementation AmplitudeProvider
 #ifdef AR_AMPLITUDE_EXISTS
 
--(id)initWithIdentifier:(NSString *)identifier {
+-(instancetype)initWithIdentifier:(NSString *)identifier {
     NSAssert([Amplitude class], @"Amplitude is not included");
     [[Amplitude instance] initializeApiKey:identifier];
     

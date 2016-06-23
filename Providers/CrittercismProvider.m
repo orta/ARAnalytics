@@ -4,7 +4,7 @@
 @implementation CrittercismProvider
 #ifdef AR_CRITTERCISM_EXISTS
 
-- (id)initWithIdentifier:(NSString *)identifier {
+- (instancetype)initWithIdentifier:(NSString *)identifier {
     NSAssert([Crittercism class], @"Crittercism is not included");
     [Crittercism enableWithAppID:identifier];
 
