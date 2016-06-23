@@ -13,9 +13,14 @@
             [Leanplum setAppId:appId withProductionKey:productionKey];
         }
         else {
+            LEANPLUM_USE_ADVERTISING_ID;
             [Leanplum setAppId:appId withDevelopmentKey:developmentKey];
         }
     }
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [Leanplum start];
+    });
     return self;
 }
 
