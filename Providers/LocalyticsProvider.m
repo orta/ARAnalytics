@@ -1,7 +1,7 @@
 #import "LocalyticsProvider.h"
 
 #ifdef AR_LOCALYTICS_EXISTS
-@import Localytics;
+#import <Localytics/Localytics.h>
 #endif
 @interface LocalyticsProvider ()
 
