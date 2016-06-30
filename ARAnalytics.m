@@ -765,7 +765,7 @@ void ARLog (NSString *format, ...) {
     va_end(argList);
 }
 
-void ARLogv(NSString *format, va_list argList) {
+void ARLogv (NSString *format, va_list argList) {
     if (format == nil) {
         if (_ARLogShouldPrintStdout) {
             printf("nil \n");
