@@ -170,6 +170,7 @@
 
 /// an NSLog-like command that send to providers
 extern void ARLog (NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
+extern void ARLogv (NSString *format, va_list argList) NS_FORMAT_FUNCTION(1,0);
 
 /// A try-catch for nil protection wrapped event
 extern void ARAnalyticsEvent (NSString *event, NSDictionary *properties);
