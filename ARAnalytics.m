@@ -759,18 +759,20 @@ static BOOL _ARLogShouldPrintStdout = YES;
 @end
 
 void ARLog (NSString *format, ...) {
+    va_list argList;
+    va_start(argList, format);
+    ARLogv(format, argList);
+    va_end(argList);
+}
+
+void ARLogv (NSString *format, va_list argList) {
     if (format == nil) {
         if (_ARLogShouldPrintStdout) {
             printf("nil \n");
         }
         return;
     }
-    // Get a reference to the arguments that follow the format parameter
-    va_list argList;
-    va_start(argList, format);
-
-    // Perform format string argument substitution, reinstate %% escapes, then print
-
+    
     @autoreleasepool {
         NSString *parsedFormatString = [[NSString alloc] initWithFormat:format arguments:argList];
         parsedFormatString = [parsedFormatString stringByReplacingOccurrencesOfString:@"%%" withString:@"%%%%"];
@@ -782,8 +784,6 @@ void ARLog (NSString *format, ...) {
             [provider remoteLog:parsedFormatString];
         }];
     }
-
-    va_end(argList);
 }
 
 void ARAnalyticsEvent (NSString *event, NSDictionary *properties) {

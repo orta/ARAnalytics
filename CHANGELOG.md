@@ -2,6 +2,7 @@
 
 ## Master
 
+* Added ARLogv function for Switft interop (@ibrt)
 * Changed import method for Localytics (@cemaleker)
 * changed return type of init methods to instancetype instead of id (@BenchR267)
 * Added support for Appboy (@BenchR267)
