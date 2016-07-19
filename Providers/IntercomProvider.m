@@ -34,8 +34,10 @@
 {
     if (email) {
         [Intercom registerUserWithUserId:userID email:email];
-    } else {
+    } else if (userID) {
         [Intercom registerUserWithUserId:userID];
+    } else {
+        [Intercom registerUnidentifiedUser];
     }
 }
 

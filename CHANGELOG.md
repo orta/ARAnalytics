@@ -2,6 +2,8 @@
 
 ## Master
 
+* Enables unidentified users for Intercom (@MrAlek)
+
 ## Version 3.10.2
 
 * Added ARLogv function for Switft interop (@ibrt)
