@@ -12,9 +12,9 @@ Pod::Spec.new do |s|
   # s.description is at the bottom as it is partially generated.
 
   mixpanel         = { :spec_name => "Mixpanel",            :dependency => "Mixpanel" }
-  localytics       = { :spec_name => "Localytics",          :dependency => "Localytics" }
+  localytics       = { :spec_name => "Localytics",          :dependency => "Localytics",            :ios_deployment_target => "8.0" }
   flurry           = { :spec_name => "Flurry",              :dependency => "Flurry-iOS-SDK" }
-  google           = { :spec_name => "GoogleAnalytics",     :dependency => "GoogleAnalytics", :has_extension => true }
+  google           = { :spec_name => "GoogleAnalytics",     :dependency => "GoogleAnalytics",       :has_extension => true }
   kissmetrics      = { :spec_name => "KISSmetrics",         :dependency => "KISSmetrics" }
   crittercism      = { :spec_name => "Crittercism",         :dependency => "CrittercismSDK" }
   countly          = { :spec_name => "Countly",             :dependency => "Countly" }
@@ -25,9 +25,9 @@ Pod::Spec.new do |s|
   amplitude        = { :spec_name => "Amplitude",           :dependency => "Amplitude-iOS" }
   hockeyApp        = { :spec_name => "HockeyApp",           :dependency => "HockeySDK-Source" }
   hockeyAppLib     = { :spec_name => "HockeyAppLib",        :dependency => "HockeySDK" }
-  parseAnalytics   = { :spec_name => "ParseAnalytics",      :dependency => "Parse", :has_extension => true }
+  parseAnalytics   = { :spec_name => "ParseAnalytics",      :dependency => "Parse",                 :has_extension => true }
   heap             = { :spec_name => "HeapAnalytics",       :dependency => "Heap" }
-  chartbeat        = { :spec_name => "Chartbeat",           :dependency => "Chartbeat", :has_extension => true }
+  chartbeat        = { :spec_name => "Chartbeat",           :dependency => "Chartbeat",             :has_extension => true }
   umeng            = { :spec_name => "UMengAnalytics",      :dependency => "UMengAnalytics" }
   segmentio        = { :spec_name => "Segmentio",           :dependency => [["Analytics", ">= 3"]], :tvos => true}
   swrve            = { :spec_name => "Swrve",               :dependency => "SwrveSDK" }
@@ -89,6 +89,10 @@ Pod::Spec.new do |s|
   # make specs for each analytics
   all_analytics.each do |analytics_spec|
     s.subspec analytics_spec[:spec_name] do |ss|
+
+      if analytics_spec[:ios_deployment_target]
+        ss.ios.deployment_target = analytics_spec[:ios_deployment_target]
+      end
 
       providername = analytics_spec[:provider]? analytics_spec[:provider] : analytics_spec[:spec_name]
 

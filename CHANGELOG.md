@@ -3,6 +3,7 @@
 ## Master
 
 * Enables unidentified users for Intercom (@MrAlek)
+* Increased deployment target for Localytics to 8.0 (@BenchR267 & @garnett)
 
 ## Version 3.10.2
 
