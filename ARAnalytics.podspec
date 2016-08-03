@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
   swrve            = { :spec_name => "Swrve",               :dependency => "SwrveSDK" }
   yandex           = { :spec_name => "YandexMobileMetrica", :dependency => "YandexMobileMetrica" }
   adjust           = { :spec_name => "Adjust",              :dependency => "Adjust" }
-  intercom         = { :spec_name => "Intercom",            :dependency => "Intercom" }
+  intercom         = { :spec_name => "Intercom",            :dependency => "Intercom",              :ios_deployment_target => "8.0" }
   librato          = { :spec_name => "Librato" }
   crashlytics      = { :spec_name => "Crashlytics",         :dependency => "Crashlytics" }
   fabric           = { :spec_name => "Fabric",              :dependency => ["Fabric", "Crashlytics"] }
