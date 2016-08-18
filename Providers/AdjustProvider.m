@@ -41,6 +41,14 @@
     ADJEvent *const adjustEvent = [ADJEvent eventWithEventToken:event];
 
     [properties enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
+        // Adjust assumes value is a string, so if it's not convert it to a string value
+        if (![value isKindOfClass:[NSString class]]) {
+            if ([value respondsToSelector:@selector(stringValue)]) {
+                value = [value stringValue];
+            } else {
+                value = [value description];
+            }
+        }
         [adjustEvent addCallbackParameter:key value:value];
     }];
 
