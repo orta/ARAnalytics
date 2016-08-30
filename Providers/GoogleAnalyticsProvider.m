@@ -109,7 +109,7 @@
     [self event:event withProperties:properties];
     
     // By Google's header, the interval should be seconds in milliseconds.
-    GAIDictionaryBuilder *builder = [GAIDictionaryBuilder createTimingWithCategory:@"default"
+    GAIDictionaryBuilder *builder = [GAIDictionaryBuilder createTimingWithCategory:properties.category ?: @"default"
                                                                           interval:@((int)([interval doubleValue]*1000))
                                                                               name:event
                                                                              label:nil];
