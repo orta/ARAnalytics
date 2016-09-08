@@ -6,6 +6,7 @@
 * Enables unidentified users for Intercom (@MrAlek)
 * Increased deployment target for Localytics and Intercom to 8.0 (@BenchR267 & @garnett)
 * Updated logTimingEvent function to use given category for GoogleAnalytics. (@Goharhovhannisyan)
+* Makes Intercom reset old user data before registering user (@MrAlek)
 
 ## Version 3.10.2
 

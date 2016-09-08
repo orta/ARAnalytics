@@ -32,6 +32,8 @@
 
 - (void)identifyUserWithID:(NSString *)userID andEmailAddress:(NSString *)email
 {
+    [Intercom reset];
+    
     if (email) {
         [Intercom registerUserWithUserId:userID email:email];
     } else if (userID) {
