@@ -2,6 +2,8 @@
 
 ## Master
 
+## Version 4.0.0
+
 * Fixes issue where Adjust SDK assumes event value is a string
 * Enables unidentified users for Intercom (@MrAlek)
 * Increased deployment target for Localytics and Intercom to 8.0 (@BenchR267 & @garnett)
