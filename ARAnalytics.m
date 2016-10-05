@@ -78,6 +78,7 @@ static BOOL _ARLogShouldPrintStdout = YES;
 
     if (analyticsDictionary[ARCountlyAppKey]) {
         // ARCountlyHost is nil if you want the cloud host.
+        // If the host URL is not nil the it should be provided without the slash at the end.
         [self setupCountlyWithAppKey:analyticsDictionary[ARCountlyAppKey] andHost:analyticsDictionary[ARCountlyHost]];
     }
 

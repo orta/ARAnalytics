@@ -6,10 +6,23 @@
 - (instancetype)initWithAppKey:(NSString *)appKey andHost:(NSString *)host {
 #ifdef AR_COUNTLY_EXISTS
     NSAssert([Countly class], @"Countly is not included");
-    if (host) {
-        [[Countly sharedInstance] start:appKey withHost:host];
-    } else {
-        [[Countly sharedInstance] startOnCloudWithAppKey:appKey];
+
+    // since v16.0
+    if ([[Countly sharedInstance] respondsToSelector:@selector(startWithConfig:)]) {
+        CountlyConfig *config = [CountlyConfig new];
+        config.appKey = appKey;
+        if (host) {
+            config.host = host;
+        }
+        [[Countly sharedInstance] performSelector:@selector(startWithConfig:) withObject:config];
+    }
+    // before v16.0
+    else if ([[Countly sharedInstance] respondsToSelector:@selector(start:withHost:)]) {
+        if (host) {
+            [[Countly sharedInstance] performSelector:@selector(start:withHost:) withObject:appKey withObject:host];
+        } else {
+            [[Countly sharedInstance] performSelector:@selector(startOnCloudWithAppKey:) withObject:appKey];
+        }
     }
 #endif
 
