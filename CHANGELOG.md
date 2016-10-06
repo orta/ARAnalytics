@@ -2,6 +2,10 @@
 
 ## Master
 
+## Version 4.0.1
+
+* Fixes Countly initialization issue
+
 ## Version 4.0.0
 
 * Fixes issue where Adjust SDK assumes event value is a string
