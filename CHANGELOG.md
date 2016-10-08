@@ -2,6 +2,8 @@
 
 ## Master
 
+* Allows AdjustProvider to be set up with an AdjustDelegate
+
 ## Version 4.0.1
 
 * Fixes Countly initialization issue

@@ -9,6 +9,8 @@
 @class TSConfig;
 @class ARAnalyticalProvider;
 
+@protocol AdjustDelegate;
+
 /**
  @class
  ARAnalytics Main Class.
@@ -76,7 +78,7 @@
 + (void)setupSegmentioWithWriteKey:(NSString*)key integrations:(NSArray *)integrations;
 + (void)setupSwrveWithAppID:(NSString *)appID apiKey:(NSString *)apiKey;
 + (void)setupYandexMobileMetricaWithAPIKey:(NSString*)key;
-+ (void)setupAdjustWithAppToken:(NSString *)token;
++ (void)setupAdjustWithAppToken:(NSString *)token andConfigurationDelegate:(id<AdjustDelegate>)delegate;
 + (void)setupBranchWithAPIKey:(NSString *)key;
 + (void)setupSnowplowWithAddress:(NSString *)address;
 + (void)setupSentryWithID:(NSString *)identifier;

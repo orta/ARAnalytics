@@ -143,7 +143,7 @@ static BOOL _ARLogShouldPrintStdout = YES;
     }
     
     if (analyticsDictionary[ARAdjustAppTokenKey]) {
-        [self setupAdjustWithAppToken:analyticsDictionary[ARAdjustAppTokenKey]];
+        [self setupAdjustWithAppToken:analyticsDictionary[ARAdjustAppTokenKey] andConfigurationDelegate:nil];
     }
 
     if (analyticsDictionary[ARSnowplowURL]) {
@@ -465,10 +465,10 @@ static BOOL _ARLogShouldPrintStdout = YES;
 #endif
 }
 
-+ (void)setupAdjustWithAppToken:(NSString *)token
++ (void)setupAdjustWithAppToken:(NSString *)token andConfigurationDelegate:(id<AdjustDelegate>)delegate
 {
 #ifdef AR_ADJUST_EXISTS
-    AdjustProvider *provider = [[AdjustProvider alloc] initWithIdentifier:token];
+    AdjustProvider *provider = [[AdjustProvider alloc] initWithIdentifier:token andConfigurationDelegate:delegate];
     [self setupProvider:provider];
 #endif
 }
