@@ -3,6 +3,7 @@
 ## Master
 
 * Allows AdjustProvider to be set up with an AdjustDelegate
+* Support custom event tracking for HockeyApp provider (@wzs)
 
 ## Version 4.0.1
 
