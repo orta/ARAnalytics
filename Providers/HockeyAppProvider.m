@@ -89,6 +89,9 @@ IsHockeySDKCompatibleForLogging(void)
     if (IsHockeySDKCompatibleForLogging()) {
         [self localLog:[NSString stringWithFormat:@"[%@] %@", event, properties]];
     }
+    
+    BITMetricsManager *metricsManager = [BITHockeyManager sharedHockeyManager].metricsManager;
+    [metricsManager trackEventWithName:event properties:properties measurements:nil];
 }
 
 #pragma mark - BITUpdateManagerDelegate
