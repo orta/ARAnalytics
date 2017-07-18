@@ -9,7 +9,6 @@ before_script:
   - gem install cocoapods --no-document --pre --quiet
   - bundle exec danger
   - cd Example; pod update ; cd ..
-  
-xcode_workspace: Example/ARAnalyticsTests.xcworkspace
-xcode_scheme: ARAnalyticsBootstrapiOS
-xcode_sdk: iphonesimulator
+
+script:
+  - xctool -workspace Example/ARAnalyticsTests.xcworkspace -scheme ARAnalyticsBootstrapiOS -sdk iphonesimulator run-tests
