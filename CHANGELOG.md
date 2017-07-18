@@ -4,6 +4,8 @@
 
 * Allows AdjustProvider to be set up with an AdjustDelegate
 * Support custom event tracking for HockeyApp provider (@wzs)
+* Switched from deprecated ReactiveCocoa to ReactiveObjC
+* Fixed Travis build issues
 
 ## Version 4.0.1
 
