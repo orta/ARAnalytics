@@ -2,6 +2,8 @@
 
 ## Master
 
+## Version 4.0.2
+
 * Allows AdjustProvider to be set up with an AdjustDelegate
 * Support custom event tracking for HockeyApp provider (@wzs)
 * Don’t dispatch DSL blocks if view controller has been deallocated in the mean time (@alloy)
