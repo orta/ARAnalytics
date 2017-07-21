@@ -2,6 +2,8 @@
 
 ## Master
 
+## Version 5.0.0
+
 * Use ReactiveObjC instead of ReactiveCocoa in DSL - orta/DinosaurDad
 * Drop iOS 7 support - orta/DinosaurDad
 
