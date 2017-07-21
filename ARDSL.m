@@ -150,6 +150,9 @@ ARExtractEventName(id object, NSDictionary *analyticsEntry, RACTuple *parameters
             __weak __typeof(instance) weakInstance = instance;
             [[instance rac_signalForSelector:selector] subscribeNext:^(RACTuple *parameters) {
                 id instance = weakInstance;
+                if (instance == nil) {
+                    return;
+                }
 
                 BOOL shouldFire = ar_shouldFireForInstance(object, instance, parameters);
 

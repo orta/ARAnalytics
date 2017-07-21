@@ -1,15 +1,13 @@
 language: objective-c
-osx_image: xcode7.1
+osx_image: xcode9
 env:
   global:
     - LC_CTYPE=en_US.UTF-8
     - LANG=en_US.UTF-8
 before_script:
   - echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-  - gem install cocoapods --no-document --pre --quiet
   - bundle exec danger
-  - cd Example; pod update ; cd ..
-  
-xcode_workspace: Example/ARAnalyticsTests.xcworkspace
-xcode_scheme: ARAnalyticsBootstrapiOS
-xcode_sdk: iphonesimulator
+  - cd Example; pod install; cd ..
+
+script:
+  - set -o pipefail && xcodebuild -workspace Example/ARAnalyticsTests.xcworkspace -scheme ARAnalyticsBootstrapiOS -configuration Debug test -sdk iphonesimulator -destination platform='iOS Simulator',OS='9.0',name='iPhone 6' CODE_SIGNING_REQUIRED=NO | bundle exec xcpretty
