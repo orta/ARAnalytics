@@ -7,7 +7,7 @@ env:
 before_script:
   - echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - bundle exec danger
-  - cd Example; pod update ; cd ..
+  - cd Example; pod install; cd ..
 
 script:
   - set -o pipefail && xcodebuild -workspace Example/ARAnalyticsTests.xcworkspace -scheme ARAnalyticsBootstrapiOS -configuration Debug test -sdk iphonesimulator -destination platform='iOS Simulator',OS='9.0',name='iPhone 6' CODE_SIGNING_REQUIRED=NO | bundle exec xcpretty
