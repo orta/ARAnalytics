@@ -2,6 +2,9 @@
 
 ## Master
 
+* Use ReactiveObjC instead of ReactiveCocoa in DSL - orta/DinosaurDad
+* Drop iOS 7 support - orta/DinosaurDad
+
 ## Version 4.0.2
 
 * Allows AdjustProvider to be set up with an AdjustDelegate
