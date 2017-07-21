@@ -6,10 +6,8 @@ env:
     - LANG=en_US.UTF-8
 before_script:
   - echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-  - gem install cocoapods --no-document --pre --quiet
   - bundle exec danger
   - cd Example; pod update ; cd ..
 
-xcode_workspace: Example/ARAnalyticsTests.xcworkspace
-xcode_scheme: ARAnalyticsBootstrapiOS
-xcode_sdk: iphonesimulator
+script:
+  - set -o pipefail && xcodebuild -workspace Example/ARAnalyticsTests.xcworkspace -scheme ARAnalyticsBootstrapiOS -configuration Debug test -sdk iphonesimulator -destination platform='iOS Simulator',OS='9.0',name='iPhone 6' | bundle exec xcpretty
