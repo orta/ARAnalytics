@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         =  'ARAnalytics'
-  s.version      =  '4.0.2'
+  s.version      =  '5.0.0'
   s.license      =  {:type => 'MIT', :file => 'LICENSE' }
   s.homepage     =  'https://github.com/orta/ARAnalytics'
   s.authors      =  { 'orta' => 'orta.therox@gmail.com', 'Daniel Haight' => "confidence.designed@gmail.com" }
@@ -73,13 +73,13 @@ Pod::Spec.new do |s|
     ss.exclude_files = ['ARDSL.{h,m}']
     ss.private_header_files = 'ARNavigationControllerDelegateProxy.h'
     ss.tvos.deployment_target = '9.0'
-	  ss.ios.deployment_target = '7.0'
+	  ss.ios.deployment_target = '8.0'
   end
 
   s.subspec "DSL" do |ss|
     ss.source_files = ['ARDSL.{h,m}']
     ss.dependency 'RSSwizzle', '~> 0.1.0'
-    ss.dependency 'ReactiveCocoa', '~> 2.0'
+    ss.dependency 'ReactiveObjC', '~> 2.0'
   end
 
   # for the description

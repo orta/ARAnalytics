@@ -1,6 +1,6 @@
 #import "ARDSL.h"
 #import <RSSwizzle/RSSwizzle.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveObjC/ReactiveObjC.h>
 
 NSString * const ARAnalyticsTrackedEvents = @"trackedEvents";
 NSString * const ARAnalyticsTrackedScreens = @"trackedScreens";
