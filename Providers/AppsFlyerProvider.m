@@ -1,5 +1,5 @@
 #import "AppsFlyerProvider.h"
-#import "AppsFlyerTracker.h"
+#import <AppsFlyerLib/AppsFlyerTracker.h>
 
 const NSString * ARAppsFlyerEventPropertyCurrencyCode = @"currencyCode";
 const NSString * ARAppsFlyerEventPropertyValue = @"value";
