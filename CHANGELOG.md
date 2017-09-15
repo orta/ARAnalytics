@@ -2,6 +2,8 @@
 
 ## Master
 
+## Version 5.0.1
+
 * Updated AppsFlyer cocoapods dependance to use newer version of framework (@starikovvm)
 
 ## Version 5.0.0
