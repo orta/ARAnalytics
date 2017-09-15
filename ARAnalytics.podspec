@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
   librato          = { :spec_name => "Librato" }
   crashlytics      = { :spec_name => "Crashlytics",         :dependency => "Crashlytics" }
   fabric           = { :spec_name => "Fabric",              :dependency => ["Fabric", "Crashlytics"] }
-  appsflyer        = { :spec_name => "AppsFlyer",           :dependency => "AppsFlyer-SDK" }
+  appsflyer        = { :spec_name => "AppsFlyer",           :dependency => "AppsFlyerFramework" }
   branch           = { :spec_name => "Branch",              :dependency => "Branch" }
   snowplow         = { :spec_name => "Snowplow",            :dependency => "SnowplowTracker" }
   sentry           = { :spec_name => "Sentry",              :dependency => "Raven" }
